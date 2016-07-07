@@ -1,0 +1,281 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+/* line 6, ../main_pre.scss */
+html {
+  box-sizing: border-box;
+  font-family: "helvetica neue", arial, helvetica, "lucida grande", sans-serif;
+  color: #111;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 14, ../main_pre.scss */
+html *, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 17, ../main_pre.scss */
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+}
+
+/* line 22, ../main_pre.scss */
+.time {
+  font-weight: 400;
+}
+
+/* line 25, ../main_pre.scss */
+.comingSoon {
+  font-family: 'Lato', sans-serif;
+  color: #111;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 25px;
+  max-width: 400px;
+  margin: auto;
+}
+/* line 33, ../main_pre.scss */
+.comingSoon a {
+  color: #111;
+}
+
+/* line 37, ../main_pre.scss */
+.behance {
+  width: 70px;
+}
+
+/* line 40, ../main_pre.scss */
+.github {
+  width: 50px;
+}
+
+/* line 43, ../main_pre.scss */
+.behance, .github {
+  display: inline-block;
+  margin: 0 10px;
+  max-height: 18px;
+}
+/* line 47, ../main_pre.scss */
+.behance svg, .github svg {
+  height: 100%;
+  display: block;
+}
+
+/* line 52, ../main_pre.scss */
+nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  z-index: 100;
+}
+
+/* line 59, ../main_pre.scss */
+.navigate.opened em {
+  background: #ECF0F1;
+}
+
+/* line 63, ../main_pre.scss */
+.navigate {
+  width: 35px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+/* line 71, ../main_pre.scss */
+.navigate em {
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  width: 100%;
+  height: 25%;
+  background: #3498DB;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin: 0px 0px 5px 0;
+  border-radius: 20px;
+}
+
+/* line 86, ../main_pre.scss */
+.outer.opened {
+  width: 70%;
+}
+
+/* line 89, ../main_pre.scss */
+.design {
+  background-image: url(../images/adobe_stock.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* line 96, ../main_pre.scss */
+.outer.active:before {
+  opacity: 0;
+}
+
+/* line 99, ../main_pre.scss */
+.outer {
+  display: table;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+/* line 107, ../main_pre.scss */
+.outer:before {
+  content: '';
+  display: block;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  background: #eee;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  pointer-events: none;
+  z-index: 10;
+}
+/* line 119, ../main_pre.scss */
+.outer .middle {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+/* line 123, ../main_pre.scss */
+.outer .middle .inner {
+  position: relative;
+  margin: auto;
+  width: 80%;
+  max-width: 400px;
+}
+/* line 129, ../main_pre.scss */
+.outer .middle #Layer_1 {
+  width: 70%;
+  height: auto;
+}
+/* line 132, ../main_pre.scss */
+.outer .middle #Layer_1 * {
+  stroke-width: 2;
+}
+
+@keyframes heartBeat {
+  /* line 139, ../main_pre.scss */
+  0% {
+    -webkit-transform: rotate(-45deg) scale(0.5);
+    -moz-transform: rotate(-45deg) scale(0.5);
+    -ms-transform: rotate(-45deg) scale(0.5);
+    -o-transform: rotate(-45deg) scale(0.5);
+    transform: rotate(-45deg) scale(0.5);
+  }
+
+  /* line 142, ../main_pre.scss */
+  100% {
+    -webkit-transform: rotate(-45deg) scale(0.6);
+    -moz-transform: rotate(-45deg) scale(0.6);
+    -ms-transform: rotate(-45deg) scale(0.6);
+    -o-transform: rotate(-45deg) scale(0.6);
+    transform: rotate(-45deg) scale(0.6);
+  }
+}
+
+/* line 146, ../main_pre.scss */
+.heart {
+  background-color: #111111;
+  display: block;
+  height: 26px;
+  margin: 0 10px;
+  position: absolute;
+  -webkit-transform: rotate(-45deg) scale(0.6);
+  -moz-transform: rotate(-45deg) scale(0.6);
+  -ms-transform: rotate(-45deg) scale(0.6);
+  -o-transform: rotate(-45deg) scale(0.6);
+  transform: rotate(-45deg) scale(0.6);
+  width: 26px;
+  left: 50%;
+  margin-left: -13px;
+  bottom: 30px;
+  opacity: 0.2;
+  cursor: pointer;
+  animation-duration: 0.7s;
+  animation-name: heartBeat;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* line 172, ../main_pre.scss */
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #111111;
+  border-radius: 50%;
+  height: 26px;
+  position: absolute;
+  width: 26px;
+}
+
+/* line 180, ../main_pre.scss */
+.heart:before {
+  top: -13px;
+  left: 0;
+}
+
+/* line 184, ../main_pre.scss */
+.heart:after {
+  left: 13px;
+  top: 0;
+}
+
+/* line 188, ../main_pre.scss */
+#instafeed a img {
+  padding: 0;
+  margin: 0 0px -3px 0;
+  opacity: 0;
+  width: 14.28%;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+
+/* line 233, ../css-pre/main.scss */
+/* line 207, ../main_pre.scss */
+#instafeed a img:hover {
+  opacity: 1;
+}

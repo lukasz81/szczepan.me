@@ -1,0 +1,209 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3";
+$heart: #111;
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+  font-family: "helvetica neue", arial, helvetica, "lucida grande", sans-serif;
+  color:#111;
+  text-align:center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html *, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+	margin:0;
+	padding:0;
+	background:#eee;
+}
+.time{
+  font-weight:400;
+}
+.comingSoon{
+  font-family: 'Lato', sans-serif;
+  color:#111;
+  font-size:18px;
+  font-weight:300;
+  padding:25px;
+  max-width:400px;
+  margin: auto;
+  a{
+    color:#111;
+  }
+}
+.behance{
+  width:70px;
+}
+.github{
+  width:50px;
+}
+.behance,.github{
+  display:inline-block;
+  margin:0 10px;
+  max-height:18px;
+  svg{
+    height:100%;
+    display:block;
+  }
+}
+nav{
+	position: fixed;
+  width: 100%;
+  height: 50px;
+  z-index:100;
+}
+.navigate.opened{
+	em{
+		background: #ECF0F1;
+	}
+}
+.navigate{
+	width: 35px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor:pointer;
+  z-index:1;
+  em{
+  	@include transition-property(background);
+		@include transition-duration(0.5s);
+		@include transition-timing-function(ease-in-out);
+    width: 100%;
+    height: 25%;
+    background: #3498DB;
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    margin: 0px 0px 5px 0;
+    border-radius: 20px;
+  }
+}
+.outer.opened{
+	width:70%;
+}
+.design{
+  background-image:url(../images/adobe_stock.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+.outer.active:before{
+  opacity:0
+}
+.outer{
+  //@include transition(all 10s linear);
+	display:table;
+	height:100%;
+	width:100%;
+	right:0;
+	bottom:0;
+  z-index:-1;
+  &:before{
+    content:'';
+    display:block;
+    width:inherit;
+    height:inherit;
+    position:absolute;
+    background:#eee;
+    opacity:1;
+    @include transition(opacity 0.3s linear);
+    pointer-events: none;
+    z-index:10;
+  }
+	.middle{
+		display:table-cell;
+		vertical-align:middle;
+    position:relative;
+		.inner{
+			position:relative;
+			margin:auto;
+			width:80%;
+			max-width:400px
+		}
+    #Layer_1{
+      width: 70%;
+      height: auto;
+      * {
+        stroke-width:2;
+      }
+    }
+	}
+}
+@keyframes heartBeat {
+  0%{
+    @include transform(rotate(-45deg) scale(0.5));
+  }
+  100% {
+    @include transform(rotate(-45deg) scale(0.6));
+  }
+}
+.heart {
+  background-color: $heart;
+  display: block;
+  height: 26px;
+  margin: 0 10px;
+  position: absolute;
+  @include transform(rotate(-45deg) scale(0.6));
+  width: 26px;
+  left: 50%;
+  margin-left: -13px;
+  bottom: 30px;
+  opacity:0.2;
+  cursor:pointer;
+  animation-duration: 0.7s;
+  animation-name: heartBeat;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: $heart;
+  border-radius: 50%;
+  height: 26px;
+  position: absolute;
+  width: 26px;
+}
+.heart:before {
+  top: -13px;
+  left: 0;
+}
+.heart:after {
+  left: 13px;
+  top: 0;
+}
+#instafeed a img {
+  padding: 0;
+  margin: 0 0px -3px 0;
+  opacity: 0;
+  width: 14.28%;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+/* line 233, ../css-pre/main.scss */
+#instafeed a img:hover {
+  opacity: 1;
+}
