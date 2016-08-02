@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<skills>
+    <skill title="HTML5" imageurl="html.png">
+      <description skillset="90%">
+        This is html.
+      </description>
+    </skill>
+
+    <skill title="CSS3" imageurl="css.png">
+      <description skillset="80%">
+        This is CSS3.
+      </description>
+    </skill>
+
+    <skill title="Sass" imageurl="sass.png">
+      <description skillset="70%">
+        This is Sass.
+      </description>
+    </skill>
+
+    <skill title="jQuery" imageurl="jquery.png">
+      <description skillset="60%">
+        This is jQuery.
+      </description>
+    </skill>
+
+    <skill title="Angular.js" imageurl="angular.png">
+      <description skillset="50%">
+        This is Angular.js.
+      </description>
+    </skill>
+
+    <skill title="Rails" imageurl="rails.png">
+      <description skillset="50%">
+        This is Rails.
+      </description>
+    </skill>
+
+</skills>
