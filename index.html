@@ -5,14 +5,17 @@
 		<script src="js/modernizr.js"></script>
 		<link rel="icon" type="image/png" href="images/szczepan_ico.png" />
 		<link rel="stylesheet" href="main_css/main_pre.css" media="all">
+		<link rel="stylesheet" href="main_css/responsive/responsive.css" media="all">
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400" rel="stylesheet">
-		<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-		<script type="text/javascript" src="js/instaFeed.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 		<script src="js/scripts.js"></script>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
 	<body>
-		<div class="outer">
+		<main class="scroller">
+		<div class="outer snap full-height">
 			<div class="middle">
 				<div class="inner">
 				</div>
@@ -25,15 +28,18 @@
 			</div>
 		</div>
 		<!-- for qick disabling start just after here -->
-		<div class="code revGradient stop1">
-			<article>
-				<h2>Code<span></span></h2>
-				My passion for code started long time ago when Flash was at it's hipe. I loved the fact that I can design and create interactive content with this software. The times of Flash are long gone now and naturally I have shifted from ActionScript to HTML, CSS and JavaScript.
-				Code to me is both, language I speak to the browser and a blank canvas I can draw on. Front End frameworks complement and balance each other.
-				HTML let's me build the structure, CSS adds styling and JavaScript interactivity.
-				<span class="hr"></span>
+		<div class="code revGradient stop2 snap">
+			<span class="closeUI"></span>
+			<article class="def asTable full-height">
+				<div class="asTable-cell">
+					<h2 class="article-h2">Code<span></span></h2>
+					<div class="article-span code-shield">
+						<!-- svg here -->
+					</div>
+					<span class="hr"></span>
+				</div>
 			</article>
-			<div class="codeDetails">
+			<div class="codeDetails def full-height">
 					<ul class="overlay detailsContainer">
 						<li class="innerNav asTable">
 							<div class="imagesContainer">
@@ -42,16 +48,39 @@
 					</ul>
 			</div>
 		</div>
-		<div class="design stop2">
-			<div class="designDetails">
-			</div>
-			<article>
-				<h2>Design<span></span></h2>
-				Starting with basic websites several years ago I found myself working as an Art Director for complex projects with a holistic approach soon. Visually appealing designs, subtle details and brand guidelines combined to innovative interfaces across various touch points became my daily companion.
-Out of this love for aesthetic design my passion for functionality and structure evolved. Jumping right into Photoshop didn't feel accurate anymore and skipping the steps of building a framework based on functionality and usability became inevitable.
+		<div class="design stop1 snap">
+			<article class="asTable full-height def">
+				<div class="asTable-cell">
+					<h2 class="article-h2">Design<span></span></h2>
+					<div class="article-span design-shield">
+						<!-- svg here -->
+					</div>
+					<span class="hr def"></span>
+				</div>
 			</article>
+			<div class="designDetails def full-height">
+				<ul class="detailsContainer overlay images-li">
+					<li class="asTable">
+						<div class="imagesContainer">
+							<span data-title="UI/UX" class="imgWrapp def">
+								UX/UI
+							</span>
+							<span data-title="Logo" class="imgWrapp def">
+								LOGO
+							</span>
+							<span data-title="Illustration" class="imgWrapp def">
+								ILLUSTRATION
+							</span>
+						</div>
+					</li>
+				</ul>
+
+			</div>
 		</div>
-		<div id="instafeed"></div>
+		<div id="instafeed" class="snap full-height"></div>
 		<!-- for qick disabling start just above here -->
+	</main>
+	<!-- <script type="text/javascript" src="js/Polyfill.js"></script> -->
+	<script type="text/javascript" src="js/scrollsnap-polyfill.js"></script>
 	</body>
 </html>

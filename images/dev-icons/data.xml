@@ -1,39 +1,81 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <skills>
     <skill title="HTML5" imageurl="html.png">
-      <description skillset="90%">
-        This is html.
+      <description skillset="95" length="10">
+        HTML is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My HTML knowledge:
+      </knowledge>
+      <use>
+        My HTML commercial use:
+      </use>
     </skill>
 
     <skill title="CSS3" imageurl="css.png">
-      <description skillset="80%">
-        This is CSS3.
+      <description skillset="90" length="10">
+        CSS is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My CSS knowledge:
+      </knowledge>
+      <use>
+        My CSS commercial use:
+      </use>
     </skill>
 
     <skill title="Sass" imageurl="sass.png">
-      <description skillset="70%">
-        This is Sass.
+      <description skillset="80" length="4">
+        SASS is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My SASS knowledge:
+      </knowledge>
+      <use>
+        My SASS commercial use:
+      </use>
     </skill>
 
     <skill title="jQuery" imageurl="jquery.png">
-      <description skillset="60%">
-        This is jQuery.
+      <description skillset="70" length="6">
+        jQuery is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My jQuery knowledge:
+      </knowledge>
+      <use>
+        My jQuery commercial use:
+      </use>
     </skill>
 
     <skill title="Angular.js" imageurl="angular.png">
-      <description skillset="50%">
-        This is Angular.js.
+      <description skillset="50" length="0.5">
+        Angular.js is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My Angular.js knowledge:
+      </knowledge>
+      <use>
+        My Angular.js commercial use:
+      </use>
     </skill>
 
     <skill title="Rails" imageurl="rails.png">
-      <description skillset="50%">
-        This is Rails.
+      <description skillset="30" length="4">
+        Rails is important on the web and native mobile apps in the future. It is a spine for any digital project where presentation in browser is onvolved.
+        It's important for SEO ranking. It's good to know its capabilities.
       </description>
+      <knowledge>
+        My Rails knowledge:
+      </knowledge>
+      <use>
+        My Rails commercial use:
+      </use>
     </skill>
 
 </skills>

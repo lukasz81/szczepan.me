@@ -1,70 +1,101 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
-/* line 8, ../main_pre.scss */
+/* line 9, ../main_pre.scss */
+h1, h2, h4, h5 {
+  font-family: 'Lato',"helvetica neue", arial, helvetica, "lucida grande", sans-serif;
+}
+
+/* line 12, ../main_pre.scss */
+span, p, article, a, :after, ::before, h3 {
+  font-family: 'Anonymous Pro', monospace, "helvetica neue", arial, helvetica, "lucida grande", sans-serif;
+}
+
+/* line 15, ../main_pre.scss */
 html {
   box-sizing: border-box;
-  font-family: 'Lato',"helvetica neue", arial, helvetica, "lucida grande", sans-serif;
-  color: #111;
+  color: #111111;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 16, ../main_pre.scss */
-html *, *:before, *:after {
-  box-sizing: inherit;
+/* line 22, ../main_pre.scss */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* line 19, ../main_pre.scss */
+/* line 27, ../main_pre.scss */
+html *, *:before, *:after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 33, ../main_pre.scss */
 body {
   margin: 0;
   padding: 0;
   background: #eee;
 }
 
-/* line 25, ../main_pre.scss */
+/* line 38, ../main_pre.scss */
+.asTable {
+  display: table;
+}
+
+/* line 41, ../main_pre.scss */
+.asTable-cell {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* line 68, ../main_pre.scss */
 .time {
   font-weight: 400;
 }
 
-/* line 28, ../main_pre.scss */
+/* line 71, ../main_pre.scss */
 .comingSoon {
   font-family: 'Lato', sans-serif;
-  color: #111;
+  color: #111111;
   font-size: 18px;
   font-weight: 300;
   padding: 25px;
   max-width: 400px;
   margin: auto;
 }
-/* line 36, ../main_pre.scss */
+/* line 79, ../main_pre.scss */
 .comingSoon a {
-  color: #111;
+  color: #111111;
 }
 
-/* line 40, ../main_pre.scss */
+/* line 83, ../main_pre.scss */
 .behance {
   width: 70px;
 }
 
-/* line 43, ../main_pre.scss */
+/* line 86, ../main_pre.scss */
 .github {
   width: 50px;
 }
 
-/* line 46, ../main_pre.scss */
+/* line 89, ../main_pre.scss */
 .behance, .github {
   display: inline-block;
   margin: 0 10px;
   max-height: 18px;
 }
-/* line 50, ../main_pre.scss */
+/* line 93, ../main_pre.scss */
 .behance svg, .github svg {
   height: 100%;
   display: block;
 }
 
 @keyframes heartBeat {
-  /* line 56, ../main_pre.scss */
+  /* line 99, ../main_pre.scss */
   0% {
     -webkit-transform: rotate(-45deg) scale(0.5);
     -moz-transform: rotate(-45deg) scale(0.5);
@@ -73,7 +104,7 @@ body {
     transform: rotate(-45deg) scale(0.5);
   }
 
-  /* line 59, ../main_pre.scss */
+  /* line 102, ../main_pre.scss */
   100% {
     -webkit-transform: rotate(-45deg) scale(0.6);
     -moz-transform: rotate(-45deg) scale(0.6);
@@ -84,7 +115,7 @@ body {
 }
 
 @keyframes shake {
-  /* line 64, ../main_pre.scss */
+  /* line 107, ../main_pre.scss */
   0% {
     -webkit-transform: rotate(15deg);
     -moz-transform: rotate(15deg);
@@ -93,7 +124,7 @@ body {
     transform: rotate(15deg);
   }
 
-  /* line 67, ../main_pre.scss */
+  /* line 110, ../main_pre.scss */
   25% {
     -webkit-transform: rotate(-15deg);
     -moz-transform: rotate(-15deg);
@@ -102,7 +133,7 @@ body {
     transform: rotate(-15deg);
   }
 
-  /* line 70, ../main_pre.scss */
+  /* line 113, ../main_pre.scss */
   50% {
     -webkit-transform: rotate(10deg);
     -moz-transform: rotate(10deg);
@@ -111,7 +142,7 @@ body {
     transform: rotate(10deg);
   }
 
-  /* line 73, ../main_pre.scss */
+  /* line 116, ../main_pre.scss */
   75% {
     -webkit-transform: rotate(-10deg);
     -moz-transform: rotate(-10deg);
@@ -120,7 +151,7 @@ body {
     transform: rotate(-10deg);
   }
 
-  /* line 76, ../main_pre.scss */
+  /* line 119, ../main_pre.scss */
   100% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -130,7 +161,7 @@ body {
   }
 }
 
-/* line 80, ../main_pre.scss */
+/* line 123, ../main_pre.scss */
 #was {
   -webkit-transform-origin: center 50%;
   -moz-transform-origin: center 50%;
@@ -139,7 +170,7 @@ body {
   transform-origin: center 50%;
 }
 
-/* line 83, ../main_pre.scss */
+/* line 126, ../main_pre.scss */
 .inner.active #was {
   animation-delay: 0.3s;
   animation-duration: 0.6s;
@@ -154,7 +185,7 @@ body {
   /* IE10+ */
 }
 
-/* line 93, ../main_pre.scss */
+/* line 136, ../main_pre.scss */
 .heart {
   background-color: #111111;
   display: block;
@@ -187,7 +218,7 @@ body {
   user-select: none;
 }
 
-/* line 119, ../main_pre.scss */
+/* line 162, ../main_pre.scss */
 .heart:before,
 .heart:after {
   content: "";
@@ -198,19 +229,19 @@ body {
   width: 26px;
 }
 
-/* line 127, ../main_pre.scss */
+/* line 170, ../main_pre.scss */
 .heart:before {
   top: -13px;
   left: 0;
 }
 
-/* line 131, ../main_pre.scss */
+/* line 174, ../main_pre.scss */
 .heart:after {
   left: 13px;
   top: 0;
 }
 
-/* line 136, ../main_pre.scss */
+/* line 179, ../main_pre.scss */
 .stop1, .stop2 {
   -webkit-transition: background 0.3s linear;
   -moz-transition: background 0.3s linear;
@@ -218,29 +249,34 @@ body {
   transition: background 0.3s linear;
 }
 
-/* line 139, ../main_pre.scss */
+/* line 182, ../main_pre.scss */
 .hr {
+  -webkit-transition: width 0.2s ease-out;
+  -webkit-transition-delay: 1s;
+  -moz-transition: width 0.2s ease-out 1s;
+  -o-transition: width 0.2s ease-out 1s;
+  transition: width 0.2s ease-out 1s;
   display: block;
   width: 14%;
   height: 6px;
   border-radius: 12px;
   margin: 40px auto;
-  background: #111;
+  background: #111111;
 }
 
-/* line 148, ../main_pre.scss */
+/* line 192, ../main_pre.scss */
 .code article {
   float: left;
 }
-/* line 150, ../main_pre.scss */
+/* line 194, ../main_pre.scss */
 .code article h2 {
   max-width: 137px;
 }
-/* line 154, ../main_pre.scss */
+/* line 198, ../main_pre.scss */
 .code .codeDetails {
   float: right;
 }
-/* line 156, ../main_pre.scss */
+/* line 200, ../main_pre.scss */
 .code .codeDetails:after {
   content: '';
   width: 0;
@@ -248,191 +284,184 @@ body {
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
   border-left: 40px solid transparent;
-  border-right: 40px solid #cecece;
+  border-right: 40px solid #f7f7f7;
   display: block;
   position: absolute;
   left: -80px;
   top: 50%;
   margin-top: -40px;
 }
-/* line 170, ../main_pre.scss */
-.code .codeDetails .overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: radial-gradient(circle 300px, rgba(255, 255, 255, 0.9), #cecece);
-}
-/* line 176, ../main_pre.scss */
+/* line 214, ../main_pre.scss */
 .code .codeDetails .tinyNav {
   position: absolute;
   right: 5px;
   width: 25px;
-  height: 125px;
+  height: 164px;
   top: 50%;
-  margin-top: -62.5px;
+  margin-top: -82px;
 }
-/* line 183, ../main_pre.scss */
+/* line 221, ../main_pre.scss */
 .code .codeDetails .tinyNav .tinyButton.active {
   opacity: 1;
 }
-/* line 186, ../main_pre.scss */
-.code .codeDetails .tinyNav .tinyButton:hover {
+/* line 223, ../main_pre.scss */
+.code .codeDetails .tinyNav .tinyButton.active:after, .code .codeDetails .tinyNav .tinyButton.active:before {
   opacity: 1;
 }
-/* line 189, ../main_pre.scss */
+/* line 227, ../main_pre.scss */
+.code .codeDetails .tinyNav .tinyButton:not(.active):hover {
+  opacity: 1;
+}
+/* line 229, ../main_pre.scss */
+.code .codeDetails .tinyNav .tinyButton:not(.active):hover:after, .code .codeDetails .tinyNav .tinyButton:not(.active):hover:before {
+  background: #999;
+  opacity: 1;
+}
+/* line 234, ../main_pre.scss */
 .code .codeDetails .tinyNav .tinyButton {
-  background: #111;
+  background: #111111;
   width: 10px;
   height: 10px;
   border-radius: 100%;
   display: block;
-  margin: 7px 3px;
+  margin: 12px 3px;
   opacity: 0.3;
   cursor: pointer;
   -webkit-transition: opacity 0.3s linear;
   -moz-transition: opacity 0.3s linear;
   -o-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
+  position: relative;
 }
-/* line 201, ../main_pre.scss */
-.code .codeDetails ul {
-  list-style-type: none;
+/* line 246, ../main_pre.scss */
+.code .codeDetails .tinyNav .tinyButton::after {
+  content: attr(data-for);
+  position: absolute;
+  left: -80px;
+  font-size: 11px;
+  line-height: 15px;
+  display: block;
+  color: white;
+  background: #111111;
   text-align: center;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-/* line 208, ../main_pre.scss */
-.code .codeDetails ul .asTable {
-  display: table;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  max-width: 236px;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-/* line 217, ../main_pre.scss */
-.code .codeDetails ul .asTable .imagesContainer {
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
-}
-/* line 222, ../main_pre.scss */
-.code .codeDetails ul .asTable h3 {
+  padding: 2px;
+  margin-top: -4.5px;
+  width: 74px;
+  border-radius: 2px;
+  opacity: 0;
+  height: 20px;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  margin-top: 50px;
 }
-/* line 227, ../main_pre.scss */
+/* line 264, ../main_pre.scss */
+.code .codeDetails .tinyNav .tinyButton::before {
+  content: '';
+  position: absolute;
+  left: -13px;
+  display: block;
+  background: #111111;
+  width: 10px;
+  height: inherit;
+  transform: rotate(45deg);
+  top: 0px;
+  opacity: 0;
+}
+/* line 279, ../main_pre.scss */
 .code .codeDetails ul .asTable .imagesContainer .imgWrapp {
+  margin: 3px;
   display: inline-block;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100px;
+  height: 120px;
+  background: #111111;
+  color: white;
+  text-transform: uppercase;
+  line-height: 100px;
 }
-/* line 231, ../main_pre.scss */
+/* line 295, ../main_pre.scss */
 .code .codeDetails ul .asTable .imagesContainer .imgWrapp::before {
-  content: attr(data-title);
+  content: 'see more';
   position: absolute;
   width: 100%;
   text-transform: uppercase;
   height: 26px;
-  top: -20px;
   z-index: 1;
   line-height: 26px;
-  opacity: 0;
-  -webkit-transform: scale(0.5);
-  -moz-transform: scale(0.5);
-  -ms-transform: scale(0.5);
-  -o-transform: scale(0.5);
-  transform: scale(0.5);
+  opacity: 1;
+  pointer-events: none;
+  color: white;
+  bottom: 0;
+  left: 0;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  pointer-events: none;
-  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: inset 0px 0px 0px 2px #111111;
 }
-/* line 246, ../main_pre.scss */
+/* line 314, ../main_pre.scss */
 .code .codeDetails ul .asTable .imagesContainer .imgWrapp::after {
   content: '';
   position: absolute;
-  left: 50%;
-  right: 50%;
-  top: -10px;
-  height: 10px;
-  width: 10px;
-  margin-left: -5px;
-  transform: rotate(45deg);
-  opacity: 0;
+  left: 12%;
+  bottom: 8px;
+  height: 6px;
+  width: 0;
+  opacity: 0.5;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  z-index: 2;
 }
-/* line 273, ../main_pre.scss */
-.code .codeDetails ul .asTable .imgWrapp:hover .devIcon {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+/* line 325, ../main_pre.scss */
+.code .codeDetails ul .asTable .imgWrapp:hover {
+  box-shadow: 0 1px 4px rgba(1, 1, 1, 0.25);
 }
-/* line 277, ../main_pre.scss */
-.code .codeDetails ul .asTable .imgWrapp:hover:before, .code .codeDetails ul .asTable .imgWrapp:focus:before, .code .codeDetails ul .asTable .imgWrapp:active:before {
-  opacity: 1;
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  -o-transform: scale(0.9);
-  transform: scale(0.9);
+/* line 327, ../main_pre.scss */
+.code .codeDetails ul .asTable .imgWrapp:hover:after {
+  width: 75%;
 }
-/* line 281, ../main_pre.scss */
-.code .codeDetails ul .asTable .imgWrapp:hover:after, .code .codeDetails ul .asTable .imgWrapp:focus:after, .code .codeDetails ul .asTable .imgWrapp:active:after {
-  opacity: 1;
-  top: -1px;
-}
-/* line 291, ../main_pre.scss */
+/* line 333, ../main_pre.scss */
 .code .codeDetails .devIcon {
   width: 85px;
   margin: 15px;
   cursor: pointer;
   opacity: 0.6;
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  -o-transform: scale(0.9);
-  transform: scale(0.9);
+  -webkit-transform: scale(0.4);
+  -moz-transform: scale(0.4);
+  -ms-transform: scale(0.4);
+  -o-transform: scale(0.4);
+  transform: scale(0.4);
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
-/* line 303, ../main_pre.scss */
+/* line 345, ../main_pre.scss */
 .design article {
   float: right;
 }
-/* line 305, ../main_pre.scss */
+/* line 347, ../main_pre.scss */
 .design article h2 {
   max-width: 185px;
 }
-/* line 309, ../main_pre.scss */
+/* line 351, ../main_pre.scss */
 .design .designDetails {
   float: left;
 }
-/* line 311, ../main_pre.scss */
+/* line 353, ../main_pre.scss */
 .design .designDetails:after {
   content: '';
   width: 0;
   height: 0;
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
-  border-left: 40px solid #cecece;
+  border-left: 40px solid #f7f7f7;
   border-right: 40px solid transparent;
   display: block;
   position: absolute;
@@ -440,47 +469,347 @@ body {
   top: 50%;
   margin-top: -40px;
 }
+/* line 367, ../main_pre.scss */
+.design .designDetails .imgWrapp {
+  display: block;
+  width: 90%;
+  height: 100px;
+  background: #111111;
+  position: relative;
+  margin: 20px auto;
+  color: white;
+  line-height: 100px;
+  cursor: pointer;
+}
+/* line 377, ../main_pre.scss */
+.design .designDetails .imgWrapp:hover:before {
+  animation-delay: 0s;
+  animation-duration: 0.6s;
+  animation-name: shake;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+}
+/* line 387, ../main_pre.scss */
+.design .designDetails .imgWrapp:after {
+  content: '';
+  background: transparent;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 0px;
+  background: red;
+}
+/* line 397, ../main_pre.scss */
+.design .designDetails .imgWrapp:before {
+  content: 'see more';
+  color: white;
+  display: block;
+  background: red;
+  box-shadow: 0px 0px 0px 2px #111111;
+  position: absolute;
+  height: 24px;
+  top: -12px;
+  right: -20px;
+  line-height: 14px;
+  font-size: 13px;
+  padding: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-/* line 327, ../main_pre.scss */
+/* line 418, ../main_pre.scss */
+.design .withBg span, .code .withBg span {
+  -webkit-transition: width 1s ease-out;
+  -moz-transition: width 1s ease-out;
+  -o-transition: width 1s ease-out;
+  transition: width 1s ease-out;
+}
+
+/* line 423, ../main_pre.scss */
+.half-width {
+  width: 50%;
+}
+/* line 425, ../main_pre.scss */
+.half-width.float-left {
+  float: left;
+}
+/* line 426, ../main_pre.scss */
+.half-width.float-right {
+  float: right;
+}
+
+/* line 428, ../main_pre.scss */
+.design.activated, .code.activated {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  z-index: 2;
+}
+/* line 435, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav), .code.activated .codeDetails ul li.asTable:not(.innerNav) {
+  min-width: 70%;
+}
+/* line 437, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) h3, .code.activated .codeDetails ul li.asTable:not(.innerNav) h3 {
+  opacity: 0.07;
+}
+/* line 440, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg {
+  background: rgba(0, 0, 0, 0.05);
+}
+/* line 442, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.bar, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  white-space: nowrap;
+  color: #111111;
+}
+/* line 454, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val {
+  font-size: 56px;
+  position: absolute;
+  font-weight: 200;
+  right: 0;
+}
+/* line 461, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) span.bar, .code.activated .codeDetails ul li.asTable:not(.innerNav) span.bar {
+  padding: 20px;
+  line-height: 25px;
+  text-align: left;
+}
+/* line 467, ../main_pre.scss */
+.design.activated .codeDetails ul li.asTable:not(.innerNav) p, .code.activated .codeDetails ul li.asTable:not(.innerNav) p {
+  font-size: 20px;
+  padding: 20px;
+  line-height: 25px;
+  text-align: left;
+  border-left: 4px solid;
+  opacity: 1;
+  position: relative;
+}
+/* line 477, ../main_pre.scss */
+.design.activated .codeDetails, .code.activated .codeDetails {
+  width: 100%;
+}
+/* line 480, ../main_pre.scss */
+.design.activated .closeUI, .code.activated .closeUI {
+  display: block;
+}
+/* line 482, ../main_pre.scss */
+.design.activated .closeUI:active, .code.activated .closeUI:active {
+  opacity: 0.6;
+}
+/* line 486, ../main_pre.scss */
+.design.activated article, .code.activated article {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  overflow: hidden;
+}
+
+/* line 491, ../main_pre.scss */
+.code article {
+  position: absolute;
+}
+
+/* line 494, ../main_pre.scss */
 .design, .code {
   display: block;
 }
-/* line 329, ../main_pre.scss */
+/* line 496, ../main_pre.scss */
+.design svg, .code svg {
+  min-width: 100%;
+  width: 100%;
+}
+/* line 500, ../main_pre.scss */
+.design .closeUI, .code .closeUI {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 20px;
+  top: 20px;
+  z-index: 2;
+  cursor: pointer;
+  display: none;
+}
+/* line 509, ../main_pre.scss */
+.design .closeUI:after, .code .closeUI:after {
+  content: '+';
+  color: #111111;
+  font-size: 50px;
+  line-height: 34px;
+  font-weight: 700;
+  display: block;
+  transform: rotate(45deg);
+}
+/* line 519, ../main_pre.scss */
 .design .codeDetails, .design .designDetails, .code .codeDetails, .code .designDetails {
   position: relative;
-  background-color: #cecece;
+  background-color: #f7f7f7;
   width: 50%;
   height: inherit;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  min-height: inherit;
+  -webkit-transition: width 0.5s ease-in-out;
+  -moz-transition: width 0.5s ease-in-out;
+  -o-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
-/* line 339, ../main_pre.scss */
+/* line 528, ../main_pre.scss */
+.design .codeDetails ul, .design .designDetails ul, .code .codeDetails ul, .code .designDetails ul {
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(circle 300px, rgba(255, 255, 255, 0.9), #f7f7f7);
+}
+/* line 535, ../main_pre.scss */
+.design .codeDetails ul .imagesContainer .imgWrapp, .design .designDetails ul .imagesContainer .imgWrapp, .code .codeDetails ul .imagesContainer .imgWrapp, .code .designDetails ul .imagesContainer .imgWrapp {
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+/* line 538, ../main_pre.scss */
+.design .codeDetails ul .imagesContainer .imgWrapp.def, .design .designDetails ul .imagesContainer .imgWrapp.def, .code .codeDetails ul .imagesContainer .imgWrapp.def, .code .designDetails ul .imagesContainer .imgWrapp.def {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+/* line 541, ../main_pre.scss */
+.design .codeDetails ul .asTable, .design .designDetails ul .asTable, .code .codeDetails ul .asTable, .code .designDetails ul .asTable {
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 245px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transition: margin 0.6s ease-in-out;
+  -moz-transition: margin 0.6s ease-in-out;
+  -o-transition: margin 0.6s ease-in-out;
+  transition: margin 0.6s ease-in-out;
+}
+/* line 550, ../main_pre.scss */
+.design .codeDetails ul .asTable aside, .design .designDetails ul .asTable aside, .code .codeDetails ul .asTable aside, .code .designDetails ul .asTable aside {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+/* line 555, ../main_pre.scss */
+.design .codeDetails ul .asTable .imagesContainer, .design .designDetails ul .asTable .imagesContainer, .code .codeDetails ul .asTable .imagesContainer, .code .designDetails ul .asTable .imagesContainer {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.1s ease-out;
+  -moz-transition: -moz-transform 0.1s ease-out;
+  -o-transition: -o-transform 0.1s ease-out;
+  transition: transform 0.1s ease-out;
+}
+/* line 561, ../main_pre.scss */
+.design .codeDetails ul .asTable h3, .design .designDetails ul .asTable h3, .code .codeDetails ul .asTable h3, .code .designDetails ul .asTable h3 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-top: 0px;
+  font-weight: 700;
+  display: block;
+  position: absolute;
+  font-size: 19em;
+  top: -65px;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0px 3px 0px #020202;
+  text-align: center;
+  width: 100%;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+/* line 586, ../main_pre.scss */
+.design article.def .article-h2, .design article.def .code-shield, .design article.def .design-shield, .code article.def .article-h2, .code article.def .code-shield, .code article.def .design-shield {
+  -webkit-transform: translateY(100px);
+  -moz-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  -o-transform: translateY(100px);
+  transform: translateY(100px);
+  opacity: 0;
+}
+/* line 590, ../main_pre.scss */
+.design article.def .hr, .code article.def .hr {
+  width: 0;
+}
+/* line 594, ../main_pre.scss */
 .design article, .code article {
   background-image: url(../images/adobe_stock.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  font-weight: 200;
-  font-size: 30px;
-  color: #111;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 44px;
+  color: #111111;
   padding: 50px;
   width: 50%;
   height: inherit;
-  min-height: inherit;
-  overflow-y: scroll;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+/* line 609, ../main_pre.scss */
+.design article .article-span, .design article .code-shield, .code article .article-span, .code article .code-shield {
+  text-align: left;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  max-width: 70%;
+  margin: 80px auto;
+}
+/* line 615, ../main_pre.scss */
+.design article .code-shield #code-shield, .code article .code-shield #code-shield {
+  display: block;
+  max-height: 100%;
+}
+/* line 619, ../main_pre.scss */
+.design article span, .code article span {
   display: block;
 }
-/* line 355, ../main_pre.scss */
+/* line 623, ../main_pre.scss */
 .design h2, .code h2 {
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.8s ease-out;
+  -o-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
   text-transform: uppercase;
   letter-spacing: 4px;
   margin: 0 auto 30px auto;
   font-size: 45px;
 }
-/* line 360, ../main_pre.scss */
+/* line 629, ../main_pre.scss */
 .design h2 span, .code h2 span {
   background-image: url(../images/zigzag.svg);
   display: block;
@@ -488,12 +817,12 @@ body {
   height: 23px;
 }
 
-/* line 368, ../main_pre.scss */
+/* line 637, ../main_pre.scss */
 .outer.active:before {
   opacity: 0;
 }
 
-/* line 371, ../main_pre.scss */
+/* line 640, ../main_pre.scss */
 .outer {
   display: table;
   height: 100%;
@@ -502,14 +831,14 @@ body {
   bottom: 0;
   z-index: -1;
 }
-/* line 379, ../main_pre.scss */
+/* line 648, ../main_pre.scss */
 .outer:before {
   content: '';
   display: block;
   width: inherit;
   height: inherit;
   min-height: inherit;
-  position: absolute;
+  position: fixed;
   background: #eee;
   opacity: 1;
   -webkit-transition: opacity 0.3s linear;
@@ -519,34 +848,39 @@ body {
   pointer-events: none;
   z-index: 10;
 }
-/* line 392, ../main_pre.scss */
+/* line 661, ../main_pre.scss */
 .outer .middle {
   display: table-cell;
   vertical-align: middle;
   position: relative;
 }
-/* line 396, ../main_pre.scss */
+/* line 665, ../main_pre.scss */
 .outer .middle .inner {
   position: relative;
   margin: auto;
   width: 80%;
   max-width: 400px;
 }
-/* line 402, ../main_pre.scss */
+/* line 671, ../main_pre.scss */
 .outer .middle #Layer_1 {
   width: 70%;
   height: auto;
 }
-/* line 405, ../main_pre.scss */
+/* line 674, ../main_pre.scss */
 .outer .middle #Layer_1 * {
   stroke-width: 2;
 }
 
-/* line 412, ../main_pre.scss */
+/* line 680, ../main_pre.scss */
+#instafeed {
+  overflow: hidden;
+}
+/* line 682, ../main_pre.scss */
 #instafeed a img {
+  width: calc(100% / 6 );
   padding: 0;
   margin: 0 0px -3px 0;
-  opacity: 1;
+  opacity: 0.1;
   -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
   -o-transition-property: opacity;
@@ -562,7 +896,7 @@ body {
 }
 
 /* line 233, ../css-pre/main.scss */
-/* line 430, ../main_pre.scss */
+/* line 704, ../main_pre.scss */
 #instafeed a img:hover {
   opacity: 1;
 }
