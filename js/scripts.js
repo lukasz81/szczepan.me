@@ -33,20 +33,16 @@ function createColor(){
 	return Math.floor(Math.random() * (255 - 0 + 1)) + 0
 }
 //detect touch device
-var isTouch = function isTouch(){
-	var touch = $('html').hasClass('touchevents')
-	if (touch){
-		return true;
-	}else {
-		return false;
-	}
+function isTouch(){
+	var touch = $('html').hasClass('touchevents') ? true : false;
+	return touch;
 }
 // detect iOS
 var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 // window height & width
 var width = $(window).outerWidth();
 var height;
-isTouch()? height = window.screen.height : height = $(window).outerHeight();
+isTouch() ? height = window.screen.height : height = $(window).outerHeight();
 //get current period of a day and change text in hero
 function getCurrentTime() {
 	var today = new Date()
