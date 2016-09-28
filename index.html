@@ -4,26 +4,34 @@
 		<title>szczepan.me</title>
 		<script src="js/modernizr.js"></script>
 		<link rel="icon" type="image/png" href="images/szczepan_ico.png" />
-		<link rel="stylesheet" href="main_css/main_pre.css" media="all">
-		<link rel="stylesheet" href="main_css/responsive/responsive.css" media="all">
-		<link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400" rel="stylesheet">
+		<link rel="stylesheet" href="css/styles.css" media="all">
+		<link rel="stylesheet" href="css/responsive.css" media="all">
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+		<!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"> -->
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 		<script src="js/scripts.js"></script>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
 	<body>
+		<div class="navUI">
+		<button class="hamburger hamburger--elastic" type="button">
+  		<span class="hamburger-box">
+    		<span class="hamburger-inner"></span>
+  		</span>
+		</button>
+	</div>
 		<main class="scroller">
 		<div class="outer snap full-height">
 			<div class="middle">
-				<div class="inner">
-				</div>
-				<h1 class="comingSoon">
-					<span class="time">Hi</span>, I am currently working on this website. Please check out the previous version
-					<a target="_blank" href="http://designmasters.co.uk/_index.html">here</a> or links below to learn more about my work. You can email me <a href="mailto:hello@szczepan.me?subject=Hi%20Szczepan">here</a>. Thanks!
-				</h1>
-				<a href="https://www.behance.net/szczepan"><i class="behance"></i></a>|<a href="https://github.com/lukasz81"><i class="github"></i></a>
+				<figure class="inner"></figure>
+				<h1 class="time">Hello.</h1>
+				<h2 class="comingSoon">
+					My name is Lukasz and I am a <br/><span class="glitch role" data-text="UI Designer">UI Designer.</span>
+					<small>Scroll down to learn a little bit more about me.</small>
+				</h2>
+				<figure class="badge"></figure>
+				<!-- <a href="https://www.behance.net/szczepan"><i class="behance"></i></a>|<a href="https://github.com/lukasz81"><i class="github"></i></a> -->
 				<span class="heart"></span>
 			</div>
 		</div>
@@ -49,6 +57,7 @@
 			</div>
 		</div>
 		<div class="design stop1 snap">
+			<span class="closeUI"></span>
 			<article class="asTable full-height def">
 				<div class="asTable-cell">
 					<h2 class="article-h2">Design<span></span></h2>
@@ -77,7 +86,29 @@
 
 			</div>
 		</div>
-		<div id="instafeed" class="snap full-height"></div>
+		<div id="instafeed" class="snap full-height asTable">
+			<div class="instaImagesBg">
+			</div>
+			<div class="wrapp asTable-cell">
+				<div class="svg-container max400">
+				</div>
+				<article class="max400">
+					They say a picture is worth a thousand words. To tell you more about myself I pulled 20 most recent images from my Instagram account for you.
+					<a class="images-show" href="#">show me images</a>
+				</article>
+				<!-- <footer class="max400">
+					<a class="mailtoMe" href="mailto:hello@szczepan.me">
+						email me
+					</a>
+					<nav class="links">
+						<span class="line">
+						</span>
+						<a class="github" href="git"></a>
+						<a class='behance' href="beh"></a>
+					</nav>
+				</footer> -->
+			</div>
+		</div>
 		<!-- for qick disabling start just above here -->
 	</main>
 	<!-- <script type="text/javascript" src="js/Polyfill.js"></script> -->

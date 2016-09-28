@@ -5,12 +5,16 @@
   }
 
   /* line 7, ../responsive/responsive.scss */
-  html body main .code .codeDetails ul .asTable {
+  html body main .code .codeDetails ul .asTable, html body main .design .designDetails ul .asTable {
     max-width: 90%;
   }
 
   /* line 11, ../responsive/responsive.scss */
-  html body main .code.activated .codeDetails .tinyNav {
+  html body main .code.activated .codeDetails ul .asTable, html body main .code.activated .designDetails ul .asTable, html body main .design.activated .codeDetails ul .asTable, html body main .design.activated .designDetails ul .asTable {
+    max-width: 90% !important;
+  }
+  /* line 14, ../responsive/responsive.scss */
+  html body main .code.activated .codeDetails .tinyNav, html body main .design.activated .codeDetails .tinyNav {
     display: block;
     position: absolute;
     width: 100%;
@@ -21,37 +25,37 @@
     left: 0;
     right: 0;
   }
-  /* line 21, ../responsive/responsive.scss */
-  html body main .code.activated .codeDetails .tinyNav .tinyButton {
+  /* line 24, ../responsive/responsive.scss */
+  html body main .code.activated .codeDetails .tinyNav .tinyButton, html body main .design.activated .codeDetails .tinyNav .tinyButton {
     width: 26px;
     height: 26px;
     display: inline-block;
   }
-  /* line 25, ../responsive/responsive.scss */
-  html body main .code.activated .codeDetails .tinyNav .tinyButton:first-child {
+  /* line 28, ../responsive/responsive.scss */
+  html body main .code.activated .codeDetails .tinyNav .tinyButton:first-child, html body main .design.activated .codeDetails .tinyNav .tinyButton:first-child {
     box-shadow: inset 0px 0px 0px 2px #111;
   }
-  /* line 30, ../responsive/responsive.scss */
-  html body main .code.activated ul .asTable h3 {
+  /* line 33, ../responsive/responsive.scss */
+  html body main .code.activated ul .asTable h3, html body main .design.activated ul .asTable h3 {
     font-size: 10em;
   }
 
-  /* line 35, ../responsive/responsive.scss */
+  /* line 38, ../responsive/responsive.scss */
   html body main .code:not(.activated) .codeDetails .tinyNav, html body main .design:not(.activated) .codeDetails .tinyNav {
     display: none;
   }
-  /* line 38, ../responsive/responsive.scss */
+  /* line 41, ../responsive/responsive.scss */
   html body main .code:not(.activated) article, html body main .code:not(.activated) .codeDetails, html body main .code:not(.activated) .designDetails, html body main .design:not(.activated) article, html body main .design:not(.activated) .codeDetails, html body main .design:not(.activated) .designDetails {
     position: relative;
     float: none;
     width: 100%;
   }
-  /* line 43, ../responsive/responsive.scss */
+  /* line 46, ../responsive/responsive.scss */
   html body main .code:not(.activated) article, html body main .design:not(.activated) article {
     padding: 0px;
     background-attachment: scroll;
   }
-  /* line 47, ../responsive/responsive.scss */
+  /* line 50, ../responsive/responsive.scss */
   html body main .code:not(.activated) .codeDetails:after, html body main .code:not(.activated) .designDetails:after, html body main .design:not(.activated) .codeDetails:after, html body main .design:not(.activated) .designDetails:after {
     content: '';
     width: 0;
@@ -66,14 +70,14 @@
     top: -38px;
     margin-left: -40px;
   }
-  /* line 61, ../responsive/responsive.scss */
+  /* line 64, ../responsive/responsive.scss */
   html body main .code:not(.activated) .code-shield, html body main .code:not(.activated) .design-shield, html body main .design:not(.activated) .code-shield, html body main .design:not(.activated) .design-shield {
     max-width: 60%;
     margin: 50px auto;
     max-height: 188px;
   }
 
-  /* line 67, ../responsive/responsive.scss */
+  /* line 70, ../responsive/responsive.scss */
   .design.activated .codeDetails ul li.asTable:not(.innerNav) p, .code.activated .codeDetails ul li.asTable:not(.innerNav) p {
     font-size: 16px;
     padding: 20px;
@@ -81,20 +85,18 @@
     text-align: left;
     border-left: 4px solid;
     opacity: 1;
-    position: relative;
   }
 
-  /* line 76, ../responsive/responsive.scss */
+  /* line 79, ../responsive/responsive.scss */
   .design.activated .codeDetails ul li.asTable:not(.innerNav) span.bar, .code.activated .codeDetails ul li.asTable:not(.innerNav) span.bar {
     font-size: 16px;
     padding: 20px;
     line-height: 20px;
     text-align: left;
     opacity: 1;
-    position: relative;
   }
 
-  /* line 84, ../responsive/responsive.scss */
+  /* line 87, ../responsive/responsive.scss */
   .design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val {
     font-size: 33px;
     position: absolute;
@@ -103,8 +105,9 @@
     bottom: -10px;
   }
 
-  /* line 91, ../responsive/responsive.scss */
-  html body main #instafeed a img {
+  /* line 94, ../responsive/responsive.scss */
+  html body main #instafeed .instaImagesBg a:not(.mailtoMe) img {
     width: calc(100% / 3 );
+    color: green;
   }
 }
