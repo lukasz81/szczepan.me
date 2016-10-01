@@ -19,14 +19,11 @@ html *, *:before, *:after {
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
 }
-<<<<<<< HEAD:css/styles.scss
 svg{
   display: block;
   width: 100%;
   height:100%;
 }
-=======
->>>>>>> origin/master:css/styles.scss
 .glitch,h2,h4,h5{
   font-family: 'Lato','helvetica neue', arial, helvetica, 'lucida grande', sans-serif;
 }
@@ -156,11 +153,7 @@ body{
 .comingSoon{
   color:$black;
   font-size: 25px;
-<<<<<<< HEAD:css/styles.scss
   font-weight: 600;
-=======
-  font-weight: 400;
->>>>>>> origin/master:css/styles.scss
   padding: 25px;
   max-width: 800px;
   margin: auto;
@@ -609,11 +602,6 @@ body{
 .design,.code{
   display: block;
   svg{
-<<<<<<< HEAD:css/styles.scss
-=======
-    width: 100%;
-    display: block;
->>>>>>> origin/master:css/styles.scss
     max-width: 250px;
     margin: auto;
   }
@@ -789,11 +777,7 @@ body{
 			width:80%;
 			max-width:400px
 		}
-<<<<<<< HEAD:css/styles.scss
     #logo{
-=======
-    #Layer_1{
->>>>>>> origin/master:css/styles.scss
       width: 50%;
       height: auto;
       * {
