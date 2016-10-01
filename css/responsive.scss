@@ -3,7 +3,11 @@
     font-size:78px;
   }
   .outer .middle figure.inner{
+<<<<<<< HEAD:css/responsive.scss
     margin: -50px auto 0 auto;
+=======
+    margin: -80px auto 0 auto;
+>>>>>>> origin/master:css/responsive.scss
   }
   figure.badge{
     margin:auto;
@@ -28,10 +32,16 @@
   .comingSoon{
     font-size:23px;
     max-width: 400px;
+<<<<<<< HEAD:css/responsive.scss
     padding: 0 25px;
   }
   .outer .middle .inner {
     margin: -50px auto 0 auto;
+=======
+  }
+  .outer .middle .inner {
+    margin: -130px auto 0 auto;
+>>>>>>> origin/master:css/responsive.scss
   }
   //activated panels
   html body main .code.activated,html body main .design.activated{

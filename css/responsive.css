@@ -1,106 +1,57 @@
-@media only screen and (min-width: 0px) and (max-width: 320px) {
-  h1.time {
-    font-size: 78px; }
+/*
+Error: Invalid CSS after "...0px auto 0 auto": expected "{", was ";"
+        on line 7 of css/responsive.scss
 
-  .outer .middle figure.inner {
-    margin: -50px auto 0 auto; }
+2:   h1.time{
+3:     font-size:78px;
+4:   }
+5:   .outer .middle figure.inner{
+6: <<<<<<< HEAD:css/responsive.scss
+7:     margin: -50px auto 0 auto;
+8: =======
+9:     margin: -80px auto 0 auto;
+10: >>>>>>> origin/master:css/responsive.scss
+11:   }
+12:   figure.badge{
 
-  figure.badge {
-    margin: auto;
-    max-width: 60px; }
-
-  .comingSoon br {
-    display: none; } }
-@media only screen and (min-width: 0px) and (max-width: 768px) {
-  html body main .tinyNav span:before, html body main .tinyNav span:after {
-    display: none !important; }
-
-  html body main .code .codeDetails ul .asTable, html body main .design .designDetails ul .asTable {
-    max-width: 90%; }
-
-  .time {
-    font-size: 87px; }
-
-  .comingSoon {
-    font-size: 23px;
-    max-width: 400px;
-    padding: 0 25px; }
-
-  .outer .middle .inner {
-    margin: -50px auto 0 auto; }
-
-  html body main .code.activated .codeDetails ul .asTable, html body main .code.activated .designDetails ul .asTable, html body main .design.activated .codeDetails ul .asTable, html body main .design.activated .designDetails ul .asTable {
-    max-width: 90% !important; }
-  html body main .code.activated .codeDetails .tinyNav, html body main .design.activated .codeDetails .tinyNav {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    top: 13px;
-    text-align: left;
-    margin: 0;
-    left: 0;
-    right: 0; }
-    html body main .code.activated .codeDetails .tinyNav .tinyButton, html body main .design.activated .codeDetails .tinyNav .tinyButton {
-      width: 26px;
-      height: 26px;
-      display: inline-block; }
-      html body main .code.activated .codeDetails .tinyNav .tinyButton:first-child, html body main .design.activated .codeDetails .tinyNav .tinyButton:first-child {
-        box-shadow: inset 0px 0px 0px 2px #111; }
-  html body main .code.activated ul .asTable h3, html body main .design.activated ul .asTable h3 {
-    font-size: 10em; }
-
-  html body main .code:not(.activated) .codeDetails .tinyNav, html body main .design:not(.activated) .codeDetails .tinyNav {
-    display: none; }
-  html body main .code:not(.activated) article, html body main .code:not(.activated) .codeDetails, html body main .code:not(.activated) .designDetails, html body main .design:not(.activated) article, html body main .design:not(.activated) .codeDetails, html body main .design:not(.activated) .designDetails {
-    position: relative;
-    float: none;
-    width: 100%; }
-  html body main .code:not(.activated) article, html body main .design:not(.activated) article {
-    padding: 0px;
-    background-attachment: scroll; }
-  html body main .code:not(.activated) .codeDetails:after, html body main .code:not(.activated) .designDetails:after, html body main .design:not(.activated) .codeDetails:after, html body main .design:not(.activated) .designDetails:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 40px solid transparent;
-    border-bottom: 40px solid #f7f7f7;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: -38px;
-    margin-left: -40px; }
-  html body main .code:not(.activated) .code-shield, html body main .code:not(.activated) .design-shield, html body main .design:not(.activated) .code-shield, html body main .design:not(.activated) .design-shield {
-    max-width: 60%;
-    margin: 50px auto;
-    max-height: 188px; }
-
-  .design.activated .codeDetails ul li.asTable:not(.innerNav) p, .code.activated .codeDetails ul li.asTable:not(.innerNav) p {
-    font-size: 16px;
-    padding: 20px;
-    line-height: 20px;
-    text-align: left;
-    border-left: 4px solid;
-    opacity: 1; }
-
-  .design.activated .codeDetails ul li.asTable:not(.innerNav) span.bar, .code.activated .codeDetails ul li.asTable:not(.innerNav) span.bar {
-    font-size: 16px;
-    padding: 20px;
-    line-height: 20px;
-    text-align: left;
-    opacity: 1; }
-
-  .design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val {
-    font-size: 33px;
-    position: absolute;
-    font-weight: 200;
-    right: 0;
-    bottom: -10px; }
-
-  html body main #instafeed .instaImagesBg a:not(.mailtoMe) img {
-    width: calc(100% / 3 );
-    color: green; } }
-
-/*# sourceMappingURL=responsive.css.map */
+Backtrace:
+css/responsive.scss:7
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:656:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:726:in `declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:726:in `declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:668:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:409:in `media_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:222:in `special_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:197:in `directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...0px auto 0 auto\": expected \"{\", was \";\"\A         on line 7 of css/responsive.scss\A \A 2:   h1.time{\A 3:     font-size:78px;\A 4:   }\A 5:   .outer .middle figure.inner{\A 6: <<<<<<< HEAD:css/responsive.scss\A 7:     margin: -50px auto 0 auto;\A 8: =======\A 9:     margin: -80px auto 0 auto;\A 10: >>>>>>> origin/master:css/responsive.scss\A 11:   }\A 12:   figure.badge{"; }
