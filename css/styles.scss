@@ -2,13 +2,13 @@
 @import 'glitch';
 @import 'hamburger/hamburgers/hamburgers.scss';
 
-$black: #111111;
+$mainColor: #2b2b2b;
 $arrowSize: 40px;
 $secondColor: #f7f7f7;
 /* apply a natural box layout model to all elements, but allowing components to change */
 html{
   box-sizing: border-box;
-  color:$black;
+  color:$mainColor;
   text-align:center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,6 +23,7 @@ svg{
   display: block;
   width: 100%;
   height:100%;
+  fill:$mainColor;
 }
 .glitch,h2,h4,h5{
   font-family: 'Lato','helvetica neue', arial, helvetica, 'lucida grande', sans-serif;
@@ -151,7 +152,7 @@ body{
   //text-shadow: 1px 2px rgba(1, 1, 1, 0.25);
 }
 .comingSoon{
-  color:$black;
+  color:$mainColor;
   font-size: 25px;
   font-weight: 600;
   padding: 25px;
@@ -159,7 +160,7 @@ body{
   margin: auto;
   line-height: 32px;
   a{
-    color:$black;
+    color:$mainColor;
   }
   .variable::before,.variable::after{
     top:-2px !important;
@@ -167,13 +168,14 @@ body{
   .glitch{
     display:inline-block;
     white-space:nowrap;
-    @include textGlitch("example-one", 25, $black, rgba(255,255,255,0.1), blue, #ff0078, 450, 115);
+    @include textGlitch("example-one", 25, $mainColor, rgba(255,255,255,0.1), blue, #ff0078, 450, 115);
   }
   small{
     display: block;
     margin-top: 10px;
     font-size: 15px;
     line-height: 20px;
+    font-weight: 300;
   }
 }
 .behance{
@@ -230,7 +232,7 @@ body{
   -ms-user-select: none; /* IE10+ */
 }
 .heart {
-  background-color: $black;
+  background-color: $mainColor;
   display: block;
   height: 26px;
   margin: 0 10px;
@@ -257,7 +259,7 @@ body{
 .heart:before,
 .heart:after {
   content: "";
-  background-color: $black;
+  background-color: $mainColor;
   border-radius: 50%;
   height: 26px;
   position: absolute;
@@ -282,7 +284,7 @@ body{
   height: 6px;
   border-radius: 12px;
   margin: 40px auto;
-  background: $black;
+  background: $mainColor;
 }
 .code{
   article{
@@ -330,7 +332,7 @@ body{
         }
       }
       .tinyButton{
-        background:$black;
+        background:$mainColor;
         width:10px;
         height:10px;
         border-radius:100%;
@@ -349,7 +351,7 @@ body{
         line-height:15px;
         display: block;
         color: white;
-        background: $black;
+        background: $mainColor;
         text-align: center;
         padding: 2px;
         margin-top: -4.5px;
@@ -364,7 +366,7 @@ body{
         position: absolute;
         left: -13px;
         display: block;
-        background: $black;
+        background: $mainColor;
         width: 10px;
         height: inherit;
         transform: rotate(45deg);
@@ -382,7 +384,7 @@ body{
           overflow:hidden;
           width:100px;
           height:120px;
-          background:$black;
+          background:$mainColor;
           color:white;
           text-transform:uppercase;
           line-height: 100px;
@@ -404,7 +406,7 @@ body{
           font-size:13px;
           font-weight: 700;
           letter-spacing: 1px;
-          box-shadow:inset 0px 0px 0px 2px $black;
+          box-shadow:inset 0px 0px 0px 2px $mainColor;
         }
         .imagesContainer .imgWrapp::after{
           content: '';
@@ -460,16 +462,64 @@ body{
       top:50%;
       margin-top:-$arrowSize
     }
+    .one{
+      .imgWrapp#one{
+        -webkit-clip-path: polygon(100% 0%, 100% 36%, 0 33%, 0% 0%);
+      }
+      .imgWrapp#two{
+        -webkit-clip-path: polygon(100% 36.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
+        //background:green;
+      }
+    }
+    .two{
+      .imgWrapp#one{
+        -webkit-clip-path: polygon(100% 0%, 100% 30%, 0 33%, 0% 0%);
+      }
+      .imgWrapp#two{
+        -webkit-clip-path: polygon(100% 30.3%, 100% 69.7%, 0 66.7%, 0% 33.3%);
+      }
+      .imgWrapp#three{
+        -webkit-clip-path: polygon(100% 70%, 100% 100%, 0 100%, 0% 67%);
+        clip-path: polygon(100% 67%, 100% 100%, 0% 100%, 0% 67%);
+      }
+    }
+    .three{
+      .imgWrapp#two{
+        -webkit-clip-path: polygon(100% 33.3%, 100% 62.7%, 0 64.7%, 0% 33.3%);
+      }
+      .imgWrapp#three{
+        -webkit-clip-path: polygon(100% 63%, 100% 100%, 0 100%, 0% 65%);
+      }
+    }
+    .imgWrapp#one{
+      -webkit-clip-path: polygon(100% 0%, 100% 33%, 0 33%, 0% 0%);
+      clip-path: polygon(100% 0%, 100% 33%, 0% 33%, 0% 0%);
+      //background:red;
+    }
+    .imgWrapp#two{
+      -webkit-clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
+      clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
+      //background:green;
+    }
+    .imgWrapp#three{
+      -webkit-clip-path: polygon(100% 67%, 100% 100%, 0 100%, 0% 67%);
+      clip-path: polygon(100% 67%, 100% 100%, 0% 100%, 0% 67%);
+    }
     .imgWrapp{
       display: block;
-      width: 90%;
-      height: 100px;
-      background: $black;
-      position: relative;
-      margin: 20px auto;
+      //test width: 90%;
+      //test height: 100px;
+      height:100%;
+      width:100%;
+      background: $mainColor;
+      //test position: relative;
+      //test margin: 20px auto;
       color: white;
-      line-height: 100px;
+      //test line-height: 100px;
       cursor:pointer;
+      position:absolute;
+      top:0;
+      left:0;
       &:hover:before{
         animation-delay:0s;
         animation-duration: 0.6s;
@@ -481,7 +531,7 @@ body{
         -ms-user-select: none; /* IE10+ */
       }
       &:after{
-        content: '';
+        //test content: '';
         background: transparent;
         position: absolute;
         left: 0;
@@ -491,11 +541,10 @@ body{
         background: red;
       }
       &:before{
-        content: 'see more';
+        //test content: 'see more';
         color: white;
         display: block;
-        //background: red;
-        box-shadow: 0px 0px 0px 2px $black;
+        box-shadow: 0px 0px 0px 2px $mainColor;
         position: absolute;
         height: 24px;
         top: -12px;
@@ -565,7 +614,7 @@ body{
         top: 0;
         z-index: 0;
         white-space: nowrap;
-        color:$black;
+        color:$mainColor;
       };
       span.val{
         font-size: 56px;
@@ -616,7 +665,7 @@ body{
     display:none;
     &:after{
       content:'+';
-      color: $black;
+      color: $mainColor;
       font-size: 50px;
       line-height: 34px;
       font-weight: 700;
@@ -656,7 +705,7 @@ body{
         width:100%;
         height:100%;
         position:relative;
-        max-width: 245px;
+        //test max-width: 245px;
         margin-left:auto;
         margin-right:auto;
         @include transition(all 0.6s ease-in-out);
@@ -709,7 +758,7 @@ body{
     font-weight: 300;
     font-size: 22px;
     line-height:44px;
-    color:$black;
+    color:$mainColor;
     padding:50px;
     width:50%;
     height:inherit;
@@ -815,7 +864,7 @@ body{
     }
     .mailtoMe{
       display:block;
-      background:$black;
+      background:$mainColor;
       height:60px;
       color:white;
       text-transform:uppercase;
@@ -848,7 +897,7 @@ body{
       padding: 6px;
       text-decoration: none;
       text-transform: uppercase;
-      color: $black;
+      color: $mainColor;
       margin: 20px auto;
       width: 60%;
       border-radius: 20px;

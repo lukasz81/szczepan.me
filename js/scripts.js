@@ -127,7 +127,16 @@ var getDataFromXml = function(){
 		changeBgColor();
 		createDotsNav();
 		addClickEvents('.imgWrapp');
+		addHoverEvents('.imgWrapp')
 	});
+}
+//hover events for mask addAnimationsToSkills
+var addHoverEvents = function(elm){
+	$(elm).hover(function(){
+		var className = $(this).attr('id');
+		var parent    = $(this).parent()[0];
+		$(parent).toggleClass(className);
+	})
 }
 //click events for click elements
 window.active = false;
@@ -152,19 +161,20 @@ var addClickEvents = function(elm){
 		  	addAnimationsToSkills(index,method);
 		  };
 	  }else{
-			elm.addClass('isOn')
+			alert(elm);
+			elm.addClass('isOn');
 			//elm.siblings('.imgWrapp').removeClass('isOn').addClass('isOff');
-			var imageURL  = window.location.href + 'images/FG-LP.jpg';
-			var className = 'image-content-wrapp'
-			var divTag    = '<div class=' + className + '><img class="image-content" src="' + imageURL + '" /></div>';
-			var e         = $('.' + className);
-			if (!e.length){
-				$('.isOn').after(divTag);
-			}else if(method == 'close'){
-				$('.' + className).removeClass('show');
-			}
-			$('.detailsContainer.images-li').addClass('scrollable')
-			animateDesignButtons(elm);
+			// var imageURL  = window.location.href + 'images/FG-LP.jpg';
+			// var className = 'image-content-wrapp';
+			// var divTag    = '<div class=' + className + '><img class="image-content" src="' + imageURL + '" /></div>';
+			// var e         = $('.' + className);
+			// if (!e.length){
+			// 	$('.isOn').after(divTag);
+			// }else if(method == 'close'){
+			// 	$('.' + className).removeClass('show');
+			// }
+			// $('.detailsContainer.images-li').addClass('scrollable');
+			// animateDesignButtons(elm);
 		};
 		reactAndScrollTop(element,container,margin,method);
 	});
@@ -299,16 +309,13 @@ var checkDistanceFromTop = function(el){
 		if (top <= half && top > half/8 && $(e).hasClass('def')){
 			$(e).removeClass('def');
 			removeClassForEach('remove',e);
-			console.log('a');
 		}else if ($(document).scrollTop() < 100){
 			$(e).addClass('def');
-			console.log('b');
 			if (!window.active){
 			  removeClassForEach('add',e);
-				console.log('c');
 		  }
 		}else if (top <= height/1.2){
-			if ($(e).hasClass('designDetails')){
+			if ($(e).hasClass('designDetailsssssss')){
 				$(e).find('.imagesContainer').css({
 					'-webkit-transform' : 'translateY(' + -top*0.15 + 'px)',
 					'-moz-transform'    : 'translateY(' + -top*0.15 + 'px)',
@@ -388,9 +395,3 @@ var layoutsAdjust = function(){
 		$(window).scrollTop(85);
 	};
 }
-var callback = function(response, status, xhr){
-	if ( status == 'error' ) {
-	    var msg = 'Sorry but there was an error: ';
-	    console.log( msg + xhr.status + " " + xhr.statusText );
-	  }
-};

@@ -13,7 +13,7 @@
 		<script src="js/scripts.js"></script>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
-	<body>
+	<body id="test-UI" class="test-UI">
 		<div class="navUI">
 		<button class="hamburger hamburger--elastic" type="button">
   		<span class="hamburger-box">
@@ -84,15 +84,37 @@
 				<ul class="detailsContainer overlay images-li">
 					<li class="asTable">
 						<div class="imagesContainer">
-							<span data-title="UI/UX" class="imgWrapp def">
-								UX/UI
-							</span>
-							<span data-title="Logo" class="imgWrapp def">
-								LOGO
-							</span>
-							<span data-title="Illustration" class="imgWrapp def">
-								ILLUSTRATION
-							</span>
+							<!-- <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMinYMax slice">
+								<polygon class="cls-1" points="140.24 45.3 0 55.3 0 0 140.24 0 140.24 45.3"/>
+							</svg>
+							<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMinYMax slice">
+								<polygon class="cls-1" points="140.24 54.3 0 55.3 0 0 140.24 0 140.24 54.3"/>
+							</svg>
+							<svg id="Layer_3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMidYMax slice">
+								<polygon class="cls-1" points="140.24 54.3 0 55.3 0 0 140.24 0 140.24 54.3"/>
+							</svg> -->
+							<svg width="0" height="0">
+                <defs>
+                  <clipPath id="clip-shape" clipPathUnits="objectBoundingBox">
+                    <polygon points="100% 0%, 100% 33%, 0% 33%, 0% 0%" />
+                  </clipPath>
+                </defs>
+							</svg>
+							<div data-title="UI/UX" class="imgWrapp def" id="one">
+								<button class="hover one">
+									UI/UX
+								</button>
+							</div>
+							<div data-title="Logo" class="imgWrapp def" id="two">
+								<button class="hover two">
+									Branding
+								</button>
+							</div>
+							<div data-title="Illustration" class="imgWrapp def" id="three">
+								<button class="hover two">
+									Illustration
+								</button>
+							</div>
 						</div>
 					</li>
 				</ul>
