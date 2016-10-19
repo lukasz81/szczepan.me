@@ -605,6 +605,107 @@
     bottom: 0;
     transform: rotate(-90deg); }
 
+@media only screen and (min-width: 0px) and (max-width: 320px) {
+  h1.time {
+    font-size: 78px; }
+
+  .outer .middle figure.inner {
+    margin: -50px auto 0 auto; }
+
+  figure.badge {
+    margin: auto;
+    max-width: 60px; }
+
+  .comingSoon br {
+    display: none; } }
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  html body main .tinyNav span:before, html body main .tinyNav span:after {
+    display: none !important; }
+
+  .time {
+    font-size: 87px; }
+
+  .comingSoon {
+    font-size: 23px;
+    max-width: 400px;
+    padding: 0 25px; }
+
+  .outer .middle .inner {
+    margin: -50px auto 0 auto; }
+
+  html body main .code.activated .codeDetails ul .asTable, html body main .code.activated .designDetails ul .asTable, html body main .design.activated .codeDetails ul .asTable, html body main .design.activated .designDetails ul .asTable {
+    max-width: 90% !important; }
+  html body main .code.activated .codeDetails .tinyNav, html body main .design.activated .codeDetails .tinyNav {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 13px;
+    text-align: left;
+    margin: 0;
+    left: 0;
+    right: 0; }
+    html body main .code.activated .codeDetails .tinyNav .tinyButton, html body main .design.activated .codeDetails .tinyNav .tinyButton {
+      width: 26px;
+      height: 26px;
+      display: inline-block; }
+      html body main .code.activated .codeDetails .tinyNav .tinyButton:first-child, html body main .design.activated .codeDetails .tinyNav .tinyButton:first-child {
+        box-shadow: inset 0px 0px 0px 2px #111; }
+  html body main .code.activated ul .asTable h3, html body main .design.activated ul .asTable h3 {
+    font-size: 10em; }
+
+  html body main .code:not(.activated) .codeDetails .tinyNav, html body main .design:not(.activated) .codeDetails .tinyNav {
+    display: none; }
+  html body main .code:not(.activated) article, html body main .code:not(.activated) .codeDetails, html body main .code:not(.activated) .designDetails, html body main .design:not(.activated) article, html body main .design:not(.activated) .codeDetails, html body main .design:not(.activated) .designDetails {
+    position: relative;
+    float: none;
+    width: 100%; }
+  html body main .code:not(.activated) article, html body main .design:not(.activated) article {
+    padding: 0px;
+    background-attachment: scroll; }
+  html body main .code:not(.activated) .codeDetails:after, html body main .code:not(.activated) .designDetails:after, html body main .design:not(.activated) .codeDetails:after, html body main .design:not(.activated) .designDetails:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid #2b2b2b;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -38px;
+    margin-left: -40px; }
+  html body main .code:not(.activated) .code-shield, html body main .code:not(.activated) .design-shield, html body main .design:not(.activated) .code-shield, html body main .design:not(.activated) .design-shield {
+    max-width: 60%;
+    margin: 50px auto;
+    max-height: 188px; }
+
+  .design.activated .codeDetails ul li.asTable:not(.innerNav) p, .code.activated .codeDetails ul li.asTable:not(.innerNav) p {
+    font-size: 16px;
+    padding: 20px;
+    line-height: 20px;
+    text-align: left;
+    border-left: 4px solid;
+    opacity: 1; }
+
+  .design.activated .codeDetails ul li.asTable:not(.innerNav) span.bar, .code.activated .codeDetails ul li.asTable:not(.innerNav) span.bar {
+    font-size: 16px;
+    padding: 20px;
+    line-height: 20px;
+    text-align: left;
+    opacity: 1; }
+
+  .design.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val, .code.activated .codeDetails ul li.asTable:not(.innerNav) p.withBg span.val {
+    font-size: 33px;
+    position: absolute;
+    font-weight: 200;
+    right: 0;
+    bottom: -10px; }
+
+  html body main #instafeed .instaImagesBg a:not(.mailtoMe) img {
+    width: calc(100% / 3 );
+    color: green; } }
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
@@ -751,110 +852,110 @@ body {
     position: relative; }
 @keyframes example-one-anim-1 {
   0% {
-    clip: rect(32px, 450px, 41px, 0); }
+    clip: rect(35px, 450px, 87px, 0); }
   4% {
-    clip: rect(88px, 450px, 88px, 0); }
+    clip: rect(60px, 450px, 28px, 0); }
   8% {
-    clip: rect(43px, 450px, 11px, 0); }
+    clip: rect(92px, 450px, 95px, 0); }
   12% {
-    clip: rect(55px, 450px, 24px, 0); }
+    clip: rect(63px, 450px, 44px, 0); }
   16% {
-    clip: rect(25px, 450px, 33px, 0); }
+    clip: rect(50px, 450px, 67px, 0); }
   20% {
-    clip: rect(1px, 450px, 93px, 0); }
+    clip: rect(15px, 450px, 38px, 0); }
   24% {
-    clip: rect(26px, 450px, 76px, 0); }
+    clip: rect(32px, 450px, 34px, 0); }
   28% {
-    clip: rect(67px, 450px, 54px, 0); }
+    clip: rect(63px, 450px, 80px, 0); }
   32% {
-    clip: rect(70px, 450px, 83px, 0); }
+    clip: rect(16px, 450px, 43px, 0); }
   36% {
-    clip: rect(80px, 450px, 95px, 0); }
+    clip: rect(101px, 450px, 28px, 0); }
   40% {
-    clip: rect(51px, 450px, 102px, 0); }
+    clip: rect(80px, 450px, 14px, 0); }
   44% {
-    clip: rect(112px, 450px, 101px, 0); }
+    clip: rect(73px, 450px, 1px, 0); }
   48% {
-    clip: rect(36px, 450px, 85px, 0); }
+    clip: rect(61px, 450px, 11px, 0); }
   52% {
-    clip: rect(19px, 450px, 87px, 0); }
+    clip: rect(107px, 450px, 76px, 0); }
   56% {
-    clip: rect(9px, 450px, 114px, 0); }
+    clip: rect(92px, 450px, 97px, 0); }
   60% {
-    clip: rect(3px, 450px, 27px, 0); }
+    clip: rect(82px, 450px, 25px, 0); }
   64% {
-    clip: rect(48px, 450px, 30px, 0); }
+    clip: rect(60px, 450px, 2px, 0); }
   68% {
-    clip: rect(11px, 450px, 69px, 0); }
+    clip: rect(23px, 450px, 91px, 0); }
   72% {
-    clip: rect(18px, 450px, 103px, 0); }
+    clip: rect(110px, 450px, 53px, 0); }
   76% {
-    clip: rect(4px, 450px, 74px, 0); }
+    clip: rect(105px, 450px, 49px, 0); }
   80% {
-    clip: rect(98px, 450px, 59px, 0); }
+    clip: rect(25px, 450px, 11px, 0); }
   84% {
-    clip: rect(66px, 450px, 81px, 0); }
+    clip: rect(88px, 450px, 7px, 0); }
   88% {
-    clip: rect(11px, 450px, 56px, 0); }
+    clip: rect(12px, 450px, 79px, 0); }
   92% {
-    clip: rect(90px, 450px, 49px, 0); }
+    clip: rect(45px, 450px, 15px, 0); }
   96% {
-    clip: rect(2px, 450px, 86px, 0); }
+    clip: rect(12px, 450px, 87px, 0); }
   100% {
-    clip: rect(1px, 450px, 107px, 0); } }
+    clip: rect(83px, 450px, 60px, 0); } }
 @keyframes example-one-anim-2 {
   0% {
-    clip: rect(89px, 450px, 54px, 0); }
+    clip: rect(47px, 450px, 9px, 0); }
   4% {
-    clip: rect(110px, 450px, 12px, 0); }
+    clip: rect(59px, 450px, 7px, 0); }
   8% {
-    clip: rect(60px, 450px, 43px, 0); }
+    clip: rect(24px, 450px, 95px, 0); }
   12% {
-    clip: rect(21px, 450px, 79px, 0); }
+    clip: rect(46px, 450px, 51px, 0); }
   16% {
-    clip: rect(42px, 450px, 46px, 0); }
+    clip: rect(96px, 450px, 68px, 0); }
   20% {
-    clip: rect(69px, 450px, 78px, 0); }
+    clip: rect(69px, 450px, 102px, 0); }
   24% {
-    clip: rect(58px, 450px, 62px, 0); }
+    clip: rect(16px, 450px, 66px, 0); }
   28% {
-    clip: rect(110px, 450px, 89px, 0); }
+    clip: rect(55px, 450px, 113px, 0); }
   32% {
-    clip: rect(10px, 450px, 105px, 0); }
+    clip: rect(68px, 450px, 80px, 0); }
   36% {
-    clip: rect(78px, 450px, 23px, 0); }
+    clip: rect(85px, 450px, 88px, 0); }
   40% {
-    clip: rect(101px, 450px, 22px, 0); }
+    clip: rect(66px, 450px, 55px, 0); }
   44% {
-    clip: rect(43px, 450px, 8px, 0); }
+    clip: rect(66px, 450px, 80px, 0); }
   48% {
-    clip: rect(95px, 450px, 60px, 0); }
+    clip: rect(81px, 450px, 62px, 0); }
   52% {
-    clip: rect(94px, 450px, 26px, 0); }
+    clip: rect(42px, 450px, 40px, 0); }
   56% {
-    clip: rect(95px, 450px, 98px, 0); }
+    clip: rect(30px, 450px, 13px, 0); }
   60% {
-    clip: rect(75px, 450px, 92px, 0); }
+    clip: rect(89px, 450px, 75px, 0); }
   64% {
-    clip: rect(104px, 450px, 89px, 0); }
+    clip: rect(57px, 450px, 14px, 0); }
   68% {
-    clip: rect(77px, 450px, 96px, 0); }
+    clip: rect(59px, 450px, 37px, 0); }
   72% {
-    clip: rect(3px, 450px, 63px, 0); }
+    clip: rect(50px, 450px, 23px, 0); }
   76% {
-    clip: rect(68px, 450px, 57px, 0); }
+    clip: rect(39px, 450px, 103px, 0); }
   80% {
-    clip: rect(71px, 450px, 36px, 0); }
+    clip: rect(50px, 450px, 45px, 0); }
   84% {
-    clip: rect(107px, 450px, 76px, 0); }
+    clip: rect(59px, 450px, 56px, 0); }
   88% {
-    clip: rect(54px, 450px, 70px, 0); }
+    clip: rect(16px, 450px, 98px, 0); }
   92% {
-    clip: rect(110px, 450px, 19px, 0); }
+    clip: rect(20px, 450px, 115px, 0); }
   96% {
-    clip: rect(18px, 450px, 86px, 0); }
+    clip: rect(53px, 450px, 87px, 0); }
   100% {
-    clip: rect(36px, 450px, 63px, 0); } }
+    clip: rect(105px, 450px, 48px, 0); } }
     .comingSoon .glitch:before, .comingSoon .glitch:after {
       content: attr(data-text);
       position: absolute;
@@ -1175,7 +1276,7 @@ body {
     height: 0;
     border-top: 40px solid transparent;
     border-bottom: 40px solid transparent;
-    border-left: 40px solid #f7f7f7;
+    border-left: 40px solid #2b2b2b;
     border-right: 40px solid transparent;
     display: block;
     position: absolute;
@@ -1184,12 +1285,16 @@ body {
     margin-top: -40px; }
   .design .designDetails .one .imgWrapp#one {
     -webkit-clip-path: polygon(100% 0%, 100% 36%, 0 33%, 0% 0%); }
+    .design .designDetails .one .imgWrapp#one button {
+      transform: scale(1.05) translateX(-50%); }
   .design .designDetails .one .imgWrapp#two {
     -webkit-clip-path: polygon(100% 36.3%, 100% 66.7%, 0 66.7%, 0% 33.3%); }
   .design .designDetails .two .imgWrapp#one {
     -webkit-clip-path: polygon(100% 0%, 100% 30%, 0 33%, 0% 0%); }
   .design .designDetails .two .imgWrapp#two {
     -webkit-clip-path: polygon(100% 30.3%, 100% 69.7%, 0 66.7%, 0% 33.3%); }
+    .design .designDetails .two .imgWrapp#two button {
+      transform: scale(1.05) translateX(-50%); }
   .design .designDetails .two .imgWrapp#three {
     -webkit-clip-path: polygon(100% 70%, 100% 100%, 0 100%, 0% 67%);
     clip-path: polygon(100% 67%, 100% 100%, 0% 100%, 0% 67%); }
@@ -1197,15 +1302,23 @@ body {
     -webkit-clip-path: polygon(100% 33.3%, 100% 62.7%, 0 64.7%, 0% 33.3%); }
   .design .designDetails .three .imgWrapp#three {
     -webkit-clip-path: polygon(100% 63%, 100% 100%, 0 100%, 0% 65%); }
+    .design .designDetails .three .imgWrapp#three button {
+      transform: scale(1.05) translateX(-50%); }
   .design .designDetails .imgWrapp#one {
     -webkit-clip-path: polygon(100% 0%, 100% 33%, 0 33%, 0% 0%);
     clip-path: polygon(100% 0%, 100% 33%, 0% 33%, 0% 0%); }
+    .design .designDetails .imgWrapp#one button {
+      top: calc(1*33% - 125px); }
   .design .designDetails .imgWrapp#two {
     -webkit-clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
     clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%); }
+    .design .designDetails .imgWrapp#two button {
+      top: calc(2*33% - 125px); }
   .design .designDetails .imgWrapp#three {
     -webkit-clip-path: polygon(100% 67%, 100% 100%, 0 100%, 0% 67%);
     clip-path: polygon(100% 67%, 100% 100%, 0% 100%, 0% 67%); }
+    .design .designDetails .imgWrapp#three button {
+      top: calc(3*33% - 125px); }
   .design .designDetails .imgWrapp {
     display: block;
     height: 100%;
@@ -1250,6 +1363,20 @@ body {
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px; }
+    .design .designDetails .imgWrapp button {
+      background: none;
+      border: none;
+      font-family: 'Anonymous Pro';
+      font-weight: 700;
+      font-size: 15pt;
+      padding: 10px 15px;
+      position: absolute;
+      left: 50%;
+      box-shadow: 0 0 0px 2px;
+      border-radius: 4px;
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      transition: all 0.3s ease-out; }
 
 .design .withBg span, .code .withBg span {
   -webkit-transition: width 1s ease-out;
@@ -1556,7 +1683,7 @@ body {
     #instafeed article .images-show {
       display: block;
       background: transparent;
-      box-shadow: 0px 0px 0px 2px #111111;
+      box-shadow: 0px 0px 0px 2px #2b2b2b;
       text-align: center;
       padding: 6px;
       text-decoration: none;

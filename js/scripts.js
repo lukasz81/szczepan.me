@@ -37,6 +37,7 @@ var changeBgColor = function(userTriggered){
 	$('<style id="style">' +
 		'.stop2 .imgWrapp::after , .stop2 .imgWrapp::before {background:' + stop2 + ';} ' +
 		'.stop1-text{color:' + stop2 + ';} ' +
+		'.stop2-text{color:' + stop1 + ';} ' +
 		'.stop1 .imgWrapp::before , .stop1 .imgWrapp::after {background:' + stop1 + ';} ' +
 		'.instaImagesBg::after {background:' + halfGrad + '} ' +
 		'.instaImagesBg {background:' + stop2 + '} ' +

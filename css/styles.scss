@@ -5,6 +5,9 @@
 $mainColor: #2b2b2b;
 $arrowSize: 40px;
 $secondColor: #f7f7f7;
+
+@import 'responsive.scss';
+
 /* apply a natural box layout model to all elements, but allowing components to change */
 html{
   box-sizing: border-box;
@@ -454,7 +457,7 @@ body{
       height: 0;
       border-top: $arrowSize solid transparent;
       border-bottom: $arrowSize solid transparent;
-      border-left: $arrowSize solid $secondColor;
+      border-left: $arrowSize solid $mainColor;
       border-right: $arrowSize solid transparent;
       display:block;
       position:absolute;
@@ -465,6 +468,9 @@ body{
     .one{
       .imgWrapp#one{
         -webkit-clip-path: polygon(100% 0%, 100% 36%, 0 33%, 0% 0%);
+        button{
+          transform: scale(1.05) translateX(-50%);
+        }
       }
       .imgWrapp#two{
         -webkit-clip-path: polygon(100% 36.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
@@ -477,6 +483,9 @@ body{
       }
       .imgWrapp#two{
         -webkit-clip-path: polygon(100% 30.3%, 100% 69.7%, 0 66.7%, 0% 33.3%);
+        button{
+          transform: scale(1.05) translateX(-50%);
+        }
       }
       .imgWrapp#three{
         -webkit-clip-path: polygon(100% 70%, 100% 100%, 0 100%, 0% 67%);
@@ -489,21 +498,31 @@ body{
       }
       .imgWrapp#three{
         -webkit-clip-path: polygon(100% 63%, 100% 100%, 0 100%, 0% 65%);
+        button{
+          transform: scale(1.05) translateX(-50%);
+        }
       }
     }
     .imgWrapp#one{
       -webkit-clip-path: polygon(100% 0%, 100% 33%, 0 33%, 0% 0%);
       clip-path: polygon(100% 0%, 100% 33%, 0% 33%, 0% 0%);
-      //background:red;
+      button{
+        top: calc(1*33% - 125px);
+      }
     }
     .imgWrapp#two{
       -webkit-clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
       clip-path: polygon(100% 33.3%, 100% 66.7%, 0 66.7%, 0% 33.3%);
-      //background:green;
+      button{
+        top: calc(2*33% - 125px);
+      }
     }
     .imgWrapp#three{
       -webkit-clip-path: polygon(100% 67%, 100% 100%, 0 100%, 0% 67%);
       clip-path: polygon(100% 67%, 100% 100%, 0% 100%, 0% 67%);
+      button{
+        top: calc(3*33% - 125px);
+      }
     }
     .imgWrapp{
       display: block;
@@ -555,6 +574,21 @@ body{
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
+      }
+      button{
+        background: none;
+        border: none;
+        font-family: 'Anonymous Pro';
+        font-weight: 700;
+        font-size: 15pt;
+        padding: 10px 15px;
+        position: absolute;
+        left: 50%;
+        box-shadow: 0 0 0px 2px ;
+        border-radius: 4px;
+        left: 50%;
+        transform: translateX(-50%) scale(1);
+        transition:all 0.3s ease-out;
       }
     }
   }
@@ -892,7 +926,7 @@ body{
     .images-show{
       display: block;
       background: transparent;
-      box-shadow: 0px 0px 0px 2px #111111;
+      box-shadow: 0px 0px 0px 2px $mainColor;
       text-align: center;
       padding: 6px;
       text-decoration: none;
