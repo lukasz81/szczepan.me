@@ -1,4 +1,5 @@
 //copyright: Lukasz Szczepanski of szczepan.me
+
 const ROLE_TEXT_SWITCH = 10000;
 const DEF_DELAY = 300;
 const roles = [
