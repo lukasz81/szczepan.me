@@ -1,28 +1,28 @@
-@media only screen and (min-width: 0px) and (max-width: 320px){
-  h1.time{
-    font-size:78px;
-  }
+$mainColor: #2b2b2b;
+@media only screen and (min-height: 0px) and (max-height: 600px){
   .outer .middle figure.inner{
-    margin: -50px auto 0 auto;
+    margin: -20% auto 0 auto;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 321px){
+  h1.hello{
+    font-size:78px;
   }
   figure.badge{
     margin:auto;
     max-width:60px;
   }
-  .comingSoon br{
-    display:none;
+  body .comingSoon{
+    font-size: 20px;
   }
 }
-@media only screen and (min-width: 0px) and (max-width: 768px){
+@media only screen and (min-width: 321px) and (max-width: 768px){
   html body main .tinyNav span{
     &:before,&:after{
       display:none !important;
     }
   }
-  // html body main .code .codeDetails ul .asTable, html body main .design .designDetails ul .asTable{
-  //   max-width:90%;
-  // }
-  .time{
+  .hello{
     font-size:87px;
   }
   .comingSoon{

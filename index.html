@@ -2,142 +2,49 @@
 <html>
 	<head profile="http://www.w3.org/2005/10/profile">
 		<title>szczepan.me</title>
-		<script src="js/modernizr.js"></script>
 		<link rel="icon" type="image/png" href="images/szczepan_ico.png" />
 		<link rel="stylesheet" href="css/styles.css" media="all">
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+		<script src="js/gradient-generator.js"></script>
 		<script src="js/scripts.js"></script>
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	</head>
 	<body>
-		<div class="navUI">
-		<button class="hamburger hamburger--elastic" type="button">
-  		<span class="hamburger-box">
-    		<span class="hamburger-inner"></span>
-  		</span>
-		</button>
-	</div>
 		<main class="scroller">
-		<div class="outer snap full-height">
-			<div class="middle">
-				<figure class="inner">
-					<svg>
-						<use class="logo" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg/all.svg#logo"></use>
-						<use id="was" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg/all.svg#was"></use>
-					</svg>
-				</figure>
-				<h1 class="time">Hello.</h1>
-				<h2 class="comingSoon">
-					My name is Lukasz and I am a <br/><span class="glitch role" data-text="UI Designer">UI Designer.</span>
-					<small>Scroll down to learn a little bit more about me.</small>
-				</h2>
-				<figure class="badge">
-					<svg>
-  					<use class="badge" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg/all.svg#badge"></use>
-					</svg>
-				</figure>
-				<!-- <a href="https://www.behance.net/szczepan"><i class="behance"></i></a>|<a href="https://github.com/lukasz81"><i class="github"></i></a> -->
-				<span class="heart"></span>
-			</div>
-		</div>
-		<!-- for qick disabling start just after here -->
-		<div class="code revGradient stop2 snap">
-			<span class="closeUI"></span>
-			<article class="def asTable full-height">
-				<div class="asTable-cell">
-					<h2 class="article-h2">Code<span></span></h2>
-					<div class="article-span code-shield">
-						<svg class="code-shield">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg/all.svg#code-shield"></use>
+			<div class="outer snap full-height">
+				<div class="middle">
+					<figure class="inner">
+						<svg>
+							<use class="logo" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#logo"></use>
+							<use id="was" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#was"></use>
 						</svg>
-					</div>
-					<span class="hr"></span>
+					</figure>
+					<h1 class="hello">Hello.</h1>
+					<!-- <div class="divider"></div> -->
+					<h2 class="comingSoon">My name is Lukasz and I am a
+						<br/>
+						<span class="glitch role" data-text=" ">UI Developer.</span>
+						<!-- <small>Check out the links to learn more about me.</small> -->
+					</h2>
+						<nav>
+							<a class="more" href="https://www.behance.net/szczepan">
+								<figure class="behance">
+									<svg>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#behance"></use>
+									</svg>
+								</figure>
+							</a>
+							<a class="more" href="https://github.com/lukasz81">
+								<figure class="github">
+									<svg>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
+									</svg>
+								</figure>
+							</a>
+						</nav>
+					<span class="heart"></span>
 				</div>
-			</article>
-			<div class="codeDetails def full-height">
-					<ul class="overlay detailsContainer">
-						<li class="innerNav asTable">
-							<div class="imagesContainer">
-							</div>
-						</li>
-					</ul>
 			</div>
-		</div>
-		<div class="design stop1 snap">
-			<span class="closeUI"></span>
-			<article class="asTable full-height def">
-				<div class="asTable-cell">
-					<h2 class="article-h2">Design<span></span></h2>
-					<div class="article-span design-shield">
-						<svg class="design-shield">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/svg/all.svg#design-shield"></use>
-						</svg>
-					</div>
-					<span class="hr def"></span>
-				</div>
-			</article>
-			<div class="designDetails def full-height">
-				<ul class="detailsContainer overlay images-li">
-					<li class="asTable">
-						<div class="imagesContainer stop1">
-							<!-- <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMinYMax slice">
-								<polygon class="cls-1" points="140.24 45.3 0 55.3 0 0 140.24 0 140.24 45.3"/>
-							</svg>
-							<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMinYMax slice">
-								<polygon class="cls-1" points="140.24 54.3 0 55.3 0 0 140.24 0 140.24 54.3"/>
-							</svg>
-							<svg id="Layer_3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.24 55.31" preserveAspectRatio="xMidYMax slice">
-								<polygon class="cls-1" points="140.24 54.3 0 55.3 0 0 140.24 0 140.24 54.3"/>
-							</svg> -->
-							<div data-title="UI/UX" class="imgWrapp def" id="one">
-								<button class="stop2-text">
-									UI/UX
-								</button>
-							</div>
-							<div data-title="Logo" class="imgWrapp def" id="two">
-								<button class="stop2-text">
-									Branding
-								</button>
-							</div>
-							<div data-title="Illustration" class="imgWrapp def" id="three">
-								<button class="stop2-text">
-									Illustration
-								</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-
-			</div>
-		</div>
-		<div id="instafeed" class="snap full-height asTable">
-			<div class="instaImagesBg">
-			</div>
-			<div class="wrapp asTable-cell">
-				<div class="svg-container max400">
-				</div>
-				<article class="max400">
-					They say a picture is worth a thousand words. To tell you more about myself I pulled 20 most recent images from my Instagram account for you.
-					<a class="images-show" href="#">show me images</a>
-				</article>
-				<!-- <footer class="max400">
-					<a class="mailtoMe" href="mailto:hello@szczepan.me">
-						email me
-					</a>
-					<nav class="links">
-						<span class="line">
-						</span>
-						<a class="github" href="git"></a>
-						<a class='behance' href="beh"></a>
-					</nav>
-				</footer> -->
-			</div>
-		</div>
-		<!-- for qick disabling start just above here -->
-	</main>
-	<!-- <script type="text/javascript" src="js/Polyfill.js"></script> -->
-	<script type="text/javascript" src="js/scrollsnap-polyfill.js"></script>
+		</main>
 	</body>
 </html>
