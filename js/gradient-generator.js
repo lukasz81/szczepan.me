@@ -61,7 +61,6 @@ const transitionGradient = (onLoad) => {
 			increment[2] = 0;
 		}
 	}
-
 	stopOne = `rgb(${colorArrayOne[0]} , ${colorArrayOne[1]} , ${colorArrayOne[2]})`;
 	stopTwo = `rgb(${colorArrayTwo[0]} , ${colorArrayTwo[1]} , ${colorArrayTwo[2]})`;
 	if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
@@ -74,7 +73,15 @@ const transitionGradient = (onLoad) => {
 const applyChange = () => {
 	let cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
 	let outer = document.querySelector('.outer');
-	outer.style.backgroundImage = cssGradient;
+	let currentGradientState = {
+		gradIndex: firstGrad ? this.gradIndex = 'one' : this.gradIndex = 'two',
+		gradValue: firstGrad ? this.gardValue = stopOne : this.gardValue = stopTwo
+	}
+	if (supportsCssVars) {
+		document.documentElement.style.setProperty(`--gradient-${currentGradientState.gradIndex}`,`${currentGradientState.gradValue}`);
+	} else {
+		outer.style.backgroundImage = cssGradient;
+	}
 	outer.classList.add('active');
 	firstGrad = !firstGrad;
 }

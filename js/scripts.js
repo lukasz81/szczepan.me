@@ -1,4 +1,5 @@
 //copyright: Lukasz Szczepanski of szczepan.me
+let supportsCssVars = false;
 const ROLE_TEXT_SWITCH = 10000;
 const DEF_DELAY = 300;
 const roles = [
@@ -74,6 +75,7 @@ const addBrowserSupportClasses = () => {
 	}
 	if (CSS.supports('--fake-var', 0)){
 		HTML.classList.add('css-variables');
+		supportsCssVars = true;
 	}
 }
 //after document has loaded
