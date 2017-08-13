@@ -11,6 +11,10 @@
 ############
 *.sass-cache
 
+# Folders #
+############
+http-server
+
 
 # Packages #
 ############
