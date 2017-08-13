@@ -67,9 +67,19 @@ const addEventsToHeartButton = () => {
 		}, DEF_DELAY);
 	})
 }
+const addBrowserSupportClasses = () => {
+	const HTML = document.getElementsByTagName('html')[0];
+	if (CSS.supports('display', 'grid')) {
+		HTML.classList.add('css-grid');
+	}
+	if (CSS.supports('--fake-var', 0)){
+		HTML.classList.add('css-variables');
+	}
+}
 //after document has loaded
  window.addEventListener('DOMContentLoaded', () => {
 	addRandomGradientColorOnLoad();
 	changRoleText();
 	addEventsToHeartButton();
+	addBrowserSupportClasses();
 });
