@@ -173,110 +173,110 @@ svg {
     position: relative; }
 @keyframes example-one-anim-1 {
   0% {
-    clip: rect(9px, 450px, 15px, 0); }
+    clip: rect(50px, 450px, 60px, 0); }
   4% {
-    clip: rect(108px, 450px, 32px, 0); }
+    clip: rect(12px, 450px, 13px, 0); }
   8% {
-    clip: rect(44px, 450px, 84px, 0); }
+    clip: rect(65px, 450px, 42px, 0); }
   12% {
-    clip: rect(85px, 450px, 23px, 0); }
+    clip: rect(101px, 450px, 100px, 0); }
   16% {
-    clip: rect(23px, 450px, 35px, 0); }
+    clip: rect(61px, 450px, 92px, 0); }
   20% {
-    clip: rect(48px, 450px, 86px, 0); }
+    clip: rect(23px, 450px, 110px, 0); }
   24% {
-    clip: rect(49px, 450px, 3px, 0); }
+    clip: rect(36px, 450px, 94px, 0); }
   28% {
-    clip: rect(75px, 450px, 42px, 0); }
+    clip: rect(109px, 450px, 84px, 0); }
   32% {
-    clip: rect(77px, 450px, 92px, 0); }
+    clip: rect(70px, 450px, 49px, 0); }
   36% {
-    clip: rect(92px, 450px, 104px, 0); }
+    clip: rect(42px, 450px, 93px, 0); }
   40% {
-    clip: rect(57px, 450px, 61px, 0); }
+    clip: rect(80px, 450px, 39px, 0); }
   44% {
-    clip: rect(72px, 450px, 73px, 0); }
+    clip: rect(17px, 450px, 67px, 0); }
   48% {
-    clip: rect(83px, 450px, 90px, 0); }
+    clip: rect(86px, 450px, 86px, 0); }
   52% {
-    clip: rect(50px, 450px, 25px, 0); }
+    clip: rect(21px, 450px, 83px, 0); }
   56% {
-    clip: rect(108px, 450px, 85px, 0); }
+    clip: rect(82px, 450px, 110px, 0); }
   60% {
-    clip: rect(45px, 450px, 46px, 0); }
+    clip: rect(16px, 450px, 1px, 0); }
   64% {
-    clip: rect(65px, 450px, 31px, 0); }
+    clip: rect(115px, 450px, 105px, 0); }
   68% {
-    clip: rect(39px, 450px, 59px, 0); }
+    clip: rect(11px, 450px, 21px, 0); }
   72% {
-    clip: rect(64px, 450px, 80px, 0); }
+    clip: rect(99px, 450px, 5px, 0); }
   76% {
-    clip: rect(113px, 450px, 79px, 0); }
+    clip: rect(87px, 450px, 64px, 0); }
   80% {
-    clip: rect(47px, 450px, 13px, 0); }
+    clip: rect(85px, 450px, 80px, 0); }
   84% {
-    clip: rect(69px, 450px, 74px, 0); }
+    clip: rect(30px, 450px, 48px, 0); }
   88% {
-    clip: rect(76px, 450px, 21px, 0); }
+    clip: rect(6px, 450px, 51px, 0); }
   92% {
-    clip: rect(81px, 450px, 25px, 0); }
+    clip: rect(76px, 450px, 21px, 0); }
   96% {
-    clip: rect(72px, 450px, 60px, 0); }
+    clip: rect(47px, 450px, 2px, 0); }
   100% {
-    clip: rect(100px, 450px, 44px, 0); } }
+    clip: rect(83px, 450px, 29px, 0); } }
 @keyframes example-one-anim-2 {
   0% {
-    clip: rect(88px, 450px, 4px, 0); }
+    clip: rect(81px, 450px, 59px, 0); }
   4% {
-    clip: rect(9px, 450px, 23px, 0); }
+    clip: rect(94px, 450px, 14px, 0); }
   8% {
-    clip: rect(28px, 450px, 38px, 0); }
+    clip: rect(50px, 450px, 114px, 0); }
   12% {
-    clip: rect(99px, 450px, 33px, 0); }
+    clip: rect(58px, 450px, 86px, 0); }
   16% {
-    clip: rect(54px, 450px, 32px, 0); }
+    clip: rect(44px, 450px, 102px, 0); }
   20% {
-    clip: rect(13px, 450px, 95px, 0); }
+    clip: rect(47px, 450px, 18px, 0); }
   24% {
-    clip: rect(42px, 450px, 43px, 0); }
+    clip: rect(87px, 450px, 15px, 0); }
   28% {
-    clip: rect(7px, 450px, 33px, 0); }
+    clip: rect(14px, 450px, 101px, 0); }
   32% {
-    clip: rect(74px, 450px, 97px, 0); }
+    clip: rect(28px, 450px, 19px, 0); }
   36% {
-    clip: rect(64px, 450px, 27px, 0); }
+    clip: rect(45px, 450px, 96px, 0); }
   40% {
-    clip: rect(58px, 450px, 41px, 0); }
+    clip: rect(82px, 450px, 15px, 0); }
   44% {
-    clip: rect(68px, 450px, 75px, 0); }
+    clip: rect(80px, 450px, 24px, 0); }
   48% {
-    clip: rect(79px, 450px, 100px, 0); }
+    clip: rect(79px, 450px, 71px, 0); }
   52% {
-    clip: rect(23px, 450px, 19px, 0); }
+    clip: rect(97px, 450px, 85px, 0); }
   56% {
-    clip: rect(78px, 450px, 85px, 0); }
+    clip: rect(62px, 450px, 81px, 0); }
   60% {
-    clip: rect(3px, 450px, 53px, 0); }
+    clip: rect(26px, 450px, 82px, 0); }
   64% {
-    clip: rect(24px, 450px, 33px, 0); }
+    clip: rect(84px, 450px, 35px, 0); }
   68% {
-    clip: rect(68px, 450px, 94px, 0); }
+    clip: rect(50px, 450px, 99px, 0); }
   72% {
-    clip: rect(67px, 450px, 10px, 0); }
+    clip: rect(70px, 450px, 90px, 0); }
   76% {
-    clip: rect(16px, 450px, 98px, 0); }
+    clip: rect(45px, 450px, 55px, 0); }
   80% {
-    clip: rect(66px, 450px, 5px, 0); }
+    clip: rect(90px, 450px, 42px, 0); }
   84% {
-    clip: rect(84px, 450px, 54px, 0); }
+    clip: rect(111px, 450px, 69px, 0); }
   88% {
-    clip: rect(41px, 450px, 47px, 0); }
+    clip: rect(105px, 450px, 86px, 0); }
   92% {
-    clip: rect(115px, 450px, 69px, 0); }
+    clip: rect(89px, 450px, 36px, 0); }
   96% {
-    clip: rect(13px, 450px, 24px, 0); }
+    clip: rect(76px, 450px, 84px, 0); }
   100% {
-    clip: rect(58px, 450px, 77px, 0); } }
+    clip: rect(19px, 450px, 22px, 0); } }
     .comingSoon .glitch:before, .comingSoon .glitch:after {
       content: attr(data-text);
       position: absolute;
@@ -305,53 +305,45 @@ svg {
 
 @keyframes heartBeat {
   0% {
-    -webkit-transform: rotate(-45deg) scale(0.5);
     -moz-transform: rotate(-45deg) scale(0.5);
     -ms-transform: rotate(-45deg) scale(0.5);
-    -o-transform: rotate(-45deg) scale(0.5);
+    -webkit-transform: rotate(-45deg) scale(0.5);
     transform: rotate(-45deg) scale(0.5); }
   100% {
-    -webkit-transform: rotate(-45deg) scale(0.6);
     -moz-transform: rotate(-45deg) scale(0.6);
     -ms-transform: rotate(-45deg) scale(0.6);
-    -o-transform: rotate(-45deg) scale(0.6);
+    -webkit-transform: rotate(-45deg) scale(0.6);
     transform: rotate(-45deg) scale(0.6); } }
 @keyframes shake {
   0% {
-    -webkit-transform: rotate(15deg);
     -moz-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
-    -o-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
     transform: rotate(15deg); }
   25% {
-    -webkit-transform: rotate(-15deg);
     -moz-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
-    -o-transform: rotate(-15deg);
+    -webkit-transform: rotate(-15deg);
     transform: rotate(-15deg); }
   50% {
-    -webkit-transform: rotate(10deg);
     -moz-transform: rotate(10deg);
     -ms-transform: rotate(10deg);
-    -o-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
     transform: rotate(10deg); }
   75% {
-    -webkit-transform: rotate(-10deg);
     -moz-transform: rotate(-10deg);
     -ms-transform: rotate(-10deg);
-    -o-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
     transform: rotate(-10deg); }
   100% {
-    -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); } }
 #was {
-  -webkit-transform-origin: center;
   -moz-transform-origin: center;
   -ms-transform-origin: center;
-  -o-transform-origin: center;
+  -webkit-transform-origin: center;
   transform-origin: center; }
 
 .inner.active #was {
@@ -380,10 +372,9 @@ svg {
   height: 26px;
   margin: 0 10px;
   position: absolute;
-  -webkit-transform: rotate(-45deg) scale(0.6);
   -moz-transform: rotate(-45deg) scale(0.6);
   -ms-transform: rotate(-45deg) scale(0.6);
-  -o-transform: rotate(-45deg) scale(0.6);
+  -webkit-transform: rotate(-45deg) scale(0.6);
   transform: rotate(-45deg) scale(0.6);
   width: 26px;
   left: 50%;
@@ -444,8 +435,6 @@ svg {
     position: fixed;
     background: #eee;
     opacity: 1;
-    -webkit-transition: opacity 0.1s linear;
-    -moz-transition: opacity 0.1s linear;
     transition: opacity 0.1s linear;
     pointer-events: none;
     z-index: 10; }
