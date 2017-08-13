@@ -1,53 +1,46 @@
 //copyright: Lukasz Szczepanski
-//change role text-align
 var changRoleText = function(){
-	roles = ['UI Designer','UI Developer','Front End Developer','Designer','UI Engineer','Web Designer','Web Developer','Coder','Human'];
-	var role = $('.role')
+	roles = ['Happy person','European','UX designer','UI Designer','UI Developer','Front End Developer','Designer','UI Engineer','Web Designer','Web Developer','Coder','Human'];
+	var role = $('.role');
 	setInterval(function(){
-		var item = roles[Math.floor(Math.random()*roles.length)];
+		var random = Math.floor(Math.random()*roles.length)
+		var item = roles[random];
 		var txt  = item + '.'
 		role.text(txt).attr('data-text',txt);
 	},5000);
 
 }
-//random bg gradient color
-var changeBgColor = function(userTriggered){
-	a = 1
-	stop1 = 'rgba(' + createColor() + ',' + createColor() + ',' + createColor() + ',' + a + ')';
-	stop2 = 'rgba(' + createColor() + ',' + createColor() + ',' + createColor() + ',' + a + ')';
-	stop3 = 'rgba(' + createColor() + ',' + createColor() + ',' + createColor() + ',' + 0 + ')'
-	stop1 = stop1.toString();
-	stop2 = stop2.toString();
-	gradient    = 'linear-gradient(45deg,' + stop1 + ',' + stop2 + ')';
-	halfGrad    = 'linear-gradient(0deg,' + stop1 + ',' + stop3 + ')';
-	revGradient = 'linear-gradient(-45deg,' + stop2 + ',' + stop1 + ')';
-	window.stop1 = stop1;
-	window.stop2 = stop2;
-	$('.outer').css({
-		'background': gradient
-	}).addClass('active');
-	$('.stop1,.stop1 .tinyButton').css({
-		'background': stop1
-	});
-	$('.stop2,.stop2 .tinyButton').css({
-		'background': stop2
-	});
+var changeBgColor = function(){
+	stop1 = 'rgb(' + createColor() + ',' + createColor() + ',' + createColor() + ')';
+	stop2 = 'rgb(' + createColor() + ',' + createColor() + ',' + createColor() + ')';
+	var gradient    = 'linear-gradient(45deg,' + stop1 + ',' + stop2 + ')';
+	var revGradient = 'linear-gradient(-45deg,' + stop2 + ',' + stop1 + ')';
+	$('.outer').css({'background': gradient}).addClass('active');
+	$('.stop1,.stop1 .tinyButton').css({'background': stop1});
+	$('.stop2,.stop2 .tinyButton').css({'background': stop2});
 	$('.inner').addClass('active');
+	reloadStyleTags(stop1,stop2);
+}
+//find number between 0 and 255
+var createColor = function(){
+	var value = randomNumber();
+	return value;
+}
+var randomNumber = function(){
+	return Math.floor(Math.random() * 255);
+}
+//apply styles to head
+var reloadStyleTags = function(stop1,stop2){
 	$('#style').remove();
 	$('<style id="style">' +
 		'.stop2 .imgWrapp::after , .stop2 .imgWrapp::before {background:' + stop2 + ';} ' +
 		'.stop1-text{color:' + stop2 + ';} ' +
 		'.stop2-text{color:' + stop1 + ';} ' +
 		'.stop1 .imgWrapp::before , .stop1 .imgWrapp::after {background:' + stop1 + ';} ' +
-		'.instaImagesBg::after {background:' + halfGrad + '} ' +
 		'.instaImagesBg {background:' + stop2 + '} ' +
 		'.comingSoon .glitch:before{text-shadow:2px 0 ' + stop2 + '} ' +
 		'.comingSoon .glitch:after{text-shadow:2px 0 ' + stop1 + '} ' +
-	  '</style>').appendTo('head');
-}
-//find number between 0 to 255
-var createColor = function(){
-	return Math.floor(Math.random() * (255 - 0 + 1)) + 0
+		'</style>').appendTo('head');
 }
 //detect touch device
 var isTouch = function(){
@@ -65,16 +58,16 @@ var getScreenSizes = function(){
 var width  = getScreenSizes().width;
 var height = getScreenSizes().height;
 //get current period of a day and change text in hero
-function getCurrentTime() {
+function getCurrentDayTime() {
 	var today = new Date()
 	var curHr = today.getHours()
 	var time  = $('.time')
 	if (curHr < 12) {
-		time.text('Good Morning')
+		time.text('Morning')
 	}else if (curHr >= 12 && curHr < 18) {
-		time.text('Good Afternoon')
+		time.text('Afternoon')
 	}else{
-		time.text('Good Evening')
+		time.text('Evening')
 	};
 };
 //instagram feed
@@ -296,7 +289,7 @@ $(document).on('scroll', function(){
 		var mommentum      = docTop*0.5;
 		var bgMommentum    = docTop*0.01;
 		var distance       = (docTop-height*_index)*1.75
-		checkDistanceFromTop([codeArticle,codeDetails,designArticle,designDetails,aboutMe]);
+		//checkDistanceFromTop([codeArticle,codeDetails,designArticle,designDetails,aboutMe]);
 		$('.article-h2 span').css('background-position', mommentum+'px 0');
 		$('.code article').css('background-position', bgMommentum + "% 50%");
 		$('.design article').css('background-position', 100-bgMommentum + "% 50%");
@@ -350,7 +343,7 @@ var delayedReact = function(index,type,el){
 $(window).resize(function(){
 	if (width != $(window).outerWidth()){
 		layoutsAdjust();
-		console.log('widthO: ' + width, 'widthN: '+$(window).outerWidth());
+		// console.log('widthO: ' + width, 'widthN: '+$(window).outerWidth());
 	}
 });
 //open navigation and events
@@ -362,37 +355,37 @@ var openNav = function(){
 //after document has loaded
 $(document).ready(function(){
 	layoutsAdjust();
-	// if (width > 768){
-	// 	getCurrentTime();
-	// };
-	getDataFromXml();
+	changeBgColor()
+	//getDataFromXml();
 	instAPI();
 	changRoleText();
-	openNav();
+	//openNav();
 	$('.images-show').click(function(e){
 		e.preventDefault();
 		alert('#TODO');
 	});
 	//little hero heart click events
 	$('.heart').click(function(){
-		$('.inner , .outer').removeClass('active');
+		//$('.inner , .outer').removeClass('active');
 		setTimeout(function(){
-			changeBgColor()
+			//changeBgColor()
+			//createRandomSet();
+			startTransition();
 		}, 300);
 	})
 });
 var layoutsAdjust = function(){
 	height < 700 && !isTouch() ? height = 700 : height;
 	var min = (getScreenSizes().width <= 768) ? height*2 : height;
-	console.log(height,min,width);
+	// console.log(height,min,width);
 	$('.code , .design').css({
 		'height':min,
 		'min-height':min,
 	});
-	$('.outer , .full-height').css({
-		'height':height,
-	});
-	if (iOS && window.screen.height == 568){
-		$(window).scrollTop(85);
-	};
+	// $('.outer , .full-height').css({
+	// 	'height':height,
+	// });
+	// if (iOS && window.screen.height == 568){
+	// 	$(window).scrollTop(75);
+	// };
 }
