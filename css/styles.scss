@@ -42,14 +42,16 @@ body {
   margin:0;
   padding:0;
 }
-.divider{
+.divider {
   display: block;
   position: relative;
-  margin: 25px auto;
-  background: $mainColor;
-  height: 5px;
-  width: 30%;
-  max-width:200px;
+  margin: 0px auto;
+  background-image: url(../svg/zigzag.svg);
+  background-size: contain;
+  background-repeat: repeat-x;
+  height: 18px;
+  width: 22%;
+  max-width: 200px;
   border-radius: 5px;
 }
 .navUI{
@@ -61,7 +63,6 @@ body {
   width: 100%;
   background: rgba(250, 250, 250, 0.5);
   z-index: 5;
-  //box-shadow:0px 0px 2px 2px grey;
 }
 .hamburger{
   position: fixed;
@@ -157,21 +158,29 @@ body{
   max-width: 80px;
   margin: 40px auto;
 }
-.time{
-  display: block;
+.hello{
+  display: inline-block;
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   font-size: 100px;
   letter-spacing: 2px;
   font-weight: 900;
   margin: 0;
-  //text-shadow: 1px 2px rgba(1, 1, 1, 0.25);
+  // &:after{
+  //   content: '';
+  //   background-image: url(../svg/zigzag.svg);
+  //   background-repeat: repeat-x;
+  //   background-size: contain;
+  //   display: block;
+  //   width: 100%;
+  //   height: 20px;
+  // }
 }
 .comingSoon{
   color:$mainColor;
   font-size: 25px;
-  font-weight: 600;
-  padding: 0 25px 25px 25px;
+  font-weight: 500;
+  padding: 0 0 25px;
   max-width: 800px;
   margin: auto;
   line-height: 32px;
@@ -241,6 +250,13 @@ body{
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
+}
+.hart.active{
+  pointer-events: auto;
+}
+.heart:not(.active){
+  pointer-events: none;
+  opacity:0.3;
 }
 .heart {
   background-color: $mainColor;
@@ -854,7 +870,7 @@ body{
     position:fixed;
     background:#eee;
     opacity:1;
-    @include transition(opacity 0.3s linear);
+    @include transition(opacity 0.1s linear);
     pointer-events: none;
     z-index:10;
   }

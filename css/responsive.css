@@ -1,9 +1,9 @@
-@media only screen and (min-width: 0px) and (max-width: 321px) {
-  h1.time {
-    font-size: 78px; }
-
+@media only screen and (min-height: 0px) and (max-height: 600px) {
   .outer .middle figure.inner {
-    margin: -50px auto 0 auto; }
+    margin: -20% auto 0 auto; } }
+@media only screen and (min-width: 0px) and (max-width: 321px) {
+  h1.hello {
+    font-size: 78px; }
 
   figure.badge {
     margin: auto;
@@ -15,7 +15,7 @@
   html body main .tinyNav span:before, html body main .tinyNav span:after {
     display: none !important; }
 
-  .time {
+  .hello {
     font-size: 87px; }
 
   .comingSoon {

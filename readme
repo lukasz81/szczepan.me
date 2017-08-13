@@ -1,0 +1,11 @@
+My awesome portfolio website: http://szczepan.me
+
+What's cool about it:
+
+1) Vanilla js to randomly pick rgb values (ECMA6).
+2) Apply rgb as background gradient.
+3) Animate change of the background colors.
+4) SVG <use> tags.
+5) Responsive design.
+
+
