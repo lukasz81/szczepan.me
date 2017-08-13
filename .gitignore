@@ -10,10 +10,12 @@
 # Sass #
 ############
 *.sass-cache
+*.map
 
-# Folders #
+# Folders and custom #
 ############
 http-server
+scripts_old.js
 
 
 # Packages #
