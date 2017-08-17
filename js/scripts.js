@@ -25,7 +25,7 @@ const changRoleText = () => {
 		window.attributeHandler = setInterval( () => {
 			roleElm.setAttribute('data-text',txt);
 			clearInterval(attributeHandler);
-		}, ROLE_TEXT_SWITCH * 0.75 );
+		}, ROLE_TEXT_SWITCH - 2500 );
 	}, ROLE_TEXT_SWITCH );
 }
 const addRandomGradientColorOnLoad = () => {
