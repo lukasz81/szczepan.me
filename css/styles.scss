@@ -171,14 +171,9 @@ svg{
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
 }
-.hart.active{
-  pointer-events: auto;
-}
-.heart:not(.active){
-  pointer-events: none;
-  opacity:0.3;
-}
+
 .heart {
+
   background-color: $mainColor;
   display: block;
   height: 26px;
@@ -205,23 +200,30 @@ svg{
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
-}
-.heart:before,
-.heart:after {
-  content: "";
-  background-color: $mainColor;
-  border-radius: 50%;
-  height: 26px;
-  position: absolute;
-  width: 26px;
-}
-.heart:before {
-  top: -13px;
-  left: 0;
-}
-.heart:after {
-  left: 13px;
-  top: 0;
+  &:not(.active){
+    pointer-events: none;
+    opacity:0.3;
+  }
+  &.active{
+    pointer-events: auto;
+  }
+  &:before,
+  &:after {
+    content: "";
+    background-color: $mainColor;
+    border-radius: 50%;
+    height: 26px;
+    position: absolute;
+    width: 26px;
+  }
+  &:before {
+    top: -13px;
+    left: 0;
+  }
+  &:after {
+    left: 13px;
+    top: 0;
+  }
 }
 .outer{
 	display:table;
@@ -267,8 +269,8 @@ svg{
 	}
 }
 .full-fill {
-  width: 120%;
-  height: 100%;
+  width: 100%;
+  height: 120%;
   position: fixed;
   top: 0;
   left: 0;
