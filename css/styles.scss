@@ -202,7 +202,6 @@ svg{
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
-
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
@@ -224,9 +223,6 @@ svg{
   left: 13px;
   top: 0;
 }
-.outer.active:before{
-  opacity:0
-}
 .outer{
 	display:table;
 	height:100vh;
@@ -242,7 +238,7 @@ svg{
     content:'';
     display:block;
     width:inherit;
-    height:inherit;
+    height:120%;
     min-height:inherit;
     position:fixed;
     background:#eee;
@@ -271,9 +267,9 @@ svg{
 	}
 }
 .full-fill {
-  width: 100%;
+  width: 120%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
