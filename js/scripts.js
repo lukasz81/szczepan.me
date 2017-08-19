@@ -1,6 +1,6 @@
 //copyright: Lukasz Szczepanski of szczepan.me
 let supportsCssVars = false;
-const ROLE_TEXT_SWITCH = 10000;
+const ROLE_TEXT_SWITCH = 6000;
 const DEF_DELAY = 300;
 const roles = [
 	'UX Designer',
@@ -22,10 +22,15 @@ const changRoleText = () => {
 		let txt  = `${role}.`;
 		roleElm.innerHTML = txt;
 		roleElm.setAttribute('data-text',' ');
-		window.attributeHandler = setInterval( () => {
+
+		const attributeHandler = setInterval( () => {
 			roleElm.setAttribute('data-text',txt);
 			clearInterval(attributeHandler);
-		}, ROLE_TEXT_SWITCH - 2500 );
+			attributeHandler = false;
+			console.log('2: ',txt, ROLE_TEXT_SWITCH * 0.75);
+		}, ROLE_TEXT_SWITCH * 0.75 );
+
+		console.log('1: ',txt , ROLE_TEXT_SWITCH);
 	}, ROLE_TEXT_SWITCH );
 }
 const addRandomGradientColorOnLoad = () => {
