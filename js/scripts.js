@@ -23,14 +23,12 @@ const changRoleText = () => {
 		roleElm.innerHTML = txt;
 		roleElm.setAttribute('data-text',' ');
 
-		const attributeHandler = setInterval( () => {
+		let attributeHandler = setInterval( () => {
 			roleElm.setAttribute('data-text',txt);
 			clearInterval(attributeHandler);
 			attributeHandler = false;
-			console.log('2: ',txt, ROLE_TEXT_SWITCH * 0.75);
 		}, ROLE_TEXT_SWITCH * 0.75 );
 
-		console.log('1: ',txt , ROLE_TEXT_SWITCH);
 	}, ROLE_TEXT_SWITCH );
 }
 const addRandomGradientColorOnLoad = () => {
