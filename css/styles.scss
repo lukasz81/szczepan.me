@@ -6,8 +6,8 @@ $arrowSize: 40px;
 $secondColor: #f7f7f7;
 
 :root{
-    --gradient-one: rgb(99, 63, 105);
-    --gradient-two: rgb(190, 62, 111);
+    --gradient-one: #{rgb(99, 63, 105)};
+    --gradient-two: #{rgb(190, 62, 111)};
   }
 
 /* apply a natural box layout model to all elements, but allowing components to change */
@@ -173,7 +173,6 @@ svg{
 }
 
 .heart {
-
   background-color: $mainColor;
   display: block;
   height: 26px;
@@ -250,6 +249,7 @@ svg{
     z-index:10;
   }
 	.middle{
+    transform: translateY(-10%);
 		display:table-cell;
 		vertical-align:middle;
     position:relative;
