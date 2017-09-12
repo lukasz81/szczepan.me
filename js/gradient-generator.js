@@ -1,27 +1,25 @@
 //settings
-const fps = 260;
-const duration = 3;
-let firstGrad = true;
+const fps = 260; // is there a better name for this?
+const duration = 3; // duration of what?
+const firstGrad = true; // what does this mean? 
 //create set of arrays of random numbers
-const createRandomGradient = () => {
-	let gradient = {
+const createRandomGradient = () => ({ // return object literal
 		rgbOne: [createColor(),createColor(),createColor()],
 		rgbTwo: [createColor(),createColor(),createColor()]
-	};
-	return gradient;
-}
-const startTransition = (onLoad) => {
-	let targetColor = createRandomGradient();
-	targetColor1 = targetColor.rgbOne;
-	targetColor2 = targetColor.rgbTwo;
+});
+
+const startTransition = hasLoaded => { // if it's a boolean, hasLoaded or isLoaded than onLoad, because onLoad sounds like a function
+	const targetColor = createRandomGradient();
+	targetColorOne = targetColor.rgbOne;
+	targetColorOne = targetColor.rgbTwo;
 	window.transitionHandler = setInterval( () => {
-		transitionGradient(onLoad);
+		transitionGradient(hasLoaded);
 	}, 1000/fps);
 }
-const transitionGradient = (onLoad) => {
-	firstGrad ? currentColor = colorArrayOne : currentColor = colorArrayTwo;
-	firstGrad ? targetColor = targetColor1 : targetColor = targetColor2;
-	onLoad ? increment = [0,0,0] : increment = [1,1,1];
+const transitionGradient = onLoad => {
+	currentColor = firstGrad ? colorArrayOne : colorArrayTwo;
+	targetColor = firstGrad ? targetColorOne : targetColorOne // slight shortcut to what you were doing
+	increment = onLoad ? [0,0,0] : [1,1,1];
 
 	// checking G
 	if (currentColor[0] > targetColor[0]) {
@@ -71,17 +69,22 @@ const transitionGradient = (onLoad) => {
 	applyChange();
 }
 const applyChange = () => {
-	let cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
-	let outer = document.querySelector('.outer');
-	let currentGradientState = {
+	const cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
+	const outerElem = document.querySelector('.outer');
+	const currentGradientState = {
 		gradIndex: firstGrad ? this.gradIndex = 'one' : this.gradIndex = 'two',
-		gradValue: firstGrad ? this.gardValue = stopOne : this.gardValue = stopTwo
+		gradValue: firstGrad ? this.gardValue = stopOne : this.gardValue = stopTwo // gardValue? or gradValue ???
 	}
+	// is this what you want to do?
+	// const currentGradientState = {
+	// 	gradIndex: firstGrad ? 'one' : 'two',
+	// 	gradValue: firstGrad ? stopOne : stopTwo
+	// }
 	if (supportsCssVars) {
 		document.documentElement.style.setProperty(`--gradient-${currentGradientState.gradIndex}`,`${currentGradientState.gradValue}`);
 	} else {
-		outer.style.backgroundImage = cssGradient;
+		outerElem.style.backgroundImage = cssGradient;
 	}
-	outer.classList.add('active');
-	firstGrad = !firstGrad;
+	outerElem.classList.add('active');
+	firstGrad = !firstGrad; // this is weird, what's it
 }

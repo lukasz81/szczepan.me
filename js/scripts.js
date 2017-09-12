@@ -1,5 +1,5 @@
 //copyright: Lukasz Szczepanski of szczepan.me
-let supportsCssVars = false;
+const supportsCssVars = false;
 const ROLE_TEXT_SWITCH = 6000;
 const DEF_DELAY = 300;
 const roles = [
@@ -14,73 +14,76 @@ const roles = [
 	'Coder',
 	'Human'
 ];
+
 const changRoleText = () => {
 	setInterval( () => {
-		let roleElm = document.querySelector('.role');
-		let random = Math.floor( Math.random() * roles.length);
-		let role = roles[random];
-		let txt  = `${role}.`;
-		roleElm.innerHTML = txt;
-		roleElm.setAttribute('data-text',' ');
+		const roleElem = document.querySelector('.role'); // if they can be consts, make the consts
+		const role = roles[Math.floor( Math.random() * roles.length)];
+		const text  = `${role}.`;
+		roleElem.innerHTML = text;
+		roleElem.setAttribute('data-text',' ');
 
-		let attributeHandler = setInterval( () => {
-			roleElm.setAttribute('data-text',txt);
+		const attributeHandler = setInterval( () => {
+			roleElem.setAttribute('data-text',text);
 			clearInterval(attributeHandler);
 			attributeHandler = false;
 		}, ROLE_TEXT_SWITCH * 0.75 );
 
 	}, ROLE_TEXT_SWITCH );
 }
+
 const addRandomGradientColorOnLoad = () => {
-	colorArrayOne = [createColor(),createColor(),createColor()];
-	colorArrayTwo = [createColor(),createColor(),createColor()];
-	startTransition(onLoad = true);
+	colorArrayOne = [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()]; // what are these doing
+	colorArrayTwo = [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()]; // ???
+	startTransition(true); // don't need a variable
 	toggleElementsClassnames();
 }
+
 const toggleElementsClassnames = () => {
 	const allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
 	allElements.forEach( e => {
 		e.classList.toggle('active');
 	});
 }
-//find number between 0 and 255
-const createColor = () => {
-	let value = randomNumber();
-	return parseInt(value);
-}
-const randomNumber = () => {
-	return Math.floor(Math.random() * 255);
-}
+
+const getRandomRGBValue = () => parseInt(Math.floor(Math.random() * 255));
+
 //apply styles to head
-const reloadStyleTags = (stop1,stop2) => {
-	let style = document.getElementsByTagName('style')[0];
-	if (style) {style.parentNode.removeChild(style)};
+const reloadStyleTags = (stop1, stop2) => {
+	const styleElem = document.getElementsByTagName('style')[0]; // make variables consistent, you called an elem 'somethingElem' before
+
+	if (styleElem) style.parentNode.removeChild(style);
+
 	const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;
 	const styleSheet = document.createElement('style');
+
 	styleSheet.innerHTML = styleTag;
 	document.head.appendChild(styleSheet);
 }
+
 const addEventsToHeartButton = () => {
-	const heart = document.querySelector('.heart');
+	const heartElem = document.querySelector('.heart');
 	const inner = document.querySelector('.inner');
-	heart.addEventListener('click', () => {
+	heartElem.addEventListener('click', () => {
 		toggleElementsClassnames();
 		setTimeout( () => {
-				startTransition();
+				startTransition(false); // be explicit, don't leave out function arguments if they're needed
 				inner.classList.add('active');
 		}, DEF_DELAY);
 	})
 }
+
 const addBrowserSupportClasses = () => {
-	const HTML = document.getElementsByTagName('html')[0];
+	const HTMLElem = document.getElementsByTagName('html')[0];
 	if (CSS.supports('display', 'grid')) {
-		HTML.classList.add('css-grid');
+		HTMLElem.classList.add('css-grid');
 	}
 	if (CSS.supports('--fake-var', 0)){
-		HTML.classList.add('css-variables');
+		HTMLElem.classList.add('css-variables');
 		supportsCssVars = true;
 	}
 }
+
 //after document has loaded
  window.addEventListener('DOMContentLoaded', () => {
 	addRandomGradientColorOnLoad();
