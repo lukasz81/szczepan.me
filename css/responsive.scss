@@ -1,5 +1,8 @@
 $mainColor: #2b2b2b;
 @media only screen and (min-width: 0px) and (max-width: 321px){
+  .translate--y{
+    transform: translateY(-10%);
+  }
   h1.hello{
     font-size:78px;
   }
@@ -8,6 +11,9 @@ $mainColor: #2b2b2b;
   }
 }
 @media only screen and (min-width: 321px) and (max-width: 768px){
+  .translate--y{
+    transform: translateY(-10%);
+  }
   .hello{
     font-size:87px;
   }
@@ -16,7 +22,4 @@ $mainColor: #2b2b2b;
     max-width: 400px;
     padding: 0 25px;
   }
-  // .outer .middle figure.inner {
-  //   margin: -40% auto 0 auto;
-  // }
 };

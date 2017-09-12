@@ -1,10 +1,16 @@
 @media only screen and (min-width: 0px) and (max-width: 321px) {
+  .translate--y {
+    transform: translateY(-10%); }
+
   h1.hello {
     font-size: 78px; }
 
   body .comingSoon {
     font-size: 20px; } }
 @media only screen and (min-width: 321px) and (max-width: 768px) {
+  .translate--y {
+    transform: translateY(-10%); }
+
   .hello {
     font-size: 87px; }
 
