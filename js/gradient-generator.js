@@ -1,25 +1,77 @@
 //settings
-const fps = 260; // is there a better name for this?
-const duration = 3; // duration of what?
-const firstGrad = true; // what does this mean? 
+const FRAMES_RATE = 240;
+let firstGrad = true;
 //create set of arrays of random numbers
-const createRandomGradient = () => ({ // return object literal
-		rgbOne: [createColor(),createColor(),createColor()],
-		rgbTwo: [createColor(),createColor(),createColor()]
+const createRandomGradient = () => ({
+		rgbOne: [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()],
+		rgbTwo: [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()]
 });
 
-const startTransition = hasLoaded => { // if it's a boolean, hasLoaded or isLoaded than onLoad, because onLoad sounds like a function
+const startTransition = hasLoaded => {
 	const targetColor = createRandomGradient();
 	targetColorOne = targetColor.rgbOne;
-	targetColorOne = targetColor.rgbTwo;
+	targetColorTwo = targetColor.rgbTwo;
 	window.transitionHandler = setInterval( () => {
 		transitionGradient(hasLoaded);
-	}, 1000/fps);
+	}, 1000/FRAMES_RATE);
+	testLoop();
 }
+const testLoop = () => {
+	const differ = [
+		targetColorOne[0] - colorArrayOne[0],
+		targetColorOne[1] - colorArrayOne[1],
+		targetColorOne[2] - colorArrayOne[2]
+	]
+
+	console.log(colorArrayOne,targetColorOne,differ);
+
+	const DELAY = 10;
+
+	for (let index = 1; index < differ[0]; index++) {
+		setTimeout( () => {
+        console.log('0:',index);
+    }, index*DELAY );
+	}
+
+	for (let index = 1; index < differ[1]; index++) {
+		setTimeout( () => {
+				console.log('1:',index);
+		}, index*DELAY );
+	}
+
+	for (let index = 1; index < differ[2]; index++) {
+		setTimeout( () => {
+				console.log('2:',index);
+		}, index*DELAY );
+	}
+	// for (let index = 0; index < A[1]; index++) {
+	// 	console.log('1:',index);
+	// }
+	// for (let index = 0; index < A[2]; index++) {
+	// 	console.log('2:',index);
+	// }
+}
+
 const transitionGradient = onLoad => {
-	currentColor = firstGrad ? colorArrayOne : colorArrayTwo;
-	targetColor = firstGrad ? targetColorOne : targetColorOne // slight shortcut to what you were doing
-	increment = onLoad ? [0,0,0] : [1,1,1];
+	// console.log('c1: ', colorArrayOne);
+	// console.log('t1: ', targetColorOne);
+	// console.log('d1: ', [
+	// 	targetColorOne[0] - colorArrayOne[0],
+	// 	targetColorOne[1] - colorArrayOne[1],
+	// 	targetColorOne[2] - colorArrayOne[2]
+	// ]);
+	//
+	// console.log('c2: ', colorArrayTwo);
+	// console.log('t2: ', targetColorTwo);
+	// console.log('d2: ', [
+	// 	targetColorTwo[0] - colorArrayTwo[0],
+	// 	targetColorTwo[1] - colorArrayTwo[1],
+	// 	targetColorTwo[2] - colorArrayTwo[2]
+	// ]);
+
+	let currentColor = firstGrad ? colorArrayOne : colorArrayTwo;
+	let targetColor = firstGrad ? targetColorOne : targetColorTwo;
+	let increment = onLoad ? [0,0,0] : [1,1,1];
 
 	// checking G
 	if (currentColor[0] > targetColor[0]) {
@@ -33,7 +85,6 @@ const transitionGradient = onLoad => {
 			increment[0] = 0;
 		}
 	}
-
 	// checking G
 	if (currentColor[1] > targetColor[1]) {
 		currentColor[1] -= increment[1];
@@ -46,7 +97,6 @@ const transitionGradient = onLoad => {
 			increment[1] = 0;
 		}
 	}
-
 	// checking B
 	if (currentColor[2] > targetColor[2]) {
 		currentColor[2] -= increment[2];
@@ -59,32 +109,27 @@ const transitionGradient = onLoad => {
 			increment[2] = 0;
 		}
 	}
-	stopOne = `rgb(${colorArrayOne[0]} , ${colorArrayOne[1]} , ${colorArrayOne[2]})`;
-	stopTwo = `rgb(${colorArrayTwo[0]} , ${colorArrayTwo[1]} , ${colorArrayTwo[2]})`;
+
+	const stopOne = `rgb(${colorArrayOne[0]} , ${colorArrayOne[1]} , ${colorArrayOne[2]})`;
+	const stopTwo = `rgb(${colorArrayTwo[0]} , ${colorArrayTwo[1]} , ${colorArrayTwo[2]})`;
+
+	applyChange(stopOne,stopTwo);
 	if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
 		reloadStyleTags(stopOne,stopTwo);
-		clearInterval(transitionHandler);
 		document.querySelector('.heart').classList.add('active');
+		clearInterval(transitionHandler);
 	}
-	applyChange();
+
 }
-const applyChange = () => {
-	const cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
+const applyChange = (stopOne,stopTwo) => {
 	const outerElem = document.querySelector('.outer');
-	const currentGradientState = {
-		gradIndex: firstGrad ? this.gradIndex = 'one' : this.gradIndex = 'two',
-		gradValue: firstGrad ? this.gardValue = stopOne : this.gardValue = stopTwo // gardValue? or gradValue ???
-	}
-	// is this what you want to do?
-	// const currentGradientState = {
-	// 	gradIndex: firstGrad ? 'one' : 'two',
-	// 	gradValue: firstGrad ? stopOne : stopTwo
-	// }
 	if (supportsCssVars) {
-		document.documentElement.style.setProperty(`--gradient-${currentGradientState.gradIndex}`,`${currentGradientState.gradValue}`);
+		document.documentElement.style.setProperty(`--gradient-one`,`${stopOne}`);
+		document.documentElement.style.setProperty(`--gradient-two`,`${stopTwo}`);
 	} else {
+		const cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
 		outerElem.style.backgroundImage = cssGradient;
 	}
 	outerElem.classList.add('active');
-	firstGrad = !firstGrad; // this is weird, what's it
+	firstGrad = !firstGrad;
 }
