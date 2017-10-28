@@ -6,7 +6,6 @@ const createRandomGradient = () => ({
 		rgbOne: [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()],
 		rgbTwo: [getRandomRGBValue(),getRandomRGBValue(),getRandomRGBValue()]
 });
-
 const startTransition = hasLoaded => {
 	const targetColor = createRandomGradient();
 	targetColorOne = targetColor.rgbOne;
@@ -17,58 +16,32 @@ const startTransition = hasLoaded => {
 	testLoop();
 }
 const testLoop = () => {
-	const differ = [
-		targetColorOne[0] - colorArrayOne[0],
-		targetColorOne[1] - colorArrayOne[1],
-		targetColorOne[2] - colorArrayOne[2]
-	]
 
-	console.log(colorArrayOne,targetColorOne,differ);
+	const differenceOfTheGradientColors = () => ({
+			'differenceRed': firstGrad ? (targetColorOne[0] - colorArrayOne[0]) : (targetColorTwo[0] - colorArrayTwo[0]),
+			'differenceGreen': firstGrad ? (targetColorOne[1] - colorArrayOne[1]) : (targetColorTwo[1] - colorArrayTwo[1]),
+			'differenceBlue': firstGrad ? (targetColorOne[2] - colorArrayOne[2]) : (targetColorTwo[2] - colorArrayTwo[2])
+		})
 
-	const DELAY = 10;
+	const DIFF = differenceOfTheGradientColors();
+	const DELAY = 100;
+	const RED = {
+		'sign': DIFF.differenceRed > 0 ? '+' : '-',
+		'value': Array.from(Array(Math.abs(DIFF.differenceRed)).keys())
+	}
+	// const GREEN = Array.from(Array(DIFF.differenceGreen).keys());
+	// const BLUE = Array.from(Array(DIFF.differenceBlue).keys());
 
-	for (let index = 1; index < differ[0]; index++) {
-		setTimeout( () => {
-        console.log('0:',index);
-    }, index*DELAY );
+	for (let value of RED.value) {
+  	RED.sign === '+' ? value++ : value--;
+		setTimeout(() => {
+		  console.log('R: ',value,' firstGrad: ',firstGrad,' differenceOfTheGradientColors: ',RED);
+		}, DELAY*value);
 	}
 
-	for (let index = 1; index < differ[1]; index++) {
-		setTimeout( () => {
-				console.log('1:',index);
-		}, index*DELAY );
-	}
-
-	for (let index = 1; index < differ[2]; index++) {
-		setTimeout( () => {
-				console.log('2:',index);
-		}, index*DELAY );
-	}
-	// for (let index = 0; index < A[1]; index++) {
-	// 	console.log('1:',index);
-	// }
-	// for (let index = 0; index < A[2]; index++) {
-	// 	console.log('2:',index);
-	// }
 }
 
 const transitionGradient = onLoad => {
-	// console.log('c1: ', colorArrayOne);
-	// console.log('t1: ', targetColorOne);
-	// console.log('d1: ', [
-	// 	targetColorOne[0] - colorArrayOne[0],
-	// 	targetColorOne[1] - colorArrayOne[1],
-	// 	targetColorOne[2] - colorArrayOne[2]
-	// ]);
-	//
-	// console.log('c2: ', colorArrayTwo);
-	// console.log('t2: ', targetColorTwo);
-	// console.log('d2: ', [
-	// 	targetColorTwo[0] - colorArrayTwo[0],
-	// 	targetColorTwo[1] - colorArrayTwo[1],
-	// 	targetColorTwo[2] - colorArrayTwo[2]
-	// ]);
-
 	let currentColor = firstGrad ? colorArrayOne : colorArrayTwo;
 	let targetColor = firstGrad ? targetColorOne : targetColorTwo;
 	let increment = onLoad ? [0,0,0] : [1,1,1];
