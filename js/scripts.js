@@ -17,82 +17,77 @@ const roles = [
 
 const changRoleText = () => {
 	setInterval( () => {
-		const roleElem = document.querySelector('.role');
-		const role = roles[Math.floor( Math.random() * roles.length)];
-		const text  = `${role}.`;
-		roleElem.innerHTML = text;
-		roleElem.setAttribute('data-text',' ');
+		let roleElm = document.querySelector('.role');
+		let random = Math.floor( Math.random() * roles.length);
+		let role = roles[random];
+		let txt  = `${role}.`;
+		roleElm.innerHTML = txt;
+		roleElm.setAttribute('data-text',' ');
 
 		let attributeHandler = setInterval( () => {
-			roleElem.setAttribute('data-text',text);
+			roleElm.setAttribute('data-text',txt);
 			clearInterval(attributeHandler);
 			attributeHandler = false;
 		}, ROLE_TEXT_SWITCH * 0.75 );
 
 	}, ROLE_TEXT_SWITCH );
-}
+};
+
+const toggleElementsClassNames = () => {
+	const allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
+	allElements.forEach( e => e.classList.toggle('active'));
+};
 
 const addRandomGradientColorOnLoad = () => {
-	const targetColor = createRandomGradient();
-	colorArrayOne = targetColor.rgbOne;
-	colorArrayTwo = targetColor.rgbTwo;
-	startTransition(true);
-	toggleElementsClassnames();
-}
-
-const toggleElementsClassnames = () => {
-	const allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
-	allElements.forEach( e => {
-		e.classList.toggle('active');
-	});
-}
-
-const getRandomRGBValue = () => parseInt(Math.floor(Math.random() * 255));
+    window.currentColorOne = createRandomGradient().rgbOne;
+    window.currentColorTwo = createRandomGradient().rgbTwo;
+    let stopOne = `rgb(${currentColorOne[0]} , ${currentColorOne[1]} , ${currentColorOne[2]})`;
+    let stopTwo = `rgb(${currentColorTwo[0]} , ${currentColorTwo[1]} , ${currentColorTwo[2]})`;
+    //startTransition();
+    toggleElementsClassNames();
+    applyChange(stopOne,stopTwo);
+};
 
 //apply styles to head
-const reloadStyleTags = (stop1, stop2) => {
-	const styleElem = document.getElementsByTagName('style')[0];
-
-	if (styleElem) styleElem.parentNode.removeChild(styleElem);
-
-	const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;
+const reloadStyleTags = (gradientStopOne,gradientStopTwo) => {
+	let style = document.getElementsByTagName('style')[0];
+    {style && style.parentNode.removeChild(style)}
+	const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${gradientStopTwo} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${gradientStopOne} }`;
 	const styleSheet = document.createElement('style');
-
 	styleSheet.innerHTML = styleTag;
 	document.head.appendChild(styleSheet);
-}
+};
 
 const addEventsToHeartButton = () => {
-	const heartElem = document.querySelector('.heart');
+	const heart = document.querySelector('.heart');
 	const inner = document.querySelector('.inner');
-	heartElem.addEventListener('click', () => {
-		toggleElementsClassnames();
+	heart.addEventListener('click', () => {
+		toggleElementsClassNames();
 		setTimeout( () => {
-				console.log('currentOne: ', colorArrayOne);
-				console.log('currentTwo: ', colorArrayTwo);
-				startTransition(false);
-				console.log('targetColorOne: ', targetColorOne);
-				console.log('targetColorTwo: ', targetColorTwo);
+				startTransition();
 				inner.classList.add('active');
 		}, DEF_DELAY);
 	})
-}
+};
 
 const addBrowserSupportClasses = () => {
-	const HTMLElem = document.getElementsByTagName('html')[0];
+
+	const HTML = document.getElementsByTagName('html')[0];
+
 	if (CSS.supports('display', 'grid')) {
-		HTMLElem.classList.add('css-grid');
+		HTML.classList.add('css-grid');
 	}
+
 	if (CSS.supports('--fake-var', 0)){
-		HTMLElem.classList.add('css-variables');
+		HTML.classList.add('css-variables');
 		supportsCssVars = true;
 	}
-}
+};
 
 //after document has loaded
  window.addEventListener('DOMContentLoaded', () => {
-	addRandomGradientColorOnLoad();
-	changRoleText();
-	addEventsToHeartButton();
-	addBrowserSupportClasses();
+     addBrowserSupportClasses();
+     addRandomGradientColorOnLoad();
+     changRoleText();
+     addEventsToHeartButton();
 });
