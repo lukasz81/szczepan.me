@@ -37,6 +37,13 @@ body {
   background: #eee;
 }
 
+figure {
+  -webkit-margin-after: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -52,7 +59,7 @@ svg {
   font-family: inherit
 }
 
-main {
+.fex-grid-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -63,6 +70,7 @@ main {
   align-self: stretch;
   flex: 1 100%;
   z-index: 1;
+  position: relative;
 }
 
 // Hero related styling
@@ -184,15 +192,15 @@ main {
   background-color: $mainColor;
   display: block;
   height: 26px;
-  margin: 0 0 0 -13px;
+  margin: -13px 0 0 -13px;
   position: absolute;
-  //@include transform(rotate(-45deg) scale(0.6));
   -moz-transform: rotate(-45deg) scale(0.6);
   -ms-transform: rotate(-45deg) scale(0.6);
   -webkit-transform: rotate(-45deg) scale(0.6);
   transform: rotate(-45deg) scale(0.6);
   width: 26px;
   left: 50%;
+  top: 50%;
   opacity: 0.5;
   cursor: pointer;
   animation-duration: 0.7s;
