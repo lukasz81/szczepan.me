@@ -99,8 +99,8 @@ const applyChange = (stopOne,stopTwo) => {
     let cssGradient = `linear-gradient(45deg,${stopOne},${stopTwo})`;
     let outer = document.querySelector('.outer');
     let currentGradientState = {
-        gradIndex: firstGrad ? this.gradIndex = 'one' : this.gradIndex = 'two',
-        gradValue: firstGrad ? this.gradValue = stopOne : this.gradValue = stopTwo
+        gradIndex: firstGrad ? 'one' : 'two',
+        gradValue: firstGrad ? stopOne : stopTwo
     };
 
     if (supportsCssVars) {
