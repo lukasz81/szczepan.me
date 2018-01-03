@@ -81,9 +81,10 @@ const transitionGradient = (targetColorOne,targetColorTwo) => {
         }
     }
 
-    let [R,G,B] = currentColor;
-    let stopOne = firstGrad && `rgb(${R} , ${G} , ${B})`;
-    let stopTwo = !firstGrad && `rgb(${R} , ${G} , ${B})`;
+    let [R1,G1,B1] = currentColorOne;
+    let [R2,G2,B2] = currentColorTwo;
+    let stopOne = `rgb(${R1} , ${G1} , ${B1})`;
+    let stopTwo = `rgb(${R2} , ${G2} , ${B2})`;
 
     if (increment.reduce((a,b) => a + b) === 0) {
         reloadStyleTags(stopOne, stopTwo);

@@ -102,13 +102,20 @@ var transitionGradient = function transitionGradient(targetColorOne, targetColor
         }
     }
 
-    var _currentColor = _slicedToArray(currentColor, 3),
-        R = _currentColor[0],
-        G = _currentColor[1],
-        B = _currentColor[2];
+    var _currentColorOne3 = currentColorOne,
+        _currentColorOne4 = _slicedToArray(_currentColorOne3, 3),
+        R1 = _currentColorOne4[0],
+        G1 = _currentColorOne4[1],
+        B1 = _currentColorOne4[2];
 
-    var stopOne = firstGrad && 'rgb(' + R + ' , ' + G + ' , ' + B + ')';
-    var stopTwo = !firstGrad && 'rgb(' + R + ' , ' + G + ' , ' + B + ')';
+    var _currentColorTwo3 = currentColorTwo,
+        _currentColorTwo4 = _slicedToArray(_currentColorTwo3, 3),
+        R2 = _currentColorTwo4[0],
+        G2 = _currentColorTwo4[1],
+        B2 = _currentColorTwo4[2];
+
+    var stopOne = 'rgb(' + R1 + ' , ' + G1 + ' , ' + B1 + ')';
+    var stopTwo = 'rgb(' + R2 + ' , ' + G2 + ' , ' + B2 + ')';
 
     if (increment.reduce(function (a, b) {
         return a + b;
