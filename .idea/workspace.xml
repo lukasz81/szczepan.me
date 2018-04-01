@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f47508e0-ef4c-461a-bf54-3c7e8c31cae5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css/styles.css" afterPath="$PROJECT_DIR$/css/styles.css" />
-      <change beforePath="$PROJECT_DIR$/css/styles.scss" afterPath="$PROJECT_DIR$/css/styles.scss" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-    </list>
+    <list default="true" id="f47508e0-ef4c-461a-bf54-3c7e8c31cae5" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -196,7 +192,7 @@
       <workItem from="1514740006980" duration="1094000" />
       <workItem from="1514742318059" duration="3012000" />
       <workItem from="1514749417289" duration="2227000" />
-      <workItem from="1521995059048" duration="2740000" />
+      <workItem from="1521995059048" duration="2863000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring code style and logic / add array destructuring">
       <created>1514664230994</created>
@@ -237,7 +233,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30198000" />
+    <option name="totallyTimeSpent" value="30321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
