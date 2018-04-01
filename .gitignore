@@ -20,6 +20,7 @@ scripts_old.js
 node_modules
 *.idea
 *.babelrc
+*szczepan.me
 
 
 # Packages #
