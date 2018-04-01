@@ -12,10 +12,14 @@
 *.sass-cache
 *.map
 
+
 # Folders and custom #
 ############
 http-server
 scripts_old.js
+node_modules
+*.idea
+*.babelrc
 
 
 # Packages #
