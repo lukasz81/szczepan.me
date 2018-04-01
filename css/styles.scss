@@ -48,6 +48,11 @@ a {
   text-decoration: none;
 }
 
+.indent {
+  text-indent: -10000px;
+  position: absolute;
+}
+
 svg {
   display: block;
   width: 100%;
