@@ -30,24 +30,15 @@ const changRoleText = () => {
 		}, ROLE_TEXT_SWITCH * 0.75 );
 
 	}, ROLE_TEXT_SWITCH );
-}
-
-const addRandomGradientColorOnLoad = () => {
-	const targetColor = createRandomGradient();
-	colorArrayOne = targetColor.rgbOne;
-	colorArrayTwo = targetColor.rgbTwo;
-	startTransition(true);
-	toggleElementsClassnames();
-}
+};
 
 const toggleElementsClassnames = () => {
-	const allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
-	allElements.forEach( e => {
-		e.classList.toggle('active');
-	});
-}
-
-const getRandomRGBValue = () => parseInt(Math.floor(Math.random() * 255));
+    const elementsList = document.querySelectorAll('.outer , .inner , .heart');
+    const elementsArray = Array.from(elementsList);
+    elementsArray.forEach(element => {
+        element.classList.toggle('active');
+    });
+};
 
 //apply styles to head
 const reloadStyleTags = (stop1, stop2) => {
@@ -60,34 +51,30 @@ const reloadStyleTags = (stop1, stop2) => {
 
 	styleSheet.innerHTML = styleTag;
 	document.head.appendChild(styleSheet);
-}
+};
 
 const addEventsToHeartButton = () => {
 	const heartElem = document.querySelector('.heart');
-	const inner = document.querySelector('.inner');
+	const innerElm = document.querySelector('.inner');
 	heartElem.addEventListener('click', () => {
 		toggleElementsClassnames();
 		setTimeout( () => {
-				console.log('currentOne: ', colorArrayOne);
-				console.log('currentTwo: ', colorArrayTwo);
-				startTransition(false);
-				console.log('targetColorOne: ', targetColorOne);
-				console.log('targetColorTwo: ', targetColorTwo);
-				inner.classList.add('active');
+			startTransition(false);
+            innerElm.classList.add('active');
 		}, DEF_DELAY);
 	})
-}
+};
 
 const addBrowserSupportClasses = () => {
 	const HTMLElem = document.getElementsByTagName('html')[0];
 	if (CSS.supports('display', 'grid')) {
 		HTMLElem.classList.add('css-grid');
 	}
-	if (CSS.supports('--fake-var', 0)){
+	if (CSS.supports('--fake-var', '0')){
 		HTMLElem.classList.add('css-variables');
 		supportsCssVars = true;
 	}
-}
+};
 
 //after document has loaded
  window.addEventListener('DOMContentLoaded', () => {
