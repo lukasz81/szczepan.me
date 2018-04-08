@@ -16,12 +16,12 @@ class GradientGenerator {
         }());
     }
 
-    getRandomRGBValue() {return Math.floor(Math.random() * 255) };
+    static getRandomRGBValue() {return Math.floor(Math.random() * 255) };
 
     createRandomGradient() {
         return {
-            rgbOne: [this.getRandomRGBValue(), this.getRandomRGBValue(), this.getRandomRGBValue()],
-            rgbTwo: [this.getRandomRGBValue(), this.getRandomRGBValue(), this.getRandomRGBValue()]
+            rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
+            rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
         }
     };
 
@@ -37,7 +37,6 @@ class GradientGenerator {
         const targetColorOne = this.createRandomGradient().rgbOne;
         const targetColorTwo = this.createRandomGradient().rgbTwo;
         window.transitionHandler = setInterval(() => {
-            console.log(this);
             this.transitionGradient(isFirstLoad, targetColorOne, targetColorTwo);
         }, 1000 / this.FRAMES_RATE);
     };
