@@ -2,11 +2,15 @@ My awesome portfolio website: http://szczepan.me
 
 What's cool about it:
 
-1) Vanilla js to randomly pick rgb values (ECMA6).
+1) Vanilla js to randomly pick rgb values (using babel to transpile to old js).
 2) Apply rgb as background gradient.
 3) Animate change of the background colors.
 4) SVG <use> tags.
 5) Responsive design.
 6) Use css vars to hold and update color values.
+
+#http-server: to run dev
+#sass --watch css: to watch the whole folder
+#babel is run, html loads raw js from dist folder
 
 

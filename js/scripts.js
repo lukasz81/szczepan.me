@@ -3,91 +3,86 @@ let supportsCssVars = false;
 const ROLE_TEXT_SWITCH = 6000;
 const DEF_DELAY = 300;
 const roles = [
-	'UX Designer',
-	'UI Designer',
-	'UI Developer',
-	'Front End Developer',
-	'Designer',
-	'UI Engineer',
-	'Web Designer',
-	'Web Developer',
-	'Coder',
-	'Human'
+    'UX Designer',
+    'UI Designer',
+    'UI Developer',
+    'Front End Developer',
+    'Designer',
+    'UI Engineer',
+    'Web Designer',
+    'Web Developer',
+    'Coder',
+    'Human'
 ];
 
+let Gradient = new GradientGenerator();
+
 const changRoleText = () => {
-	setInterval( () => {
-		let roleElm = document.querySelector('.role');
-		let random = Math.floor( Math.random() * roles.length);
-		let role = roles[random];
-		let txt  = `${role}.`;
-		roleElm.innerHTML = txt;
-		roleElm.setAttribute('data-text',' ');
+    setInterval(() => {
+        const roleElem = document.querySelector('.role');
+        const role = roles[Math.floor(Math.random() * roles.length)];
+        const text = `${role}.`;
+        roleElem.innerHTML = text;
+        roleElem.setAttribute('data-text', ' ');
 
-		let attributeHandler = setInterval( () => {
-			roleElm.setAttribute('data-text',txt);
-			clearInterval(attributeHandler);
-			attributeHandler = false;
-		}, ROLE_TEXT_SWITCH * 0.75 );
+        let attributeHandler = setInterval(() => {
+            roleElem.setAttribute('data-text', text);
+            clearInterval(attributeHandler);
+            attributeHandler = false;
+        }, ROLE_TEXT_SWITCH * 0.75);
 
-	}, ROLE_TEXT_SWITCH );
+    }, ROLE_TEXT_SWITCH);
 };
 
-const toggleElementsClassNames = () => {
-	const allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
-	allElements.forEach( e => e.classList.toggle('active'));
-};
-
-const addRandomGradientColorOnLoad = () => {
-    window.currentColorOne = createRandomGradient().rgbOne;
-    window.currentColorTwo = createRandomGradient().rgbTwo;
-    let stopOne = `rgb(${currentColorOne[0]} , ${currentColorOne[1]} , ${currentColorOne[2]})`;
-    let stopTwo = `rgb(${currentColorTwo[0]} , ${currentColorTwo[1]} , ${currentColorTwo[2]})`;
-    //startTransition();
-    toggleElementsClassNames();
-    applyChange(stopOne,stopTwo);
+const toggleElementsClassnames = () => {
+    const elementsList = document.querySelectorAll('.outer , .inner , .heart');
+    const elementsArray = Array.from(elementsList);
+    elementsArray.forEach(element => {
+        element.classList.toggle('active');
+    });
 };
 
 //apply styles to head
-const reloadStyleTags = (gradientStopOne,gradientStopTwo) => {
-	let style = document.getElementsByTagName('style')[0];
-    {style && style.parentNode.removeChild(style)}
-	const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${gradientStopTwo} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${gradientStopOne} }`;
-	const styleSheet = document.createElement('style');
-	styleSheet.innerHTML = styleTag;
-	document.head.appendChild(styleSheet);
+const reloadStyleTags = (stop1, stop2) => {
+    const styleElem = document.getElementsByTagName('style')[0];
+
+    if (styleElem) styleElem.parentNode.removeChild(styleElem);
+
+    const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;
+    const styleSheet = document.createElement('style');
+
+    styleSheet.innerHTML = styleTag;
+    document.head.appendChild(styleSheet);
 };
 
 const addEventsToHeartButton = () => {
-	const heart = document.querySelector('.heart');
-	const inner = document.querySelector('.inner');
-	heart.addEventListener('click', () => {
-		toggleElementsClassNames();
-		setTimeout( () => {
-				startTransition();
-				inner.classList.add('active');
-		}, DEF_DELAY);
-	})
+    const heartElem = document.querySelector('.heart');
+    const innerElm = document.querySelector('.inner');
+    heartElem.addEventListener('click', () => {
+        toggleElementsClassnames();
+        setTimeout(() => {
+            Gradient.startTransition(false);
+            innerElm.classList.add('active');
+        }, DEF_DELAY);
+    })
 };
 
 const addBrowserSupportClasses = () => {
-
-	const HTML = document.getElementsByTagName('html')[0];
-
-	if (CSS.supports('display', 'grid')) {
-		HTML.classList.add('css-grid');
-	}
-
-	if (CSS.supports('--fake-var', 0)){
-		HTML.classList.add('css-variables');
-		supportsCssVars = true;
-	}
+    const HTMLElem = document.getElementsByTagName('html')[0];
+    if (CSS.supports('display', 'grid')) {
+        HTMLElem.classList.add('css-grid');
+    }
+    if (CSS.supports('--fake-var', '0')) {
+        HTMLElem.classList.add('css-variables');
+        supportsCssVars = true;
+    }
 };
 
 //after document has loaded
- window.addEventListener('DOMContentLoaded', () => {
-     addBrowserSupportClasses();
-     addRandomGradientColorOnLoad();
-     changRoleText();
-     addEventsToHeartButton();
+window.addEventListener('DOMContentLoaded', () => {
+    let isFirstLoad = true;
+    Gradient.startTransition(isFirstLoad);
+    changRoleText();
+    addEventsToHeartButton();
+    addBrowserSupportClasses();
 });
