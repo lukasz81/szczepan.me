@@ -44,14 +44,12 @@ const toggleElementsClassnames = () => {
 
 //apply styles to head
 const reloadStyleTags = (stop1, stop2) => {
-    const styleElem = document.getElementsByTagName('style')[0];
-
+    const styleElem = document.getElementById('tags');
     if (styleElem) styleElem.parentNode.removeChild(styleElem);
-
-    const styleTag = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;
+    const styleContent = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;
     const styleSheet = document.createElement('style');
-
-    styleSheet.innerHTML = styleTag;
+    styleSheet.id = 'tags';
+    styleSheet.innerHTML = styleContent;
     document.head.appendChild(styleSheet);
 };
 

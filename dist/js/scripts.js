@@ -34,14 +34,12 @@ var toggleElementsClassnames = function toggleElementsClassnames() {
 
 //apply styles to head
 var reloadStyleTags = function reloadStyleTags(stop1, stop2) {
-    var styleElem = document.getElementsByTagName('style')[0];
-
+    var styleElem = document.getElementById('tags');
     if (styleElem) styleElem.parentNode.removeChild(styleElem);
-
-    var styleTag = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stop2 + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stop1 + ' }';
+    var styleContent = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stop2 + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stop1 + ' }';
     var styleSheet = document.createElement('style');
-
-    styleSheet.innerHTML = styleTag;
+    styleSheet.id = 'tags';
+    styleSheet.innerHTML = styleContent;
     document.head.appendChild(styleSheet);
 };
 
