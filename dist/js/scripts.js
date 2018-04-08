@@ -6,83 +6,74 @@ var ROLE_TEXT_SWITCH = 6000;
 var DEF_DELAY = 300;
 var roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
 
+var Gradient = new GradientGenerator();
+
 var changRoleText = function changRoleText() {
-	setInterval(function () {
-		var roleElm = document.querySelector('.role');
-		var random = Math.floor(Math.random() * roles.length);
-		var role = roles[random];
-		var txt = role + '.';
-		roleElm.innerHTML = txt;
-		roleElm.setAttribute('data-text', ' ');
+    setInterval(function () {
+        var roleElem = document.querySelector('.role');
+        var role = roles[Math.floor(Math.random() * roles.length)];
+        var text = role + '.';
+        roleElem.innerHTML = text;
+        roleElem.setAttribute('data-text', ' ');
 
-		var attributeHandler = setInterval(function () {
-			roleElm.setAttribute('data-text', txt);
-			clearInterval(attributeHandler);
-			attributeHandler = false;
-		}, ROLE_TEXT_SWITCH * 0.75);
-	}, ROLE_TEXT_SWITCH);
+        var attributeHandler = setInterval(function () {
+            roleElem.setAttribute('data-text', text);
+            clearInterval(attributeHandler);
+            attributeHandler = false;
+        }, ROLE_TEXT_SWITCH * 0.75);
+    }, ROLE_TEXT_SWITCH);
 };
 
-var toggleElementsClassNames = function toggleElementsClassNames() {
-	var allElements = Array.from(document.querySelectorAll('.outer , .inner , .heart'));
-	allElements.forEach(function (e) {
-		return e.classList.toggle('active');
-	});
-};
-
-var addRandomGradientColorOnLoad = function addRandomGradientColorOnLoad() {
-	window.currentColorOne = createRandomGradient().rgbOne;
-	window.currentColorTwo = createRandomGradient().rgbTwo;
-	var stopOne = 'rgb(' + currentColorOne[0] + ' , ' + currentColorOne[1] + ' , ' + currentColorOne[2] + ')';
-	var stopTwo = 'rgb(' + currentColorTwo[0] + ' , ' + currentColorTwo[1] + ' , ' + currentColorTwo[2] + ')';
-	//startTransition();
-	toggleElementsClassNames();
-	applyChange(stopOne, stopTwo);
+var toggleElementsClassnames = function toggleElementsClassnames() {
+    var elementsList = document.querySelectorAll('.outer , .inner , .heart');
+    var elementsArray = Array.from(elementsList);
+    elementsArray.forEach(function (element) {
+        element.classList.toggle('active');
+    });
 };
 
 //apply styles to head
-var reloadStyleTags = function reloadStyleTags(gradientStopOne, gradientStopTwo) {
-	var style = document.getElementsByTagName('style')[0];
-	{
-		style && style.parentNode.removeChild(style);
-	}
-	var styleTag = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + gradientStopTwo + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + gradientStopOne + ' }';
-	var styleSheet = document.createElement('style');
-	styleSheet.innerHTML = styleTag;
-	document.head.appendChild(styleSheet);
+var reloadStyleTags = function reloadStyleTags(stop1, stop2) {
+    var styleElem = document.getElementsByTagName('style')[0];
+
+    if (styleElem) styleElem.parentNode.removeChild(styleElem);
+
+    var styleTag = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stop2 + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stop1 + ' }';
+    var styleSheet = document.createElement('style');
+
+    styleSheet.innerHTML = styleTag;
+    document.head.appendChild(styleSheet);
 };
 
 var addEventsToHeartButton = function addEventsToHeartButton() {
-	var heart = document.querySelector('.heart');
-	var inner = document.querySelector('.inner');
-	heart.addEventListener('click', function () {
-		toggleElementsClassNames();
-		setTimeout(function () {
-			startTransition();
-			inner.classList.add('active');
-		}, DEF_DELAY);
-	});
+    var heartElem = document.querySelector('.heart');
+    var innerElm = document.querySelector('.inner');
+    heartElem.addEventListener('click', function () {
+        toggleElementsClassnames();
+        setTimeout(function () {
+            Gradient.startTransition(false);
+            innerElm.classList.add('active');
+        }, DEF_DELAY);
+    });
 };
 
 var addBrowserSupportClasses = function addBrowserSupportClasses() {
-
-	var HTML = document.getElementsByTagName('html')[0];
-
-	if (CSS.supports('display', 'grid')) {
-		HTML.classList.add('css-grid');
-	}
-
-	if (CSS.supports('--fake-var', 0)) {
-		HTML.classList.add('css-variables');
-		supportsCssVars = true;
-	}
+    var HTMLElem = document.getElementsByTagName('html')[0];
+    if (CSS.supports('display', 'grid')) {
+        HTMLElem.classList.add('css-grid');
+    }
+    if (CSS.supports('--fake-var', '0')) {
+        HTMLElem.classList.add('css-variables');
+        supportsCssVars = true;
+    }
 };
 
 //after document has loaded
 window.addEventListener('DOMContentLoaded', function () {
-	addBrowserSupportClasses();
-	addRandomGradientColorOnLoad();
-	changRoleText();
-	addEventsToHeartButton();
+    var isFirstLoad = true;
+    Gradient.startTransition(isFirstLoad);
+    changRoleText();
+    addEventsToHeartButton();
+    addBrowserSupportClasses();
 });
 //# sourceMappingURL=scripts.js.map
