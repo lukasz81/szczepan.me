@@ -3,22 +3,12 @@ class GradientGenerator {
     constructor() {
         this.FRAMES_RATE = 240;
         this.firstGrad = true;
-        this.stateModule = (function () {
-            let state;
-            let pub = {};
-            pub.setState = function (newState) {
-                state = newState;
-            };
-            pub.getState = function() {
-                return state;
-            };
-            return pub;
-        }());
+        this.prevColors = {};
     }
 
     static getRandomRGBValue() {return Math.floor(Math.random() * 255) };
 
-    createRandomGradient() {
+    static createRandomGradient() {
         return {
             rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
             rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
@@ -26,24 +16,23 @@ class GradientGenerator {
     };
 
     addRandomGradientColorOnLoad() {
-        const colorArrayOne = this.createRandomGradient().rgbOne;
-        const colorArrayTwo = this.createRandomGradient().rgbTwo;
-        this.stateModule.setState({prevColors: {colorArrayOne,colorArrayTwo}});
+        const colorArrayOne = GradientGenerator.createRandomGradient().rgbOne;
+        const colorArrayTwo = GradientGenerator.createRandomGradient().rgbTwo;
+        this.prevColors = {colorArrayOne,colorArrayTwo};
         toggleElementsClassnames();
     };
 
     startTransition(isFirstLoad) {
         if (isFirstLoad) this.addRandomGradientColorOnLoad();
-        const targetColorOne = this.createRandomGradient().rgbOne;
-        const targetColorTwo = this.createRandomGradient().rgbTwo;
+        const targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
+        const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
         window.transitionHandler = setInterval(() => {
             this.transitionGradient(isFirstLoad, targetColorOne, targetColorTwo);
         }, 1000 / this.FRAMES_RATE);
     };
 
     transitionGradient(onLoad, targetColorOne, targetColorTwo) {
-        const { prevColors } = this.stateModule.getState();
-        let currentColor = this.firstGrad ? prevColors.colorArrayOne : prevColors.colorArrayTwo;
+        let currentColor = this.firstGrad ? this.prevColors.colorArrayOne : this.prevColors.colorArrayTwo;
         let targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
         let increment = onLoad ? [0, 0, 0] : [1, 1, 1];
 
@@ -84,8 +73,8 @@ class GradientGenerator {
             }
         }
 
-        const stopOne = `rgb(${prevColors.colorArrayOne[0]} , ${prevColors.colorArrayOne[1]} , ${prevColors.colorArrayOne[2]})`;
-        const stopTwo = `rgb(${prevColors.colorArrayTwo[0]} , ${prevColors.colorArrayTwo[1]} , ${prevColors.colorArrayTwo[2]})`;
+        const stopOne = `rgb(${this.prevColors.colorArrayOne[0]} , ${this.prevColors.colorArrayOne[1]} , ${this.prevColors.colorArrayOne[2]})`;
+        const stopTwo = `rgb(${this.prevColors.colorArrayTwo[0]} , ${this.prevColors.colorArrayTwo[1]} , ${this.prevColors.colorArrayTwo[2]})`;
 
         this.applyChange(stopOne, stopTwo);
 

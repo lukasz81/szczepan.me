@@ -10,33 +10,15 @@ var GradientGenerator = function () {
 
         this.FRAMES_RATE = 240;
         this.firstGrad = true;
-        this.stateModule = function () {
-            var state = void 0;
-            var pub = {};
-            pub.setState = function (newState) {
-                state = newState;
-            };
-            pub.getState = function () {
-                return state;
-            };
-            return pub;
-        }();
+        this.prevColors = {};
     }
 
     _createClass(GradientGenerator, [{
-        key: 'createRandomGradient',
-        value: function createRandomGradient() {
-            return {
-                rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
-                rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
-            };
-        }
-    }, {
         key: 'addRandomGradientColorOnLoad',
         value: function addRandomGradientColorOnLoad() {
-            var colorArrayOne = this.createRandomGradient().rgbOne;
-            var colorArrayTwo = this.createRandomGradient().rgbTwo;
-            this.stateModule.setState({ prevColors: { colorArrayOne: colorArrayOne, colorArrayTwo: colorArrayTwo } });
+            var colorArrayOne = GradientGenerator.createRandomGradient().rgbOne;
+            var colorArrayTwo = GradientGenerator.createRandomGradient().rgbTwo;
+            this.prevColors = { colorArrayOne: colorArrayOne, colorArrayTwo: colorArrayTwo };
             toggleElementsClassnames();
         }
     }, {
@@ -45,8 +27,8 @@ var GradientGenerator = function () {
             var _this = this;
 
             if (isFirstLoad) this.addRandomGradientColorOnLoad();
-            var targetColorOne = this.createRandomGradient().rgbOne;
-            var targetColorTwo = this.createRandomGradient().rgbTwo;
+            var targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
+            var targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
             window.transitionHandler = setInterval(function () {
                 _this.transitionGradient(isFirstLoad, targetColorOne, targetColorTwo);
             }, 1000 / this.FRAMES_RATE);
@@ -54,10 +36,7 @@ var GradientGenerator = function () {
     }, {
         key: 'transitionGradient',
         value: function transitionGradient(onLoad, targetColorOne, targetColorTwo) {
-            var _stateModule$getState = this.stateModule.getState(),
-                prevColors = _stateModule$getState.prevColors;
-
-            var currentColor = this.firstGrad ? prevColors.colorArrayOne : prevColors.colorArrayTwo;
+            var currentColor = this.firstGrad ? this.prevColors.colorArrayOne : this.prevColors.colorArrayTwo;
             var targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
             var increment = onLoad ? [0, 0, 0] : [1, 1, 1];
 
@@ -98,8 +77,8 @@ var GradientGenerator = function () {
                 }
             }
 
-            var stopOne = 'rgb(' + prevColors.colorArrayOne[0] + ' , ' + prevColors.colorArrayOne[1] + ' , ' + prevColors.colorArrayOne[2] + ')';
-            var stopTwo = 'rgb(' + prevColors.colorArrayTwo[0] + ' , ' + prevColors.colorArrayTwo[1] + ' , ' + prevColors.colorArrayTwo[2] + ')';
+            var stopOne = 'rgb(' + this.prevColors.colorArrayOne[0] + ' , ' + this.prevColors.colorArrayOne[1] + ' , ' + this.prevColors.colorArrayOne[2] + ')';
+            var stopTwo = 'rgb(' + this.prevColors.colorArrayTwo[0] + ' , ' + this.prevColors.colorArrayTwo[1] + ' , ' + this.prevColors.colorArrayTwo[2] + ')';
 
             this.applyChange(stopOne, stopTwo);
 
@@ -126,6 +105,14 @@ var GradientGenerator = function () {
         key: 'getRandomRGBValue',
         value: function getRandomRGBValue() {
             return Math.floor(Math.random() * 255);
+        }
+    }, {
+        key: 'createRandomGradient',
+        value: function createRandomGradient() {
+            return {
+                rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
+                rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
+            };
         }
     }]);
 

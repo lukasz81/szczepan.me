@@ -35,7 +35,8 @@ const changRoleText = () => {
 };
 
 const toggleElementsClassnames = () => {
-    const elementsList = document.querySelectorAll('.outer , .inner , .heart');
+    const elements = '.outer , .inner , .heart';
+    const elementsList = document.querySelectorAll(elements);
     const elementsArray = Array.from(elementsList);
     elementsArray.forEach(element => {
         element.classList.toggle('active');

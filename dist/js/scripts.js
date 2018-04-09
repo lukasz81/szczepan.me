@@ -25,7 +25,8 @@ var changRoleText = function changRoleText() {
 };
 
 var toggleElementsClassnames = function toggleElementsClassnames() {
-    var elementsList = document.querySelectorAll('.outer , .inner , .heart');
+    var elements = '.outer , .inner , .heart';
+    var elementsList = document.querySelectorAll(elements);
     var elementsArray = Array.from(elementsList);
     elementsArray.forEach(function (element) {
         element.classList.toggle('active');
