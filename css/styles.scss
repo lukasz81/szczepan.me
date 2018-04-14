@@ -106,10 +106,11 @@ svg {
     @include textGlitch("example-one", 25, $mainColor, rgba(255, 255, 255, 0.1), blue, #ff0078, 450, 115);
   }
 }
-
+.github {
+  margin: 0 0 0 10px;
+}
 .behance, .github {
   display: inline-block;
-  margin: 0 0 0 5px;
   width: 40px;
   height: 40px;
   svg {
@@ -120,7 +121,6 @@ svg {
 
 @keyframes heartBeat {
   0% {
-    //@include transform(rotate(-45deg) scale(0.5));
     -moz-transform: rotate(-45deg) scale(0.5);
     -ms-transform: rotate(-45deg) scale(0.5);
     -webkit-transform: rotate(-45deg) scale(0.5);
@@ -128,7 +128,6 @@ svg {
 
   }
   100% {
-    //@include transform(rotate(-45deg) scale(0.6));
     -moz-transform: rotate(-45deg) scale(0.6);
     -ms-transform: rotate(-45deg) scale(0.6);
     -webkit-transform: rotate(-45deg) scale(0.6);
@@ -138,35 +137,30 @@ svg {
 
 @keyframes shake {
   0% {
-    //@include transform(rotate(15deg));
     -moz-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
     -webkit-transform: rotate(15deg);
     transform: rotate(15deg);
   }
   25% {
-    //@include transform(rotate(-15deg));
     -moz-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
     transform: rotate(-15deg);
   }
   50% {
-    //@include transform(rotate(10deg));
     -moz-transform: rotate(10deg);
     -ms-transform: rotate(10deg);
     -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
   }
   75% {
-    //@include transform(rotate(-10deg));
     -moz-transform: rotate(-10deg);
     -ms-transform: rotate(-10deg);
     -webkit-transform: rotate(-10deg);
     transform: rotate(-10deg);
   }
   100% {
-    //@include transform(rotate(0deg));
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
@@ -174,7 +168,7 @@ svg {
   }
 }
 
-#was {
+.was {
   //@include transform-origin(center);
   -moz-transform-origin: center;
   -ms-transform-origin: center;
@@ -182,15 +176,15 @@ svg {
   transform-origin: center;
 }
 
-.inner.active #was {
+.inner.active .was {
   animation-delay: 0.3s;
   animation-duration: 0.6s;
   animation-name: shake;
   animation-iteration-count: 1;
   animation-direction: alternate;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .heart {

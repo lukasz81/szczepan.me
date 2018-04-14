@@ -120,110 +120,110 @@ svg {
     position: relative; }
 @keyframes example-one-anim-1 {
   0% {
-    clip: rect(57px, 450px, 72px, 0); }
+    clip: rect(1px, 450px, 45px, 0); }
   4% {
-    clip: rect(43px, 450px, 46px, 0); }
+    clip: rect(37px, 450px, 40px, 0); }
   8% {
-    clip: rect(60px, 450px, 60px, 0); }
+    clip: rect(72px, 450px, 85px, 0); }
   12% {
-    clip: rect(17px, 450px, 101px, 0); }
+    clip: rect(10px, 450px, 78px, 0); }
   16% {
-    clip: rect(88px, 450px, 59px, 0); }
+    clip: rect(47px, 450px, 38px, 0); }
   20% {
-    clip: rect(14px, 450px, 12px, 0); }
+    clip: rect(19px, 450px, 92px, 0); }
   24% {
-    clip: rect(70px, 450px, 18px, 0); }
+    clip: rect(112px, 450px, 102px, 0); }
   28% {
-    clip: rect(45px, 450px, 27px, 0); }
+    clip: rect(34px, 450px, 68px, 0); }
   32% {
-    clip: rect(94px, 450px, 103px, 0); }
+    clip: rect(52px, 450px, 61px, 0); }
   36% {
-    clip: rect(72px, 450px, 95px, 0); }
+    clip: rect(68px, 450px, 84px, 0); }
   40% {
-    clip: rect(83px, 450px, 75px, 0); }
+    clip: rect(53px, 450px, 40px, 0); }
   44% {
-    clip: rect(72px, 450px, 35px, 0); }
+    clip: rect(84px, 450px, 57px, 0); }
   48% {
-    clip: rect(24px, 450px, 93px, 0); }
+    clip: rect(3px, 450px, 61px, 0); }
   52% {
-    clip: rect(72px, 450px, 85px, 0); }
+    clip: rect(43px, 450px, 99px, 0); }
   56% {
-    clip: rect(113px, 450px, 5px, 0); }
+    clip: rect(44px, 450px, 49px, 0); }
   60% {
-    clip: rect(9px, 450px, 38px, 0); }
+    clip: rect(43px, 450px, 91px, 0); }
   64% {
-    clip: rect(111px, 450px, 39px, 0); }
+    clip: rect(29px, 450px, 20px, 0); }
   68% {
-    clip: rect(44px, 450px, 73px, 0); }
+    clip: rect(42px, 450px, 55px, 0); }
   72% {
-    clip: rect(60px, 450px, 5px, 0); }
+    clip: rect(41px, 450px, 4px, 0); }
   76% {
-    clip: rect(112px, 450px, 77px, 0); }
+    clip: rect(94px, 450px, 25px, 0); }
   80% {
-    clip: rect(72px, 450px, 85px, 0); }
+    clip: rect(26px, 450px, 33px, 0); }
   84% {
-    clip: rect(17px, 450px, 111px, 0); }
+    clip: rect(32px, 450px, 82px, 0); }
   88% {
-    clip: rect(98px, 450px, 98px, 0); }
+    clip: rect(110px, 450px, 6px, 0); }
   92% {
-    clip: rect(13px, 450px, 115px, 0); }
+    clip: rect(42px, 450px, 67px, 0); }
   96% {
-    clip: rect(47px, 450px, 80px, 0); }
+    clip: rect(6px, 450px, 104px, 0); }
   100% {
-    clip: rect(39px, 450px, 82px, 0); } }
+    clip: rect(22px, 450px, 38px, 0); } }
 @keyframes example-one-anim-2 {
   0% {
-    clip: rect(40px, 450px, 90px, 0); }
+    clip: rect(65px, 450px, 6px, 0); }
   4% {
-    clip: rect(34px, 450px, 92px, 0); }
+    clip: rect(54px, 450px, 21px, 0); }
   8% {
-    clip: rect(48px, 450px, 100px, 0); }
+    clip: rect(81px, 450px, 105px, 0); }
   12% {
-    clip: rect(18px, 450px, 25px, 0); }
+    clip: rect(27px, 450px, 41px, 0); }
   16% {
-    clip: rect(9px, 450px, 23px, 0); }
+    clip: rect(5px, 450px, 22px, 0); }
   20% {
-    clip: rect(73px, 450px, 98px, 0); }
+    clip: rect(71px, 450px, 103px, 0); }
   24% {
-    clip: rect(99px, 450px, 71px, 0); }
+    clip: rect(23px, 450px, 67px, 0); }
   28% {
-    clip: rect(42px, 450px, 11px, 0); }
+    clip: rect(47px, 450px, 91px, 0); }
   32% {
-    clip: rect(69px, 450px, 9px, 0); }
+    clip: rect(65px, 450px, 15px, 0); }
   36% {
-    clip: rect(4px, 450px, 39px, 0); }
+    clip: rect(100px, 450px, 54px, 0); }
   40% {
-    clip: rect(93px, 450px, 93px, 0); }
+    clip: rect(91px, 450px, 60px, 0); }
   44% {
-    clip: rect(24px, 450px, 113px, 0); }
+    clip: rect(105px, 450px, 81px, 0); }
   48% {
-    clip: rect(43px, 450px, 66px, 0); }
+    clip: rect(108px, 450px, 41px, 0); }
   52% {
-    clip: rect(65px, 450px, 8px, 0); }
+    clip: rect(52px, 450px, 20px, 0); }
   56% {
-    clip: rect(101px, 450px, 110px, 0); }
+    clip: rect(45px, 450px, 12px, 0); }
   60% {
-    clip: rect(29px, 450px, 53px, 0); }
+    clip: rect(35px, 450px, 6px, 0); }
   64% {
-    clip: rect(41px, 450px, 47px, 0); }
+    clip: rect(79px, 450px, 63px, 0); }
   68% {
-    clip: rect(104px, 450px, 96px, 0); }
+    clip: rect(42px, 450px, 27px, 0); }
   72% {
-    clip: rect(21px, 450px, 3px, 0); }
+    clip: rect(90px, 450px, 91px, 0); }
   76% {
-    clip: rect(112px, 450px, 68px, 0); }
+    clip: rect(93px, 450px, 31px, 0); }
   80% {
-    clip: rect(93px, 450px, 12px, 0); }
+    clip: rect(7px, 450px, 15px, 0); }
   84% {
-    clip: rect(40px, 450px, 38px, 0); }
+    clip: rect(113px, 450px, 35px, 0); }
   88% {
-    clip: rect(21px, 450px, 60px, 0); }
+    clip: rect(43px, 450px, 114px, 0); }
   92% {
-    clip: rect(27px, 450px, 102px, 0); }
+    clip: rect(40px, 450px, 99px, 0); }
   96% {
-    clip: rect(52px, 450px, 24px, 0); }
+    clip: rect(40px, 450px, 57px, 0); }
   100% {
-    clip: rect(29px, 450px, 35px, 0); } }
+    clip: rect(89px, 450px, 13px, 0); } }
     .comingSoon .glitch:before, .comingSoon .glitch:after {
       content: attr(data-text);
       position: absolute;
@@ -233,15 +233,19 @@ svg {
       background: rgba(255, 255, 255, 0.1);
       clip: rect(0, 0, 0, 0); }
     .comingSoon .glitch:after {
+      left: 2px;
       text-shadow: -1px 0 blue;
       animation: example-one-anim-1 2s infinite linear alternate-reverse; }
     .comingSoon .glitch:before {
+      left: -2px;
       text-shadow: 2px 0 #ff0078;
       animation: example-one-anim-2 3s infinite linear alternate-reverse; }
 
+.github {
+  margin: 0 0 0 10px; }
+
 .behance, .github {
   display: inline-block;
-  margin: 0 0 0 5px;
   width: 40px;
   height: 40px; }
   .behance svg, .github svg {
@@ -285,24 +289,21 @@ svg {
     -ms-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg); } }
-#was {
+.was {
   -moz-transform-origin: center;
   -ms-transform-origin: center;
   -webkit-transform-origin: center;
   transform-origin: center; }
 
-.inner.active #was {
+.inner.active .was {
   animation-delay: 0.3s;
   animation-duration: 0.6s;
   animation-name: shake;
   animation-iteration-count: 1;
   animation-direction: alternate;
   -webkit-user-select: none;
-  /* Chrome/Safari */
   -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+ */ }
+  -ms-user-select: none; }
 
 .heart {
   background-color: #2b2b2b;
