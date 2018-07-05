@@ -1,8 +1,7 @@
 'use strict';
 
 //copyright: Lukasz Szczepanski of szczepan.me
-var supportsCssVars = false;
-var ROLE_TEXT_SWITCH = 6000;
+var ROLE_TEXT_SWITCH = 4000;
 var DEF_DELAY = 300;
 var roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
 
@@ -58,21 +57,23 @@ var addEventsToHeartButton = function addEventsToHeartButton() {
 
 var addBrowserSupportClasses = function addBrowserSupportClasses() {
     var HTMLElem = document.getElementsByTagName('html')[0];
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     if (CSS.supports('display', 'grid')) {
         HTMLElem.classList.add('css-grid');
     }
-    if (CSS.supports('--fake-var', '0')) {
+    if (CSS.supports('--fake-var', 0) || isSafari) {
         HTMLElem.classList.add('css-variables');
-        supportsCssVars = true;
+        Gradient.supportsCssVars = true;
     }
 };
 
 //after document has loaded
 window.addEventListener('DOMContentLoaded', function () {
+    addBrowserSupportClasses();
     var isFirstLoad = true;
     Gradient.startTransition(isFirstLoad);
     changRoleText();
     addEventsToHeartButton();
-    addBrowserSupportClasses();
+    //toggleElementsClassnames();
 });
 //# sourceMappingURL=scripts.js.map

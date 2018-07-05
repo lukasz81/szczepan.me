@@ -1,12 +1,16 @@
 class GradientGenerator {
 
     constructor() {
-        this.FRAMES_RATE = 240;
+        this.DELAY = 10;
         this.firstGrad = true;
+        this.isFirstLoad = false;
+        this.supportsCssVars = false;
         this.prevColors = {};
     }
 
-    static getRandomRGBValue() {return Math.floor(Math.random() * 255) };
+    static getRandomRGBValue() {
+        return Math.floor(Math.random() * 255)
+    };
 
     static createRandomGradient() {
         return {
@@ -18,17 +22,21 @@ class GradientGenerator {
     addRandomGradientColorOnLoad() {
         const colorArrayOne = GradientGenerator.createRandomGradient().rgbOne;
         const colorArrayTwo = GradientGenerator.createRandomGradient().rgbTwo;
-        this.prevColors = {colorArrayOne,colorArrayTwo};
-        toggleElementsClassnames();
+        this.prevColors = {colorArrayOne, colorArrayTwo};
+        this.transitionGradient(this.isFirstLoad, colorArrayOne, colorArrayTwo);
     };
 
     startTransition(isFirstLoad) {
-        if (isFirstLoad) this.addRandomGradientColorOnLoad();
-        const targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
-        const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
-        window.transitionHandler = setInterval(() => {
-            this.transitionGradient(isFirstLoad, targetColorOne, targetColorTwo);
-        }, 1000 / this.FRAMES_RATE);
+        this.isFirstLoad = isFirstLoad;
+        if (this.isFirstLoad) {
+            this.addRandomGradientColorOnLoad();
+        } else {
+            const targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
+            const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
+            window.transitionHandler = setInterval(() => {
+                this.transitionGradient(this.isFirstLoad, targetColorOne, targetColorTwo);
+            }, this.DELAY);
+        }
     };
 
     transitionGradient(onLoad, targetColorOne, targetColorTwo) {
@@ -81,12 +89,13 @@ class GradientGenerator {
         if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
             reloadStyleTags(stopOne, stopTwo);
             document.querySelector('.heart').classList.add('active');
-            clearInterval(transitionHandler);
+            clearInterval(window.transitionHandler);
         }
     };
+
     applyChange(stopOne, stopTwo) {
         const outerElem = document.querySelector('.outer');
-        if (supportsCssVars) {
+        if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
             document.documentElement.style.setProperty(`--gradient-two`, `${stopTwo}`);
         } else {
@@ -95,32 +104,34 @@ class GradientGenerator {
         outerElem.classList.add('active');
         this.firstGrad = !this.firstGrad;
     };
+
+
+    testLoop() {
+
+        const differenceOfTheGradientColors = () => ({
+            'differenceRed': firstGrad ? (targetColorOne[0] - colorArrayOne[0]) : (targetColorTwo[0] - colorArrayTwo[0]),
+            'differenceGreen': firstGrad ? (targetColorOne[1] - colorArrayOne[1]) : (targetColorTwo[1] - colorArrayTwo[1]),
+            'differenceBlue': firstGrad ? (targetColorOne[2] - colorArrayOne[2]) : (targetColorTwo[2] - colorArrayTwo[2])
+        });
+
+        const DIFF = differenceOfTheGradientColors();
+        const DELAY = 100;
+        const RED = {
+            'sign': DIFF.differenceRed > 0 ? '+' : '-',
+            'value': Array.from(Array(Math.abs(DIFF.differenceRed)).keys())
+        };
+        // const GREEN = Array.from(Array(DIFF.differenceGreen).keys());
+        // const BLUE = Array.from(Array(DIFF.differenceBlue).keys());
+
+        for (let value of RED.value) {
+            RED.sign === '+' ? value++ : value--;
+            setTimeout(() => {
+                console.log('R: ', value, ' firstGrad: ', firstGrad, ' differenceOfTheGradientColors: ', RED);
+            }, DELAY * value);
+        }
+
+    };
 }
 
-// const testLoop = () => {
-//
-//     const differenceOfTheGradientColors = () => ({
-//         'differenceRed': firstGrad ? (targetColorOne[0] - colorArrayOne[0]) : (targetColorTwo[0] - colorArrayTwo[0]),
-//         'differenceGreen': firstGrad ? (targetColorOne[1] - colorArrayOne[1]) : (targetColorTwo[1] - colorArrayTwo[1]),
-//         'differenceBlue': firstGrad ? (targetColorOne[2] - colorArrayOne[2]) : (targetColorTwo[2] - colorArrayTwo[2])
-//     });
-//
-//     const DIFF = differenceOfTheGradientColors();
-//     const DELAY = 100;
-//     const RED = {
-//         'sign': DIFF.differenceRed > 0 ? '+' : '-',
-//         'value': Array.from(Array(Math.abs(DIFF.differenceRed)).keys())
-//     };
-//     // const GREEN = Array.from(Array(DIFF.differenceGreen).keys());
-//     // const BLUE = Array.from(Array(DIFF.differenceBlue).keys());
-//
-//     for (let value of RED.value) {
-//         RED.sign === '+' ? value++ : value--;
-//         setTimeout(() => {
-//             console.log('R: ', value, ' firstGrad: ', firstGrad, ' differenceOfTheGradientColors: ', RED);
-//         }, DELAY * value);
-//     }
-//
-// };
 
 

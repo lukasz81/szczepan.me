@@ -1,6 +1,5 @@
 //copyright: Lukasz Szczepanski of szczepan.me
-let supportsCssVars = false;
-const ROLE_TEXT_SWITCH = 6000;
+const ROLE_TEXT_SWITCH = 4000;
 const DEF_DELAY = 300;
 const roles = [
     'UX Designer',
@@ -68,20 +67,22 @@ const addEventsToHeartButton = () => {
 
 const addBrowserSupportClasses = () => {
     const HTMLElem = document.getElementsByTagName('html')[0];
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     if (CSS.supports('display', 'grid')) {
         HTMLElem.classList.add('css-grid');
     }
-    if (CSS.supports('--fake-var', '0')) {
+    if (CSS.supports('--fake-var', 0) || isSafari) {
         HTMLElem.classList.add('css-variables');
-        supportsCssVars = true;
+        Gradient.supportsCssVars = true;
     }
 };
 
 //after document has loaded
 window.addEventListener('DOMContentLoaded', () => {
+    addBrowserSupportClasses();
     let isFirstLoad = true;
     Gradient.startTransition(isFirstLoad);
     changRoleText();
     addEventsToHeartButton();
-    addBrowserSupportClasses();
+    //toggleElementsClassnames();
 });
