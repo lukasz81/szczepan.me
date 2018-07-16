@@ -3,7 +3,7 @@ export class GradientGenerator {
     constructor() {
         this.DELAY = 10;
         this.firstGrad = true;
-        this.isFirstLoad = false;
+        this.isFirstLoad = true;
         this.supportsCssVars = false;
         this.prevColors = {};
     }
@@ -95,12 +95,12 @@ export class GradientGenerator {
 
     applyChange(stopOne, stopTwo) {
         const outerElem = document.querySelector('.outer');
-        console.log('HELLO :',outerElem);
+        //console.log('HELLO :',outerElem);
         if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
             document.documentElement.style.setProperty(`--gradient-two`, `${stopTwo}`);
         } else {
-            console.log('HELLO :',outerElem);
+            //console.log('HELLO :',outerElem);
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
         }
         outerElem.classList.add('active');

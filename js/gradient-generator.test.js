@@ -1,29 +1,75 @@
-//jest.dontMock('fs');
+jest.dontMock('fs');
 const html = require('fs').readFileSync('./index.html').toString();
 const {GradientGenerator} = require('./gradient-generator.js');
 
-describe('Gradient Generator', () => {
+describe('Gradient Generator Class ', () => {
 
     document.documentElement.innerHTML = html;
 
-    it('should identify class as object A',() => {
+    it('should identify class as object', () => {
         const gradientGenerator = new GradientGenerator();
         expect(typeof gradientGenerator).toBe('object')
     });
 
-    it('should add object with colorArrayOne to "prevColors" in constructor', () => {
-        const gradientGenerator = new GradientGenerator();
-        gradientGenerator.addRandomGradientColorOnLoad();
-        console.log('B ', gradientGenerator);
-        expect('colorArrayOne' in gradientGenerator.prevColors).toBe(true);
+    describe('checks static getRandomRGBValue method', () => {
+
+        it('should create random number ranging from 0 to 255 ', () => {
+            let randomNumber = GradientGenerator.getRandomRGBValue();
+            expect(randomNumber >= 0 && randomNumber <= 255).toBe(true)
+        });
+
     });
 
-    it('should add object with colorArrayTwo to "prevColors" in constructor', () => {
-        const gradientGenerator = new GradientGenerator();
-        gradientGenerator.addRandomGradientColorOnLoad();
-        console.log('B ', gradientGenerator);
-        expect('colorArrayTwo' in gradientGenerator.prevColors).toBe(true);
-    })
+    describe('checks static createRandomGradient method', () => {
+
+        it('should create an object with "rgbOne" key', () => {
+            let rgbKeys = GradientGenerator.createRandomGradient();
+            expect('rgbOne' in rgbKeys).toBe(true)
+        });
+
+        it('should contain and array of random R,G,B values in "rgbOne"', () => {
+            let rgbKeys = GradientGenerator.createRandomGradient();
+            expect(typeof rgbKeys.rgbOne[0]).toBe('number');
+            expect(typeof rgbKeys.rgbOne[1]).toBe('number');
+            expect(typeof rgbKeys.rgbOne[2]).toBe('number');
+        });
+
+        it('should create an object with "rgbTwo" key', () => {
+            let rgbKeys = GradientGenerator.createRandomGradient();
+            expect('rgbTwo' in rgbKeys).toBe(true)
+        });
+
+        it('should contain and array of random R,G,B values in "rgbTwo"', () => {
+            let rgbKeys = GradientGenerator.createRandomGradient();
+            expect(typeof rgbKeys.rgbTwo[0]).toBe('number');
+            expect(typeof rgbKeys.rgbTwo[1]).toBe('number');
+            expect(typeof rgbKeys.rgbTwo[2]).toBe('number');
+        });
+
+    });
+
+    describe('checks addRandomGradientColorOnLoad method', () => {
+
+        it('should add object with colorArrayOne to "prevColors" in constructor', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.addRandomGradientColorOnLoad();
+            expect('colorArrayOne' in gradientGenerator.prevColors).toBe(true);
+        });
+
+        it('should add object with colorArrayTwo to "prevColors" in constructor', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.addRandomGradientColorOnLoad();
+            expect('colorArrayTwo' in gradientGenerator.prevColors).toBe(true);
+        });
+
+        it('should call "transitionGradient" with certain values', () => {
+            const gradientGenerator = new GradientGenerator();
+            let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
+            gradientGenerator.addRandomGradientColorOnLoad();
+            expect(fn).toHaveBeenCalledWith(gradientGenerator.firstGrad,gradientGenerator.prevColors.colorArrayOne,gradientGenerator.prevColors.colorArrayTwo);
+        });
+
+    });
 
 });
 

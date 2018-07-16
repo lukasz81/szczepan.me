@@ -1,6 +1,6 @@
-My awesome portfolio website: http://szczepan.me
+My awesome portfolio website: https://szczepan.me
 
-What's cool about it:
+What's cool about it (features):
 
 1) Vanilla js to randomly pick rgb values (using babel to transpile to old js).
 2) Apply rgb as background gradient.
@@ -8,6 +8,8 @@ What's cool about it:
 4) SVG <use> tags.
 5) Responsive design.
 6) Use css vars to hold and update color values.
+7) It's over "https://"
+8)
 
 #http-server: to run dev
 #sass --watch css: to watch the whole folder
