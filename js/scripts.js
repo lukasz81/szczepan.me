@@ -1,4 +1,5 @@
 //copyright: Lukasz Szczepanski of szczepan.me
+
 const ROLE_TEXT_SWITCH = 4000;
 const DEF_DELAY = 300;
 const roles = [
@@ -43,7 +44,7 @@ const toggleElementsClassnames = () => {
 };
 
 //apply styles to head
-const reloadStyleTags = (stop1, stop2) => {
+window.reloadStyleTags = (stop1, stop2) => {
     const styleElem = document.getElementById('tags');
     if (styleElem) styleElem.parentNode.removeChild(styleElem);
     const styleContent = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stop2} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stop1} }`;

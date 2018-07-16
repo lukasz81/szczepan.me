@@ -1,4 +1,4 @@
-class GradientGenerator {
+export class GradientGenerator {
 
     constructor() {
         this.DELAY = 10;
@@ -87,7 +87,7 @@ class GradientGenerator {
         this.applyChange(stopOne, stopTwo);
 
         if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
-            reloadStyleTags(stopOne, stopTwo);
+            //reloadStyleTags(stopOne, stopTwo);
             document.querySelector('.heart').classList.add('active');
             clearInterval(window.transitionHandler);
         }
@@ -95,10 +95,12 @@ class GradientGenerator {
 
     applyChange(stopOne, stopTwo) {
         const outerElem = document.querySelector('.outer');
+        console.log('HELLO :',outerElem);
         if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
             document.documentElement.style.setProperty(`--gradient-two`, `${stopTwo}`);
         } else {
+            console.log('HELLO :',outerElem);
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
         }
         outerElem.classList.add('active');

@@ -1,6 +1,7 @@
 'use strict';
 
 //copyright: Lukasz Szczepanski of szczepan.me
+
 var ROLE_TEXT_SWITCH = 4000;
 var DEF_DELAY = 300;
 var roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
@@ -33,7 +34,7 @@ var toggleElementsClassnames = function toggleElementsClassnames() {
 };
 
 //apply styles to head
-var reloadStyleTags = function reloadStyleTags(stop1, stop2) {
+window.reloadStyleTags = function (stop1, stop2) {
     var styleElem = document.getElementById('tags');
     if (styleElem) styleElem.parentNode.removeChild(styleElem);
     var styleContent = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stop2 + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stop1 + ' }';

@@ -12,11 +12,13 @@
 *.sass-cache
 *.map
 
+# Config files #
+############
+*.json
+*.lock
 
 # Folders and custom #
 ############
-http-server
-scripts_old.js
 node_modules
 *.idea
 *.babelrc

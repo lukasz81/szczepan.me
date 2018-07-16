@@ -1,10 +1,14 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var GradientGenerator = function () {
+var GradientGenerator = exports.GradientGenerator = function () {
     function GradientGenerator() {
         _classCallCheck(this, GradientGenerator);
 
@@ -89,7 +93,7 @@ var GradientGenerator = function () {
             this.applyChange(stopOne, stopTwo);
 
             if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
-                reloadStyleTags(stopOne, stopTwo);
+                //reloadStyleTags(stopOne, stopTwo);
                 document.querySelector('.heart').classList.add('active');
                 clearInterval(window.transitionHandler);
             }
@@ -98,10 +102,12 @@ var GradientGenerator = function () {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
             var outerElem = document.querySelector('.outer');
+            console.log('HELLO :', outerElem);
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);
             } else {
+                console.log('HELLO :', outerElem);
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
             }
             outerElem.classList.add('active');
