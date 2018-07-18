@@ -45,38 +45,26 @@ var GradientGenerator = exports.GradientGenerator = function () {
             // checking G
             if (currentColor[0] > targetColor[0]) {
                 currentColor[0] -= increment[0];
-                if (currentColor[0] <= targetColor[0]) {
-                    increment[0] = 0;
-                }
+                if (currentColor[0] <= targetColor[0]) increment[0] = 0;
             } else {
                 currentColor[0] += increment[0];
-                if (currentColor[0] >= targetColor[0]) {
-                    increment[0] = 0;
-                }
+                if (currentColor[0] >= targetColor[0]) increment[0] = 0;
             }
             // checking G
             if (currentColor[1] > targetColor[1]) {
                 currentColor[1] -= increment[1];
-                if (currentColor[1] <= targetColor[1]) {
-                    increment[1] = 0;
-                }
+                if (currentColor[1] <= targetColor[1]) increment[1] = 0;
             } else {
                 currentColor[1] += increment[1];
-                if (currentColor[1] >= targetColor[1]) {
-                    increment[1] = 0;
-                }
+                if (currentColor[1] >= targetColor[1]) increment[1] = 0;
             }
             // checking B
             if (currentColor[2] > targetColor[2]) {
                 currentColor[2] -= increment[2];
-                if (currentColor[2] <= targetColor[2]) {
-                    increment[2] = 0;
-                }
+                if (currentColor[2] <= targetColor[2]) increment[2] = 0;
             } else {
                 currentColor[2] += increment[2];
-                if (currentColor[2] >= targetColor[2]) {
-                    increment[2] = 0;
-                }
+                if (currentColor[2] >= targetColor[2]) increment[2] = 0;
             }
 
             var stopOne = 'rgb(' + this.prevColors.targetColorOne[0] + ' , ' + this.prevColors.targetColorOne[1] + ' , ' + this.prevColors.targetColorOne[2] + ')';
@@ -112,13 +100,13 @@ var GradientGenerator = exports.GradientGenerator = function () {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
             var outerElem = document.querySelector('.outer');
+            outerElem.classList.add('active');
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);
             } else {
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
             }
-            outerElem.classList.add('active');
             this.firstGrad = !this.firstGrad;
         }
     }], [{

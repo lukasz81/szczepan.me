@@ -89,6 +89,9 @@ describe('Gradient Generator Class ', () => {
             let fn = jest.spyOn(gradientGenerator, 'applyChange');
             gradientGenerator.transitionGradient(isPageLoad,[0,0,0],[0,0,0]);
             expect(fn).toHaveBeenCalledTimes(1);
+            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
+            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+            expect(fn).toHaveBeenCalledWith(stopOne,stopTwo)
         });
 
         it('should call "reloadStyleTags" when "transitionGradient" is called with onPageLoad equal to true', () => {
@@ -123,6 +126,29 @@ describe('Gradient Generator Class ', () => {
             expect($('#tags').length).toBe(0);
             gradientGenerator.reloadStyleTags([10,10,10],[10,10,10]);
             expect($('#tags').length).toBe(1);
+        });
+
+    });
+
+    describe('checks "applyChange" method', () => {
+
+        it('should add a classname "active" to a HTML element ', () => {
+            const gradientGenerator = new GradientGenerator();
+            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
+            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+            gradientGenerator.applyChange(stopOne,stopTwo);
+            expect($('.outer').hasClass('active')).toBe(true);
+        });
+
+        it('should add a classname "active" to a HTML element ', () => {
+            const gradientGenerator = new GradientGenerator();
+            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
+            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+            gradientGenerator.supportsCssVars = true;
+            gradientGenerator.applyChange(stopOne,stopTwo);
+            console.log($('html').prop('style'));
+            console.log('stopOne :',stopOne);
+            //expect($('html').prop('style')).toBe(true);
         });
 
     });
