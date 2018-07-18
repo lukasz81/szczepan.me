@@ -17,38 +17,37 @@ var GradientGenerator = exports.GradientGenerator = function () {
         this.isFirstLoad = true;
         this.supportsCssVars = false;
         this.prevColors = {};
+        this.testN = 0;
     }
 
     _createClass(GradientGenerator, [{
-        key: 'addRandomGradientColorOnLoad',
-        value: function addRandomGradientColorOnLoad() {
-            var colorArrayOne = GradientGenerator.createRandomGradient().rgbOne;
-            var colorArrayTwo = GradientGenerator.createRandomGradient().rgbTwo;
-            this.prevColors = { colorArrayOne: colorArrayOne, colorArrayTwo: colorArrayTwo };
-            this.transitionGradient(this.isFirstLoad, colorArrayOne, colorArrayTwo);
-        }
-    }, {
         key: 'startTransition',
         value: function startTransition(isFirstLoad) {
             var _this = this;
 
             this.isFirstLoad = isFirstLoad;
-            if (this.isFirstLoad) {
-                this.addRandomGradientColorOnLoad();
-            } else {
-                var _targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
-                var _targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
-                window.transitionHandler = setInterval(function () {
-                    _this.transitionGradient(_this.isFirstLoad, _targetColorOne, _targetColorTwo);
-                }, this.DELAY);
-            }
+            console.log('isFirstLoad: ', this.isFirstLoad);
+            var targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
+            var targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
+            if (this.isFirstLoad) this.prevColors = { targetColorOne: targetColorOne, targetColorTwo: targetColorTwo };
+
+            window.transitionHandler = setInterval(function () {
+                _this.transitionGradient(_this.isFirstLoad, targetColorOne, targetColorTwo);
+            }, this.DELAY);
         }
     }, {
         key: 'transitionGradient',
         value: function transitionGradient(onLoad, targetColorOne, targetColorTwo) {
-            var currentColor = this.firstGrad ? this.prevColors.colorArrayOne : this.prevColors.colorArrayTwo;
+            var _console;
+
+            (_console = console).log.apply(_console, ['ARGS'].concat(Array.prototype.slice.call(arguments)));
+            this.testN++;
+            var currentColor = this.firstGrad ? this.prevColors.targetColorOne : this.prevColors.targetColorTwo;
             var targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
             var increment = onLoad ? [0, 0, 0] : [1, 1, 1];
+
+            console.log('currentColor: ', currentColor);
+            console.log('this.prevColors: ', this.prevColors);
 
             // checking G
             if (currentColor[0] > targetColor[0]) {
@@ -87,85 +86,48 @@ var GradientGenerator = exports.GradientGenerator = function () {
                 }
             }
 
-            var stopOne = 'rgb(' + this.prevColors.colorArrayOne[0] + ' , ' + this.prevColors.colorArrayOne[1] + ' , ' + this.prevColors.colorArrayOne[2] + ')';
-            var stopTwo = 'rgb(' + this.prevColors.colorArrayTwo[0] + ' , ' + this.prevColors.colorArrayTwo[1] + ' , ' + this.prevColors.colorArrayTwo[2] + ')';
+            var stopOne = 'rgb(' + this.prevColors.targetColorOne[0] + ' , ' + this.prevColors.targetColorOne[1] + ' , ' + this.prevColors.targetColorOne[2] + ')';
+            var stopTwo = 'rgb(' + this.prevColors.targetColorTwo[0] + ' , ' + this.prevColors.targetColorTwo[1] + ' , ' + this.prevColors.targetColorTwo[2] + ')';
 
             this.applyChange(stopOne, stopTwo);
 
             if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
-                //reloadStyleTags(stopOne, stopTwo);
+                this.reloadStyleTags(stopOne, stopTwo);
                 document.querySelector('.heart').classList.add('active');
                 clearInterval(window.transitionHandler);
             }
+
+            console.log('<= HOLA =>', this.testN);
+        }
+    }, {
+        key: 'reloadStyleTags',
+
+
+        //apply styles to head
+        value: function reloadStyleTags(stopOne, stopTwo) {
+            var styleElem = document.getElementById('tags');
+            if (styleElem) styleElem.parentNode.removeChild(styleElem);
+            var styleContent = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stopTwo + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stopOne + ' }';
+            var styleSheet = document.createElement('style');
+            styleSheet.id = 'tags';
+            styleSheet.innerHTML = styleContent;
+            document.head.appendChild(styleSheet);
         }
     }, {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
+
             var outerElem = document.querySelector('.outer');
-            //console.log('HELLO :',outerElem);
+
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);
             } else {
-                //console.log('HELLO :',outerElem);
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
-            }
+            };
+
             outerElem.classList.add('active');
             this.firstGrad = !this.firstGrad;
-        }
-    }, {
-        key: 'testLoop',
-        value: function testLoop() {
-
-            var differenceOfTheGradientColors = function differenceOfTheGradientColors() {
-                return {
-                    'differenceRed': firstGrad ? targetColorOne[0] - colorArrayOne[0] : targetColorTwo[0] - colorArrayTwo[0],
-                    'differenceGreen': firstGrad ? targetColorOne[1] - colorArrayOne[1] : targetColorTwo[1] - colorArrayTwo[1],
-                    'differenceBlue': firstGrad ? targetColorOne[2] - colorArrayOne[2] : targetColorTwo[2] - colorArrayTwo[2]
-                };
-            };
-
-            var DIFF = differenceOfTheGradientColors();
-            var DELAY = 100;
-            var RED = {
-                'sign': DIFF.differenceRed > 0 ? '+' : '-',
-                'value': Array.from(Array(Math.abs(DIFF.differenceRed)).keys())
-            };
-            // const GREEN = Array.from(Array(DIFF.differenceGreen).keys());
-            // const BLUE = Array.from(Array(DIFF.differenceBlue).keys());
-
-            var _loop = function _loop(_value) {
-                RED.sign === '+' ? _value++ : _value--;
-                setTimeout(function () {
-                    console.log('R: ', _value, ' firstGrad: ', firstGrad, ' differenceOfTheGradientColors: ', RED);
-                }, DELAY * _value);
-                value = _value;
-            };
-
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = RED.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var value = _step.value;
-
-                    _loop(value);
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
         }
     }], [{
         key: 'getRandomRGBValue',

@@ -33,17 +33,6 @@ var toggleElementsClassnames = function toggleElementsClassnames() {
     });
 };
 
-//apply styles to head
-window.reloadStyleTags = function (stop1, stop2) {
-    var styleElem = document.getElementById('tags');
-    if (styleElem) styleElem.parentNode.removeChild(styleElem);
-    var styleContent = '.comingSoon .glitch:before{ text-shadow:2px 0 ' + stop2 + ' }\n.comingSoon .glitch:after{ text-shadow:2px 0 ' + stop1 + ' }';
-    var styleSheet = document.createElement('style');
-    styleSheet.id = 'tags';
-    styleSheet.innerHTML = styleContent;
-    document.head.appendChild(styleSheet);
-};
-
 var addEventsToHeartButton = function addEventsToHeartButton() {
     var heartElem = document.querySelector('.heart');
     var innerElm = document.querySelector('.inner');
@@ -75,6 +64,5 @@ window.addEventListener('DOMContentLoaded', function () {
     Gradient.startTransition(isFirstLoad);
     changRoleText();
     addEventsToHeartButton();
-    //toggleElementsClassnames();
 });
 //# sourceMappingURL=scripts.js.map

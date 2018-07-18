@@ -48,28 +48,44 @@ describe('Gradient Generator Class ', () => {
 
     });
 
-    describe('checks addRandomGradientColorOnLoad method', () => {
+    describe('checks startTransition method', () => {
 
-        it('should add object with colorArrayOne to "prevColors" in constructor', () => {
-            const gradientGenerator = new GradientGenerator();
-            gradientGenerator.addRandomGradientColorOnLoad();
-            expect('colorArrayOne' in gradientGenerator.prevColors).toBe(true);
-        });
+        // it('should set "isFirstLoad" in constructor to false', () => {
+        //     const gradientGenerator = new GradientGenerator();
+        //     const expectedValue = false;
+        //     gradientGenerator.startTransition(expectedValue);
+        //     expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
+        // });
 
-        it('should add object with colorArrayTwo to "prevColors" in constructor', () => {
-            const gradientGenerator = new GradientGenerator();
-            gradientGenerator.addRandomGradientColorOnLoad();
-            expect('colorArrayTwo' in gradientGenerator.prevColors).toBe(true);
-        });
+        // it('should set "isFirstLoad" in constructor to true', () => {
+        //     const gradientGenerator = new GradientGenerator();
+        //     const expectedValue = true;
+        //     gradientGenerator.startTransition(expectedValue);
+        //     expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
+        // });
 
-        it('should call "transitionGradient" with certain values', () => {
+        it('should call "transitionGradient"', (done) => {
             const gradientGenerator = new GradientGenerator();
             let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
-            gradientGenerator.addRandomGradientColorOnLoad();
-            expect(fn).toHaveBeenCalledWith(gradientGenerator.firstGrad,gradientGenerator.prevColors.colorArrayOne,gradientGenerator.prevColors.colorArrayTwo);
+            gradientGenerator.startTransition(true);
+            setTimeout(() => {
+                expect(fn).toHaveBeenCalled();
+                done();
+            },300)
         });
 
     });
+
+    // describe('checks transitionGradient method', () => {
+    //
+    //     it('should set "isFirstLoad" in constructor to false', () => {
+    //         const gradientGenerator = new GradientGenerator();
+    //         const expectedValue = false;
+    //         gradientGenerator.startTransition(expectedValue);
+    //         expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
+    //     });
+    //
+    // });
 
 });
 
