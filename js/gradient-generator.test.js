@@ -1,10 +1,13 @@
 jest.dontMock('fs');
+const $ = require('jquery');
 const html = require('fs').readFileSync('./index.html').toString();
 const {GradientGenerator} = require('./gradient-generator.js');
 
 describe('Gradient Generator Class ', () => {
 
-    document.documentElement.innerHTML = html;
+    beforeEach( () => {
+        document.documentElement.innerHTML = html;
+    });
 
     it('should identify class as object', () => {
         const gradientGenerator = new GradientGenerator();
@@ -50,42 +53,79 @@ describe('Gradient Generator Class ', () => {
 
     describe('checks startTransition method', () => {
 
-        // it('should set "isFirstLoad" in constructor to false', () => {
-        //     const gradientGenerator = new GradientGenerator();
-        //     const expectedValue = false;
-        //     gradientGenerator.startTransition(expectedValue);
-        //     expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
-        // });
-
-        // it('should set "isFirstLoad" in constructor to true', () => {
-        //     const gradientGenerator = new GradientGenerator();
-        //     const expectedValue = true;
-        //     gradientGenerator.startTransition(expectedValue);
-        //     expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
-        // });
-
-        it('should call "transitionGradient"', (done) => {
+        it('should set "isFirstLoad" in constructor to true', () => {
             const gradientGenerator = new GradientGenerator();
-            let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
+            const expectedValue = true;
+            gradientGenerator.startTransition(expectedValue);
+            expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
+        });
+
+        it('should call "transitionGradient"', done => {
+
+            const gradientGenerator = new GradientGenerator();
             gradientGenerator.startTransition(true);
-            setTimeout(() => {
+            let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
+
+            setTimeout( () => {
                 expect(fn).toHaveBeenCalled();
                 done();
-            },300)
+            }, 10)
+        });
+
+        it('should set "isFirstLoad" in constructor to false', () => {
+            const gradientGenerator = new GradientGenerator();
+            const expectedValue = false;
+            gradientGenerator.startTransition(expectedValue);
+            expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
         });
 
     });
 
-    // describe('checks transitionGradient method', () => {
-    //
-    //     it('should set "isFirstLoad" in constructor to false', () => {
-    //         const gradientGenerator = new GradientGenerator();
-    //         const expectedValue = false;
-    //         gradientGenerator.startTransition(expectedValue);
-    //         expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
-    //     });
-    //
-    // });
+    describe('checks "transitionGradient" method', () => {
+
+        it('should call "applyChange" once only if it is pageLoad', () => {
+            let isPageLoad = true;
+            const gradientGenerator = new GradientGenerator();
+            let fn = jest.spyOn(gradientGenerator, 'applyChange');
+            gradientGenerator.transitionGradient(isPageLoad,[0,0,0],[0,0,0]);
+            expect(fn).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call "reloadStyleTags" when "transitionGradient" is called with onPageLoad equal to true', () => {
+            let isPageLoad = true;
+            const gradientGenerator = new GradientGenerator();
+            let fn = jest.spyOn(gradientGenerator, 'reloadStyleTags');
+            gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
+            expect(fn).toHaveBeenCalledTimes(1);
+        });
+
+        it('should add a class name="active" to html element', () => {
+            let isPageLoad = true;
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
+            expect($('.heart').hasClass('active')).toBe(true);
+        });
+
+        it('should call clearInterval', () => {
+            jest.useFakeTimers();
+            let isPageLoad = true;
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
+            expect(clearInterval.mock.calls.length).toBe(1);
+        });
+
+    });
+
+    describe('checks "reloadStyleTags" method', () => {
+
+        it('should add a style tag with id="tags" to HTML document after running "reloadStyleTags" ', () => {
+            const gradientGenerator = new GradientGenerator();
+            expect($('#tags').length).toBe(0);
+            gradientGenerator.reloadStyleTags([10,10,10],[10,10,10]);
+            expect($('#tags').length).toBe(1);
+        });
+
+    });
 
 });
 

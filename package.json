@@ -2,7 +2,7 @@
   "name": "szczepan.me",
   "version": "0.0.1",
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --coverage"
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -14,5 +14,8 @@
     "babel-jest": "^23.2.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
   }
 }

@@ -5,8 +5,8 @@ export class GradientGenerator {
         this.firstGrad = true;
         this.isFirstLoad = true;
         this.supportsCssVars = false;
-        this.prevColors = {};
-        this.testN = 0;
+        this.prevColors = {targetColorOne:[0,0,0],targetColorTwo:[0,0,0]};
+        this.transitionHandler = null;
     }
 
     static getRandomRGBValue() {
@@ -22,25 +22,21 @@ export class GradientGenerator {
 
     startTransition(isFirstLoad) {
         this.isFirstLoad = isFirstLoad;
-        console.log('isFirstLoad: ',this.isFirstLoad);
         const targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
         const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
         if (this.isFirstLoad) this.prevColors = {targetColorOne, targetColorTwo};
 
-        window.transitionHandler = setInterval( () => {
+        this.transitionHandler = setInterval( () => {
             this.transitionGradient(this.isFirstLoad, targetColorOne, targetColorTwo);
         }, this.DELAY);
 
     };
+
     transitionGradient(onLoad, targetColorOne, targetColorTwo) {
-        console.log('ARGS',...arguments);
-        this.testN++;
+
         let currentColor = this.firstGrad ? this.prevColors.targetColorOne : this.prevColors.targetColorTwo;
         let targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
         let increment = onLoad ? [0, 0, 0] : [1, 1, 1];
-
-        console.log('currentColor: ',currentColor);
-        console.log('this.prevColors: ',this.prevColors);
 
         // checking G
         if (currentColor[0] > targetColor[0]) {
@@ -84,13 +80,14 @@ export class GradientGenerator {
 
         this.applyChange(stopOne, stopTwo);
 
-        if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
+        let incrementTotalValueIsZero = increment.reduce(sum => sum) === 0;
+
+        if (incrementTotalValueIsZero) {
             this.reloadStyleTags(stopOne, stopTwo);
             document.querySelector('.heart').classList.add('active');
-            clearInterval(window.transitionHandler);
+            clearInterval(this.transitionHandler);
         }
 
-        console.log('<= HOLA =>', this.testN);
     };
 
     //apply styles to head
@@ -105,19 +102,15 @@ export class GradientGenerator {
     };
 
     applyChange(stopOne, stopTwo) {
-
         const outerElem = document.querySelector('.outer');
-
         if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
             document.documentElement.style.setProperty(`--gradient-two`, `${stopTwo}`);
         } else {
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
-        };
-
+        }
         outerElem.classList.add('active');
         this.firstGrad = !this.firstGrad;
-
     };
 
 

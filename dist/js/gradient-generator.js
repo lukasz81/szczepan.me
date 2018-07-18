@@ -16,8 +16,8 @@ var GradientGenerator = exports.GradientGenerator = function () {
         this.firstGrad = true;
         this.isFirstLoad = true;
         this.supportsCssVars = false;
-        this.prevColors = {};
-        this.testN = 0;
+        this.prevColors = { targetColorOne: [0, 0, 0], targetColorTwo: [0, 0, 0] };
+        this.transitionHandler = null;
     }
 
     _createClass(GradientGenerator, [{
@@ -26,28 +26,21 @@ var GradientGenerator = exports.GradientGenerator = function () {
             var _this = this;
 
             this.isFirstLoad = isFirstLoad;
-            console.log('isFirstLoad: ', this.isFirstLoad);
             var targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
             var targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
             if (this.isFirstLoad) this.prevColors = { targetColorOne: targetColorOne, targetColorTwo: targetColorTwo };
 
-            window.transitionHandler = setInterval(function () {
+            this.transitionHandler = setInterval(function () {
                 _this.transitionGradient(_this.isFirstLoad, targetColorOne, targetColorTwo);
             }, this.DELAY);
         }
     }, {
         key: 'transitionGradient',
         value: function transitionGradient(onLoad, targetColorOne, targetColorTwo) {
-            var _console;
 
-            (_console = console).log.apply(_console, ['ARGS'].concat(Array.prototype.slice.call(arguments)));
-            this.testN++;
             var currentColor = this.firstGrad ? this.prevColors.targetColorOne : this.prevColors.targetColorTwo;
             var targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
             var increment = onLoad ? [0, 0, 0] : [1, 1, 1];
-
-            console.log('currentColor: ', currentColor);
-            console.log('this.prevColors: ', this.prevColors);
 
             // checking G
             if (currentColor[0] > targetColor[0]) {
@@ -91,13 +84,15 @@ var GradientGenerator = exports.GradientGenerator = function () {
 
             this.applyChange(stopOne, stopTwo);
 
-            if (increment[0] === 0 && increment[1] === 0 && increment[2] === 0) {
+            var incrementTotalValueIsZero = increment.reduce(function (sum) {
+                return sum;
+            }) === 0;
+
+            if (incrementTotalValueIsZero) {
                 this.reloadStyleTags(stopOne, stopTwo);
                 document.querySelector('.heart').classList.add('active');
-                clearInterval(window.transitionHandler);
+                clearInterval(this.transitionHandler);
             }
-
-            console.log('<= HOLA =>', this.testN);
         }
     }, {
         key: 'reloadStyleTags',
@@ -116,16 +111,13 @@ var GradientGenerator = exports.GradientGenerator = function () {
     }, {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
-
             var outerElem = document.querySelector('.outer');
-
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);
             } else {
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
-            };
-
+            }
             outerElem.classList.add('active');
             this.firstGrad = !this.firstGrad;
         }
