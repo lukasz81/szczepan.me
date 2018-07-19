@@ -83,14 +83,16 @@ describe('Gradient Generator Class ', () => {
 
     describe('checks "transitionGradient" method', () => {
 
+        let gradientGenerator = {prevColors:{targetColorOne:[0,0,0],targetColorTwo:[0,0,0]}};
+        const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
+        const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+
         it('should call "applyChange" once only if it is pageLoad', () => {
             let isPageLoad = true;
             const gradientGenerator = new GradientGenerator();
             let fn = jest.spyOn(gradientGenerator, 'applyChange');
             gradientGenerator.transitionGradient(isPageLoad,[0,0,0],[0,0,0]);
             expect(fn).toHaveBeenCalledTimes(1);
-            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
-            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
             expect(fn).toHaveBeenCalledWith(stopOne,stopTwo)
         });
 
@@ -132,23 +134,38 @@ describe('Gradient Generator Class ', () => {
 
     describe('checks "applyChange" method', () => {
 
-        it('should add a classname "active" to a HTML element ', () => {
+        let gradientGenerator = {prevColors:{targetColorOne:[0,0,0],targetColorTwo:[0,0,0]}};
+        const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
+        const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+
+        it('should add a className "active" to a HTML element ', () => {
             const gradientGenerator = new GradientGenerator();
-            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
-            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
             gradientGenerator.applyChange(stopOne,stopTwo);
             expect($('.outer').hasClass('active')).toBe(true);
         });
 
-        it('should add a classname "active" to a HTML element ', () => {
+        it('should add style tag with gradient properties to HTML document when does not supportsCssVars', () => {
             const gradientGenerator = new GradientGenerator();
-            const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
-            const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+            gradientGenerator.supportsCssVars = false;
+            gradientGenerator.applyChange(stopOne,stopTwo);
+            expect($('html').prop('style')['GradientOne']).toBe(undefined);
+            expect($('html').prop('style')['GradientTwo']).toBe(undefined);
+        });
+
+        it('should add style tag with gradient properties to HTML document when supportsCssVars', () => {
+            const gradientGenerator = new GradientGenerator();
             gradientGenerator.supportsCssVars = true;
             gradientGenerator.applyChange(stopOne,stopTwo);
-            console.log($('html').prop('style'));
-            console.log('stopOne :',stopOne);
-            //expect($('html').prop('style')).toBe(true);
+            expect($('html').prop('style')['GradientOne']).toBe(stopOne);
+            expect($('html').prop('style')['GradientTwo']).toBe(stopTwo);
+        });
+
+        it('should toggle firstGrad property', () => {
+            const gradientGenerator = new GradientGenerator();
+            const curentGradientValue = gradientGenerator.firstGrad;
+            expect(gradientGenerator.firstGrad).toBe(curentGradientValue);
+            gradientGenerator.applyChange(stopOne,stopTwo);
+            expect(gradientGenerator.firstGrad).toBe(!curentGradientValue);
         });
 
     });

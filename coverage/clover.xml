@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1531927881038" clover="3.2.0">
-  <project timestamp="1531927881038" name="All files">
+<coverage generated="1531992803094" clover="3.2.0">
+  <project timestamp="1531992803095" name="All files">
     <metrics statements="54" coveredstatements="48" conditionals="32" coveredconditionals="19" methods="9" coveredmethods="9" elements="95" coveredelements="76" complexity="0" loc="54" ncloc="54" packages="1" files="1" classes="1">
       <file name="gradient-generator.js" path="/Users/lusz/Desktop/szczepan.me/js/gradient-generator.js">
         <metrics statements="54" coveredstatements="48" conditionals="32" coveredconditionals="19" methods="9" coveredmethods="9"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
+        <line num="4" count="13" type="stmt"/>
+        <line num="5" count="13" type="stmt"/>
+        <line num="6" count="13" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="8" count="13" type="stmt"/>
+        <line num="9" count="13" type="stmt"/>
         <line num="13" count="61" type="stmt"/>
         <line num="17" count="10" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
@@ -51,13 +51,13 @@
         <line num="87" count="7" type="stmt"/>
         <line num="88" count="7" type="stmt"/>
         <line num="89" count="7" type="stmt"/>
-        <line num="93" count="8" type="stmt"/>
-        <line num="94" count="8" type="stmt"/>
-        <line num="95" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="10" type="stmt"/>
+        <line num="94" count="10" type="stmt"/>
+        <line num="95" count="10" type="cond" truecount="2" falsecount="0"/>
         <line num="96" count="1" type="stmt"/>
         <line num="97" count="1" type="stmt"/>
-        <line num="99" count="7" type="stmt"/>
-        <line num="101" count="8" type="stmt"/>
+        <line num="99" count="9" type="stmt"/>
+        <line num="101" count="10" type="stmt"/>
       </file>
     </metrics>
   </project>

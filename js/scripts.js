@@ -1,5 +1,4 @@
 //copyright: Lukasz Szczepanski of szczepan.me
-
 const ROLE_TEXT_SWITCH = 4000;
 const DEF_DELAY = 300;
 const roles = [
@@ -15,7 +14,7 @@ const roles = [
     'Human'
 ];
 
-let Gradient = new GradientGenerator();
+const Gradient = new GradientGenerator();
 
 const changRoleText = () => {
     setInterval(() => {
@@ -34,7 +33,7 @@ const changRoleText = () => {
     }, ROLE_TEXT_SWITCH);
 };
 
-const toggleElementsClassnames = () => {
+const toggleElementsClassNames = () => {
     const elements = '.outer , .inner , .heart';
     const elementsList = document.querySelectorAll(elements);
     const elementsArray = Array.from(elementsList);
@@ -47,7 +46,7 @@ const addEventsToHeartButton = () => {
     const heartElem = document.querySelector('.heart');
     const innerElm = document.querySelector('.inner');
     heartElem.addEventListener('click', () => {
-        toggleElementsClassnames();
+        toggleElementsClassNames();
         setTimeout(() => {
             Gradient.startTransition(false);
             innerElm.classList.add('active');

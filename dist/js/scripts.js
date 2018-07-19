@@ -1,7 +1,6 @@
 'use strict';
 
 //copyright: Lukasz Szczepanski of szczepan.me
-
 var ROLE_TEXT_SWITCH = 4000;
 var DEF_DELAY = 300;
 var roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
@@ -24,7 +23,7 @@ var changRoleText = function changRoleText() {
     }, ROLE_TEXT_SWITCH);
 };
 
-var toggleElementsClassnames = function toggleElementsClassnames() {
+var toggleElementsClassNames = function toggleElementsClassNames() {
     var elements = '.outer , .inner , .heart';
     var elementsList = document.querySelectorAll(elements);
     var elementsArray = Array.from(elementsList);
@@ -37,7 +36,7 @@ var addEventsToHeartButton = function addEventsToHeartButton() {
     var heartElem = document.querySelector('.heart');
     var innerElm = document.querySelector('.inner');
     heartElem.addEventListener('click', function () {
-        toggleElementsClassnames();
+        toggleElementsClassNames();
         setTimeout(function () {
             Gradient.startTransition(false);
             innerElm.classList.add('active');
