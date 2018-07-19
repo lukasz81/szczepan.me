@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head profile="http://www.w3.org/2005/10/profile">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900" rel="stylesheet" >
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900" rel="stylesheet">
     <meta name="Description" content="Author: Lukasz Szczepanski, Copyrights: Lukasz Szczepanski">
     <title>szczepan.me</title>
     <link rel="icon" type="image/png" href="images/szczepan_ico.png"/>
     <link rel="stylesheet" href="css/styles.css" media="screen">
-    <script> let exports = {}; </script>
-    <script src="dist/js/scripts.js" defer></script>
+    <script>let exports = {};</script>
+    <script src="dist/js/gradient-generator.js"></script>
+    <script src="dist/js/scripts.js"></script>
+    <script>
+        let Init = new InitScripts();
+        window.addEventListener('DOMContentLoaded',() => {
+            Init.addBrowserSupportClasses();
+            Init.startTransition();
+            Init.changRoleText();
+            Init.addEventsToHeartButton();
+        });
+    </script>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
 </head>
 <body>
@@ -60,6 +70,5 @@
         <span class="heart"></span>
     </div>
 </main>
-<script src="dist/js/gradient-generator.js"></script>
 </body>
 </html>
