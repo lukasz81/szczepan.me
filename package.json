@@ -1,9 +1,23 @@
 {
   "name": "szczepan.me",
   "version": "0.0.1",
-  "dependencies": {},
+  "scripts": {
+    "test": "jest --env=jsdom --coverage",
+    "babel-version": "babel --version",
+    "babel-run": "./node_modules/.bin/babel ./js/scripts.js --out-file ./dist/js/scripts.js"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules"
+    ]
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-jest": "^23.2.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
   }
 }
