@@ -8,8 +8,8 @@ What's cool about it (features):
 4) SVG <use> tags.
 5) Responsive design.
 6) Use css vars to hold and update color values.
-7) It's over "https://"
-8)
+7) It's over "https://".
+8) Test Driven Development.
 
 #http-server: to run dev
 #sass --watch css: to watch the whole folder
