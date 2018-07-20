@@ -1,8 +1,7 @@
-//copyright: Lukasz Szczepanski of szczepan.me
-
 export class InitScripts {
 
-    constructor() {
+    constructor(Gradient) {
+        //super();
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
         this.roles = [
@@ -17,9 +16,18 @@ export class InitScripts {
             'Coder',
             'Human'
         ];
-
-        this.Gradient = new GradientGenerator();
+        this.Gradient = Gradient;
+        console.log('Gradient: ',this.Gradient);
     }
+
+    static toggleElementsClassNames() {
+        const elements = '.outer , .inner , .heart';
+        const elementsList = document.querySelectorAll(elements);
+        const elementsArray = Array.from(elementsList);
+        elementsArray.forEach(element => {
+            element.classList.toggle('active');
+        });
+    };
 
     changRoleText() {
         setInterval(() => {
@@ -39,22 +47,13 @@ export class InitScripts {
         }, this.ROLE_TEXT_SWITCH);
     };
 
-    toggleElementsClassNames() {
-        const elements = '.outer , .inner , .heart';
-        const elementsList = document.querySelectorAll(elements);
-        const elementsArray = Array.from(elementsList);
-        elementsArray.forEach(element => {
-            element.classList.toggle('active');
-        });
-    };
-
     addEventsToHeartButton() {
         const heartElem = document.querySelector('.heart');
         const innerElm = document.querySelector('.inner');
         heartElem.addEventListener('click', () => {
-            this.toggleElementsClassNames();
+            InitScripts.toggleElementsClassNames();
             setTimeout(() => {
-                this.Gradient.startTransition(false);
+                Gradient.startTransition(false);
                 innerElm.classList.add('active');
             }, this.DEF_DELAY);
         })
@@ -68,14 +67,13 @@ export class InitScripts {
         }
         if (CSS.supports('--fake-var', 0) || isSafari) {
             HTMLElem.classList.add('css-variables');
-            this.Gradient.supportsCssVars = true;
+            Gradient.supportsCssVars = true;
         }
     };
 
-    startTransition() {
-        let isFirstLoad = true;
-        this.Gradient.startTransition(isFirstLoad);
+    startInitialTransition(isOnLoad) {
+        Gradient.startTransition(isOnLoad);
     }
 
-}
 
+}

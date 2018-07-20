@@ -1,6 +1,8 @@
 jest.dontMock('fs');
 const $ = require('jquery');
 const html = require('fs').readFileSync('./index.html').toString();
+const {InitScripts} = require('./scripts.js');
+const {GradientGenerator} = require('./gradient-generator.js');
 
 describe('Gradient Generator Class ', () => {
 
@@ -8,11 +10,10 @@ describe('Gradient Generator Class ', () => {
         document.documentElement.innerHTML = html;
     });
 
-    it('should recognise global window in node env', () => {
-        expect(typeof global.window).toBe('object');
+    it('should identify class as object', () => {
+        const Gradient = new GradientGenerator();
+        const initScript = new InitScripts(Gradient);
+        expect(typeof initScript).toBe('object');
     });
 
-    it('should recognise global window in node env', () => {
-        $('.heart').click();
-    });
 });

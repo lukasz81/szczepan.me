@@ -6,14 +6,14 @@
     <title>szczepan.me</title>
     <link rel="icon" type="image/png" href="images/szczepan_ico.png"/>
     <link rel="stylesheet" href="css/styles.css" media="screen">
-    <script>let exports = {};</script>
-    <script src="dist/js/gradient-generator.js"></script>
-    <script src="dist/js/scripts.js"></script>
+    <script src="./dist/js/gradient-generator.js"></script>
+    <script src="./dist/js/scripts.js"></script>
     <script>
-        let Init = new InitScripts();
+        let Gradient = new GradientGenerator();
+        let Init = new InitScripts(Gradient);
         window.addEventListener('DOMContentLoaded',() => {
             Init.addBrowserSupportClasses();
-            Init.startTransition();
+            Init.startInitialTransition(true);
             Init.changRoleText();
             Init.addEventsToHeartButton();
         });

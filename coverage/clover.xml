@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532004323935" clover="3.2.0">
-  <project timestamp="1532004323935" name="All files">
-    <metrics statements="54" coveredstatements="48" conditionals="32" coveredconditionals="19" methods="9" coveredmethods="9" elements="95" coveredelements="76" complexity="0" loc="54" ncloc="54" packages="1" files="1" classes="1">
+<coverage generated="1532090301420" clover="3.2.0">
+  <project timestamp="1532090301420" name="All files">
+    <metrics statements="90" coveredstatements="53" conditionals="38" coveredconditionals="19" methods="20" coveredmethods="10" elements="148" coveredelements="82" complexity="0" loc="90" ncloc="90" packages="1" files="2" classes="2">
       <file name="gradient-generator.js" path="/Users/lusz/Desktop/szczepan.me/js/gradient-generator.js">
         <metrics statements="54" coveredstatements="48" conditionals="32" coveredconditionals="19" methods="9" coveredmethods="9"/>
-        <line num="4" count="13" type="stmt"/>
-        <line num="5" count="13" type="stmt"/>
-        <line num="6" count="13" type="stmt"/>
-        <line num="7" count="13" type="stmt"/>
-        <line num="8" count="13" type="stmt"/>
-        <line num="9" count="13" type="stmt"/>
+        <line num="4" count="14" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
+        <line num="9" count="14" type="stmt"/>
         <line num="13" count="61" type="stmt"/>
         <line num="17" count="10" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
@@ -58,6 +58,45 @@
         <line num="97" count="1" type="stmt"/>
         <line num="99" count="9" type="stmt"/>
         <line num="101" count="10" type="stmt"/>
+      </file>
+      <file name="scripts.js" path="/Users/lusz/Desktop/szczepan.me/js/scripts.js">
+        <metrics statements="36" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="11" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
       </file>
     </metrics>
   </project>

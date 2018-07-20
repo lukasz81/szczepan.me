@@ -8,17 +8,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-//copyright: Lukasz Szczepanski of szczepan.me
-
 var InitScripts = exports.InitScripts = function () {
-    function InitScripts() {
+    function InitScripts(Gradient) {
         _classCallCheck(this, InitScripts);
 
+        //super();
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
-
-        this.Gradient = new GradientGenerator();
+        this.Gradient = Gradient;
+        console.log('Gradient: ', this.Gradient);
     }
 
     _createClass(InitScripts, [{
@@ -42,16 +41,6 @@ var InitScripts = exports.InitScripts = function () {
             }, this.ROLE_TEXT_SWITCH);
         }
     }, {
-        key: 'toggleElementsClassNames',
-        value: function toggleElementsClassNames() {
-            var elements = '.outer , .inner , .heart';
-            var elementsList = document.querySelectorAll(elements);
-            var elementsArray = Array.from(elementsList);
-            elementsArray.forEach(function (element) {
-                element.classList.toggle('active');
-            });
-        }
-    }, {
         key: 'addEventsToHeartButton',
         value: function addEventsToHeartButton() {
             var _this2 = this;
@@ -59,9 +48,9 @@ var InitScripts = exports.InitScripts = function () {
             var heartElem = document.querySelector('.heart');
             var innerElm = document.querySelector('.inner');
             heartElem.addEventListener('click', function () {
-                _this2.toggleElementsClassNames();
+                InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
-                    _this2.Gradient.startTransition(false);
+                    Gradient.startTransition(false);
                     innerElm.classList.add('active');
                 }, _this2.DEF_DELAY);
             });
@@ -76,14 +65,23 @@ var InitScripts = exports.InitScripts = function () {
             }
             if (CSS.supports('--fake-var', 0) || isSafari) {
                 HTMLElem.classList.add('css-variables');
-                this.Gradient.supportsCssVars = true;
+                Gradient.supportsCssVars = true;
             }
         }
     }, {
-        key: 'startTransition',
-        value: function startTransition() {
-            var isFirstLoad = true;
-            this.Gradient.startTransition(isFirstLoad);
+        key: 'startInitialTransition',
+        value: function startInitialTransition(isOnLoad) {
+            Gradient.startTransition(isOnLoad);
+        }
+    }], [{
+        key: 'toggleElementsClassNames',
+        value: function toggleElementsClassNames() {
+            var elements = '.outer , .inner , .heart';
+            var elementsList = document.querySelectorAll(elements);
+            var elementsArray = Array.from(elementsList);
+            elementsArray.forEach(function (element) {
+                element.classList.toggle('active');
+            });
         }
     }]);
 

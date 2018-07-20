@@ -2,7 +2,9 @@
   "name": "szczepan.me",
   "version": "0.0.1",
   "scripts": {
-    "test": "jest --env=jsdom --coverage"
+    "test": "jest --env=jsdom --coverage",
+    "babel-version": "babel --version",
+    "babel-run": "./node_modules/.bin/babel ./js/scripts.js --out-file ./dist/js/scripts.js"
   },
   "jest": {
     "transformIgnorePatterns": [
