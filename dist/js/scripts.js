@@ -12,12 +12,10 @@ var InitScripts = exports.InitScripts = function () {
     function InitScripts(Gradient) {
         _classCallCheck(this, InitScripts);
 
-        //super();
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
         this.Gradient = Gradient;
-        console.log('Gradient: ', this.Gradient);
     }
 
     _createClass(InitScripts, [{
@@ -28,7 +26,7 @@ var InitScripts = exports.InitScripts = function () {
             setInterval(function () {
                 var roleElem = document.querySelector('.role');
                 var roles = _this.roles;
-                var role = roles[Math.floor(Math.random() * roles.length)];
+                var role = InitScripts.pickRandomRole(roles);
                 var text = role + '.';
                 roleElem.innerHTML = text;
                 roleElem.setAttribute('data-text', ' ');
@@ -50,7 +48,7 @@ var InitScripts = exports.InitScripts = function () {
             heartElem.addEventListener('click', function () {
                 InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
-                    Gradient.startTransition(false);
+                    _this2.Gradient.startTransition(false);
                     innerElm.classList.add('active');
                 }, _this2.DEF_DELAY);
             });
@@ -60,18 +58,19 @@ var InitScripts = exports.InitScripts = function () {
         value: function addBrowserSupportClasses() {
             var HTMLElem = document.getElementsByTagName('html')[0];
             var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
             if (CSS.supports('display', 'grid')) {
                 HTMLElem.classList.add('css-grid');
             }
             if (CSS.supports('--fake-var', 0) || isSafari) {
                 HTMLElem.classList.add('css-variables');
-                Gradient.supportsCssVars = true;
+                this.Gradient.supportsCssVars = true;
             }
         }
     }, {
         key: 'startInitialTransition',
         value: function startInitialTransition(isOnLoad) {
-            Gradient.startTransition(isOnLoad);
+            this.Gradient.startTransition(isOnLoad);
         }
     }], [{
         key: 'toggleElementsClassNames',
@@ -82,6 +81,11 @@ var InitScripts = exports.InitScripts = function () {
             elementsArray.forEach(function (element) {
                 element.classList.toggle('active');
             });
+        }
+    }, {
+        key: 'pickRandomRole',
+        value: function pickRandomRole(roles) {
+            return roles[Math.floor(Math.random() * roles.length)];
         }
     }]);
 

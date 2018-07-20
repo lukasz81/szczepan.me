@@ -1,7 +1,6 @@
 export class InitScripts {
 
     constructor(Gradient) {
-        //super();
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
         this.roles = [
@@ -17,7 +16,6 @@ export class InitScripts {
             'Human'
         ];
         this.Gradient = Gradient;
-        console.log('Gradient: ',this.Gradient);
     }
 
     static toggleElementsClassNames() {
@@ -29,11 +27,15 @@ export class InitScripts {
         });
     };
 
+    static pickRandomRole(roles) {
+        return roles[Math.floor(Math.random() * roles.length)]
+    }
+
     changRoleText() {
         setInterval(() => {
             const roleElem = document.querySelector('.role');
             const roles = this.roles;
-            const role = roles[Math.floor(Math.random() * roles.length)];
+            const role = InitScripts.pickRandomRole(roles);
             const text = `${role}.`;
             roleElem.innerHTML = text;
             roleElem.setAttribute('data-text', ' ');
@@ -53,7 +55,7 @@ export class InitScripts {
         heartElem.addEventListener('click', () => {
             InitScripts.toggleElementsClassNames();
             setTimeout(() => {
-                Gradient.startTransition(false);
+                this.Gradient.startTransition(false);
                 innerElm.classList.add('active');
             }, this.DEF_DELAY);
         })
@@ -62,17 +64,18 @@ export class InitScripts {
     addBrowserSupportClasses() {
         const HTMLElem = document.getElementsByTagName('html')[0];
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
         if (CSS.supports('display', 'grid')) {
             HTMLElem.classList.add('css-grid');
         }
         if (CSS.supports('--fake-var', 0) || isSafari) {
             HTMLElem.classList.add('css-variables');
-            Gradient.supportsCssVars = true;
+            this.Gradient.supportsCssVars = true;
         }
     };
 
     startInitialTransition(isOnLoad) {
-        Gradient.startTransition(isOnLoad);
+        this.Gradient.startTransition(isOnLoad);
     }
 
 
