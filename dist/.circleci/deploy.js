@@ -7,7 +7,7 @@ var config = {
     user: process.env.FTPUSERNAME,
     password: process.env.FTPPASS,
     host: process.env.FTPHOST,
-    port: 21,
+    port: 22,
     localRoot: __dirname + "/../dist/",
     remoteRoot: "/extras/ci-test",
     include: ['*'],
