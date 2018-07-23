@@ -1,13 +1,8 @@
 version: 2
-machine:
-  node:
-    version: 8.9.4
-  npm:
-    version: 6.2.0
 jobs:
-   build:
+  build:
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:7.7.4
       - image: mongo:3.4.4
     steps:
       - checkout
