@@ -2,7 +2,8 @@
   "name": "szczepan.me",
   "version": "0.0.1",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-ci": "jest --coverage"
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -12,10 +13,11 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^23.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^23.3.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
+    "jest": "^23.3.0"
   },
   "dependencies": {
     "jquery": "^3.3.1"
