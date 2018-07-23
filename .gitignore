@@ -20,6 +20,7 @@
 # Folders and custom #
 ############
 node_modules
+coverage
 *.idea
 *szczepan.me
 
