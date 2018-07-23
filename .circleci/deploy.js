@@ -14,6 +14,7 @@ let config = {
     localRoot: __dirname + "/../dist/",
     remoteRoot: "/extras/ci-test",
     include: ['*'],
+    exclude: [],
     deleteRemote: true
 };
 
