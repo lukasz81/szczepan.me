@@ -13,8 +13,8 @@ let config = {
     port: 21,
     localRoot: __dirname + "/../",
     remoteRoot: "/extras/ci-test",
-    include: ['*'],
-    exclude: ['*.','coverage','node-modules','*.json','*.lock'],
+    include: [],
+    exclude: [],
     deleteRemote: false
 };
 
@@ -30,6 +30,6 @@ ftpDeploy.on('uploading', data => {
 });
 
 ftpDeploy.on('uploaded', function(data) {
-    console.log('transferedData :',transferedData);         // same data as uploading event
-    console.log('data :',data);
+    console.log('transferedData :', transferedData);         // same data as uploading event
+    console.log('data :', data);
 });
