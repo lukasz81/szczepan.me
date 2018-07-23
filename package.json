@@ -14,7 +14,8 @@
     "babel-jest": "^23.2.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^23.3.0"
+    "jest": "^23.3.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
   },
   "dependencies": {
     "jquery": "^3.3.1"
