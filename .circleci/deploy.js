@@ -13,8 +13,8 @@ let config = {
     port: 21,
     localRoot: __dirname + "/../",
     remoteRoot: "/extras/ci-test",
-    include: [],
-    exclude: [],
+    include: ['*', '**/*'],
+    exclude: ['/**/*.circleci'],
     deleteRemote: false
 };
 
