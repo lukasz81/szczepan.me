@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532352608864" clover="3.2.0">
-  <project timestamp="1532352608864" name="All files">
+<coverage generated="1532352950459" clover="3.2.0">
+  <project timestamp="1532352950459" name="All files">
     <metrics statements="90" coveredstatements="84" conditionals="38" coveredconditionals="29" methods="21" coveredmethods="21" elements="149" coveredelements="134" complexity="0" loc="90" ncloc="90" packages="1" files="2" classes="2">
       <file name="gradient-generator.js" path="/Users/lusz/Desktop/szczepan.me/js/gradient-generator.js">
         <metrics statements="54" coveredstatements="48" conditionals="32" coveredconditionals="23" methods="9" coveredmethods="9"/>
