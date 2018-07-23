@@ -7,7 +7,7 @@ let transferedData = {
 };
 
 let config = {
-    user: process.env.FTPUSERNAME,
+    user: process.env.FTPUSER,
     password: process.env.FTPPASS,
     host: process.env.FTPHOST,
     port: 21,
