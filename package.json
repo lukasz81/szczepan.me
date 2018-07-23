@@ -4,7 +4,7 @@
   "scripts": {
     "test": "jest --env=jsdom --coverage",
     "babel-version": "babel --version",
-    "babel-run": "./node_modules/.bin/babel ./js/scripts.js --out-file ./dist/js/scripts.js"
+    "babel-run": "./node_modules/.bin/babel ./js/scripts.js --out-file ./dist/js/scripts.js && ./js/gradient-generator.js --out-file ./dist/js/gradient-generator.js"
   },
   "jest": {
     "transformIgnorePatterns": [
