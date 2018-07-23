@@ -11,11 +11,11 @@ let config = {
     password: process.env.FTPPASS,
     host: process.env.FTPHOST,
     port: 21,
-    localRoot: __dirname + "/../dist/",
+    localRoot: __dirname + "/../",
     remoteRoot: "/extras/ci-test",
     include: ['*'],
-    exclude: [],
-    deleteRemote: true
+    exclude: ['*.','coverage','node-modules','*.json','*.lock'],
+    deleteRemote: false
 };
 
 ftpDeploy.deploy(config)
