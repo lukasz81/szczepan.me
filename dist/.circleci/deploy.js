@@ -1,7 +1,12 @@
-"use strict";
+'use strict';
 
 var FtpDeploy = require('ftp-deploy');
 var ftpDeploy = new FtpDeploy();
+var transferedData = {
+    'totalFiles': {},
+    'transferedFiles': {},
+    'name': {}
+};
 
 var config = {
     user: process.env.FTPUSERNAME,
@@ -14,7 +19,20 @@ var config = {
     deleteRemote: true
 };
 
-ftpDeploy.deploy(config, function (err) {
-    if (err) console.log(err);else console.log('finished');
+ftpDeploy.deploy(config).then(function (res) {
+    return console.log('finished: ' + res);
+}).catch(function (err) {
+    return console.log(err);
+});
+
+ftpDeploy.on('uploading', function (data) {
+    transferedData.totalFiles = data.totalFilesCount; // total file count being transferred
+    transferedData.transferedFiles = data.transferredFileCount; // number of files transferred
+    transferedData.name = data.filename; // partial path with filename being uploaded
+});
+
+ftpDeploy.on('uploaded', function (data) {
+    console.log('transferedData :', transferedData); // same data as uploading event
+    console.log('data :', data);
 });
 //# sourceMappingURL=deploy.js.map
