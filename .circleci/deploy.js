@@ -25,6 +25,7 @@ ftpDeploy.on('uploading', data => {
     transferedData.totalFiles = data.totalFilesCount;       // total file count being transferred
     transferedData.transferedFiles = data.transferredFileCount; // number of files transferred
     transferedData.name = data.filename;             // partial path with filename being uploaded
+    console.log(transferedData);
 });
 
 ftpDeploy.on('uploaded', function(data) {
