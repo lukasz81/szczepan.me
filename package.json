@@ -2,9 +2,7 @@
   "name": "szczepan.me",
   "version": "0.0.1",
   "scripts": {
-    "test": "jest",
-    "babel-version": "babel --version",
-    "babel-run": "./node_modules/.bin/babel ./js/scripts.js --out-file ./dist/js/scripts.js && ./js/gradient-generator.js --out-file ./dist/js/gradient-generator.js"
+    "test": "jest"
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -15,7 +13,8 @@
     "babel-cli": "^6.26.0",
     "babel-jest": "^23.2.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.3.0"
   },
   "dependencies": {
     "jquery": "^3.3.1"
