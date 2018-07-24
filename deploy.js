@@ -14,7 +14,7 @@ let config = {
     localRoot: __dirname + "/",
     remoteRoot: "/extras/ci-test",
     include: ['*'],
-    exclude: [".*",".*/","node_modules/*/**",".git/**/*","*.md","*.json","coverage","deploy.js"],
+    exclude: [".*",".*/","node_modules/*/**",".git/**/*","*.md","*.json","coverage/**/*","deploy.js"],
     deleteRemote: false
 };
 
