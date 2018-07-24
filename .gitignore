@@ -20,7 +20,7 @@
 # Folders and custom #
 ############
 node_modules
-coverage
+coverage/lcov-report
 *.idea
 *szczepan.me
 
