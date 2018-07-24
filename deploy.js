@@ -12,7 +12,7 @@ let config = {
     host: process.env.FTPHOST,
     port: 21,
     localRoot: __dirname + "/",
-    remoteRoot: "/extras/ci-test",
+    remoteRoot: "/",
     include: ['*'],
     exclude: ["*.**/*","node_modules/**/*",".git/**/*","*.md","*.json","coverage/**/*",".circleci/**/*","deploy.js","js/*"],
     deleteRemote: false
