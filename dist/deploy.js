@@ -16,7 +16,7 @@ var config = {
     localRoot: __dirname + "/",
     remoteRoot: "/extras/ci-test",
     include: ['*'],
-    exclude: ["*.**/*", "node_modules/", "node_modules/**/*", ".git/**/*", "*.md", "*.json", "coverage/**/*", ".circleci/**/*", "deploy.js", "js/*"],
+    exclude: ["*.**/*", "**/node_modules/", "node_modules/**/*", ".git/**/*", "*.md", "*.json", "coverage/**/*", ".circleci/**/*", "deploy.js", "js/*"],
     deleteRemote: false
 };
 
