@@ -15,8 +15,8 @@ var config = {
     port: 21,
     localRoot: __dirname + "/",
     remoteRoot: "/extras/ci-test",
-    exclude: [".*", "node_modules/*/**", ".git/**/*"],
     include: ['*'],
+    exclude: [".*", ".*/", "node_modules/*/**", ".git/**/*", "*.md", "*.json", "coverage/*/**"],
     deleteRemote: false
 };
 
