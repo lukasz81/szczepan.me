@@ -1,7 +1,5 @@
 My awesome portfolio website: https://szczepan.me
 
-<img alt="screenshot" src="https://szczepan.me/extras/szczepan.me_capture.gif"/>
-
 ## Coverage
 
 [![Coverage Status](https://coveralls.io/repos/github/lukasz81/szczepan.me/badge.svg?branch=master)](https://coveralls.io/github/lukasz81/szczepan.me?branch=master)
