@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./css/styles.css" media="screen">
     <script>let exports = {};</script>
     <script src="./dist/js/gradient-generator.js"></script>
-    <script src="./dist/js/scripts.js" defer></script>
+    <script src="./dist/js/scripts.js" defer ></script>
     <script>
-        let Gradient = new GradientGenerator();
-        let Init = new InitScripts(Gradient);
         window.addEventListener('DOMContentLoaded',() => {
+            let Gradient = new GradientGenerator();
+            let Init = new InitScripts(Gradient);
             Init.addBrowserSupportClasses();
             Init.startInitialTransition(true);
             Init.changRoleText();
