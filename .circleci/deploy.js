@@ -13,8 +13,8 @@ let config = {
     port: 21,
     localRoot: __dirname + "/../",
     remoteRoot: "/extras/ci-test",
-    include: ['/css/**/*'],
-    exclude: [],
+    include: ['*'],
+    exclude: [".*","node_modules/**/*"],
     deleteRemote: false
 };
 
