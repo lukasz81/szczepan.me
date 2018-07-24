@@ -28,7 +28,7 @@ jobs:
           path: test-results.xml
       - run:
           name: Deploy to FTP
-          command: node .circleci/deploy.js
+          command: node deploy.js
 
 workflows:
   version: 2
