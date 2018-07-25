@@ -18,7 +18,7 @@ What's cool about it (features):
 8) Test Driven Development with Jest framework.
 
 ## How to run dev:
-$npm run test: will run tests.
+$npm install: will install all dependencies.
 
 $http-server: to run dev.
 
