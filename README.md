@@ -18,9 +18,13 @@ What's cool about it (features):
 8) Test Driven Development with Jest framework.
 
 ## How to run dev:
-$http-server: to run dev
+$npm run test: will run tests.
+
+$http-server: to run dev.
 
 $sass --watch css: to watch the whole css directory
+
+$npm run test: run tests
 
 Babel is run, html loads raw js from /dist directory
 
