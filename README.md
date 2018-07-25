@@ -17,9 +17,11 @@ What's cool about it (features):
 7) It's a secure SSL connection over "https://".
 8) Test Driven Development with Jest framework.
 
-## How to run dev?:git add
+## How to run dev:
 $http-server: to run dev
-$sass --watch css: to watch the whole folder
-$babel is run, html loads raw js from dist folder
+
+$sass --watch css: to watch the whole css directory
+
+Babel is run, html loads raw js from /dist directory
 
 

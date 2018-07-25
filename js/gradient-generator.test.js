@@ -51,7 +51,7 @@ describe('Gradient Generator Class ', () => {
 
     });
 
-    xdescribe('checks startTransition method', () => {
+    describe('checks startTransition method', () => {
 
         it('should set "isFirstLoad" in constructor to true', () => {
             const gradientGenerator = new GradientGenerator();
@@ -145,9 +145,9 @@ describe('Gradient Generator Class ', () => {
 
     });
 
-    xdescribe('checks "transitionGradient" method', () => {
+    describe('checks "transitionGradient" method', () => {
 
-        let gradientGenerator = {prevColors:{targetColorOne:[0,0,0],targetColorTwo:[0,0,0]}};
+        let gradientGenerator = {prevColors:{targetColorOne:[10,10,10],targetColorTwo:[0,0,0]}};
         const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
         const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
 
@@ -155,7 +155,7 @@ describe('Gradient Generator Class ', () => {
             let isPageLoad = true;
             const gradientGenerator = new GradientGenerator();
             let fn = jest.spyOn(gradientGenerator, 'applyChange');
-            gradientGenerator.transitionGradient(isPageLoad,[0,0,0],[0,0,0]);
+            gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
             expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith(stopOne,stopTwo)
         });
