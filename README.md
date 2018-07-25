@@ -1,6 +1,6 @@
 My awesome portfolio website: https://szczepan.me
 
-## Coverage
+## Coverage:
 
 [![Coverage Status](https://coveralls.io/repos/github/lukasz81/szczepan.me/badge.svg?branch=master)](https://coveralls.io/github/lukasz81/szczepan.me?branch=master)
 
@@ -8,17 +8,18 @@ My awesome portfolio website: https://szczepan.me
 
 What's cool about it (features):
 
-1) Vanilla js to randomly pick rgb values (using babel to transpile to old js).
-2) Apply rgb as background gradient.
+1) Vanilla js to randomly pick RGB values (using babel to transpile to old js).
+2) Apply RGB as background gradient.
 3) Animate change of the background colors.
 4) SVG <use> tags.
 5) Responsive design.
-6) Use css vars to hold and update color values.
-7) It's over "https://".
-8) Test Driven Development.
+6) Use css native vars to hold and update color values, otherwise it's SASS.
+7) It's a secure SSL connection over "https://".
+8) Test Driven Development with Jest framework.
 
-#http-server: to run dev
-#sass --watch css: to watch the whole folder
-#babel is run, html loads raw js from dist folder
+## How to run dev?:git add
+$http-server: to run dev
+$sass --watch css: to watch the whole folder
+$babel is run, html loads raw js from dist folder
 
 

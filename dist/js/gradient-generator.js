@@ -17,7 +17,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
         this.isFirstLoad = true;
         this.supportsCssVars = false;
         this.prevColors = {
-            targetColorOne: [0, 0, 0],
+            targetColorOne: [10, 10, 10],
             targetColorTwo: [0, 0, 0]
         };
         this.transitionHandler = null;
@@ -44,7 +44,6 @@ var GradientGenerator = exports.GradientGenerator = function () {
             var _this2 = this;
 
             this.increment = this.isFirstLoad ? [0, 0, 0] : [1, 1, 1];
-
             currentColor.forEach(function (color, index) {
                 if (currentColor[index] > targetColor[index]) {
                     currentColor[index] -= _this2.increment[index];

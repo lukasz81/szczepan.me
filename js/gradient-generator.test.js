@@ -51,7 +51,7 @@ describe('Gradient Generator Class ', () => {
 
     });
 
-    describe('checks startTransition method', () => {
+    xdescribe('checks startTransition method', () => {
 
         it('should set "isFirstLoad" in constructor to true', () => {
             const gradientGenerator = new GradientGenerator();
@@ -108,19 +108,44 @@ describe('Gradient Generator Class ', () => {
 
     describe('checks "checkAndUpdateColor" method', () => {
 
-        it('should return false', () => {
-            let isZero = GradientGenerator.checkReducedValueOfArray([0, 10, 10]);
-            expect(isZero).toBe(false)
+        it('should increase value of R,G,B by the increment value when target color values are higher than current', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.isFirstLoad = false;
+            const currentColor = gradientGenerator.prevColors.targetColorOne;
+            const prevVal = currentColor[0];
+            let targetColor = [15,15,15];
+            gradientGenerator.checkAndUpdateColor(currentColor,targetColor);
+            expect(currentColor[0]).toBe(prevVal + gradientGenerator.increment[0])
         });
 
-        it('should return true', () => {
-            let isZero = GradientGenerator.checkReducedValueOfArray([0, 0, 0]);
-            expect(isZero).toBe(true)
+        it('should decrease value of R,G,B by the increment value when target color values are higher than current', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.isFirstLoad = false;
+            const currentColor = gradientGenerator.prevColors.targetColorOne;
+            const prevVal = currentColor[0];
+            let targetColor = [5,5,5];
+            gradientGenerator.checkAndUpdateColor(currentColor,targetColor);
+            expect(currentColor[0]).toBe(prevVal - gradientGenerator.increment[0]);
+        });
+
+        it('should set increment value to 0 when current is smaller then current', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.isFirstLoad = false;
+            const currentColor = gradientGenerator.prevColors.targetColorOne;
+            let targetColor = [0,0,0];
+            expect(gradientGenerator.increment).toBe(null);
+            gradientGenerator.checkAndUpdateColor(currentColor,targetColor);
+
+            setTimeout(
+                () => {
+                    expect(gradientGenerator.increment[0]).toBe(0);
+                }, 300
+            );
         });
 
     });
 
-    describe('checks "transitionGradient" method', () => {
+    xdescribe('checks "transitionGradient" method', () => {
 
         let gradientGenerator = {prevColors:{targetColorOne:[0,0,0],targetColorTwo:[0,0,0]}};
         const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
