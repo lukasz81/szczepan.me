@@ -16,8 +16,12 @@ var GradientGenerator = exports.GradientGenerator = function () {
         this.firstGrad = true;
         this.isFirstLoad = true;
         this.supportsCssVars = false;
-        this.prevColors = { targetColorOne: [0, 0, 0], targetColorTwo: [0, 0, 0] };
+        this.prevColors = {
+            targetColorOne: [0, 0, 0],
+            targetColorTwo: [0, 0, 0]
+        };
         this.transitionHandler = null;
+        this.increment = null;
     }
 
     _createClass(GradientGenerator, [{
@@ -35,46 +39,37 @@ var GradientGenerator = exports.GradientGenerator = function () {
             }, this.DELAY);
         }
     }, {
+        key: 'checkAndUpdateColor',
+        value: function checkAndUpdateColor(currentColor, targetColor) {
+            var _this2 = this;
+
+            this.increment = this.isFirstLoad ? [0, 0, 0] : [1, 1, 1];
+
+            currentColor.forEach(function (color, index) {
+                if (currentColor[index] > targetColor[index]) {
+                    currentColor[index] -= _this2.increment[index];
+                    if (currentColor[index] <= targetColor[index]) _this2.increment[index] = 0;
+                } else {
+                    currentColor[index] += _this2.increment[index];
+                    if (currentColor[index] >= targetColor[index]) _this2.increment[index] = 0;
+                }
+            });
+        }
+    }, {
         key: 'transitionGradient',
         value: function transitionGradient(onLoad, targetColorOne, targetColorTwo) {
 
             var currentColor = this.firstGrad ? this.prevColors.targetColorOne : this.prevColors.targetColorTwo;
             var targetColor = this.firstGrad ? targetColorOne : targetColorTwo;
-            var increment = onLoad ? [0, 0, 0] : [1, 1, 1];
 
-            // checking G
-            if (currentColor[0] > targetColor[0]) {
-                currentColor[0] -= increment[0];
-                if (currentColor[0] <= targetColor[0]) increment[0] = 0;
-            } else {
-                currentColor[0] += increment[0];
-                if (currentColor[0] >= targetColor[0]) increment[0] = 0;
-            }
-            // checking G
-            if (currentColor[1] > targetColor[1]) {
-                currentColor[1] -= increment[1];
-                if (currentColor[1] <= targetColor[1]) increment[1] = 0;
-            } else {
-                currentColor[1] += increment[1];
-                if (currentColor[1] >= targetColor[1]) increment[1] = 0;
-            }
-            // checking B
-            if (currentColor[2] > targetColor[2]) {
-                currentColor[2] -= increment[2];
-                if (currentColor[2] <= targetColor[2]) increment[2] = 0;
-            } else {
-                currentColor[2] += increment[2];
-                if (currentColor[2] >= targetColor[2]) increment[2] = 0;
-            }
+            this.checkAndUpdateColor(currentColor, targetColor);
 
             var stopOne = 'rgb(' + this.prevColors.targetColorOne[0] + ' , ' + this.prevColors.targetColorOne[1] + ' , ' + this.prevColors.targetColorOne[2] + ')';
             var stopTwo = 'rgb(' + this.prevColors.targetColorTwo[0] + ' , ' + this.prevColors.targetColorTwo[1] + ' , ' + this.prevColors.targetColorTwo[2] + ')';
 
             this.applyChange(stopOne, stopTwo);
 
-            var incrementTotalValueIsZero = increment.reduce(function (sum) {
-                return sum;
-            }) === 0;
+            var incrementTotalValueIsZero = GradientGenerator.checkReducedValueOfArray(this.increment);
 
             if (incrementTotalValueIsZero) {
                 this.reloadStyleTags(stopOne, stopTwo);
@@ -121,6 +116,14 @@ var GradientGenerator = exports.GradientGenerator = function () {
                 rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
                 rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
             };
+        }
+    }, {
+        key: 'checkReducedValueOfArray',
+        value: function checkReducedValueOfArray(array) {
+            var reducer = function reducer(accumulator, currentValue) {
+                return accumulator + currentValue;
+            };
+            return array.reduce(reducer) === 0;
         }
     }]);
 

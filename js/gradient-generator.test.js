@@ -30,7 +30,7 @@ describe('Gradient Generator Class ', () => {
             expect('rgbOne' in rgbKeys).toBe(true)
         });
 
-        it('should contain and array of random R,G,B values in "rgbOne"', () => {
+        it('should contain and array of random R,G,B numbers in "rgbOne"', () => {
             let rgbKeys = GradientGenerator.createRandomGradient();
             expect(typeof rgbKeys.rgbOne[0]).toBe('number');
             expect(typeof rgbKeys.rgbOne[1]).toBe('number');
@@ -60,16 +60,27 @@ describe('Gradient Generator Class ', () => {
             expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
         });
 
-        it('should call "transitionGradient"', done => {
-
+        it('should call "transitionGradient"', () => {
+            jest.useFakeTimers();
             const gradientGenerator = new GradientGenerator();
             gradientGenerator.startTransition(true);
             let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
+            jest.runOnlyPendingTimers();
+            expect(fn).toHaveBeenCalled();
+        });
 
-            setTimeout( () => {
-                expect(fn).toHaveBeenCalled();
-                done();
-            }, 10)
+        it('should call "createRandomGradient" to create random gradient', () => {
+            let fn = jest.spyOn(GradientGenerator, 'createRandomGradient');
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.startTransition(true);
+            expect(fn).toHaveBeenCalled();
+        });
+
+        it('should set "transitionHandler" to value different then null', () => {
+            const gradientGenerator = new GradientGenerator();
+            const isFirstLoad = true;
+            gradientGenerator.startTransition(isFirstLoad);
+            expect(gradientGenerator.transitionHandler > 0).toBe(true);
         });
 
         it('should set "isFirstLoad" in constructor to false', () => {
@@ -77,6 +88,34 @@ describe('Gradient Generator Class ', () => {
             const expectedValue = false;
             gradientGenerator.startTransition(expectedValue);
             expect(gradientGenerator.isFirstLoad).toBe(expectedValue);
+        });
+
+    });
+
+    describe('checks static "checkReducedValueOfArray" method', () => {
+
+        it('should return false', () => {
+            let isZero = GradientGenerator.checkReducedValueOfArray([0, 10, 10]);
+            expect(isZero).toBe(false)
+        });
+
+        it('should return true', () => {
+            let isZero = GradientGenerator.checkReducedValueOfArray([0, 0, 0]);
+            expect(isZero).toBe(true)
+        });
+
+    });
+
+    describe('checks "checkAndUpdateColor" method', () => {
+
+        it('should return false', () => {
+            let isZero = GradientGenerator.checkReducedValueOfArray([0, 10, 10]);
+            expect(isZero).toBe(false)
+        });
+
+        it('should return true', () => {
+            let isZero = GradientGenerator.checkReducedValueOfArray([0, 0, 0]);
+            expect(isZero).toBe(true)
         });
 
     });
