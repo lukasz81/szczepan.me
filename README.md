@@ -16,6 +16,7 @@ What's cool about it (features):
 6) Use css native vars to hold and update color values, otherwise it's SASS.
 7) It's a secure SSL connection over "https://".
 8) Test Driven Development with Jest framework.
+9) It's continues integration with circleCI.
 
 ## How to run dev:
 $npm install: will install all dependencies.
