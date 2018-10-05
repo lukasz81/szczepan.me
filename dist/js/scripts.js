@@ -35,7 +35,7 @@ var InitScripts = exports.InitScripts = function () {
                     roleElem.setAttribute('data-text', text);
                     clearInterval(attributeHandler);
                     attributeHandler = false;
-                }, _this.ROLE_TEXT_SWITCH * 0.75);
+                }, _this.ROLE_TEXT_SWITCH * 0.3);
             }, this.ROLE_TEXT_SWITCH);
         }
     }, {
@@ -91,3 +91,4 @@ var InitScripts = exports.InitScripts = function () {
 
     return InitScripts;
 }();
+//# sourceMappingURL=scripts.js.map

@@ -44,7 +44,7 @@ export class InitScripts {
                 roleElem.setAttribute('data-text', text);
                 clearInterval(attributeHandler);
                 attributeHandler = false;
-            }, this.ROLE_TEXT_SWITCH * 0.75);
+            }, this.ROLE_TEXT_SWITCH * 0.3);
 
         }, this.ROLE_TEXT_SWITCH);
     };
