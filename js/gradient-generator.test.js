@@ -2,6 +2,27 @@ jest.dontMock('fs');
 const $ = require('jquery');
 const html = require('fs').readFileSync('./index.html').toString();
 const {GradientGenerator} = require('./gradient-generator.js');
+const { JSDOM } = require('jsdom');
+const jsdom = new JSDOM();
+const { window } = jsdom;
+
+function copyProps(src, target) {
+    const props = Object.getOwnPropertyNames(src)
+        .filter(prop => typeof target[prop] === 'undefined')
+        .reduce((result, prop) => ({
+            ...result,
+            [prop]: Object.getOwnPropertyDescriptor(src, prop),
+        }), {});
+    Object.defineProperties(target, props);
+}
+
+global.window = window;
+global.document = window.document;
+global.navigator = {
+    userAgent: 'node.js',
+};
+copyProps(window, global);
+
 
 describe('Gradient Generator Class ', () => {
 
@@ -208,21 +229,22 @@ describe('Gradient Generator Class ', () => {
             expect($('.outer').hasClass('active')).toBe(true);
         });
 
-        it('should add style tag with gradient properties to HTML document when does not supportsCssVars', () => {
-            const gradientGenerator = new GradientGenerator();
-            gradientGenerator.supportsCssVars = false;
-            gradientGenerator.applyChange(stopOne,stopTwo);
-            expect($('html').prop('style')['GradientOne']).toBe(undefined);
-            expect($('html').prop('style')['GradientTwo']).toBe(undefined);
-        });
+        // it('xxx', () => {
+        //     const gradientGenerator = new GradientGenerator();
+        //     gradientGenerator.supportsCssVars = true;
+        //     gradientGenerator.applyChange(stopOne,stopTwo);
+        //     const outer = $('.outer');
+        //     let compStyles = window.getComputedStyle(outer);
+        //     console.log('compStyles =>',compStyles);
+        //     expect(window.document.documentElement.hasStyle('display', 'none')).toBe(true)
+        // });
 
-        it('should add style tag with gradient properties to HTML document when supportsCssVars', () => {
-            const gradientGenerator = new GradientGenerator();
-            gradientGenerator.supportsCssVars = true;
-            gradientGenerator.applyChange(stopOne,stopTwo);
-            expect($('html').prop('style')['GradientOne']).toBe(stopOne);
-            expect($('html').prop('style')['GradientTwo']).toBe(stopTwo);
-        });
+        // it('should add css className to outer element tag when there is no supportsCssVars', () => {
+        //     const gradientGenerator = new GradientGenerator();
+        //     gradientGenerator.supportsCssVars = false;
+        //     gradientGenerator.applyChange(stopOne,stopTwo);
+        //     expect($('.outer').hasClass('noCssVars')).toBe(true);
+        // });
 
         it('should toggle firstGrad property', () => {
             const gradientGenerator = new GradientGenerator();

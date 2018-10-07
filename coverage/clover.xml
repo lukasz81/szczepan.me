@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532525610469" clover="3.2.0">
-  <project timestamp="1532525610469" name="All files">
+<coverage generated="1538941210201" clover="3.2.0">
+  <project timestamp="1538941210201" name="All files">
     <metrics statements="85" coveredstatements="85" conditionals="26" coveredconditionals="24" methods="24" coveredmethods="24" elements="135" coveredelements="133" complexity="0" loc="85" ncloc="85" packages="1" files="2" classes="2">
-      <file name="gradient-generator.js" path="/Users/lusz/Desktop/szczepan.me/js/gradient-generator.js">
+      <file name="gradient-generator.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/gradient-generator.js">
         <metrics statements="49" coveredstatements="49" conditionals="20" coveredconditionals="18" methods="12" coveredmethods="12"/>
-        <line num="4" count="23" type="stmt"/>
-        <line num="5" count="23" type="stmt"/>
-        <line num="6" count="23" type="stmt"/>
-        <line num="7" count="23" type="stmt"/>
-        <line num="8" count="23" type="stmt"/>
-        <line num="12" count="23" type="stmt"/>
-        <line num="13" count="23" type="stmt"/>
+        <line num="4" count="22" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="12" count="22" type="stmt"/>
+        <line num="13" count="22" type="stmt"/>
         <line num="17" count="133" type="stmt"/>
         <line num="21" count="22" type="stmt"/>
         <line num="28" count="20" type="stmt"/>
@@ -46,15 +46,15 @@
         <line num="86" count="7" type="stmt"/>
         <line num="87" count="7" type="stmt"/>
         <line num="88" count="7" type="stmt"/>
-        <line num="92" count="12" type="stmt"/>
-        <line num="93" count="12" type="stmt"/>
-        <line num="94" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="92" count="11" type="stmt"/>
+        <line num="93" count="11" type="stmt"/>
+        <line num="94" count="11" type="cond" truecount="2" falsecount="0"/>
         <line num="95" count="1" type="stmt"/>
         <line num="96" count="1" type="stmt"/>
-        <line num="98" count="11" type="stmt"/>
-        <line num="100" count="12" type="stmt"/>
+        <line num="98" count="10" type="stmt"/>
+        <line num="100" count="11" type="stmt"/>
       </file>
-      <file name="scripts.js" path="/Users/lusz/Desktop/szczepan.me/js/scripts.js">
+      <file name="scripts.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/scripts.js">
         <metrics statements="36" coveredstatements="36" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12"/>
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
