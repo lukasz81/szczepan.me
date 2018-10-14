@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1538941210201" clover="3.2.0">
-  <project timestamp="1538941210201" name="All files">
-    <metrics statements="85" coveredstatements="85" conditionals="26" coveredconditionals="24" methods="24" coveredmethods="24" elements="135" coveredelements="133" complexity="0" loc="85" ncloc="85" packages="1" files="2" classes="2">
+<coverage generated="1539555538794" clover="3.2.0">
+  <project timestamp="1539555538795" name="All files">
+    <metrics statements="105" coveredstatements="90" conditionals="28" coveredconditionals="24" methods="29" coveredmethods="24" elements="162" coveredelements="138" complexity="0" loc="105" ncloc="105" packages="1" files="2" classes="2">
       <file name="gradient-generator.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/gradient-generator.js">
-        <metrics statements="49" coveredstatements="49" conditionals="20" coveredconditionals="18" methods="12" coveredmethods="12"/>
-        <line num="4" count="22" type="stmt"/>
-        <line num="5" count="22" type="stmt"/>
-        <line num="6" count="22" type="stmt"/>
-        <line num="7" count="22" type="stmt"/>
-        <line num="8" count="22" type="stmt"/>
-        <line num="12" count="22" type="stmt"/>
-        <line num="13" count="22" type="stmt"/>
+        <metrics statements="49" coveredstatements="47" conditionals="20" coveredconditionals="17" methods="12" coveredmethods="12"/>
+        <line num="4" count="21" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="6" count="21" type="stmt"/>
+        <line num="7" count="21" type="stmt"/>
+        <line num="8" count="21" type="stmt"/>
+        <line num="12" count="21" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
         <line num="17" count="133" type="stmt"/>
         <line num="21" count="22" type="stmt"/>
         <line num="28" count="20" type="stmt"/>
@@ -46,52 +46,72 @@
         <line num="86" count="7" type="stmt"/>
         <line num="87" count="7" type="stmt"/>
         <line num="88" count="7" type="stmt"/>
-        <line num="92" count="11" type="stmt"/>
-        <line num="93" count="11" type="stmt"/>
-        <line num="94" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="95" count="1" type="stmt"/>
-        <line num="96" count="1" type="stmt"/>
+        <line num="92" count="10" type="stmt"/>
+        <line num="93" count="10" type="stmt"/>
+        <line num="94" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
         <line num="98" count="10" type="stmt"/>
-        <line num="100" count="11" type="stmt"/>
+        <line num="100" count="10" type="stmt"/>
       </file>
       <file name="scripts.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/scripts.js">
-        <metrics statements="36" coveredstatements="36" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12"/>
+        <metrics statements="56" coveredstatements="43" conditionals="8" coveredconditionals="7" methods="17" coveredmethods="12"/>
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
         <line num="18" count="6" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
         <line num="24" count="4" type="stmt"/>
         <line num="25" count="4" type="stmt"/>
-        <line num="26" count="12" type="stmt"/>
-        <line num="31" count="9" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
-        <line num="36" count="8" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
         <line num="37" count="8" type="stmt"/>
         <line num="38" count="8" type="stmt"/>
         <line num="39" count="8" type="stmt"/>
         <line num="40" count="8" type="stmt"/>
         <line num="41" count="8" type="stmt"/>
-        <line num="43" count="8" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
         <line num="45" count="4" type="stmt"/>
         <line num="46" count="4" type="stmt"/>
-        <line num="53" count="3" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
         <line num="54" count="3" type="stmt"/>
         <line num="55" count="3" type="stmt"/>
         <line num="56" count="3" type="stmt"/>
         <line num="57" count="3" type="stmt"/>
         <line num="58" count="3" type="stmt"/>
         <line num="59" count="3" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="68" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="71" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="64" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="65" count="3" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="67" count="3" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="76" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="79" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
       </file>
     </metrics>
   </project>
