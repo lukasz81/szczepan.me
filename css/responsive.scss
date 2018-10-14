@@ -1,6 +1,10 @@
 $mainColor: #2b2b2b;
 
-@media only screen and (min-width: 0px) and (max-width: 360px){
+@media only screen and (min-width: 0px) and (max-width: 360px) {
+  .tooltip {
+    transform: translateY(-25%);
+    align-self: flex-start;
+  }
   .translate--y{
     transform: translateY(-10%);
   }
@@ -12,7 +16,7 @@ $mainColor: #2b2b2b;
   }
 }
 
-@media only screen and (min-width: 361px) and (max-width: 768px){
+@media only screen and (min-width: 361px) and (max-width: 768px) {
   .translate--y{
     transform: translateY(-10%);
   }
@@ -26,7 +30,7 @@ $mainColor: #2b2b2b;
   }
 };
 
-@media only screen and (orientation: landscape){
+@media only screen and (orientation: landscape) {
   main {
     min-height: 600px;
   }

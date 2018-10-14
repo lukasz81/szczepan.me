@@ -16,6 +16,7 @@ export class InitScripts {
             'Human'
         ];
         this.Gradient = Gradient;
+        this.isAlreadyClicked = false;
     }
 
     static toggleElementsClassNames() {
@@ -53,11 +54,18 @@ export class InitScripts {
         const heartElem = document.querySelector('.heart');
         const innerElm = document.querySelector('.inner');
         heartElem.addEventListener('click', () => {
+            this.isAlreadyClicked = true;
             InitScripts.toggleElementsClassNames();
             setTimeout(() => {
                 this.Gradient.startTransition(false);
                 innerElm.classList.add('active');
             }, this.DEF_DELAY);
+            console.log(this.isAlreadyClicked);
+            if (this.isAlreadyClicked) {
+                document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
+                document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
+                document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave',this.eventForLeave)
+            }
         })
     };
 
@@ -78,5 +86,26 @@ export class InitScripts {
         this.Gradient.startTransition(isOnLoad);
     }
 
+    toggleClassNamesOnHover() {
+        const hoveredElements = document.querySelectorAll('.more');
+        const targetElement = document.getElementsByClassName('tooltip')[0];
+        const content = document.getElementsByClassName('navigation')[0];
+        hoveredElements.forEach( element => {
+            let classListName = element.querySelector('figure').className;
+            element.addEventListener('mouseenter', () => {
+                targetElement.className = 'tooltip';
+                targetElement.classList.add(classListName + '-hovered');
+                document.getElementById('tooltip-text').innerText =
+                    `Follow me on ${classListName.replace(/^\w/, (chr) => {
+                        return chr.toUpperCase();
+                    })} !`
+            });
+        });
+        content.addEventListener('mouseleave', this.eventForLeave);
+    }
 
+    eventForLeave() {
+        document.getElementsByClassName('tooltip')[0].className = 'tooltip';
+        document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
+    }
 }

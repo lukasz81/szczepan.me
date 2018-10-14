@@ -1,4 +1,9 @@
 @media only screen and (min-width: 0px) and (max-width: 360px) {
+  .tooltip {
+    transform: translateY(-25%);
+    align-self: flex-start;
+  }
+
   .translate--y {
     transform: translateY(-10%);
   }

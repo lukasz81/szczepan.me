@@ -128,4 +128,3 @@ var GradientGenerator = exports.GradientGenerator = function () {
 
     return GradientGenerator;
 }();
-//# sourceMappingURL=gradient-generator.js.map

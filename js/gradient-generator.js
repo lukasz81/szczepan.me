@@ -98,6 +98,7 @@ export class GradientGenerator {
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
         }
         this.firstGrad = !this.firstGrad;
+
     };
 }
 

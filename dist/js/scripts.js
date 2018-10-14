@@ -16,6 +16,7 @@ var InitScripts = exports.InitScripts = function () {
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
         this.Gradient = Gradient;
+        this.isAlreadyClicked = false;
     }
 
     _createClass(InitScripts, [{
@@ -46,11 +47,18 @@ var InitScripts = exports.InitScripts = function () {
             var heartElem = document.querySelector('.heart');
             var innerElm = document.querySelector('.inner');
             heartElem.addEventListener('click', function () {
+                _this2.isAlreadyClicked = true;
                 InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
                     _this2.Gradient.startTransition(false);
                     innerElm.classList.add('active');
                 }, _this2.DEF_DELAY);
+                console.log(_this2.isAlreadyClicked);
+                if (_this2.isAlreadyClicked) {
+                    document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
+                    document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
+                    document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', _this2.eventForLeave);
+                }
             });
         }
     }, {
@@ -72,6 +80,30 @@ var InitScripts = exports.InitScripts = function () {
         value: function startInitialTransition(isOnLoad) {
             this.Gradient.startTransition(isOnLoad);
         }
+    }, {
+        key: 'toggleClassNamesOnHover',
+        value: function toggleClassNamesOnHover() {
+            var hoveredElements = document.querySelectorAll('.more');
+            var targetElement = document.getElementsByClassName('tooltip')[0];
+            var content = document.getElementsByClassName('navigation')[0];
+            hoveredElements.forEach(function (element) {
+                var classListName = element.querySelector('figure').className;
+                element.addEventListener('mouseenter', function () {
+                    targetElement.className = 'tooltip';
+                    targetElement.classList.add(classListName + '-hovered');
+                    document.getElementById('tooltip-text').innerText = 'Follow me on ' + classListName.replace(/^\w/, function (chr) {
+                        return chr.toUpperCase();
+                    }) + ' !';
+                });
+            });
+            content.addEventListener('mouseleave', this.eventForLeave);
+        }
+    }, {
+        key: 'eventForLeave',
+        value: function eventForLeave() {
+            document.getElementsByClassName('tooltip')[0].className = 'tooltip';
+            document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
+        }
     }], [{
         key: 'toggleElementsClassNames',
         value: function toggleElementsClassNames() {
@@ -91,4 +123,3 @@ var InitScripts = exports.InitScripts = function () {
 
     return InitScripts;
 }();
-//# sourceMappingURL=scripts.js.map
