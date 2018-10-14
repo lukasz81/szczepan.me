@@ -1,25 +1,35 @@
 @media only screen and (min-width: 0px) and (max-width: 360px) {
   .translate--y {
-    transform: translateY(-10%); }
+    transform: translateY(-10%);
+  }
 
   h1.hello {
-    font-size: 78px; }
+    font-size: 78px;
+  }
 
   body .comingSoon {
-    font-size: 20px; } }
+    font-size: 20px;
+  }
+}
 @media only screen and (min-width: 361px) and (max-width: 768px) {
   .translate--y {
-    transform: translateY(-10%); }
+    transform: translateY(-10%);
+  }
 
   .hello {
-    font-size: 87px; }
+    font-size: 87px;
+  }
 
   body .comingSoon {
     font-size: 23px;
     max-width: 400px;
-    padding: 0 25px 25px 25px; } }
+    padding: 0 25px 25px 25px;
+  }
+}
 @media only screen and (orientation: landscape) {
   main {
-    min-height: 600px; } }
+    min-height: 600px;
+  }
+}
 
 /*# sourceMappingURL=responsive.css.map */

@@ -106,10 +106,10 @@ svg {
     @include textGlitch("example-one", 25, $mainColor, rgba(255, 255, 255, 0.1), blue, #ff0078, 450, 115);
   }
 }
-.github {
-  margin: 0 0 0 10px;
+.behance {
+  margin: 0 10px;
 }
-.behance, .github {
+.behance, .github, .twitter {
   display: inline-block;
   width: 40px;
   height: 40px;
