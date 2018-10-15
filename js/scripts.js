@@ -16,6 +16,7 @@ export class InitScripts {
             'Human'
         ];
         this.Gradient = Gradient;
+        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !"ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
     }
 
@@ -59,15 +60,21 @@ export class InitScripts {
             setTimeout(() => {
                 this.Gradient.startTransition(false);
                 innerElm.classList.add('active');
+                this.modifyTooltipOnClick();
             }, this.DEF_DELAY);
-            console.log(this.isAlreadyClicked);
-            if (this.isAlreadyClicked) {
-                document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
-                document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
-                document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave',this.eventForLeave)
-            }
+
         })
     };
+
+    modifyTooltipOnClick() {
+        if (this.isAlreadyClicked && this.willSupportSvgMorphing) {
+            document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
+            document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
+            document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave',this.eventForMouseLeave)
+        } else if (this.isAlreadyClicked && !this.willSupportSvgMorphing) {
+            document.getElementsByTagName('main')[0].classList.add('no-svg-morphing')
+        }
+    }
 
     addBrowserSupportClasses() {
         const HTMLElem = document.getElementsByTagName('html')[0];
@@ -86,7 +93,7 @@ export class InitScripts {
         this.Gradient.startTransition(isOnLoad);
     }
 
-    toggleClassNamesOnHover() {
+    toggleTooltipClassNamesOnHover() {
         const hoveredElements = document.querySelectorAll('.more');
         const targetElement = document.getElementsByClassName('tooltip')[0];
         const content = document.getElementsByClassName('navigation')[0];
@@ -101,10 +108,10 @@ export class InitScripts {
                     })} !`
             });
         });
-        content.addEventListener('mouseleave', this.eventForLeave);
+        content.addEventListener('mouseleave', this.eventForMouseLeave);
     }
 
-    eventForLeave() {
+    eventForMouseLeave() {
         document.getElementsByClassName('tooltip')[0].className = 'tooltip';
         document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
     }

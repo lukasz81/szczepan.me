@@ -17,7 +17,7 @@
             Init.startInitialTransition(true);
             Init.changRoleText();
             Init.addEventsToHeartButton();
-            Init.toggleClassNamesOnHover();
+            Init.toggleTooltipClassNamesOnHover();
         });
     </script>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
@@ -76,7 +76,7 @@
     <div class="flex-grid-item tooltip-container">
         <div class="tooltip-wrapper">
         <div class="tooltip">
-            <p id="tooltip-text">Click to change the mood !</p>
+            <p id="tooltip-text"><span id="action-type">Click</span> to change the mood !</p>
             <svg version="1.1" id="panel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 96" style="enable-background:new 0 0 300 96;" xml:space="preserve">
                 <style type="text/css">
                 	.st0{fill:url(#SVGID_1_);}

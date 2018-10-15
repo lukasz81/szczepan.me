@@ -16,6 +16,7 @@ var InitScripts = exports.InitScripts = function () {
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
         this.Gradient = Gradient;
+        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !"ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
     }
 
@@ -52,14 +53,20 @@ var InitScripts = exports.InitScripts = function () {
                 setTimeout(function () {
                     _this2.Gradient.startTransition(false);
                     innerElm.classList.add('active');
+                    _this2.modifyTooltipOnClick();
                 }, _this2.DEF_DELAY);
-                console.log(_this2.isAlreadyClicked);
-                if (_this2.isAlreadyClicked) {
-                    document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
-                    document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
-                    document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', _this2.eventForLeave);
-                }
             });
+        }
+    }, {
+        key: 'modifyTooltipOnClick',
+        value: function modifyTooltipOnClick() {
+            if (this.isAlreadyClicked && this.willSupportSvgMorphing) {
+                document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
+                document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
+                document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', this.eventForMouseLeave);
+            } else if (this.isAlreadyClicked && !this.willSupportSvgMorphing) {
+                document.getElementsByTagName('main')[0].classList.add('no-svg-morphing');
+            }
         }
     }, {
         key: 'addBrowserSupportClasses',
@@ -81,8 +88,8 @@ var InitScripts = exports.InitScripts = function () {
             this.Gradient.startTransition(isOnLoad);
         }
     }, {
-        key: 'toggleClassNamesOnHover',
-        value: function toggleClassNamesOnHover() {
+        key: 'toggleTooltipClassNamesOnHover',
+        value: function toggleTooltipClassNamesOnHover() {
             var hoveredElements = document.querySelectorAll('.more');
             var targetElement = document.getElementsByClassName('tooltip')[0];
             var content = document.getElementsByClassName('navigation')[0];
@@ -96,11 +103,11 @@ var InitScripts = exports.InitScripts = function () {
                     }) + ' !';
                 });
             });
-            content.addEventListener('mouseleave', this.eventForLeave);
+            content.addEventListener('mouseleave', this.eventForMouseLeave);
         }
     }, {
-        key: 'eventForLeave',
-        value: function eventForLeave() {
+        key: 'eventForMouseLeave',
+        value: function eventForMouseLeave() {
             document.getElementsByClassName('tooltip')[0].className = 'tooltip';
             document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
         }
