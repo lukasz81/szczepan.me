@@ -16,7 +16,7 @@ export class InitScripts {
             'Human'
         ];
         this.Gradient = Gradient;
-        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !"ontouchstart" in document.documentElement;
+        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !("ontouchstart" in document.documentElement);
         this.isAlreadyClicked = false;
     }
 
@@ -98,6 +98,7 @@ export class InitScripts {
         const targetElement = document.getElementsByClassName('tooltip')[0];
         const content = document.getElementsByClassName('navigation')[0];
         hoveredElements.forEach( element => {
+            if (this.willSupportSvgMorphing === false) return;
             let classListName = element.querySelector('figure').className;
             element.addEventListener('mouseenter', () => {
                 targetElement.className = 'tooltip';

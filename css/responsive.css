@@ -32,12 +32,12 @@
   }
 }
 @media only screen and (orientation: landscape) {
-  main {
+  .outer {
     min-height: 600px;
   }
 }
 @media only screen and (max-height: 630px) {
-  main.outer.full-height {
+  .outer.full-height {
     min-height: 630px;
     height: 105vh;
   }

@@ -16,7 +16,7 @@ var InitScripts = exports.InitScripts = function () {
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
         this.Gradient = Gradient;
-        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !"ontouchstart" in document.documentElement;
+        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !("ontouchstart" in document.documentElement);
         this.isAlreadyClicked = false;
     }
 
@@ -90,10 +90,14 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'toggleTooltipClassNamesOnHover',
         value: function toggleTooltipClassNamesOnHover() {
+            var _this3 = this;
+
             var hoveredElements = document.querySelectorAll('.more');
             var targetElement = document.getElementsByClassName('tooltip')[0];
             var content = document.getElementsByClassName('navigation')[0];
             hoveredElements.forEach(function (element) {
+                console.log(_this3.willSupportSvgMorphing);
+                if (_this3.willSupportSvgMorphing === false) return;
                 var classListName = element.querySelector('figure').className;
                 element.addEventListener('mouseenter', function () {
                     targetElement.className = 'tooltip';
