@@ -16,7 +16,7 @@ var InitScripts = exports.InitScripts = function () {
         this.DEF_DELAY = 300;
         this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'Human'];
         this.Gradient = Gradient;
-        this.willSupportSvgMorphing = /Chrome/i.test(navigator.userAgent) && !("ontouchstart" in document.documentElement);
+        this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
     }
 
@@ -60,12 +60,10 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'modifyTooltipOnClick',
         value: function modifyTooltipOnClick() {
-            if (this.isAlreadyClicked && this.willSupportSvgMorphing) {
-                document.getElementsByClassName('tooltip')[0].classList.add('twitter-hovered');
+            if (this.isAlreadyClicked) {
                 document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
-                document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', this.eventForMouseLeave);
-            } else if (this.isAlreadyClicked && !this.willSupportSvgMorphing) {
-                document.getElementsByTagName('main')[0].classList.add('no-svg-morphing');
+                InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('twitter'));
+                // document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', this.eventForMouseLeave)
             }
         }
     }, {
@@ -90,30 +88,25 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'toggleTooltipClassNamesOnHover',
         value: function toggleTooltipClassNamesOnHover() {
-            var _this3 = this;
-
             var hoveredElements = document.querySelectorAll('.more');
-            var targetElement = document.getElementsByClassName('tooltip')[0];
-            var content = document.getElementsByClassName('navigation')[0];
+            var navigation = document.getElementsByClassName('navigation')[0];
             hoveredElements.forEach(function (element) {
-                console.log(_this3.willSupportSvgMorphing);
-                if (_this3.willSupportSvgMorphing === false) return;
                 var classListName = element.querySelector('figure').className;
                 element.addEventListener('mouseenter', function () {
-                    targetElement.className = 'tooltip';
-                    targetElement.classList.add(classListName + '-hovered');
+                    InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
                     document.getElementById('tooltip-text').innerText = 'Follow me on ' + classListName.replace(/^\w/, function (chr) {
                         return chr.toUpperCase();
                     }) + ' !';
                 });
             });
-            content.addEventListener('mouseleave', this.eventForMouseLeave);
+            navigation.addEventListener('mouseleave', this.eventForMouseLeave);
         }
     }, {
         key: 'eventForMouseLeave',
         value: function eventForMouseLeave() {
             document.getElementsByClassName('tooltip')[0].className = 'tooltip';
             document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
+            InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(null));
         }
     }], [{
         key: 'toggleElementsClassNames',
@@ -129,6 +122,49 @@ var InitScripts = exports.InitScripts = function () {
         key: 'pickRandomRole',
         value: function pickRandomRole(roles) {
             return roles[Math.floor(Math.random() * roles.length)];
+        }
+    }, {
+        key: 'updateSVGDataSet',
+        value: function updateSVGDataSet(dataSet) {
+            console.log(dataSet);
+            document.getElementsByClassName('line-up')[0].setAttribute('d', dataSet.lineUp); // st10
+            document.getElementsByClassName('line-down')[0].setAttribute('d', dataSet.lineDown); // st1
+            document.getElementsByClassName('shape')[0].setAttribute('d', dataSet.shape); // st0
+        }
+    }, {
+        key: 'getRelevantCoordinates',
+        value: function getRelevantCoordinates(classListName) {
+            var dataSet = void 0;
+            if (classListName === 'behance') {
+                dataSet = {
+                    name: 'behance',
+                    lineUp: "M0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 ",
+                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4",
+                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z"
+                };
+            } else if (classListName === 'twitter') {
+                dataSet = {
+                    name: 'twitter',
+                    lineUp: "M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ",
+                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z"
+                };
+            } else if (classListName === 'github') {
+                dataSet = {
+                    name: 'github',
+                    lineUp: "M0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 ",
+                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 z"
+                };
+            } else {
+                dataSet = {
+                    name: 'heart',
+                    lineUp: "M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 ",
+                    lineDown: "M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 ",
+                    shape: "M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"
+                };
+            }
+            return dataSet;
         }
     }]);
 

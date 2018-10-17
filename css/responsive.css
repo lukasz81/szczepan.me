@@ -1,46 +1,33 @@
 @media only screen and (min-width: 0px) and (max-width: 360px) {
   .tooltip {
     transform: scale(0.8);
-    align-self: flex-start;
-  }
+    align-self: flex-start; }
 
   .translate--y {
-    transform: translateY(-10%);
-  }
+    transform: translateY(-10%); }
 
   h1.hello {
-    font-size: 78px;
-  }
+    font-size: 78px; }
 
   body .comingSoon {
-    font-size: 20px;
-  }
-}
+    font-size: 20px; } }
 @media only screen and (min-width: 361px) and (max-width: 768px) {
   .translate--y {
-    transform: translateY(-10%);
-  }
+    transform: translateY(-10%); }
 
   .hello {
-    font-size: 87px;
-  }
+    font-size: 87px; }
 
   body .comingSoon {
     font-size: 23px;
     max-width: 400px;
-    padding: 0 25px 25px 25px;
-  }
-}
+    padding: 0 25px 25px 25px; } }
 @media only screen and (orientation: landscape) {
   .outer {
-    min-height: 600px;
-  }
-}
+    min-height: 600px; } }
 @media only screen and (max-height: 630px) {
   .outer.full-height {
     min-height: 630px;
-    height: 105vh;
-  }
-}
+    height: 105vh; } }
 
 /*# sourceMappingURL=responsive.css.map */
