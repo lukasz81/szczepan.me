@@ -18,6 +18,10 @@ export class InitScripts {
         this.Gradient = Gradient;
         this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
+        this.eventForMouseLeave = this.eventForMouseLeave.bind(this);
+        (() => {
+            if (this.isTouchDevice) document.getElementById('action-type').innerText = 'Tap '
+        })()
     }
 
     static toggleElementsClassNames() {
@@ -92,7 +96,6 @@ export class InitScripts {
     }
 
     static updateSVGDataSet(dataSet) {
-        console.log(dataSet);
         document.getElementsByClassName('line-up')[0].setAttribute('d',dataSet.lineUp); // st10
         document.getElementsByClassName('line-down')[0].setAttribute('d',dataSet.lineDown); // st1
         document.getElementsByClassName('shape')[0].setAttribute('d',dataSet.shape); // st0
@@ -149,8 +152,8 @@ export class InitScripts {
     }
 
     eventForMouseLeave() {
-        document.getElementsByClassName('tooltip')[0].className = 'tooltip';
-        document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
+        let action = this.isTouchDevice ? 'Tap ' : 'Click ';
+        document.getElementById('tooltip-text').innerText = `${action} to change the mood !`;
         InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(null))
     }
 }

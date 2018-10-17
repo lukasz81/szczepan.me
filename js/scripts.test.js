@@ -140,4 +140,28 @@ describe('InitScripts Class ', () => {
 
     });
 
+    describe('checks static "getRelevantCoordinates" method', () => {
+
+        it('should return dataset relevant to "behance" className',() => {
+            const getData = InitScripts.getRelevantCoordinates('behance');
+            expect(getData.name).toEqual('behance');
+        });
+
+        it('should return dataset relevant to "twitter" className',() => {
+            const getData = InitScripts.getRelevantCoordinates('twitter');
+            expect(getData.name).toEqual('twitter');
+        });
+
+        it('should return dataset relevant to "twitter" className',() => {
+            const getData = InitScripts.getRelevantCoordinates('github');
+            expect(getData.name).toEqual('github');
+        });
+
+        it('should return dataset relevant to "twitter" className',() => {
+            const getData = InitScripts.getRelevantCoordinates('somethingelse');
+            expect(getData.name).toEqual('heart');
+        })
+
+    });
+
 });

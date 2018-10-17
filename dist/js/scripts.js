@@ -10,6 +10,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var InitScripts = exports.InitScripts = function () {
     function InitScripts(Gradient) {
+        var _this = this;
+
         _classCallCheck(this, InitScripts);
 
         this.ROLE_TEXT_SWITCH = 4000;
@@ -18,16 +20,20 @@ var InitScripts = exports.InitScripts = function () {
         this.Gradient = Gradient;
         this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
+        this.eventForMouseLeave = this.eventForMouseLeave.bind(this);
+        (function () {
+            if (_this.isTouchDevice) document.getElementById('action-type').innerText = 'Tap ';
+        })();
     }
 
     _createClass(InitScripts, [{
         key: 'changRoleText',
         value: function changRoleText() {
-            var _this = this;
+            var _this2 = this;
 
             setInterval(function () {
                 var roleElem = document.querySelector('.role');
-                var roles = _this.roles;
+                var roles = _this2.roles;
                 var role = InitScripts.pickRandomRole(roles);
                 var text = role + '.';
                 roleElem.innerHTML = text;
@@ -37,24 +43,24 @@ var InitScripts = exports.InitScripts = function () {
                     roleElem.setAttribute('data-text', text);
                     clearInterval(attributeHandler);
                     attributeHandler = false;
-                }, _this.ROLE_TEXT_SWITCH * 0.3);
+                }, _this2.ROLE_TEXT_SWITCH * 0.3);
             }, this.ROLE_TEXT_SWITCH);
         }
     }, {
         key: 'addEventsToHeartButton',
         value: function addEventsToHeartButton() {
-            var _this2 = this;
+            var _this3 = this;
 
             var heartElem = document.querySelector('.heart');
             var innerElm = document.querySelector('.inner');
             heartElem.addEventListener('click', function () {
-                _this2.isAlreadyClicked = true;
+                _this3.isAlreadyClicked = true;
                 InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
-                    _this2.Gradient.startTransition(false);
+                    _this3.Gradient.startTransition(false);
                     innerElm.classList.add('active');
-                    _this2.modifyTooltipOnClick();
-                }, _this2.DEF_DELAY);
+                    _this3.modifyTooltipOnClick();
+                }, _this3.DEF_DELAY);
             });
         }
     }, {
@@ -104,8 +110,8 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'eventForMouseLeave',
         value: function eventForMouseLeave() {
-            document.getElementsByClassName('tooltip')[0].className = 'tooltip';
-            document.getElementById('tooltip-text').innerText = 'Click to change the mood!';
+            var action = this.isTouchDevice ? 'Tap ' : 'Click ';
+            document.getElementById('tooltip-text').innerText = action + ' to change the mood !';
             InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(null));
         }
     }], [{
@@ -126,7 +132,6 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'updateSVGDataSet',
         value: function updateSVGDataSet(dataSet) {
-            console.log(dataSet);
             document.getElementsByClassName('line-up')[0].setAttribute('d', dataSet.lineUp); // st10
             document.getElementsByClassName('line-down')[0].setAttribute('d', dataSet.lineDown); // st1
             document.getElementsByClassName('shape')[0].setAttribute('d', dataSet.shape); // st0
