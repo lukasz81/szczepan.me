@@ -145,10 +145,10 @@ svg:not(#panel) {
 
   }
   100% {
-    -moz-transform: rotate(-45deg) scale(0.6);
-    -ms-transform: rotate(-45deg) scale(0.6);
-    -webkit-transform: rotate(-45deg) scale(0.6);
-    transform: rotate(-45deg) scale(0.6);
+    -moz-transform: rotate(-45deg) scale(0.8);
+    -ms-transform: rotate(-45deg) scale(0.8);
+    -webkit-transform: rotate(-45deg) scale(0.8);
+    transform: rotate(-45deg) scale(0.8);
   }
 }
 
@@ -228,14 +228,18 @@ svg:not(#panel) {
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 5px -5px 60px 10px #92929250;
   &:not(.active) {
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.8;
     filter: blur(10px);
   }
   &.active {
     pointer-events: auto;
+  }
+  &:active {
+    opacity: 0.2;
   }
   &:before,
   &:after {
