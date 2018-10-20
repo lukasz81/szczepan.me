@@ -158,7 +158,7 @@ describe('InitScripts Class ', () => {
         });
 
         it('should return dataset relevant to "twitter" className',() => {
-            const getData = InitScripts.getRelevantCoordinates('somethingelse');
+            const getData = InitScripts.getRelevantCoordinates('heart');
             expect(getData.name).toEqual('heart');
         })
 

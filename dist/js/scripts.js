@@ -112,7 +112,7 @@ var InitScripts = exports.InitScripts = function () {
         value: function eventForMouseLeave() {
             var action = this.isTouchDevice ? 'Tap ' : 'Click ';
             document.getElementById('tooltip-text').innerText = action + ' to change the mood !';
-            InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(null));
+            InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('heart'));
         }
     }], [{
         key: 'toggleElementsClassNames',
@@ -139,37 +139,33 @@ var InitScripts = exports.InitScripts = function () {
     }, {
         key: 'getRelevantCoordinates',
         value: function getRelevantCoordinates(classListName) {
-            var dataSet = void 0;
-            if (classListName === 'behance') {
-                dataSet = {
-                    name: 'behance',
-                    lineUp: "M0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 ",
-                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4",
-                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z"
-                };
-            } else if (classListName === 'twitter') {
-                dataSet = {
-                    name: 'twitter',
-                    lineUp: "M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ",
-                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
-                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z"
-                };
-            } else if (classListName === 'github') {
-                dataSet = {
-                    name: 'github',
-                    lineUp: "M0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 ",
-                    lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
-                    shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 z"
-                };
-            } else {
-                dataSet = {
-                    name: 'heart',
-                    lineUp: "M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 ",
-                    lineDown: "M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 ",
-                    shape: "M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"
-                };
-            }
-            return dataSet;
+            var dataSet1 = {
+                name: 'behance',
+                lineUp: "M0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z"
+            };
+            var dataSet2 = {
+                name: 'twitter',
+                lineUp: "M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z"
+            };
+            var dataSet3 = {
+                name: 'github',
+                lineUp: "M0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 z"
+            };
+            var dataSet4 = {
+                name: 'heart',
+                lineUp: "M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"
+            };
+            return [dataSet1, dataSet2, dataSet3, dataSet4].find(function (set) {
+                return set.name === classListName;
+            });
         }
     }]);
 
