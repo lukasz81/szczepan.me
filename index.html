@@ -9,7 +9,9 @@
     <script>let exports = {};</script>
     <script src="./dist/js/gradient-generator.js"></script>
     <script src="./dist/js/scripts.js" defer ></script>
+    <script src="./paper-js/paper-full.min.js"></script>
     <script>
+        paper.install(window);
         window.addEventListener('DOMContentLoaded',() => {
             let Gradient = new GradientGenerator();
             let Init = new InitScripts(Gradient);
@@ -18,6 +20,8 @@
             Init.changRoleText();
             Init.addEventsToHeartButton();
             Init.toggleTooltipClassNamesOnHover();
+            let canvas = document.getElementById('myCanvas');
+            paper.setup(canvas);
         });
     </script>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
@@ -102,6 +106,7 @@
     <div class="flex-grid-item">
         <span class="heart"></span>
     </div>
+    <canvas id="myCanvas" resize></canvas>
 </main>
 </div>
 </body>

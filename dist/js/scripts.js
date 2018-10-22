@@ -69,7 +69,6 @@ var InitScripts = exports.InitScripts = function () {
             if (this.isAlreadyClicked) {
                 document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
                 InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('twitter'));
-                // document.getElementsByClassName('navigation')[0].removeEventListener('mouseleave', this.eventForMouseLeave)
             }
         }
     }, {

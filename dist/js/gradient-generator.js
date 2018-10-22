@@ -91,6 +91,35 @@ var GradientGenerator = exports.GradientGenerator = function () {
             document.head.appendChild(styleSheet);
         }
     }, {
+        key: 'applyCanvasGradient',
+        value: function applyCanvasGradient(stopOne, stopTwo) {
+            if (typeof circle === 'undefined') {
+
+                var triangle = new Path.RegularPolygon(paper.view.center, 3, paper.view.bounds.height * 0.28);
+                triangle.closed = true;
+                triangle.fillColor = {
+                    gradient: { stops: [[stopOne], [stopTwo]] },
+                    origin: triangle.bounds.topRight,
+                    destination: triangle.bounds.bottomLeft
+                };
+
+                // let circle = new paper.Path.Circle({
+                //     center: paper.view.center,
+                //     radius: paper.view.bounds.height * 0.28
+                // });
+
+                // circle.fillColor = {
+                //     gradient: {stops: [[stopOne], [stopTwo]]},
+                //     origin: circle.bounds.topRight,
+                //     destination: circle.bounds.bottomLeft
+                // };
+
+            } else {
+                console.log('C');
+                paper.view.update({ stops: [[stopOne], [stopTwo]] });
+            }
+        }
+    }, {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
             var outerElem = document.querySelector('.outer');
@@ -102,6 +131,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
             }
             this.firstGrad = !this.firstGrad;
+            this.applyCanvasGradient(stopOne, stopTwo);
         }
     }], [{
         key: 'getRandomRGBValue',
@@ -128,3 +158,4 @@ var GradientGenerator = exports.GradientGenerator = function () {
 
     return GradientGenerator;
 }();
+//# sourceMappingURL=gradient-generator.js.map

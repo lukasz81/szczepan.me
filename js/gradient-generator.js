@@ -88,6 +88,36 @@ export class GradientGenerator {
         document.head.appendChild(styleSheet);
     };
 
+    applyCanvasGradient(stopOne,stopTwo) {
+        if (typeof circle === 'undefined') {
+
+            let triangle = new Path.RegularPolygon(paper.view.center, 3, paper.view.bounds.height * 0.28);
+            triangle.closed = true;
+            triangle.fillColor = {
+                gradient: {stops: [[stopOne], [stopTwo]]},
+                origin: triangle.bounds.topRight,
+                destination: triangle.bounds.bottomLeft
+            };
+
+            // let circle = new paper.Path.Circle({
+            //     center: paper.view.center,
+            //     radius: paper.view.bounds.height * 0.28
+            // });
+
+            // circle.fillColor = {
+            //     gradient: {stops: [[stopOne], [stopTwo]]},
+            //     origin: circle.bounds.topRight,
+            //     destination: circle.bounds.bottomLeft
+            // };
+
+
+        } else {
+            console.log('C');
+            paper.view.update({stops: [[stopOne], [stopTwo]]})
+        }
+
+    }
+
     applyChange(stopOne, stopTwo) {
         const outerElem = document.querySelector('.outer');
         outerElem.classList.add('active');
@@ -98,7 +128,7 @@ export class GradientGenerator {
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
         }
         this.firstGrad = !this.firstGrad;
-
+        this.applyCanvasGradient(stopOne,stopTwo);
     };
 }
 
