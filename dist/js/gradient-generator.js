@@ -93,30 +93,104 @@ var GradientGenerator = exports.GradientGenerator = function () {
     }, {
         key: 'applyCanvasGradient',
         value: function applyCanvasGradient(stopOne, stopTwo) {
-            if (typeof circle === 'undefined') {
 
-                var triangle = new Path.RegularPolygon(paper.view.center, 3, paper.view.bounds.height * 0.28);
-                triangle.closed = true;
-                triangle.fillColor = {
-                    gradient: { stops: [[stopOne], [stopTwo]] },
-                    origin: triangle.bounds.topRight,
-                    destination: triangle.bounds.bottomLeft
-                };
+            // console.log(stopOne,stopTwo);
 
-                // let circle = new paper.Path.Circle({
-                //     center: paper.view.center,
-                //     radius: paper.view.bounds.height * 0.28
-                // });
+            project.activeLayer.removeChildren();
 
-                // circle.fillColor = {
-                //     gradient: {stops: [[stopOne], [stopTwo]]},
-                //     origin: circle.bounds.topRight,
-                //     destination: circle.bounds.bottomLeft
-                // };
+            var x = view.center.x;
+            var y = view.center.y;
 
-            } else {
-                console.log('C');
-                paper.view.update({ stops: [[stopOne], [stopTwo]] });
+            ///triangle
+
+            var triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
+
+            triangle.fillColor = {
+                gradient: { stops: [[stopTwo], [stopOne]] },
+                origin: triangle.bounds.topRight,
+                destination: triangle.bounds.bottomLeft
+            };
+
+            triangle.style = {
+                strokeColor: stopTwo,
+                strokeWidth: 1,
+                shadowColor: new Color(0, 0, 0, 0.5),
+                shadowBlur: 100
+            };
+
+            ///square
+
+            var square = new Path.Rectangle({
+                point: [x + 50, y],
+                size: [200, 200]
+            });
+
+            square.style = {
+                strokeColor: stopTwo,
+                strokeWidth: 1,
+                shadowColor: new Color(0, 0, 0, 0.5),
+                shadowBlur: 100
+            };
+
+            square.fillColor = {
+                gradient: { stops: [[stopTwo], [stopOne]] },
+                origin: triangle.bounds.topRight,
+                destination: triangle.bounds.bottomLeft
+            };
+
+            /// circles
+
+            var circle = new Path.Circle({
+                center: view.center,
+                radius: 150
+            });
+
+            circle.fillColor = {
+                gradient: { stops: [[stopOne], [stopTwo]] },
+                origin: circle.bounds.topRight,
+                destination: circle.bounds.bottomLeft
+            };
+
+            circle.style = {
+                strokeColor: stopOne,
+                strokeWidth: 1,
+                shadowColor: new Color(0, 0, 0, 0.5),
+                shadowBlur: 100
+            };
+
+            var circle2 = new Path.Circle({
+                center: [view.center.x + 100, view.center.y - 160],
+                radius: 50,
+                opacity: 0.5
+            });
+
+            circle2.fillColor = {
+                gradient: { stops: [[stopTwo], [stopOne]] },
+                origin: circle2.bounds.topRight,
+                destination: circle2.bounds.bottomLeft
+            };
+
+            circle2.style = {
+                strokeColor: stopOne,
+                strokeWidth: 1,
+                shadowColor: new Color(0, 0, 0, 0.5),
+                shadowBlur: 10
+            };
+
+            //circle2.selected = true;
+            // circle2.opacity = 0.5
+
+            window.addEventListener('resize', function () {
+                var x = view.center.x;
+                var y = view.center.y;
+                onResize(x, y);
+            });
+
+            function onResize(x, y) {
+                console.log('B ', square.position);
+                circle.position = view.center;
+                triangle.position = new Point(x - 100, y - 100);
+                square.position = new Point(x + 50, y - 50);
             }
         }
     }, {

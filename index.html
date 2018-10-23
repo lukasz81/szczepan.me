@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./css/styles.css" media="screen">
     <script>let exports = {};</script>
     <script src="./dist/js/gradient-generator.js"></script>
-    <script src="./dist/js/scripts.js" defer ></script>
+    <script src="./dist/js/scripts.js" defer></script>
     <script src="./paper-js/paper-full.min.js"></script>
     <script>
         paper.install(window);
-        window.addEventListener('DOMContentLoaded',() => {
+        window.addEventListener('DOMContentLoaded', () => {
             let Gradient = new GradientGenerator();
             let Init = new InitScripts(Gradient);
             Init.addBrowserSupportClasses();
@@ -28,86 +28,94 @@
 </head>
 <body>
 <div class="outer full-height">
-<main class="flex-grid-container">
-    <div class="grid-container full-fill">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-    </div>
-    <div class="flex-grid-item"></div>
-    <div class="flex-grid-item content translate--y">
-        <figure class="inner">
-            <svg xmlns="http://www.w3.org/2000/svg">
-                <use class="logo" xlink:href="svg/all.svg#logo">
-                </use>
-                <use class="was" xlink:href="svg/all.svg#was">
-                </use>
-            </svg>
-        </figure>
-        <h1 class="hello">Hello.</h1>
-        <h2 class="comingSoon">My name is Lukasz and I am a
-            <br/>
-            <span class="glitch role" data-text=" ">UI Developer.</span>
-        </h2>
-        <nav class="navigation">
-            <a class="more" rel="noopener" target="_blank" href="https://github.com/lukasz81">
-                <span class="text indent">Visit Github website </span>
-                <figure class="github">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
-                    </svg>
-                </figure>
-            </a>
-            <a class="more" rel="noopener" target="_blank" href="https://www.behance.net/szczepan">
-                <span class="text indent">Visit Behance website</span>
-                <figure class="behance">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#behance"></use>
-                    </svg>
-                </figure>
-            </a>
+    <main class="flex-grid-container">
+        <div class="grid-container full-fill">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="flex-grid-item"></div>
+        <div class="flex-grid-item content translate--y">
+            <figure class="inner">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <use class="logo" xlink:href="svg/all.svg#logo">
+                    </use>
+                    <use class="was" xlink:href="svg/all.svg#was">
+                    </use>
+                </svg>
+            </figure>
+            <h1 class="hello">Hello.</h1>
+            <h2 class="comingSoon">My name is Lukasz and I am a
+                <br/>
+                <span class="glitch role" data-text=" ">UI Developer.</span>
+            </h2>
+            <nav class="navigation">
+                <a class="more" rel="noopener" target="_blank" href="https://github.com/lukasz81">
+                    <span class="text indent">Visit Github website </span>
+                    <figure class="github">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
+                        </svg>
+                    </figure>
+                </a>
+                <a class="more" rel="noopener" target="_blank" href="https://www.behance.net/szczepan">
+                    <span class="text indent">Visit Behance website</span>
+                    <figure class="behance">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#behance"></use>
+                        </svg>
+                    </figure>
+                </a>
 
-            <a class="more" rel="noopener" target="_blank" href="https://twitter.com/szczeps81">
-                <span class="text indent">Follow me on Twitter</span>
-                <figure class="twitter">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#twitter"></use>
+                <a class="more" rel="noopener" target="_blank" href="https://twitter.com/szczeps81">
+                    <span class="text indent">Follow me on Twitter</span>
+                    <figure class="twitter">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#twitter"></use>
+                        </svg>
+                    </figure>
+                </a>
+            </nav>
+        </div>
+        <div class="flex-grid-item tooltip-container">
+            <div class="tooltip-wrapper">
+                <div class="tooltip">
+                    <p id="tooltip-text">
+                        <span id="action-type">Click </span>to change the mood !
+                    </p>
+                    <svg version="1.1" id="panel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 96" style="enable-background:new 0 0 300 96;" xml:space="preserve">
+                        <style type="text/css">
+                        	.shape {
+                                fill: url(#SVGID_1_);
+                            }
+
+                            .line-up, .line-down {
+                                fill: none;
+                                stroke: var(--gradient-two);
+                                stroke-width: 1px;
+                                stroke-miterlimit: 10;
+                            }
+                        </style>
+                        <g>
+	                        <radialGradient id="SVGID_1_" cx="150" cy="42" r="110.0402" gradientUnits="userSpaceOnUse">
+	                	        <stop  offset="0" style="stop-color:#2b2b2b;stop-opacity:0.28"/>
+	                	        <stop  offset="0.9791" style="stop-color:#2b2b2b;stop-opacity:5.698085e-03"/>
+	                	        <stop  offset="0.9995" style="stop-color:#2b2b2b;stop-opacity:0"/>
+	                        </radialGradient>
+                	        <path class="shape" d="M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"/>
+                        </g>
+                        <path class="line-up" d="M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 "/>
+                        <path class="line-down" d="M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 "/>
                     </svg>
-                </figure>
-            </a>
-        </nav>
-    </div>
-    <div class="flex-grid-item tooltip-container">
-        <div class="tooltip-wrapper">
-        <div class="tooltip">
-            <p id="tooltip-text">
-                <span id="action-type">Click </span>to change the mood !
-            </p>
-            <svg version="1.1" id="panel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 96" style="enable-background:new 0 0 300 96;" xml:space="preserve">
-                <style type="text/css">
-                	.shape{fill:url(#SVGID_1_);}
-                    .line-up,.line-down{fill:none;stroke:rgba(0,0,0, 0.3);stroke-width: 1px;stroke-miterlimit:10;}
-                </style>
-                <g>
-	                <radialGradient id="SVGID_1_" cx="150" cy="42" r="110.0402" gradientUnits="userSpaceOnUse">
-	                	<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.28"/>
-	                	<stop  offset="0.9791" style="stop-color:#FFFFFF;stop-opacity:5.698085e-03"/>
-	                	<stop  offset="0.9995" style="stop-color:#FFFFFF;stop-opacity:0"/>
-	                </radialGradient>
-                	<path class="shape" d="M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"/>
-                </g>
-                <path class="line-up" d="M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 "/>
-                <path class="line-down" d="M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 "/>
-            </svg>
+                </div>
+            </div>
         </div>
+        <div class="flex-grid-item">
+            <span class="heart"></span>
         </div>
-    </div>
-    <div class="flex-grid-item">
-        <span class="heart"></span>
-    </div>
+    </main>
     <canvas id="myCanvas" resize></canvas>
-</main>
 </div>
 </body>
 </html>
