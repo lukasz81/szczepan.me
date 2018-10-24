@@ -91,10 +91,20 @@ var GradientGenerator = exports.GradientGenerator = function () {
             document.head.appendChild(styleSheet);
         }
     }, {
+        key: 'addCharToString',
+        value: function addCharToString(string) {
+            var str = string.substring(0, string.length - 1);
+            var strLength = str.length;
+            var alpha = ' , 0.7';
+            var alphaLength = alpha.length;
+            return str.padEnd(strLength + alphaLength, alpha) + ')';
+        }
+    }, {
         key: 'applyCanvasGradient',
         value: function applyCanvasGradient(stopOne, stopTwo) {
 
-            // console.log(stopOne,stopTwo);
+            var stopOneAlpha = this.addCharToString(stopOne);
+            var stopTwoAlpha = this.addCharToString(stopTwo);
 
             project.activeLayer.removeChildren();
 
@@ -102,7 +112,6 @@ var GradientGenerator = exports.GradientGenerator = function () {
             var y = view.center.y;
 
             ///triangle
-
             var triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
 
             triangle.fillColor = {
@@ -121,7 +130,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
             ///square
 
             var square = new Path.Rectangle({
-                point: [x + 50, y],
+                point: [x + 50, y - 150],
                 size: [200, 200]
             });
 
@@ -134,8 +143,8 @@ var GradientGenerator = exports.GradientGenerator = function () {
 
             square.fillColor = {
                 gradient: { stops: [[stopTwo], [stopOne]] },
-                origin: triangle.bounds.topRight,
-                destination: triangle.bounds.bottomLeft
+                origin: square.bounds.topRight,
+                destination: square.bounds.bottomLeft
             };
 
             /// circles
@@ -146,7 +155,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
             });
 
             circle.fillColor = {
-                gradient: { stops: [[stopOne], [stopTwo]] },
+                gradient: { stops: [[stopOneAlpha], [stopTwoAlpha]] },
                 origin: circle.bounds.topRight,
                 destination: circle.bounds.bottomLeft
             };
@@ -161,7 +170,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
             var circle2 = new Path.Circle({
                 center: [view.center.x + 100, view.center.y - 160],
                 radius: 50,
-                opacity: 0.5
+                opacity: 0.8
             });
 
             circle2.fillColor = {
@@ -232,4 +241,3 @@ var GradientGenerator = exports.GradientGenerator = function () {
 
     return GradientGenerator;
 }();
-//# sourceMappingURL=gradient-generator.js.map

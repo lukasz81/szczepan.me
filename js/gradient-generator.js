@@ -89,10 +89,19 @@ export class GradientGenerator {
         styleSheet.innerHTML = styleContent;
         document.head.appendChild(styleSheet);
     };
+    
+    addCharToString(string){
+        let str = string.substring(0,string.length-1);
+        let strLength = str.length;
+        let alpha = ' , 0.7';
+        let alphaLength = alpha.length;
+        return str.padEnd(strLength+alphaLength,alpha) + ')';
+    }
 
     applyCanvasGradient(stopOne,stopTwo) {
 
-        // console.log(stopOne,stopTwo);
+        let stopOneAlpha = this.addCharToString(stopOne);
+        let stopTwoAlpha = this.addCharToString(stopTwo);
 
         project.activeLayer.removeChildren();
 
@@ -100,7 +109,6 @@ export class GradientGenerator {
         let y = view.center.y;
 
         ///triangle
-
         let triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
 
         triangle.fillColor = {
@@ -119,7 +127,7 @@ export class GradientGenerator {
         ///square
 
         let square = new Path.Rectangle({
-            point: [x+50, y],
+            point: [x+50, y-150],
             size: [200, 200]
         });
 
@@ -132,8 +140,8 @@ export class GradientGenerator {
 
         square.fillColor = {
             gradient: {stops: [[stopTwo], [stopOne]]},
-            origin: triangle.bounds.topRight,
-            destination: triangle.bounds.bottomLeft
+            origin: square.bounds.topRight,
+            destination: square.bounds.bottomLeft
         };
 
         /// circles
@@ -144,7 +152,7 @@ export class GradientGenerator {
         });
 
         circle.fillColor = {
-            gradient: {stops: [[stopOne], [stopTwo]]},
+            gradient: {stops: [[stopOneAlpha], [stopTwoAlpha]]},
             origin: circle.bounds.topRight,
             destination: circle.bounds.bottomLeft
         };
@@ -160,7 +168,7 @@ export class GradientGenerator {
         let circle2 = new Path.Circle({
             center: [view.center.x + 100,view.center.y - 160],
             radius: 50,
-            opacity: 0.5
+            opacity: 0.8
         });
 
         circle2.fillColor = {
