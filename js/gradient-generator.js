@@ -1,3 +1,4 @@
+// import {applyGradientToVanvas} from './canvas-gradient';
 export class GradientGenerator {
 
     constructor() {
@@ -11,8 +12,6 @@ export class GradientGenerator {
         };
         this.transitionHandler = null;
         this.increment = null;
-
-
     }
 
     static getRandomRGBValue() {
@@ -37,7 +36,7 @@ export class GradientGenerator {
         const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
         if (this.isFirstLoad) this.prevColors = {targetColorOne, targetColorTwo};
 
-        this.transitionHandler = setInterval( () => {
+        this.transitionHandler = setInterval(() => {
             this.transitionGradient(this.isFirstLoad, targetColorOne, targetColorTwo);
         }, this.DELAY);
 
@@ -89,117 +88,14 @@ export class GradientGenerator {
         styleSheet.innerHTML = styleContent;
         document.head.appendChild(styleSheet);
     };
-    
-    addCharToString(string){
-        let str = string.substring(0,string.length-1);
-        let strLength = str.length;
-        let alpha = ' , 0.7';
-        let alphaLength = alpha.length;
-        return str.padEnd(strLength+alphaLength,alpha) + ')';
-    }
 
     applyCanvasGradient(stopOne,stopTwo) {
-
-        let stopOneAlpha = this.addCharToString(stopOne);
-        let stopTwoAlpha = this.addCharToString(stopTwo);
-
-        project.activeLayer.removeChildren();
-
-        let x = view.center.x;
-        let y = view.center.y;
-
-        ///triangle
-        let triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
-
-        triangle.fillColor = {
-            gradient: {stops: [[stopTwo], [stopOne]]},
-            origin: triangle.bounds.topRight,
-            destination: triangle.bounds.bottomLeft,
-        };
-
-        triangle.style = {
-            strokeColor: stopTwo,
-            strokeWidth: 1,
-            shadowColor: new Color(0, 0, 0, 0.5),
-            shadowBlur: 100,
-        };
-
-        ///square
-
-        let square = new Path.Rectangle({
-            point: [x+50, y-150],
-            size: [200, 200]
-        });
-
-        square.style = {
-            strokeColor: stopTwo,
-            strokeWidth: 1,
-            shadowColor: new Color(0, 0, 0, 0.5),
-            shadowBlur: 100
-        };
-
-        square.fillColor = {
-            gradient: {stops: [[stopTwo], [stopOne]]},
-            origin: square.bounds.topRight,
-            destination: square.bounds.bottomLeft
-        };
-
-        /// circles
-
-        let circle = new Path.Circle({
-            center: view.center,
-            radius: 150,
-        });
-
-        circle.fillColor = {
-            gradient: {stops: [[stopOneAlpha], [stopTwoAlpha]]},
-            origin: circle.bounds.topRight,
-            destination: circle.bounds.bottomLeft
-        };
-
-        circle.style = {
-            strokeColor: stopOne,
-            strokeWidth: 1,
-            shadowColor: new Color(0, 0, 0, 0.5),
-            shadowBlur: 100,
-        };
-
-
-        let circle2 = new Path.Circle({
-            center: [view.center.x + 100,view.center.y - 160],
-            radius: 50,
-            opacity: 0.8
-        });
-
-        circle2.fillColor = {
-            gradient: {stops: [[stopTwo], [stopOne]]},
-            origin: circle2.bounds.topRight,
-            destination: circle2.bounds.bottomLeft
-        };
-
-        circle2.style = {
-            strokeColor: stopOne,
-            strokeWidth: 1,
-            shadowColor: new Color(0, 0, 0, 0.5),
-            shadowBlur: 10,
-        };
-
-        //circle2.selected = true;
-        // circle2.opacity = 0.5
-
-        window.addEventListener('resize', () => {
-            let x = view.center.x;
-            let y = view.center.y;
-            onResize(x,y);
-        });
-
-        function onResize(x,y) {
-            console.log('B ',square.position);
-            circle.position = view.center;
-            triangle.position = new Point(x - 100, y - 100);
-            square.position = new Point(x + 50, y - 50)
+        // check if it is node env. Run only if it's not until I figure out testing paper.js
+        if (typeof process === 'undefined') {
+            return applyGradientToCanvas(stopOne,stopTwo)
+        } else {
+            return 'Developer needs more time to learn testing paper.js'
         }
-
     }
 
     applyChange(stopOne, stopTwo) {
@@ -213,6 +109,7 @@ export class GradientGenerator {
         }
         this.firstGrad = !this.firstGrad;
         this.applyCanvasGradient(stopOne,stopTwo);
+        // view.pause();
     };
 }
 

@@ -3,6 +3,41 @@ const $ = require('jquery');
 const html = require('fs').readFileSync('./index.html').toString();
 const {InitScripts} = require('./scripts.js');
 const {GradientGenerator} = require('./gradient-generator.js');
+//const {paper} = require('../paper-js/paper-full.min.js');
+const { JSDOM } = require('jsdom');
+const jsdom = new JSDOM();
+const { window } = jsdom;
+
+function copyProps(src, target) {
+    const props = Object.getOwnPropertyNames(src)
+        .filter(prop => typeof target[prop] === 'undefined')
+        .reduce((result, prop) => ({
+            ...result,
+            [prop]: Object.getOwnPropertyDescriptor(src, prop),
+        }), {});
+    Object.defineProperties(target, props);
+}
+
+global.window = window;
+global.document = window.document;
+global.navigator = {
+    userAgent: 'node.js',
+};
+
+//global.paper = paper.setup();
+global.project = {
+    activeLayer: {
+        removeChildren: () => {}
+    }
+};
+global.view = {
+    center: {
+        x: {},
+        y: {}
+    }
+};
+
+copyProps(window, global);
 
 describe('InitScripts Class ', () => {
 
@@ -88,6 +123,7 @@ describe('InitScripts Class ', () => {
         const InitScript = new InitScripts(Gradient);
 
         jest.useFakeTimers();
+
         it('should call "toggleElementsClassNames" after click on html heart element', () => {
             InitScript.addEventsToHeartButton();
             let fn = jest.spyOn(InitScripts, 'toggleElementsClassNames');

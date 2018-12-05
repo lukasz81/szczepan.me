@@ -31,6 +31,7 @@ describe('Gradient Generator Class ', () => {
     });
 
     it('should identify class as object', () => {
+        expect(typeof GradientGenerator).toBe('function');
         const gradientGenerator = new GradientGenerator();
         expect(typeof gradientGenerator).toBe('object')
     });
@@ -88,6 +89,7 @@ describe('Gradient Generator Class ', () => {
             let fn = jest.spyOn(gradientGenerator, 'transitionGradient');
             jest.runOnlyPendingTimers();
             expect(fn).toHaveBeenCalled();
+            fn.mockRestore();
         });
 
         it('should call "createRandomGradient" to create random gradient', () => {
@@ -95,6 +97,7 @@ describe('Gradient Generator Class ', () => {
             const gradientGenerator = new GradientGenerator();
             gradientGenerator.startTransition(true);
             expect(fn).toHaveBeenCalled();
+            fn.mockRestore();
         });
 
         it('should set "transitionHandler" to value different then null', () => {
@@ -157,11 +160,7 @@ describe('Gradient Generator Class ', () => {
             expect(gradientGenerator.increment).toBe(null);
             gradientGenerator.checkAndUpdateColor(currentColor,targetColor);
 
-            setTimeout(
-                () => {
-                    expect(gradientGenerator.increment[0]).toBe(0);
-                }, 300
-            );
+            setTimeout(() => {expect(gradientGenerator.increment[0]).toBe(0);},300);
         });
 
     });
@@ -179,6 +178,7 @@ describe('Gradient Generator Class ', () => {
             gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
             expect(fn).toHaveBeenCalledTimes(1);
             expect(fn).toHaveBeenCalledWith(stopOne,stopTwo)
+            fn.mockRestore();
         });
 
         it('should call "reloadStyleTags" when "transitionGradient" is called with onPageLoad equal to true', () => {
@@ -187,6 +187,7 @@ describe('Gradient Generator Class ', () => {
             let fn = jest.spyOn(gradientGenerator, 'reloadStyleTags');
             gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
             expect(fn).toHaveBeenCalledTimes(1);
+            fn.mockRestore();
         });
 
         it('should add a class name="active" to html element', () => {
@@ -213,6 +214,28 @@ describe('Gradient Generator Class ', () => {
             expect($('#tags').length).toBe(0);
             gradientGenerator.reloadStyleTags([10,10,10],[10,10,10]);
             expect($('#tags').length).toBe(1);
+        });
+
+    });
+
+    describe('checks "applyCanvasGradient" method', () => {
+
+        it('should return a string "Developer needs more time to learn testing paper.js" if process variable exists', () => {
+            const gradientGenerator = new GradientGenerator();
+            let fn = jest.spyOn(GradientGenerator.prototype, 'applyCanvasGradient');
+            gradientGenerator.applyCanvasGradient(0,0);
+            expect(fn).toHaveReturnedWith('Developer needs more time to learn testing paper.js');
+            fn.mockRestore();
+        });
+
+        it('should call a function if "process" is undefined', () => {
+            global.process = undefined;
+            global.applyGradientToCanvas = (a,b) => {return 'test' + a + b};
+            let fn = jest.spyOn(GradientGenerator.prototype, 'applyCanvasGradient');
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.applyCanvasGradient(0,0);
+            expect(fn).toHaveReturnedWith('test00');
+            fn.mockRestore();
         });
 
     });
@@ -252,6 +275,15 @@ describe('Gradient Generator Class ', () => {
             expect(gradientGenerator.firstGrad).toBe(curentGradientValue);
             gradientGenerator.applyChange(stopOne,stopTwo);
             expect(gradientGenerator.firstGrad).toBe(!curentGradientValue);
+        });
+
+        it('should call applyCanvasGradient property', () => {
+            global.process = 'GLOBAL';
+            let fn = jest.spyOn(GradientGenerator.prototype, 'applyCanvasGradient');
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.applyChange(stopOne,stopTwo);
+            expect(fn).toHaveReturnedWith('Developer needs more time to learn testing paper.js');
+            fn.mockRestore();
         });
 
     });

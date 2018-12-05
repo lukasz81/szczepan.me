@@ -13,6 +13,10 @@ export class InitScripts {
             'Web Designer',
             'Web Developer',
             'Coder',
+            'React.js Lover',
+            'TDD Enthusiast',
+            'Agile Manifest Follower',
+            'Musician',
             'Human'
         ];
         this.Gradient = Gradient;

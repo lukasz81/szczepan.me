@@ -8,6 +8,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+// import {applyGradientToVanvas} from './canvas-gradient';
 var GradientGenerator = exports.GradientGenerator = function () {
     function GradientGenerator() {
         _classCallCheck(this, GradientGenerator);
@@ -91,115 +92,13 @@ var GradientGenerator = exports.GradientGenerator = function () {
             document.head.appendChild(styleSheet);
         }
     }, {
-        key: 'addCharToString',
-        value: function addCharToString(string) {
-            var str = string.substring(0, string.length - 1);
-            var strLength = str.length;
-            var alpha = ' , 0.7';
-            var alphaLength = alpha.length;
-            return str.padEnd(strLength + alphaLength, alpha) + ')';
-        }
-    }, {
         key: 'applyCanvasGradient',
         value: function applyCanvasGradient(stopOne, stopTwo) {
-
-            var stopOneAlpha = this.addCharToString(stopOne);
-            var stopTwoAlpha = this.addCharToString(stopTwo);
-
-            project.activeLayer.removeChildren();
-
-            var x = view.center.x;
-            var y = view.center.y;
-
-            ///triangle
-            var triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
-
-            triangle.fillColor = {
-                gradient: { stops: [[stopTwo], [stopOne]] },
-                origin: triangle.bounds.topRight,
-                destination: triangle.bounds.bottomLeft
-            };
-
-            triangle.style = {
-                strokeColor: stopTwo,
-                strokeWidth: 1,
-                shadowColor: new Color(0, 0, 0, 0.5),
-                shadowBlur: 100
-            };
-
-            ///square
-
-            var square = new Path.Rectangle({
-                point: [x + 50, y - 150],
-                size: [200, 200]
-            });
-
-            square.style = {
-                strokeColor: stopTwo,
-                strokeWidth: 1,
-                shadowColor: new Color(0, 0, 0, 0.5),
-                shadowBlur: 100
-            };
-
-            square.fillColor = {
-                gradient: { stops: [[stopTwo], [stopOne]] },
-                origin: square.bounds.topRight,
-                destination: square.bounds.bottomLeft
-            };
-
-            /// circles
-
-            var circle = new Path.Circle({
-                center: view.center,
-                radius: 150
-            });
-
-            circle.fillColor = {
-                gradient: { stops: [[stopOneAlpha], [stopTwoAlpha]] },
-                origin: circle.bounds.topRight,
-                destination: circle.bounds.bottomLeft
-            };
-
-            circle.style = {
-                strokeColor: stopOne,
-                strokeWidth: 1,
-                shadowColor: new Color(0, 0, 0, 0.5),
-                shadowBlur: 100
-            };
-
-            var circle2 = new Path.Circle({
-                center: [view.center.x + 100, view.center.y - 160],
-                radius: 50,
-                opacity: 0.8
-            });
-
-            circle2.fillColor = {
-                gradient: { stops: [[stopTwo], [stopOne]] },
-                origin: circle2.bounds.topRight,
-                destination: circle2.bounds.bottomLeft
-            };
-
-            circle2.style = {
-                strokeColor: stopOne,
-                strokeWidth: 1,
-                shadowColor: new Color(0, 0, 0, 0.5),
-                shadowBlur: 10
-            };
-
-            //circle2.selected = true;
-            // circle2.opacity = 0.5
-
-            window.addEventListener('resize', function () {
-                var x = view.center.x;
-                var y = view.center.y;
-                onResize(x, y);
-            });
-
-            function onResize(x, y) {
-                console.log('B ', square.position);
-                circle.position = view.center;
-                triangle.position = new Point(x - 100, y - 100);
-                square.position = new Point(x + 50, y - 50);
+            // check if it is node env. Run only if it's not until I figure out testing paper.js
+            if (typeof process === 'undefined') {
+                return applyGradientToCanvas(stopOne, stopTwo);
+            } else {
+                return 'Developer needs more time to learn testing paper.js';
             }
         }
     }, {
@@ -215,6 +114,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
             }
             this.firstGrad = !this.firstGrad;
             this.applyCanvasGradient(stopOne, stopTwo);
+            // view.pause();
         }
     }], [{
         key: 'getRandomRGBValue',
