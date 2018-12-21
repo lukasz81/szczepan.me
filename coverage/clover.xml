@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540034832035" clover="3.2.0">
-  <project timestamp="1540034832036" name="All files">
+<coverage generated="1545433269728" clover="3.2.0">
+  <project timestamp="1545433269728" name="All files">
     <metrics statements="115" coveredstatements="101" conditionals="32" coveredconditionals="25" methods="34" coveredmethods="29" elements="181" coveredelements="155" complexity="0" loc="115" ncloc="115" packages="1" files="2" classes="2">
-      <file name="gradient-generator.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/gradient-generator.js">
+      <file name="gradient-generator.js" path="/Users/lukaszszczepanski/WebstormProjects/szczepan.me/js/gradient-generator.js">
         <metrics statements="49" coveredstatements="47" conditionals="20" coveredconditionals="17" methods="12" coveredmethods="12"/>
         <line num="4" count="21" type="stmt"/>
         <line num="5" count="21" type="stmt"/>
@@ -54,7 +54,7 @@
         <line num="98" count="10" type="stmt"/>
         <line num="100" count="10" type="stmt"/>
       </file>
-      <file name="scripts.js" path="/Users/szczepanskilukasz/WebstormProjects/szczepan.me/js/scripts.js">
+      <file name="scripts.js" path="/Users/lukaszszczepanski/WebstormProjects/szczepan.me/js/scripts.js">
         <metrics statements="66" coveredstatements="54" conditionals="12" coveredconditionals="8" methods="22" coveredmethods="17"/>
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
