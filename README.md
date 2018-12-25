@@ -21,6 +21,8 @@ What's cool about it (features):
 ## How to run dev:
 $npm install: will install all dependencies.
 
+$brew install http-server
+
 $http-server: to run dev.
 
 $sass --watch css: to watch the whole css directory
