@@ -66,7 +66,8 @@ function applyGradientToCanvas (stopOne,stopTwo) {
             let sinus = Math.sin(event.time + i);
             // Change the y position of the segment point:
             // blob.segments[i]._point._y = sinus * 5 + 100;
-            blob.segments[i].point.y += sinus/10 ;
+            blob.segments[i].point.y += sinus/10;
+            blob.segments[i].point.x += sinus/5;
         }
         // Uncomment the following line and run the script again
         // to smooth the path:
@@ -99,6 +100,6 @@ function applyGradientToCanvas (stopOne,stopTwo) {
 // helper function to add alpha transparency to gradient
 function addCharToString (string) {
     let str = string.substring(0,string.length-1);
-    let alpha = ' , 1';
+    let alpha = ' , 0.8';
     return str.padEnd(str.length + alpha.length,alpha) + ')';
 }
