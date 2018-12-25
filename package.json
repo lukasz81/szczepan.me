@@ -3,6 +3,7 @@
   "short_name": "szczepan.me",
   "version": "0.0.1",
   "scripts": {
+    "start": "http-server && babel-it",
     "babel-it": "npx babel js --out-dir dist/js --watch",
     "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },

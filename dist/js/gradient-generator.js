@@ -8,7 +8,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// import {applyGradientToVanvas} from './canvas-gradient';
 var GradientGenerator = exports.GradientGenerator = function () {
     function GradientGenerator() {
         _classCallCheck(this, GradientGenerator);
@@ -106,6 +105,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
         value: function applyChange(stopOne, stopTwo) {
             var outerElem = document.querySelector('.outer');
             outerElem.classList.add('active');
+            this.applyCanvasGradient(stopOne, stopTwo);
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);
@@ -113,8 +113,6 @@ var GradientGenerator = exports.GradientGenerator = function () {
                 outerElem.style.backgroundImage = 'linear-gradient(45deg,' + stopOne + ',' + stopTwo + ')';
             }
             this.firstGrad = !this.firstGrad;
-            this.applyCanvasGradient(stopOne, stopTwo);
-            // view.pause();
         }
     }], [{
         key: 'getRandomRGBValue',

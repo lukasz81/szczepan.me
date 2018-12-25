@@ -1,4 +1,3 @@
-// import {applyGradientToVanvas} from './canvas-gradient';
 export class GradientGenerator {
 
     constructor() {
@@ -92,7 +91,7 @@ export class GradientGenerator {
     applyCanvasGradient(stopOne,stopTwo) {
         // check if it is node env. Run only if it's not until I figure out testing paper.js
         if (typeof process === 'undefined') {
-            return applyGradientToCanvas(stopOne,stopTwo)
+            return applyGradientToCanvas(stopOne,stopTwo);
         } else {
             return 'Developer needs more time to learn testing paper.js'
         }
@@ -101,6 +100,7 @@ export class GradientGenerator {
     applyChange(stopOne, stopTwo) {
         const outerElem = document.querySelector('.outer');
         outerElem.classList.add('active');
+        this.applyCanvasGradient(stopOne, stopTwo);
         if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
             document.documentElement.style.setProperty(`--gradient-two`, `${stopTwo}`);
@@ -108,8 +108,6 @@ export class GradientGenerator {
             outerElem.style.backgroundImage = `linear-gradient(45deg,${stopOne},${stopTwo})`;
         }
         this.firstGrad = !this.firstGrad;
-        this.applyCanvasGradient(stopOne,stopTwo);
-        // view.pause();
     };
 }
 

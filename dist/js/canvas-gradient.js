@@ -2,147 +2,107 @@
 
 function applyGradientToCanvas(stopOne, stopTwo) {
 
+    project.activeLayer.removeChildren();
     var stopOneAlpha = addCharToString(stopOne);
     var stopTwoAlpha = addCharToString(stopTwo);
+    var center = view.center;
+    var points = function getRandomInt() {
+        var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
+        var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 15;
 
-    project.activeLayer.removeChildren();
-
-    var x = view.center.x;
-    var y = view.center.y;
-
-    ///triangle
-    var triangle = new Path.RegularPolygon(new Point(x - 100, y - 100), 3, 150);
-
-    triangle.fillColor = {
-        gradient: { stops: [[stopTwo], [stopOne]] },
-        origin: triangle.bounds.topRight,
-        destination: triangle.bounds.bottomLeft
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     };
-
-    triangle.style = {
-        strokeColor: stopTwo,
-        strokeWidth: 1,
-        shadowColor: new Color(0, 0, 0, 0.5),
-        shadowBlur: 100
+    var height = view.size.height / 2;
+    var mousePos = {
+        x: view.center.x,
+        y: view.center.y
     };
+    var radius = 250;
 
-    ///square
+    function createBlob(center, maxRadius, points) {
+        var path = new Path();
+        path.closed = true;
+        for (var i = 0; i < points; i++) {
+            var delta = new Point({
+                length: maxRadius * 0.5 + Math.random() * maxRadius * 0.5,
+                angle: 360 / points * i
+            });
+            path.add(delta);
+        }
+        path.smooth();
+        return path;
+    }
 
-    var square = new Path.Rectangle({
-        point: [x + 50, y - 150],
-        size: [200, 200]
-    });
-
-    square.style = {
-        strokeColor: stopTwo,
-        strokeWidth: 1,
-        shadowColor: new Color(0, 0, 0, 0.5),
-        shadowBlur: 100
-    };
-
-    square.fillColor = {
-        gradient: { stops: [[stopTwo], [stopOne]] },
-        origin: square.bounds.topRight,
-        destination: square.bounds.bottomLeft
-    };
-
-    /// circles
-
-    var circle = new Path.Circle({
-        center: view.center,
-        radius: 150
-    });
-
-    circle.fillColor = {
+    /// blob
+    var blob = createBlob(center, radius, points());
+    blob.position = center;
+    blob.fillColor = {
         gradient: { stops: [[stopOneAlpha], [stopTwoAlpha]] },
-        origin: circle.bounds.topRight,
-        destination: circle.bounds.bottomLeft
+        origin: blob.bounds.topRight,
+        destination: blob.bounds.bottomLeft
     };
 
-    circle.style = {
+    blob.style = {
         strokeColor: stopOne,
         strokeWidth: 1,
         shadowColor: new Color(0, 0, 0, 0.5),
         shadowBlur: 100
     };
 
-    var circle2 = new Path.Circle({
-        center: [x + 100, y - 160],
-        radius: 50
-    });
-
-    circle2.fillColor = {
-        gradient: { stops: [[stopTwoAlpha], [stopOneAlpha]] },
-        origin: circle2.bounds.topRight,
-        destination: circle2.bounds.bottomLeft
-    };
-
-    circle2.style = {
-        strokeColor: stopOne,
-        strokeWidth: 1,
-        shadowColor: new Color(0, 0, 0, 0.5),
-        shadowBlur: 100
-    };
-
-    // zig zag path
-
-    var zigzag = new Path({
-        segments: [[x, y], [x - 80, y - 80], [x - 140, y - 20], [x - 200, y - 80], [x - 260, y - 20], [x - 320, y - 80]],
-        strokeWidth: 25
-    });
-
-    zigzag.style = {
-        shadowColor: new Color(0, 0, 0, 0.5),
-        shadowBlur: 100
-    };
-
-    zigzag.strokeColor = {
-        gradient: { stops: [[stopOne], [stopTwo]] },
-        origin: zigzag.bounds.topRight,
-        destination: zigzag.bounds.bottomLeft
-    };
-
-    zigzag.rotate(-45, circle.bounds.center).insertBelow(circle);
-
-    var zigzagCopy = zigzag.clone();
-    zigzagCopy.strokeColor = stopTwo;
-    zigzagCopy.strokeWidth = 27;
-    zigzagCopy.insertBelow(zigzag);
-    zigzagCopy.style = {
-        shadowColor: new Color(0, 0, 0, 0),
-        shadowBlur: 0
-    };
-
-    // line path
-
-    var from = [x, y];
-    var to = [x + 350, y - 350];
-    var path = new Path(from, to);
-    path.strokeWidth = 2;
-    path.strokeColor = stopOne;
-    path.dashArray = [5, 8];
-    path.insertBelow(circle);
+    var shapeHeight = blob.bounds._height;
+    // blob.selected = true;
 
     window.addEventListener('resize', function () {
-        var x = view.center.x;
-        var y = view.center.y;
-        onResize(x, y);
+        onResize();
     });
 
+    function onResize() {
+        blob.position = view.center;
+    }
+
+    view.onFrame = function (event) {
+        blob.rotate(-0.01);
+        var amount = blob.segments.length;
+        // Loop through the segments of the path:
+        for (var i = 0; i < amount; i++) {
+            // A cylic value between -1 and 1
+            var sinus = Math.sin(event.time + i);
+            // Change the y position of the segment point:
+            // blob.segments[i]._point._y = sinus * 5 + 100;
+            blob.segments[i].point.y += sinus / 10;
+        }
+        // Uncomment the following line and run the script again
+        // to smooth the path:
+        blob.smooth();
+    };
+
     // view.onFrame = function(event) {
-    //     square.rotate(1);
+    //     blob.rotate(0.1);
+    //     let pathHeight = shapeHeight;
+    //     const segments = blob.segments.length;
+    //     pathHeight += pathHeight / 10;
+    //     for (let i = 0; i < segments; i++) {
+    //         let sinSeed = event.count + (i + i % 10) * 1000;
+    //         let sinHeight = Math.sin(sinSeed / 1000) * (pathHeight / 2);
+    //         //let yPos = Math.sin(sinSeed / 1000) * sinHeight;
+    //         blob.segments[i]._point._y += Math.sin((i + i % 10) * (0.01));
+    //         blob.segments[i]._point._x -= Math.sin((i + i % 10) * (0.01));
+    //     }
+    //     blob.position = view.center;
+    //     //console.log(blob.position);
+    //     blob.smooth({ type: 'continuous' });
     // };
 
-    function onResize(x, y) {
-        console.log('B ', square.position);
-        circle.position = view.center;
-        triangle.position = new Point(x - 100, y - 100);
-        square.position = new Point(x + 50, y - 50);
-    }
+    // view.onMouseMove = function(event) {
+    //     return mousePos = event.point;
+    // }
 }
 
+// helper function to add alpha transparency to gradient
 function addCharToString(string) {
     var str = string.substring(0, string.length - 1);
-    var alpha = ' , 0.7';
+    var alpha = ' , 1';
     return str.padEnd(str.length + alpha.length, alpha) + ')';
 }
