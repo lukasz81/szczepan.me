@@ -100,6 +100,6 @@ function applyGradientToCanvas (stopOne,stopTwo) {
 // helper function to add alpha transparency to gradient
 function addCharToString (string) {
     let str = string.substring(0,string.length-1);
-    let alpha = ' , 0.8';
+    let alpha = ' , 1';
     return str.padEnd(str.length + alpha.length,alpha) + ')';
 }

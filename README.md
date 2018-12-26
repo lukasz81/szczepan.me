@@ -22,13 +22,15 @@ What's cool about it? (features):
 ## How to run dev:
 `npm install`: will install all dependencies.
 
-`brew install http-server`
+`brew install http-server` , if you are on macOS.
 
-`http-server`: to run dev.
+`npm start`: to run dev.
 
-`sass --watch css`: to watch the whole css directory
+`sudo gem install sass`: to install <a href="http://sass.logdown.com/posts/7081811">ruby sass</a>, if you don't have it yet. It's legacy, but it works as expected. It will eventually die on (26 March 2019)
 
-`npm run test`: run tests
+`sass --watch css`: to watch the whole css directory.
+
+`npm run test`: run tests.
 
 
 

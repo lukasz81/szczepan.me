@@ -240,7 +240,7 @@ svg:not(#panel) {
   -o-user-select: none;
   user-select: none;
   transition: all 0.3s ease-in-out;
-  box-shadow: 5px -5px 60px 10px #92929250;
+  box-shadow: 5px -5px 60px 10px #00000042;
   &:not(.active) {
     pointer-events: none;
     opacity: 0.8;
@@ -353,7 +353,7 @@ svg:not(#panel) {
       z-index:1;
     }
     svg {
-      opacity: 0.5;
+      opacity: 1;
       position: absolute;
     }
   }

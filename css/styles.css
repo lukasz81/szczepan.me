@@ -152,110 +152,110 @@ svg:not(#panel) {
     position: relative; }
 @keyframes example-one-anim-1 {
   0% {
-    clip: rect(85px, 450px, 3px, 0); }
+    clip: rect(76px, 450px, 82px, 0); }
   4% {
-    clip: rect(15px, 450px, 11px, 0); }
+    clip: rect(50px, 450px, 43px, 0); }
   8% {
-    clip: rect(11px, 450px, 109px, 0); }
+    clip: rect(62px, 450px, 77px, 0); }
   12% {
-    clip: rect(26px, 450px, 93px, 0); }
+    clip: rect(47px, 450px, 40px, 0); }
   16% {
-    clip: rect(52px, 450px, 74px, 0); }
+    clip: rect(76px, 450px, 8px, 0); }
   20% {
-    clip: rect(20px, 450px, 54px, 0); }
+    clip: rect(103px, 450px, 101px, 0); }
   24% {
-    clip: rect(3px, 450px, 77px, 0); }
+    clip: rect(97px, 450px, 35px, 0); }
   28% {
-    clip: rect(110px, 450px, 46px, 0); }
+    clip: rect(15px, 450px, 66px, 0); }
   32% {
-    clip: rect(67px, 450px, 45px, 0); }
+    clip: rect(72px, 450px, 85px, 0); }
   36% {
-    clip: rect(6px, 450px, 106px, 0); }
+    clip: rect(111px, 450px, 106px, 0); }
   40% {
-    clip: rect(36px, 450px, 72px, 0); }
+    clip: rect(5px, 450px, 60px, 0); }
   44% {
-    clip: rect(68px, 450px, 10px, 0); }
+    clip: rect(86px, 450px, 90px, 0); }
   48% {
-    clip: rect(98px, 450px, 66px, 0); }
+    clip: rect(108px, 450px, 32px, 0); }
   52% {
-    clip: rect(55px, 450px, 51px, 0); }
+    clip: rect(38px, 450px, 43px, 0); }
   56% {
-    clip: rect(41px, 450px, 47px, 0); }
+    clip: rect(33px, 450px, 64px, 0); }
   60% {
-    clip: rect(111px, 450px, 45px, 0); }
+    clip: rect(11px, 450px, 65px, 0); }
   64% {
-    clip: rect(58px, 450px, 82px, 0); }
+    clip: rect(80px, 450px, 85px, 0); }
   68% {
-    clip: rect(74px, 450px, 47px, 0); }
+    clip: rect(38px, 450px, 8px, 0); }
   72% {
-    clip: rect(113px, 450px, 81px, 0); }
+    clip: rect(85px, 450px, 113px, 0); }
   76% {
-    clip: rect(62px, 450px, 72px, 0); }
+    clip: rect(97px, 450px, 103px, 0); }
   80% {
-    clip: rect(62px, 450px, 83px, 0); }
+    clip: rect(33px, 450px, 27px, 0); }
   84% {
-    clip: rect(1px, 450px, 78px, 0); }
+    clip: rect(87px, 450px, 99px, 0); }
   88% {
-    clip: rect(81px, 450px, 29px, 0); }
+    clip: rect(87px, 450px, 22px, 0); }
   92% {
-    clip: rect(67px, 450px, 70px, 0); }
+    clip: rect(35px, 450px, 112px, 0); }
   96% {
-    clip: rect(39px, 450px, 48px, 0); }
+    clip: rect(79px, 450px, 95px, 0); }
   100% {
-    clip: rect(44px, 450px, 29px, 0); } }
+    clip: rect(57px, 450px, 6px, 0); } }
 @keyframes example-one-anim-2 {
   0% {
-    clip: rect(50px, 450px, 72px, 0); }
+    clip: rect(109px, 450px, 3px, 0); }
   4% {
-    clip: rect(76px, 450px, 7px, 0); }
+    clip: rect(9px, 450px, 35px, 0); }
   8% {
-    clip: rect(38px, 450px, 108px, 0); }
+    clip: rect(37px, 450px, 79px, 0); }
   12% {
-    clip: rect(102px, 450px, 66px, 0); }
+    clip: rect(94px, 450px, 23px, 0); }
   16% {
-    clip: rect(44px, 450px, 77px, 0); }
+    clip: rect(102px, 450px, 47px, 0); }
   20% {
-    clip: rect(45px, 450px, 5px, 0); }
+    clip: rect(4px, 450px, 20px, 0); }
   24% {
-    clip: rect(88px, 450px, 91px, 0); }
+    clip: rect(85px, 450px, 81px, 0); }
   28% {
-    clip: rect(105px, 450px, 13px, 0); }
+    clip: rect(90px, 450px, 34px, 0); }
   32% {
-    clip: rect(84px, 450px, 110px, 0); }
+    clip: rect(52px, 450px, 105px, 0); }
   36% {
-    clip: rect(19px, 450px, 60px, 0); }
+    clip: rect(110px, 450px, 105px, 0); }
   40% {
-    clip: rect(98px, 450px, 46px, 0); }
+    clip: rect(20px, 450px, 50px, 0); }
   44% {
-    clip: rect(19px, 450px, 68px, 0); }
+    clip: rect(62px, 450px, 4px, 0); }
   48% {
-    clip: rect(8px, 450px, 95px, 0); }
+    clip: rect(71px, 450px, 109px, 0); }
   52% {
-    clip: rect(72px, 450px, 101px, 0); }
+    clip: rect(108px, 450px, 46px, 0); }
   56% {
-    clip: rect(61px, 450px, 99px, 0); }
+    clip: rect(26px, 450px, 48px, 0); }
   60% {
-    clip: rect(55px, 450px, 36px, 0); }
+    clip: rect(100px, 450px, 5px, 0); }
   64% {
-    clip: rect(60px, 450px, 15px, 0); }
+    clip: rect(77px, 450px, 20px, 0); }
   68% {
-    clip: rect(29px, 450px, 106px, 0); }
+    clip: rect(39px, 450px, 95px, 0); }
   72% {
-    clip: rect(32px, 450px, 54px, 0); }
+    clip: rect(64px, 450px, 66px, 0); }
   76% {
-    clip: rect(44px, 450px, 10px, 0); }
+    clip: rect(93px, 450px, 54px, 0); }
   80% {
-    clip: rect(96px, 450px, 35px, 0); }
+    clip: rect(115px, 450px, 53px, 0); }
   84% {
-    clip: rect(47px, 450px, 88px, 0); }
+    clip: rect(31px, 450px, 46px, 0); }
   88% {
-    clip: rect(69px, 450px, 15px, 0); }
+    clip: rect(24px, 450px, 10px, 0); }
   92% {
-    clip: rect(2px, 450px, 59px, 0); }
+    clip: rect(11px, 450px, 39px, 0); }
   96% {
-    clip: rect(25px, 450px, 108px, 0); }
+    clip: rect(96px, 450px, 95px, 0); }
   100% {
-    clip: rect(3px, 450px, 18px, 0); } }
+    clip: rect(64px, 450px, 44px, 0); } }
     .comingSoon .glitch:before, .comingSoon .glitch:after {
       content: attr(data-text);
       position: absolute;
@@ -365,7 +365,7 @@ svg:not(#panel) {
   -o-user-select: none;
   user-select: none;
   transition: all 0.3s ease-in-out;
-  box-shadow: 5px -5px 60px 10px #92929250; }
+  box-shadow: 5px -5px 60px 10px #00000042; }
   .heart:not(.active) {
     pointer-events: none;
     opacity: 0.8;
@@ -459,7 +459,7 @@ svg:not(#panel) {
       width: 100%;
       z-index: 1; }
     .tooltip-container .tooltip svg {
-      opacity: 0.5;
+      opacity: 1;
       position: absolute; }
   .tooltip-container .line-down, .tooltip-container .line-up, .tooltip-container .shape {
     transition: all 0.5s; }
