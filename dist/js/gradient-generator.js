@@ -71,9 +71,11 @@ var GradientGenerator = exports.GradientGenerator = function () {
             var incrementTotalValueIsZero = GradientGenerator.checkReducedValueOfArray(this.increment);
 
             if (incrementTotalValueIsZero) {
+                this.checkAndUpdateColor(currentColor, targetColor);
                 this.reloadStyleTags(stopOne, stopTwo);
                 document.querySelector('.heart').classList.add('active');
                 clearInterval(this.transitionHandler);
+                this.applyCanvasGradient(stopOne, stopTwo, true);
             }
         }
     }, {
@@ -92,10 +94,10 @@ var GradientGenerator = exports.GradientGenerator = function () {
         }
     }, {
         key: 'applyCanvasGradient',
-        value: function applyCanvasGradient(stopOne, stopTwo) {
+        value: function applyCanvasGradient(stopOne, stopTwo, isLast) {
             // check if it is node env. Run only if it's not until I figure out testing paper.js
             if (typeof process === 'undefined') {
-                return applyGradientToCanvas(stopOne, stopTwo);
+                return applyGradientToCanvas(stopOne, stopTwo, isLast);
             } else {
                 return 'Developer needs more time to learn testing paper.js';
             }
@@ -105,7 +107,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
         value: function applyChange(stopOne, stopTwo) {
             var outerElem = document.querySelector('.outer');
             outerElem.classList.add('active');
-            this.applyCanvasGradient(stopOne, stopTwo);
+            this.applyCanvasGradient(stopOne, stopTwo, false);
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);
                 document.documentElement.style.setProperty('--gradient-two', '' + stopTwo);

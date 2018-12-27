@@ -1,20 +1,20 @@
-function applyGradientToCanvas (stopOne,stopTwo) {
-
-    project.activeLayer.removeChildren();
+let n = 0;
+function applyGradientToCanvas (stopOne,stopTwo, isLast) {
+    const blobExists = !!project.activeLayer.children[0];
+    if (blobExists && n < 2) project.activeLayer.removeChildren();
+    if (isLast) n=0;
     const stopOneAlpha = addCharToString(stopOne);
     const stopTwoAlpha = addCharToString(stopTwo);
-    let center = view.center;
-    let points = function getRandomInt(min = 3, max = 15) {
+    const center = view.center;
+    const points = function getRandomInt(min = 3, max = 15) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     };
-    let height = view.size.height / 2;
-    let mousePos = {
-        x: view.center.x,
-        y: view.center.y
-    };
-    let radius = 250;
+    const radius = 250;
+    createBlob(center, radius, points());
+    const blob = project.activeLayer.children[0];
+    ++n;
 
     function createBlob(center, maxRadius, points) {
         let path = new Path();
@@ -31,24 +31,19 @@ function applyGradientToCanvas (stopOne,stopTwo) {
     }
 
     /// blob
-    const blob = createBlob(center, radius, points());
     blob.position = center;
-    blob.fillColor = {
-        gradient: {stops: [[stopOneAlpha], [stopTwoAlpha]]},
-        origin: blob.bounds.topRight,
-        destination: blob.bounds.bottomLeft
-    };
-
     blob.style = {
         strokeColor: stopOne,
         strokeWidth: 1,
         shadowColor: new Color(0, 0, 0, 0.5),
         shadowBlur: 100,
     };
+    blob.fillColor = {
+        gradient: {stops: [[stopOneAlpha], [stopTwoAlpha]]},
+        origin: blob.bounds.topRight,
+        destination: blob.bounds.bottomLeft
+    };
 
-    const shapeHeight = blob.bounds._height;
-    // blob.selected = true;
-    
     window.addEventListener('resize', () => {
         onResize();
     });
@@ -58,38 +53,15 @@ function applyGradientToCanvas (stopOne,stopTwo) {
     }
 
     view.onFrame = function(event) {
-        blob.rotate(-0.01);
+        blob.rotate(-0.05);
         const amount = blob.segments.length;
-        // Loop through the segments of the path:
         for (let i = 0; i < amount; i++) {
-            // A cylic value between -1 and 1
             let sinus = Math.sin(event.time + i);
-            // Change the y position of the segment point:
-            // blob.segments[i]._point._y = sinus * 5 + 100;
             blob.segments[i].point.y += sinus/10;
             blob.segments[i].point.x += sinus/5;
         }
-        // Uncomment the following line and run the script again
-        // to smooth the path:
         blob.smooth();
     }
-
-    // view.onFrame = function(event) {
-    //     blob.rotate(0.1);
-    //     let pathHeight = shapeHeight;
-    //     const segments = blob.segments.length;
-    //     pathHeight += pathHeight / 10;
-    //     for (let i = 0; i < segments; i++) {
-    //         let sinSeed = event.count + (i + i % 10) * 1000;
-    //         let sinHeight = Math.sin(sinSeed / 1000) * (pathHeight / 2);
-    //         //let yPos = Math.sin(sinSeed / 1000) * sinHeight;
-    //         blob.segments[i]._point._y += Math.sin((i + i % 10) * (0.01));
-    //         blob.segments[i]._point._x -= Math.sin((i + i % 10) * (0.01));
-    //     }
-    //     blob.position = view.center;
-    //     //console.log(blob.position);
-    //     blob.smooth({ type: 'continuous' });
-    // };
 
     // view.onMouseMove = function(event) {
     //     return mousePos = event.point;

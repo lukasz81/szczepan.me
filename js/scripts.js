@@ -14,8 +14,8 @@ export class InitScripts {
             'Web Developer',
             'Coder',
             'React.js Lover',
-            'TDD Enthusiast',
-            'Agile Manifest Follower',
+            'JavaScript Lover',
+            'API Designer',
             'Musician',
             'Human'
         ];
