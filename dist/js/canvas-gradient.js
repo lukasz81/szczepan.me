@@ -63,9 +63,11 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     }
 
     view.onFrame = function (event) {
-        blob.rotate(-0.03);
         var halfWidth = view.size.width / 2;
         var halfHeight = view.size.height / 2;
+        var rotaionValue = 0.03;
+        var direction = mousePos.x > halfWidth ? 0 - rotaionValue : rotaionValue;
+        blob.rotate(direction);
         blob.position.x = halfWidth + (halfWidth - mousePos.x) / 100;
         blob.position.y = halfHeight + (halfHeight - mousePos.y) / 100;
         var amount = blob.segments.length;

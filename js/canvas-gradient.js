@@ -58,15 +58,17 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     }
 
     view.onFrame = function(event) {
-        blob.rotate(-0.03);
         const halfWidth = view.size.width / 2;
         const halfHeight = view.size.height / 2;
+        const rotaionValue = 0.03;
+        const direction = mousePos.x > halfWidth ? 0-rotaionValue : rotaionValue;
+        blob.rotate(direction);
         blob.position.x = halfWidth + (halfWidth - mousePos.x)/100;
         blob.position.y = halfHeight + (halfHeight - mousePos.y)/100;
         const amount = blob.segments.length;
         for (let i = 0; i < amount; i++) {
-            let sinusY = Math.sin(event.time + i) ;
-            let sinusX = Math.sin(event.time + i) ;
+            let sinusY = Math.sin(event.time + i);
+            let sinusX = Math.sin(event.time + i);
             blob.segments[i].point.y += sinusY/10;
             blob.segments[i].point.x += sinusX/5;
         }
