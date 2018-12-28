@@ -2,9 +2,14 @@
 
 var n = 0;
 function applyGradientToCanvas(stopOne, stopTwo, isLast) {
+
     var blobExists = !!project.activeLayer.children[0];
     if (blobExists && n < 2) project.activeLayer.removeChildren();
     if (isLast) n = 0;
+    var mousePos = {
+        x: 0,
+        y: 0
+    };
     var stopOneAlpha = addCharToString(stopOne);
     var stopTwoAlpha = addCharToString(stopTwo);
     var center = view.center;
@@ -16,7 +21,7 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     };
-    var radius = 250;
+    var radius = view.size.width <= 375 ? view.size.width - 180 : 250;
     createBlob(center, radius, points());
     var blob = project.activeLayer.children[0];
     ++n;
@@ -58,19 +63,24 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     }
 
     view.onFrame = function (event) {
-        blob.rotate(-0.05);
+        blob.rotate(-0.03);
+        var halfWidth = view.size.width / 2;
+        var halfHeight = view.size.height / 2;
+        blob.position.x = halfWidth + (halfWidth - mousePos.x) / 100;
+        blob.position.y = halfHeight + (halfHeight - mousePos.y) / 100;
         var amount = blob.segments.length;
         for (var i = 0; i < amount; i++) {
-            var sinus = Math.sin(event.time + i);
-            blob.segments[i].point.y += sinus / 10;
-            blob.segments[i].point.x += sinus / 5;
+            var sinusY = Math.sin(event.time + i);
+            var sinusX = Math.sin(event.time + i);
+            blob.segments[i].point.y += sinusY / 10;
+            blob.segments[i].point.x += sinusX / 5;
         }
         blob.smooth();
     };
 
-    // view.onMouseMove = function(event) {
-    //     return mousePos = event.point;
-    // }
+    view.onMouseMove = function (event) {
+        return mousePos = event.point;
+    };
 }
 
 // helper function to add alpha transparency to gradient
