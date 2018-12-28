@@ -16,7 +16,7 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     };
-    const radius = view.size.width <= 375 ? (view.size.width - 180) : 250;
+    const radius = view.size.width <= 375 ? (view.size.width - 150) : 250;
     createBlob(center, radius, points());
     const blob = project.activeLayer.children[0];
     ++n;
