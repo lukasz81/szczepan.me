@@ -7,8 +7,8 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     if (blobExists && n < 2) project.activeLayer.removeChildren();
     if (isLast) n = 0;
     var mousePos = {
-        x: 0,
-        y: 0
+        x: view.size.width / 2,
+        y: view.size.height / 2
     };
     var stopOneAlpha = addCharToString(stopOne);
     var stopTwoAlpha = addCharToString(stopTwo);
@@ -65,11 +65,13 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     view.onFrame = function (event) {
         var halfWidth = view.size.width / 2;
         var halfHeight = view.size.height / 2;
-        var rotaionValue = 0.03;
-        var direction = mousePos.x > halfWidth ? 0 - rotaionValue : rotaionValue;
+        var rotationValue = 0.03;
+        var direction = mousePos.x > halfWidth ? 0 - rotationValue : rotationValue;
         blob.rotate(direction);
-        blob.position.x = halfWidth + (halfWidth - mousePos.x) / 100;
-        blob.position.y = halfHeight + (halfHeight - mousePos.y) / 100;
+        var destX = halfWidth + (halfWidth - mousePos.x) / 10 - blob.position.x;
+        var destY = halfHeight + (halfHeight - mousePos.y) / 10 - blob.position.y;
+        blob.position.x += destX / 100;
+        blob.position.y += destY / 100;
         var amount = blob.segments.length;
         for (var i = 0; i < amount; i++) {
             var sinusY = Math.sin(event.time + i);
