@@ -3,13 +3,17 @@
 var n = 0;
 function applyGradientToCanvas(stopOne, stopTwo, isLast) {
 
-    var blobExists = !!project.activeLayer.children[0];
-    if (blobExists && n < 2) project.activeLayer.removeChildren();
-    if (isLast) n = 0;
+    var alpha = void 0;
+    var gammaX = view.size.width / 2;
+    var betaY = view.size.height / 2;
     var mousePos = {
         x: view.size.width / 2,
         y: view.size.height / 2
     };
+    var gyroEvents = null;
+    var blobExists = !!project.activeLayer.children[0];
+    if (blobExists && n < 2) project.activeLayer.removeChildren();
+    if (isLast) n = 0;
     var stopOneAlpha = addCharToString(stopOne);
     var stopTwoAlpha = addCharToString(stopTwo);
     var center = view.center;
@@ -24,7 +28,16 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     var radius = view.size.width <= 375 ? view.size.width - 150 : 250;
     createBlob(center, radius, points());
     var blob = project.activeLayer.children[0];
+    window.addEventListener("deviceorientation", handleOrientation, true);
     ++n;
+
+    function handleOrientation(event) {
+        gyroEvents = true;
+        alpha = event.alpha;
+        betaY = event.beta;
+        gammaX = event.gamma;
+        document.getElementById('rotation').innerText = Math.round(alpha) + ' ' + Math.round(betaY) + ' ' + Math.round(gammaX);
+    }
 
     function createBlob(center, maxRadius, points) {
         var path = new Path();
@@ -55,25 +68,23 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     };
 
     window.addEventListener('resize', function () {
-        onResize();
-    });
-
-    function onResize() {
         blob.position = view.center;
-    }
+    });
 
     view.onFrame = function (event) {
         var halfWidth = view.size.width / 2;
         var halfHeight = view.size.height / 2;
         var rotationValue = 0.03;
         var direction = mousePos.x > halfWidth ? 0 - rotationValue : rotationValue;
-        blob.rotate(direction);
+        var directionGyro = 180 > alpha < 360 ? 0 - rotationValue : rotationValue;
         var destX = halfWidth + (halfWidth - mousePos.x) / 10 - blob.position.x;
         var destY = halfHeight + (halfHeight - mousePos.y) / 10 - blob.position.y;
-        blob.position.x += destX / 100;
-        blob.position.y += destY / 100;
-        var amount = blob.segments.length;
-        for (var i = 0; i < amount; i++) {
+        var X = halfWidth + (halfWidth - gammaX * 10) / 10 - blob.position.x;
+        var Y = halfWidth + (halfWidth - (betaY - 90) * 20) / 10 - blob.position.y;
+        blob.rotate(gyroEvents ? directionGyro : direction);
+        blob.position.x += gyroEvents ? X / 100 : destX / 100;
+        blob.position.y += gyroEvents ? Y / 100 : destY / 100;
+        for (var i = 0; i < blob.segments.length; i++) {
             var sinusY = Math.sin(event.time + i);
             var sinusX = Math.sin(event.time + i);
             blob.segments[i].point.y += sinusY / 10;
@@ -81,7 +92,6 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
         }
         blob.smooth();
     };
-
     view.onMouseMove = function (event) {
         return mousePos = event.point;
     };
