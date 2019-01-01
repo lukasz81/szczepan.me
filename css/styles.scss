@@ -357,8 +357,12 @@ svg:not(#panel) {
       position: absolute;
     }
   }
-  .line-down,.line-up,.shape {
+  .line-up, .line-down {
     transition: all 0.5s;
+    fill: none;
+    stroke: $mainColor;
+    stroke-width: 1px;
+    stroke-miterlimit: 10;
   }
 }
 
