@@ -73,7 +73,7 @@ var GradientGenerator = exports.GradientGenerator = function () {
             if (incrementTotalValueIsZero) {
                 this.checkAndUpdateColor(currentColor, targetColor);
                 this.reloadStyleTags(stopOne, stopTwo);
-                document.querySelector('.heart').classList.add('active');
+                document.querySelector('.mood-actions').classList.add('active');
                 clearInterval(this.transitionHandler);
                 this.applyCanvasGradient(stopOne, stopTwo, true);
             }
@@ -105,8 +105,8 @@ var GradientGenerator = exports.GradientGenerator = function () {
     }, {
         key: 'applyChange',
         value: function applyChange(stopOne, stopTwo) {
-            var outerElem = document.querySelector('.outer');
-            outerElem.classList.add('active');
+            //const outerElem = document.querySelector('.outer');
+            //outerElem.classList.add('active');
             this.applyCanvasGradient(stopOne, stopTwo, false);
             if (this.supportsCssVars) {
                 document.documentElement.style.setProperty('--gradient-one', '' + stopOne);

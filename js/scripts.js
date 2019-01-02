@@ -29,7 +29,7 @@ export class InitScripts {
     }
 
     static toggleElementsClassNames() {
-        const elements = '.outer , .inner , .heart';
+        const elements = '.outer , .inner , .mood-actions';
         const elementsList = document.querySelectorAll(elements);
         const elementsArray = Array.from(elementsList);
         elementsArray.forEach(element => {
@@ -61,11 +61,12 @@ export class InitScripts {
 
     addEventsToHeartButton() {
         const heartElem = document.querySelector('.heart');
-        const innerElm = document.querySelector('.inner');
+        const innerElm = document.querySelector('.outer');
         heartElem.addEventListener('click', () => {
             this.isAlreadyClicked = true;
             InitScripts.toggleElementsClassNames();
             setTimeout(() => {
+                console.log(`set ${innerElm} to active`);
                 this.Gradient.startTransition(false);
                 innerElm.classList.add('active');
                 this.modifyTooltipOnClick();

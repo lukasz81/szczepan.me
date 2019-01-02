@@ -28,7 +28,7 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     var radius = view.size.width <= 375 ? view.size.width - 150 : 250;
     createBlob(center, radius, points());
     var blob = project.activeLayer.children[0];
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    window.addEventListener("deviceorientation", handleOrientation, { passive: true });
     ++n;
 
     function handleOrientation(event) {

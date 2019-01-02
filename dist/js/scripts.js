@@ -52,11 +52,12 @@ var InitScripts = exports.InitScripts = function () {
             var _this3 = this;
 
             var heartElem = document.querySelector('.heart');
-            var innerElm = document.querySelector('.inner');
+            var innerElm = document.querySelector('.outer');
             heartElem.addEventListener('click', function () {
                 _this3.isAlreadyClicked = true;
                 InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
+                    console.log('set ' + innerElm + ' to active');
                     _this3.Gradient.startTransition(false);
                     innerElm.classList.add('active');
                     _this3.modifyTooltipOnClick();
@@ -116,7 +117,7 @@ var InitScripts = exports.InitScripts = function () {
     }], [{
         key: 'toggleElementsClassNames',
         value: function toggleElementsClassNames() {
-            var elements = '.outer , .inner , .heart';
+            var elements = '.outer , .inner , .mood-actions';
             var elementsList = document.querySelectorAll(elements);
             var elementsArray = Array.from(elementsList);
             elementsArray.forEach(function (element) {
