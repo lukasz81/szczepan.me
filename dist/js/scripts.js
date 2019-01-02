@@ -52,12 +52,11 @@ var InitScripts = exports.InitScripts = function () {
             var _this3 = this;
 
             var heartElem = document.querySelector('.heart');
-            var innerElm = document.querySelector('.outer');
+            var innerElm = document.querySelector('.inner');
             heartElem.addEventListener('click', function () {
                 _this3.isAlreadyClicked = true;
                 InitScripts.toggleElementsClassNames();
                 setTimeout(function () {
-                    console.log('set ' + innerElm + ' to active');
                     _this3.Gradient.startTransition(false);
                     innerElm.classList.add('active');
                     _this3.modifyTooltipOnClick();

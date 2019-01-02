@@ -54,9 +54,9 @@ describe('InitScripts Class ', () => {
     describe('checks static toggleElementsClassNames method', () => {
 
         it('should add className "active" to HTML elements', () => {
-            expect($('.outer , .inner , .heart').hasClass('active')).toBe(false);
+            expect($('.outer , .inner , .mood-actions').hasClass('active')).toBe(true);
             InitScripts.toggleElementsClassNames();
-            expect($('.outer , .inner , .heart').hasClass('active')).toBe(true);
+            expect($('.outer , .inner , .heart').hasClass('active')).toBe(false);
         });
 
     });

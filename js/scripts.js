@@ -61,12 +61,11 @@ export class InitScripts {
 
     addEventsToHeartButton() {
         const heartElem = document.querySelector('.heart');
-        const innerElm = document.querySelector('.outer');
+        const innerElm = document.querySelector('.inner');
         heartElem.addEventListener('click', () => {
             this.isAlreadyClicked = true;
             InitScripts.toggleElementsClassNames();
             setTimeout(() => {
-                console.log(`set ${innerElm} to active`);
                 this.Gradient.startTransition(false);
                 innerElm.classList.add('active');
                 this.modifyTooltipOnClick();

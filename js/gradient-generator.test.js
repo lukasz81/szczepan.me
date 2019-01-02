@@ -194,7 +194,7 @@ describe('Gradient Generator Class ', () => {
             let isPageLoad = true;
             const gradientGenerator = new GradientGenerator();
             gradientGenerator.transitionGradient(isPageLoad,[10,10,10],[10,10,10]);
-            expect($('.heart').hasClass('active')).toBe(true);
+            expect($('.mood-actions').hasClass('active')).toBe(true);
         });
 
         it('should call clearInterval', () => {

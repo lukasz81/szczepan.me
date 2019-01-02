@@ -100,8 +100,8 @@ export class GradientGenerator {
     }
 
     applyChange(stopOne, stopTwo) {
-        //const outerElem = document.querySelector('.outer');
-        //outerElem.classList.add('active');
+        const outerElem = document.querySelector('.outer');
+        outerElem.classList.add('active');
         this.applyCanvasGradient(stopOne, stopTwo,false);
         if (this.supportsCssVars) {
             document.documentElement.style.setProperty(`--gradient-one`, `${stopOne}`);
