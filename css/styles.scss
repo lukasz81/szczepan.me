@@ -9,6 +9,7 @@ $max_height: 800px;
 @import 'glitch';
 @import 'responsive';
 @import 'spinner';
+@import 'shake';
 
 :root {
   --gradient-one: #{$initialGradientOne};
@@ -70,6 +71,7 @@ figure {
   -webkit-margin-end: 0;
   pointer-events: none;
   margin:0;
+  position: relative;
 }
 
 a {
@@ -143,6 +145,9 @@ svg:not(#panel) {
 .behance {
   margin: 0 10px;
 }
+.more:hover figure {
+    @include svgGlitch("example-four", 30, $mainColor, transparent, var(--gradient-one), var(--gradient-two), 40, 40, 0, 0);
+}
 .github, .behance, .twitter {
   display: inline-block;
   width: 40px;
@@ -150,6 +155,7 @@ svg:not(#panel) {
   svg {
     height: 100%;
     display: block;
+    position: absolute;
   }
 }
 
@@ -220,6 +226,7 @@ svg:not(#panel) {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
 .mood-actions:not(.active) .heart {
   opacity: 0;
   transform: scale(0);
@@ -268,6 +275,13 @@ svg:not(#panel) {
   &:after {
     left: 13px;
     top: 0;
+  }
+  &:hover {
+    //transform: scale(0.6);
+    //-webkit-animation-play-state:paused;
+    //-moz-animation-play-state:paused;
+    //-o-animation-play-state:paused;
+    //animation-play-state:paused;
   }
 }
 
@@ -357,8 +371,10 @@ svg:not(#panel) {
       position: absolute;
     }
   }
-  .line-up, .line-down {
+  .line-up, .line-down, .shape {
     transition: all 0.5s;
+  }
+  .line-up, .line-down {
     fill: none;
     stroke: $mainColor;
     stroke-width: 1px;
