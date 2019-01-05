@@ -11,7 +11,6 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     let gyroEvents = null;
     const blobExists = !!project.activeLayer.children[0];
     if (blobExists && n < 2) project.activeLayer.removeChildren();
-    if (isLast) n = 0;
     const stopOneAlpha = addCharToString(stopOne);
     const stopTwoAlpha = addCharToString(stopTwo);
     const center = view.center;
@@ -24,17 +23,25 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     createBlob(center, radius, points());
     const blob = project.activeLayer.children[0];
     window.addEventListener("deviceorientation", handleOrientation, {passive: true});
-    ++n;
+    isLast ? n=0 : ++n;
 
     function handleOrientation(event) {
         gyroEvents = true;
         alpha = event.alpha;
         betaY = event.beta;
         gammaX = event.gamma;
-        document.getElementById('rotation').innerText =
-            Math.round(alpha) + ' ' +
-            Math.round(betaY) + ' ' +
-            Math.round(gammaX);
+        // document.getElementById('rotation').innerText =
+        //     Math.round(alpha) + ' ' +
+        //     Math.round(betaY) + ' ' +
+        //     Math.round(gammaX);
+    }
+
+    if (gyroEvents) {
+        let text = new PointText(10,10);
+        text.content = `gamma: ${Math.round(gammaX)}`;
+        text.justification = 'center';
+        text.fillColor = 'black';
+        text.fontFamily = 'Courier New';
     }
 
     function createBlob(center, maxRadius, points) {
@@ -65,10 +72,6 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         destination: blob.bounds.bottomLeft
     };
 
-    window.addEventListener('resize', () => {
-        blob.position = view.center
-    });
-
     view.onFrame = function(event) {
         const halfWidth = view.size.width / 2;
         const halfHeight = view.size.height / 2;
@@ -89,6 +92,10 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
             blob.segments[i].point.x += sinusX/5;
         }
         blob.smooth();
+        if (gyroEvents) {
+            text.position.x = halfWidth - gammaX;
+            text.content = `gamma: ${Math.round(gammaX)}`;
+        }
     };
     view.onMouseMove = function(event) {
         return mousePos = event.point;

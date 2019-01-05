@@ -13,7 +13,6 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     var gyroEvents = null;
     var blobExists = !!project.activeLayer.children[0];
     if (blobExists && n < 2) project.activeLayer.removeChildren();
-    if (isLast) n = 0;
     var stopOneAlpha = addCharToString(stopOne);
     var stopTwoAlpha = addCharToString(stopTwo);
     var center = view.center;
@@ -29,14 +28,25 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
     createBlob(center, radius, points());
     var blob = project.activeLayer.children[0];
     window.addEventListener("deviceorientation", handleOrientation, { passive: true });
-    ++n;
+    isLast ? n = 0 : ++n;
 
     function handleOrientation(event) {
         gyroEvents = true;
         alpha = event.alpha;
         betaY = event.beta;
         gammaX = event.gamma;
-        document.getElementById('rotation').innerText = Math.round(alpha) + ' ' + Math.round(betaY) + ' ' + Math.round(gammaX);
+        // document.getElementById('rotation').innerText =
+        //     Math.round(alpha) + ' ' +
+        //     Math.round(betaY) + ' ' +
+        //     Math.round(gammaX);
+    }
+
+    if (gyroEvents) {
+        var _text = new PointText(10, 10);
+        _text.content = 'gamma: ' + Math.round(gammaX);
+        _text.justification = 'center';
+        _text.fillColor = 'black';
+        _text.fontFamily = 'Courier New';
     }
 
     function createBlob(center, maxRadius, points) {
@@ -67,10 +77,6 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
         destination: blob.bounds.bottomLeft
     };
 
-    window.addEventListener('resize', function () {
-        blob.position = view.center;
-    });
-
     view.onFrame = function (event) {
         var halfWidth = view.size.width / 2;
         var halfHeight = view.size.height / 2;
@@ -91,6 +97,10 @@ function applyGradientToCanvas(stopOne, stopTwo, isLast) {
             blob.segments[i].point.x += sinusX / 5;
         }
         blob.smooth();
+        if (gyroEvents) {
+            text.position.x = halfWidth - gammaX;
+            text.content = 'gamma: ' + Math.round(gammaX);
+        }
     };
     view.onMouseMove = function (event) {
         return mousePos = event.point;
