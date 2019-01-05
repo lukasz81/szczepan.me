@@ -2,6 +2,7 @@ let n = 0;
 function applyGradientToCanvas (stopOne,stopTwo, isLast) {
 
     let alpha;
+    let text;
     let gammaX = view.size.width / 2;
     let betaY = view.size.height / 2;
     let mousePos = {
@@ -36,8 +37,8 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         //     Math.round(gammaX);
     }
 
-    if (gyroEvents) {
-        let text = new PointText(10,10);
+    if (gyroEvents && text === 'undefined') {
+        let text = new PointText(10, 10);
         text.content = `gamma: ${Math.round(gammaX)}`;
         text.justification = 'center';
         text.fillColor = 'black';
@@ -92,7 +93,7 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
             blob.segments[i].point.x += sinusX/5;
         }
         blob.smooth();
-        if (gyroEvents) {
+        if (gyroEvents && text) {
             text.position.x = halfWidth - gammaX;
             text.content = `gamma: ${Math.round(gammaX)}`;
         }
