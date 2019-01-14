@@ -13,8 +13,8 @@ export class InitScripts {
             'Web Designer',
             'Web Developer',
             'Coder',
-            'React.js Lover',
-            'JavaScript Lover',
+            'React.js \u200D\u2764\uFE0F\u200D Lover',
+            'JavaScript \u200D\u2764\uFE0F\u200D Lover',
             'API Designer',
             'Musician',
             'Human'

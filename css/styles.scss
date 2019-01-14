@@ -57,7 +57,7 @@ canvas {
   top: 0;
   margin: 0;
   padding: 0;
-  opacity:0.3;
+  opacity: 0.6;
 }
 
 //.outer {
@@ -277,11 +277,10 @@ svg:not(#panel) {
     top: 0;
   }
   &:hover {
-    //transform: scale(0.6);
-    //-webkit-animation-play-state:paused;
-    //-moz-animation-play-state:paused;
-    //-o-animation-play-state:paused;
-    //animation-play-state:paused;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
   }
 }
 

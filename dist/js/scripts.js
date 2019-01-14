@@ -16,7 +16,7 @@ var InitScripts = exports.InitScripts = function () {
 
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
-        this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'React.js Lover', 'JavaScript Lover', 'API Designer', 'Musician', 'Human'];
+        this.roles = ['UX Designer', 'UI Designer', 'UI Developer', 'Front End Developer', 'Designer', 'UI Engineer', 'Web Designer', 'Web Developer', 'Coder', 'React.js \u200D\u2764\uFE0F\u200D Lover', 'JavaScript \u200D\u2764\uFE0F\u200D Lover', 'API Designer', 'Musician', 'Human'];
         this.Gradient = Gradient;
         this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
