@@ -55,13 +55,13 @@
                 <a class="more shake-little" rel="noopener" target="_blank" href="https://github.com/lukasz81">
                     <span class="text indent">Visit Github website </span>
                     <figure class="github">
-                        <svg id="icon-nav">
+                        <svg>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
                         </svg>
-                        <svg id="icon-nav">
+                        <svg>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
                         </svg>
-                        <svg id="icon-nav">
+                        <svg>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg/all.svg#github"></use>
                         </svg>
                     </figure>
@@ -125,7 +125,9 @@
         </div>
         <div class="flex-grid-item flex mood-actions active">
             <span class="heart"></span>
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div class="spinner">
+                <span class="glitch shake-little shake-constant"  data-text="RELOADING">RELOADING</span>
+            </div>
         </div>
     </main>
     <canvas id="myCanvas" resize></canvas>
