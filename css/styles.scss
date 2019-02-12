@@ -137,11 +137,13 @@ svg:not(#panel) {
     color: $mainColor;
   }
 }
+
 .glitch {
   display: inline-block;
   white-space: nowrap;
   @include textGlitch("example-one", 25, $mainColor, rgba(255, 255, 255, 0.1), blue, #ff0078, 450, 115);
 }
+
 .behance {
   margin: 0 10px;
 }

@@ -83,7 +83,7 @@ export class GradientGenerator {
     reloadStyleTags(stopOne, stopTwo) {
         const styleElem = document.getElementById('tags');
         if (styleElem) styleElem.parentNode.removeChild(styleElem);
-        const styleContent = `.comingSoon .glitch:before{ text-shadow:2px 0 ${stopTwo} }\n.comingSoon .glitch:after{ text-shadow:2px 0 ${stopOne} }`;
+        const styleContent = `.glitch:before{ text-shadow:2px 0 ${stopTwo} }\n.glitch:after{ text-shadow:2px 0 ${stopOne} }`;
         const styleSheet = document.createElement('style');
         styleSheet.id = 'tags';
         styleSheet.innerHTML = styleContent;

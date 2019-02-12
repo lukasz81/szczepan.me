@@ -6,5 +6,6 @@
         "paper-js/**/*.js",
         "dist/**/*.js",
         "**/*.test.js"
-    ]
+    ],
+    "minified": true
 }
