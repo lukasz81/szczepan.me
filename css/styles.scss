@@ -21,6 +21,7 @@ $max_height: 800px;
 html {
   box-sizing: border-box;
   color: $mainColor;
+  color: var(--safe-color);
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -91,6 +92,7 @@ svg:not(#panel) {
   width: 100%;
   height: 100%;
   fill: $mainColor;
+  fill: var(--safe-color);
 }
 
 .glitch, h2, h4, h5 {
@@ -126,7 +128,7 @@ svg:not(#panel) {
 }
 
 .comingSoon {
-  color: $mainColor;
+  //color: $mainColor;
   font-size: 25px;
   font-weight: 500;
   padding: 0 0 25px;
@@ -134,21 +136,21 @@ svg:not(#panel) {
   margin: auto;
   line-height: 32px;
   a {
-    color: $mainColor;
+    color: var(--safe-color);
   }
 }
 
 .glitch {
   display: inline-block;
   white-space: nowrap;
-  @include textGlitch("example-one", 25, $mainColor, rgba(255, 255, 255, 0.1), blue, #ff0078, 450, 115);
+  @include textGlitch("example-one", 25, var(--safe-color), rgba(255, 255, 255, 0.1), blue, #ff0078, 450, 115);
 }
 
 .behance {
   margin: 0 10px;
 }
 .more:hover figure {
-    @include svgGlitch("example-four", 30, $mainColor, transparent, var(--gradient-one), var(--gradient-two), 40, 40, 0, 0);
+    @include svgGlitch("example-four", 30, var(--safe-color), transparent, var(--gradient-one), var(--gradient-two), 40, 40, 0, 0);
 }
 .github, .behance, .twitter {
   display: inline-block;
@@ -237,6 +239,7 @@ svg:not(#panel) {
   transform-origin: 50%;
   opacity: 1;
   background-color: $mainColor;
+  background-color: var(--safe-color);
   display: block;
   height: 26px;
   margin: -13px 0 0 -13px;
@@ -264,7 +267,7 @@ svg:not(#panel) {
   &:before,
   &:after {
     content: "";
-    background-color: $mainColor;
+    background-color: inherit;
     border-radius: 50%;
     height: 26px;
     position: absolute;
@@ -378,6 +381,7 @@ svg:not(#panel) {
   .line-up, .line-down {
     fill: none;
     stroke: $mainColor;
+    stroke: var(--safe-color);
     stroke-width: 1px;
     stroke-miterlimit: 10;
   }

@@ -9,6 +9,7 @@ export class GradientGenerator {
             targetColorOne: [10,10,10],
             targetColorTwo: [0,0,0]
         };
+        this.midRGB = [5,5,5];
         this.transitionHandler = null;
         this.increment = null;
     }
@@ -17,11 +18,42 @@ export class GradientGenerator {
         return Math.floor(Math.random() * 255)
     };
 
+    static defineColorBrightness() {
+        // based on color contrast formula: https://www.w3.org/TR/AERT/#color-contrast
+        const rgb = GradientGenerator.midRGB;
+        const sum = Math.round(((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000);
+        const safeColor = sum > 65 ? '#2b2b2b' : '#adadad';
+        document.documentElement.style.setProperty(`--safe-color`, `${safeColor}`);
+    }
+
+    static calculateAndUpdateMidGradientColor(gradients, p = 0.5) {
+        const { rgbOne, rgbTwo } = gradients;
+        const w = p * 2 - 1;
+        const w1 = (w + 1) / 2.0;
+        const w2 = 1 - w1;
+        const midRGB = [
+            Math.round(rgbOne[0] * w1 + rgbTwo[0] * w2),
+            Math.round(rgbOne[1] * w1 + rgbTwo[1] * w2),
+            Math.round(rgbOne[2] * w1 + rgbTwo[2] * w2),
+        ];
+        GradientGenerator.midRGB = midRGB;
+        GradientGenerator.defineColorBrightness();
+        return midRGB;
+    }
+
     static createRandomGradient() {
-        return {
-            rgbOne: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()],
-            rgbTwo: [GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue(), GradientGenerator.getRandomRGBValue()]
-        }
+        const R1 = GradientGenerator.getRandomRGBValue();
+        const R2 = GradientGenerator.getRandomRGBValue();
+        const G1 = GradientGenerator.getRandomRGBValue();
+        const G2 = GradientGenerator.getRandomRGBValue();
+        const B1 = GradientGenerator.getRandomRGBValue();
+        const B2 = GradientGenerator.getRandomRGBValue();
+        const gradients = {
+            rgbOne: [R1, G1, B1],
+            rgbTwo: [R2, G2, B2]
+        };
+        GradientGenerator.calculateAndUpdateMidGradientColor(gradients);
+        return gradients
     };
 
     static checkReducedValueOfArray(array) {
@@ -31,8 +63,9 @@ export class GradientGenerator {
 
     startTransition(isFirstLoad) {
         this.isFirstLoad = isFirstLoad;
-        const targetColorOne = GradientGenerator.createRandomGradient().rgbOne;
-        const targetColorTwo = GradientGenerator.createRandomGradient().rgbTwo;
+        const randomColors = GradientGenerator.createRandomGradient();
+        const targetColorOne = randomColors.rgbOne;
+        const targetColorTwo = randomColors.rgbTwo;
         if (this.isFirstLoad) this.prevColors = {targetColorOne, targetColorTwo};
 
         this.transitionHandler = setInterval(() => {
