@@ -6,8 +6,9 @@
   opacity: 1;
   transform: scale(0.6);
   pointer-events: none;
-  background: url(../svg/zigzag.svg) repeat-x 0 50%;
-  background-size: cover;
+  background: url(../svg/zigzag.svg);
+  background-size: 150%;
+  background-repeat: repeat-x;
   align-self: center;
   display: inline-block;
   position: relative;
@@ -15,18 +16,40 @@
   height: 60px;
   z-index: 11;
   transition: all 0.3s ease-in-out;
-  animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   span {
     margin-top: 50px;
     display: block;
     font-size: 18px;
   }
 }
-@keyframes spinner {
+.theme-dark {
+  .spinner {
+    background-position: 0 10px;
+    animation: spinner-dark 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+}
+
+.theme-bright {
+  .spinner {
+    background-position: 0 -35px;
+    animation: spinner-bright 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+}
+
+@keyframes spinner-dark {
   0% {
-    background-position: 0 50%;
+    background-position: 0 10px;
   }
   100% {
-    background-position: 160px 50%;
+    background-position: 160px 10px;
+  }
+}
+
+@keyframes spinner-bright {
+  0% {
+    background-position: 0 -35px;
+  }
+  100% {
+    background-position: 160px -35px;
   }
 }
