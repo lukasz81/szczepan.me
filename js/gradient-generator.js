@@ -22,7 +22,15 @@ export class GradientGenerator {
         // based on color contrast formula: https://www.w3.org/TR/AERT/#color-contrast
         const rgb = GradientGenerator.midRGB;
         const sum = Math.round(((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000);
-        const safeColor = sum >= 70 ? '#2b2b2b' : '#828282';
+        // const safeColor = sum >= 128 ? '#2b2b2b' : '#d0d0d0';
+        let safeColor = null;
+        if (sum >= 100) {
+            safeColor = '#2b2b2b';
+        } else if (sum < 128 && sum > 65) {
+            safeColor = '#d0d0d0';
+        } else {
+            safeColor = '#fefefe';
+        }
         document.documentElement.style.setProperty(`--safe-color`, `${safeColor}`);
         const className = safeColor === '#2b2b2b' ? 'theme-dark':'theme-bright';
         document.documentElement.classList.remove('theme-dark', 'theme-bright');
