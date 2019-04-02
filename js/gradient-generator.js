@@ -24,16 +24,26 @@ export class GradientGenerator {
         const sum = Math.round(((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000);
         // const safeColor = sum >= 128 ? '#2b2b2b' : '#d0d0d0';
         let safeColor = null;
+        let className = null;
         if (sum >= 100) {
-            safeColor = '#2b2b2b';
-        } else if (sum < 128 && sum > 65) {
-            safeColor = '#d0d0d0';
+            safeColor = '#333333';
+        } else if (sum < 100 && sum > 45) {
+            safeColor = '#252525';
         } else {
-            safeColor = '#fefefe';
+            safeColor = '#a5a5a5';
         }
         document.documentElement.style.setProperty(`--safe-color`, `${safeColor}`);
-        const className = safeColor === '#2b2b2b' ? 'theme-dark':'theme-bright';
-        document.documentElement.classList.remove('theme-dark', 'theme-bright');
+        switch (safeColor) {
+            case '#333333':
+                className = 'theme-medium';
+                break;
+            case '#252525':
+                className = 'theme-dark';
+                break;
+            default:
+                className = 'theme-bright'
+        }
+        document.documentElement.classList.remove('theme-dark', 'theme-bright','theme-medium');
         document.documentElement.classList.add(className);
     }
 
