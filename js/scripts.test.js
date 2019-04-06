@@ -3,7 +3,6 @@ const $ = require('jquery');
 const html = require('fs').readFileSync('./index.html').toString();
 const {InitScripts} = require('./scripts.js');
 const {GradientGenerator} = require('./gradient-generator.js');
-//const {paper} = require('../paper-js/paper-full.min.js');
 const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM();
 const { window } = jsdom;
@@ -197,6 +196,25 @@ describe('InitScripts Class ', () => {
             const getData = InitScripts.getRelevantCoordinates('heart');
             expect(getData.name).toEqual('heart');
         })
+
+    });
+
+    describe('checks eventForMouseLeave method', () => {
+
+        const Gradient = new GradientGenerator();
+        const InitScript = new InitScripts(Gradient);
+
+        it('should set string to Tap', () => {
+            InitScript.isTouchDevice = true;
+            InitScript.eventForMouseLeave();
+            expect($('#tooltip-text')[0].innerText.split(' ')[0]).toBe('Tap');
+        });
+
+        it('should set string to Click', () => {
+            InitScript.isTouchDevice = false;
+            InitScript.eventForMouseLeave();
+            expect($('#tooltip-text')[0].innerText.split(' ')[0]).toBe('Click');
+        });
 
     });
 

@@ -23,9 +23,6 @@ export class InitScripts {
         this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
         this.eventForMouseLeave = this.eventForMouseLeave.bind(this);
-        (() => {
-            if (this.isTouchDevice) document.getElementById('action-type').innerText = 'Tap '
-        })()
     }
 
     static toggleElementsClassNames() {
@@ -150,7 +147,8 @@ export class InitScripts {
     }
 
     eventForMouseLeave() {
-        let action = this.isTouchDevice ? 'Tap ' : 'Click ';
+        const action = this.isTouchDevice ? 'Tap' : 'Click';
+        console.log(action);
         document.getElementById('tooltip-text').innerText = `${action} to change the mood !`;
         InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('heart'))
     }
