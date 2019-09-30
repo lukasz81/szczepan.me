@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554556459421" clover="3.2.0">
-  <project timestamp="1554556459422" name="All files">
+<coverage generated="1569873368387" clover="3.2.0">
+  <project timestamp="1569873368387" name="All files">
     <metrics statements="156" coveredstatements="143" conditionals="42" coveredconditionals="36" methods="36" coveredmethods="32" elements="234" coveredelements="211" complexity="0" loc="156" ncloc="156" packages="1" files="2" classes="2">
       <file name="gradient-generator.js" path="/Users/lukaszszczepanski/WebstormProjects/szczepan.me/js/gradient-generator.js">
         <metrics statements="91" coveredstatements="87" conditionals="32" coveredconditionals="27" methods="15" coveredmethods="15"/>
@@ -18,16 +18,16 @@
         <line num="26" count="13" type="stmt"/>
         <line num="27" count="13" type="stmt"/>
         <line num="28" count="13" type="cond" truecount="2" falsecount="0"/>
-        <line num="29" count="10" type="stmt"/>
-        <line num="30" count="3" type="cond" truecount="3" falsecount="1"/>
-        <line num="31" count="3" type="stmt"/>
+        <line num="29" count="11" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="31" count="2" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="35" count="13" type="stmt"/>
         <line num="36" count="13" type="cond" truecount="2" falsecount="1"/>
-        <line num="38" count="10" type="stmt"/>
-        <line num="39" count="10" type="stmt"/>
-        <line num="41" count="3" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
+        <line num="38" count="11" type="stmt"/>
+        <line num="39" count="11" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="46" count="13" type="stmt"/>
         <line num="47" count="13" type="stmt"/>
