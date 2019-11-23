@@ -7,5 +7,5 @@
         "dist/**/*.js",
         "**/*.test.js"
     ],
-    "minified": true
+    "minified": false
 }

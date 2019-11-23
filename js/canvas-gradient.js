@@ -1,6 +1,5 @@
 let n = 0;
-function applyGradientToCanvas (stopOne,stopTwo, isLast) {
-
+export function applyGradientToCanvas (stopOne,stopTwo,isLast) {
     let alpha;
     let text;
     let gammaX = view.size.width / 2;
@@ -18,7 +17,8 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     const points = function getRandomInt(min = 3, max = 15) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+        return Math.floor(Math.random() * (max - min)) + min;
+        //The maximum is exclusive and the minimum is inclusive
     };
     const radius = view.size.width <= 375 ? (view.size.width - 150) : 250;
     createBlob(center, radius, points());
@@ -31,20 +31,8 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         alpha = event.alpha;
         betaY = event.beta;
         gammaX = event.gamma;
-        // document.getElementById('rotation').innerText =
-        //     Math.round(alpha) + ' ' +
-        //     Math.round(betaY) + ' ' +
-        //     Math.round(gammaX);
     }
-
-    if (gyroEvents && text === 'undefined') {
-        let text = new PointText(10, 10);
-        text.content = `gamma: ${Math.round(gammaX)}`;
-        text.justification = 'center';
-        text.fillColor = 'black';
-        text.fontFamily = 'Courier New';
-    }
-
+    
     function createBlob(center, maxRadius, points) {
         let path = new Path();
         path.closed = true;
@@ -64,7 +52,7 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     blob.style = {
         strokeColor: stopOne,
         strokeWidth: 1,
-        shadowColor: new Color(0, 0, 0, 0.5),
+        shadowColor: new Color(0, 0, 0, 0.8),
         shadowBlur: 100,
     };
     blob.fillColor = {
