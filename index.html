@@ -14,15 +14,14 @@
     <script>
         paper.install(window);
         window.addEventListener('DOMContentLoaded', () => {
-            let Gradient = new GradientGenerator();
-            let Init = new InitScripts(Gradient);
+            const Gradient = new GradientGenerator();
+            const Init = new InitScripts(Gradient);
             Init.addBrowserSupportClasses();
             Init.startInitialTransition(true);
             Init.changRoleText();
             Init.addEventsToHeartButton();
             Init.toggleTooltipClassNamesOnHover();
-            let canvas = document.getElementById('myCanvas');
-            paper.setup(canvas);
+            paper.setup(document.getElementById('myCanvas'));
         });
     </script>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
@@ -126,11 +125,11 @@
         <div class="flex-grid-item flex mood-actions active">
             <span class="heart"></span>
             <div class="spinner">
-                <span class="glitch shake-little shake-constant"  data-text="RELOADING">RELOADING</span>
+                <span class="glitch shake-little shake-constant" data-text="RELOADING">RELOADING</span>
             </div>
         </div>
     </main>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas id="myCanvas" resize />
 </div>
 </body>
 </html>

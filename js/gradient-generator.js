@@ -90,7 +90,7 @@ export class GradientGenerator {
         if (this.isFirstLoad) this.prevColors = {targetColorOne, targetColorTwo};
 
         this.transitionHandler = setInterval(() => {
-            this.transitionGradient(this.isFirstLoad, targetColorOne, targetColorTwo);
+            this.transitionGradient(targetColorOne, targetColorTwo);
         }, this.DELAY);
 
     };
@@ -98,7 +98,7 @@ export class GradientGenerator {
     checkAndUpdateColor(currentColor,targetColor) {
         this.increment = this.isFirstLoad ? [0, 0, 0] : [1, 1, 1];
         currentColor.forEach(
-            (color,index) => {
+            (_color,index) => {
                 if (currentColor[index] > targetColor[index]) {
                     currentColor[index] -= this.increment[index];
                     if (currentColor[index] <= targetColor[index]) this.increment[index] = 0;
@@ -109,7 +109,7 @@ export class GradientGenerator {
             });
     }
 
-    transitionGradient(onLoad, targetColorOne, targetColorTwo) {
+    transitionGradient(targetColorOne, targetColorTwo) {
 
         let currentColor = this.firstGrad ? this.prevColors.targetColorOne : this.prevColors.targetColorTwo;
         let targetColor = this.firstGrad ? targetColorOne : targetColorTwo;

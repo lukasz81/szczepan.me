@@ -1,5 +1,4 @@
 export class InitScripts {
-
     constructor(Gradient) {
         this.ROLE_TEXT_SWITCH = 4000;
         this.DEF_DELAY = 300;
@@ -148,7 +147,6 @@ export class InitScripts {
 
     eventForMouseLeave() {
         const action = this.isTouchDevice ? 'Tap' : 'Click';
-        console.log(action);
         document.getElementById('tooltip-text').innerText = `${action} to change the mood !`;
         InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('heart'))
     }

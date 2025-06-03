@@ -1,6 +1,6 @@
 let n = 0;
-function applyGradientToCanvas (stopOne,stopTwo, isLast) {
 
+function applyGradientToCanvas (stopOne,stopTwo, isLast) {
     let alpha;
     let text;
     let gammaX = view.size.width / 2;
@@ -21,20 +21,16 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     };
     const radius = view.size.width <= 375 ? (view.size.width - 150) : 250;
-    createBlob(center, radius, points());
+    createBlob(radius, points());
     const blob = project.activeLayer.children[0];
     window.addEventListener("deviceorientation", handleOrientation, {passive: true});
     isLast ? n=0 : ++n;
 
     function handleOrientation(event) {
-        gyroEvents = true;
+        gyroEvents = navigator.userAgentData.mobile;
         alpha = event.alpha;
         betaY = event.beta;
         gammaX = event.gamma;
-        // document.getElementById('rotation').innerText =
-        //     Math.round(alpha) + ' ' +
-        //     Math.round(betaY) + ' ' +
-        //     Math.round(gammaX);
     }
 
     if (gyroEvents && text === 'undefined') {
@@ -45,7 +41,7 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
         text.fontFamily = 'Courier New';
     }
 
-    function createBlob(center, maxRadius, points) {
+    function createBlob(maxRadius, points) {
         let path = new Path();
         path.closed = true;
         for (let i = 0; i < points; i++) {
@@ -98,6 +94,7 @@ function applyGradientToCanvas (stopOne,stopTwo, isLast) {
             text.content = `gamma: ${Math.round(gammaX)}`;
         }
     };
+
     view.onMouseMove = function(event) {
         return mousePos = event.point;
     }
