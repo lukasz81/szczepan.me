@@ -19,35 +19,41 @@ export class InitScripts {
             'Human'
         ];
         this.Gradient = Gradient;
-        this.isTouchDevice = 'ontouchstart' in document.documentElement;
+        this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
         this.eventForMouseLeave = this.eventForMouseLeave.bind(this);
     }
 
     static toggleElementsClassNames() {
-        const elements = '.outer, .inner, .mood-actions';
-        document.querySelectorAll(elements).forEach(element => {
+        const elements = '.outer , .inner , .mood-actions';
+        const elementsList = document.querySelectorAll(elements);
+        const elementsArray = Array.from(elementsList);
+        elementsArray.forEach(element => {
             element.classList.toggle('active');
         });
-    }
+    };
 
     static pickRandomRole(roles) {
-        return roles[Math.floor(Math.random() * roles.length)];
+        return roles[Math.floor(Math.random() * roles.length)]
     }
 
     changRoleText() {
         setInterval(() => {
             const roleElem = document.querySelector('.role');
-            const role = InitScripts.pickRandomRole(this.roles);
+            const roles = this.roles;
+            const role = InitScripts.pickRandomRole(roles);
             const text = `${role}.`;
             roleElem.innerHTML = text;
             roleElem.setAttribute('data-text', ' ');
+
             let attributeHandler = setInterval(() => {
                 roleElem.setAttribute('data-text', text);
                 clearInterval(attributeHandler);
+                attributeHandler = false;
             }, this.ROLE_TEXT_SWITCH * 0.3);
+
         }, this.ROLE_TEXT_SWITCH);
-    }
+    };
 
     addEventsToHeartButton() {
         const heartElem = document.querySelector('.heart');
@@ -60,8 +66,9 @@ export class InitScripts {
                 innerElm.classList.add('active');
                 this.modifyTooltipOnClick();
             }, this.DEF_DELAY);
-        });
-    }
+
+        })
+    };
 
     modifyTooltipOnClick() {
         if (this.isAlreadyClicked) {
@@ -71,8 +78,9 @@ export class InitScripts {
     }
 
     addBrowserSupportClasses() {
-        const HTMLElem = document.documentElement;
+        const HTMLElem = document.getElementsByTagName('html')[0];
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
         if (CSS.supports('display', 'grid')) {
             HTMLElem.classList.add('css-grid');
         }
@@ -80,57 +88,58 @@ export class InitScripts {
             HTMLElem.classList.add('css-variables');
             this.Gradient.supportsCssVars = true;
         }
-    }
+    };
 
     startInitialTransition(isOnLoad) {
         this.Gradient.startTransition(isOnLoad);
     }
 
     static updateSVGDataSet(dataSet) {
-        document.getElementsByClassName('line-up')[0].setAttribute('d', dataSet.lineUp);
-        document.getElementsByClassName('line-down')[0].setAttribute('d', dataSet.lineDown);
-        document.getElementsByClassName('shape')[0].setAttribute('d', dataSet.shape);
+        document.getElementsByClassName('line-up')[0].setAttribute('d',dataSet.lineUp); // st10
+        document.getElementsByClassName('line-down')[0].setAttribute('d',dataSet.lineDown); // st1
+        document.getElementsByClassName('shape')[0].setAttribute('d',dataSet.shape); // st0
     }
 
     static getRelevantCoordinates(classListName) {
-        const dataSets = [
-            {
+            const dataSet1 = {
                 name: 'behance',
-                lineUp: 'M0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 ',
-                lineDown: 'M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4',
-                shape: 'M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z'
-            },
-            {
+                lineUp: "M0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z"
+            };
+            const dataSet2 = {
                 name: 'twitter',
-                lineUp: 'M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ',
-                lineDown: 'M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ',
-                shape: 'M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z'
-            },
-            {
+                lineUp: "M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z"
+            };
+            const dataSet3 = {
                 name: 'github',
-                lineUp: 'M0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 ',
-                lineDown: 'M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ',
-                shape: 'M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 z'
-            },
-            {
+                lineUp: "M0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 83.5,12.6 96,0.6 107.8,12.6 300,12.6 z"
+            };
+            const dataSet4 = {
                 name: 'heart',
-                lineUp: 'M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 ',
-                lineDown: 'M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 ',
-                shape: 'M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z'
-            }
-        ];
-        return dataSets.find(set => set.name === classListName);
+                lineUp: "M0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 ",
+                lineDown: "M0,83.4 137.5,83.4 150,95.4 161.8,83.4 300,83.4 ",
+                shape: "M300,83.4 161.8,83.4 150,95.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,12.6 161.8,12.6 300,12.6 z"
+            };
+            return [dataSet1,dataSet2,dataSet3,dataSet4].find(set => set.name === classListName);
+
     }
 
     toggleTooltipClassNamesOnHover() {
         const hoveredElements = document.querySelectorAll('.more');
         const navigation = document.getElementsByClassName('navigation')[0];
-        hoveredElements.forEach(element => {
-            const classListName = element.querySelector('figure').className;
+        hoveredElements.forEach( element => {
+            let classListName = element.querySelector('figure').className;
             element.addEventListener('mouseenter', () => {
                 InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
                 document.getElementById('tooltip-text').innerText =
-                    `Follow me on ${classListName.replace(/^\w/, chr => chr.toUpperCase())} !`;
+                    `Follow me on ${classListName.replace(/^\w/, (chr) => {
+                        return chr.toUpperCase();
+                    })} !`
             });
         });
         navigation.addEventListener('mouseleave', this.eventForMouseLeave);
@@ -139,6 +148,6 @@ export class InitScripts {
     eventForMouseLeave() {
         const action = this.isTouchDevice ? 'Tap' : 'Click';
         document.getElementById('tooltip-text').innerText = `${action} to change the mood !`;
-        InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('heart'));
+        InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('heart'))
     }
 }
