@@ -2,10 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.11.3
-      - image: mongo:3.4.4
+      - image: cimg/base:current
     steps:
       - checkout
+      - run:
+          name: Upgrade git
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y git
       - run:
           name: Install-npm
           command: npm install
