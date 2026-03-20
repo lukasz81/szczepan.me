@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Fix SSH key permissions
+        command: |
+          chmod 600 ~/.ssh/id_rsa
+          chmod 644 ~/.ssh/id_rsa.pub
+          ls -la ~/.ssh/
+      - run:
           name: Upgrade git
           command: |
             sudo apt-get update
