@@ -20,7 +20,10 @@ let config = {
 
 ftpDeploy.deploy(config)
     .then(res => console.log('finished: ' + res))
-    .catch(err => console.log(err));
+    .catch(err => {
+        console.log(err);
+        throw err;
+    });
 
 ftpDeploy.on('uploading', data => {
     transferedData.totalFiles = data.totalFilesCount;       // total file count being transferred
