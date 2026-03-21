@@ -18,7 +18,7 @@ let config = {
     port: 21,
     localRoot: __dirname + "/",
     remoteRoot: "/customers/3/a/f/szczepan.me/httpd.www",
-    include: ["*.html","dist/*","css/styles.css","images/*"],
+    include: ["*.html","dist/*/*.js","css/styles.css","images/*"],
     exclude: ["*.**/*","node_modules/**/.*","node_modules","node_modules/**","**/node_modules/**",".git/**/*","*.md","*.json","coverage/**/*",".circleci/**/*","deploy.js","js/*",".babelrc",".gitignore",".circleci","*.yml"],
     deleteRemote: false
 };
