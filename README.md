@@ -27,6 +27,8 @@ What's cool about it? (features):
 `npm start`: to run dev.
 
 `sudo gem install sass`: to install <a href="http://sass.logdown.com/posts/7081811">ruby sass</a>, if you don't have it yet. It's legacy, but it works as expected. It will eventually die on (26 March 2019)
+* If you use Sass as a command-line tool, we recommend using Dart Sass, the new
+  primary implementation: https://sass-lang.com/install
 
 `sass --watch css`: to watch the whole css directory.
 
