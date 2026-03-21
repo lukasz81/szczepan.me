@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/base:current
+      - image: cimg/node:current
     steps:
       - checkout
       - run:
@@ -16,15 +16,22 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y git
-      - run:
-          name: Install-npm
-          command: npm install
+      
+      # 1. Restore the cache FIRST
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
+          
+      # 2. THEN run npm install (it will be much faster now)
+      - run:
+          name: Install npm dependencies
+          command: npm install
+          
+      # 3. THEN save the cache for future runs
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+            
       - run:
           name: Test
           command: npm run test
