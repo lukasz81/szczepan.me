@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/base:current
+      - image: cimg/node:lts
     steps:
       - checkout
       - run:
