@@ -17,11 +17,14 @@ let config = {
     host: process.env.FTPHOST,
     port: 21,
     localRoot: __dirname + "/",
-    remoteRoot: "/",
+    remoteRoot: "/customers/3/a/f/szczepan.me/httpd.www",
     include: ['*'],
     exclude: ["*.**/*","node_modules/**/*",".git/**/*","*.md","*.json","coverage/**/*",".circleci/**/*","deploy.js","js/*"],
     deleteRemote: false
 };
+
+console.log("Deploying from local root:", __dirname + "/");
+console.log("Deploying to remote root:", config.remoteRoot);
 
 ftpDeploy.deploy(config)
     .then(res => console.log('finished: ' + res))
