@@ -2,25 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/base:current
+      - image: cimg/node:lts
     steps:
       - checkout
-      - run:
-          name: Fix SSH key permissions
-          command: |
-            chmod 600 ~/.ssh/id_rsa
-            chmod 644 ~/.ssh/id_rsa.pub
-            ls -la ~/.ssh/
-      - run:
-          name: Upgrade git
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y git
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install-npm
           command: npm install
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
