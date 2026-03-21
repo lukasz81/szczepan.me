@@ -84,9 +84,11 @@ a {
   position: absolute;
   pointer-events: none;
 }
+
 nav a {
   display: inline-block;
 }
+
 svg:not(#panel) {
   display: block;
   width: 100%;
@@ -213,7 +215,6 @@ svg:not(#panel) {
 }
 
 .was {
-  //@include transform-origin(center);
   -moz-transform-origin: center;
   -ms-transform-origin: center;
   -webkit-transform-origin: center;
@@ -229,6 +230,7 @@ svg:not(#panel) {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 
 .mood-actions:not(.active) .heart {
@@ -347,6 +349,7 @@ svg:not(#panel) {
     display: none
   }
 }
+
 .tooltip-container {
   max-width: 300px;
   width: 300px;
