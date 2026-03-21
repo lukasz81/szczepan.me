@@ -1,5 +1,10 @@
-let FtpDeploy = require('ftp-deploy');
-let ftpDeploy = new FtpDeploy();
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import FtpDeploy from 'ftp-deploy';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const ftpDeploy = new FtpDeploy();
 let transferedData = {
     'totalFiles': {},
     'transferedFiles': {},

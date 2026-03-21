@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1748989320411" clover="3.2.0">
-  <project timestamp="1748989320411" name="All files">
-    <metrics statements="155" coveredstatements="142" conditionals="42" coveredconditionals="37" methods="36" coveredmethods="32" elements="233" coveredelements="211" complexity="0" loc="155" ncloc="155" packages="1" files="2" classes="2">
+<coverage generated="1774113170307" clover="3.2.0">
+  <project timestamp="1774113170307" name="All files">
+    <metrics statements="155" coveredstatements="142" conditionals="42" coveredconditionals="36" methods="36" coveredmethods="32" elements="233" coveredelements="210" complexity="0" loc="155" ncloc="155" packages="1" files="2" classes="2">
       <file name="gradient-generator.js" path="/Users/szczeps/Desktop/szczepan.me/js/gradient-generator.js">
-        <metrics statements="91" coveredstatements="87" conditionals="32" coveredconditionals="28" methods="15" coveredmethods="15"/>
+        <metrics statements="91" coveredstatements="87" conditionals="32" coveredconditionals="27" methods="15" coveredmethods="15"/>
         <line num="4" count="25" type="stmt"/>
         <line num="5" count="25" type="stmt"/>
         <line num="6" count="25" type="stmt"/>
@@ -60,10 +60,10 @@
         <line num="99" count="17" type="cond" truecount="2" falsecount="0"/>
         <line num="100" count="17" type="stmt"/>
         <line num="102" count="51" type="cond" truecount="2" falsecount="0"/>
-        <line num="103" count="7" type="stmt"/>
-        <line num="104" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="106" count="44" type="stmt"/>
-        <line num="107" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="103" count="6" type="stmt"/>
+        <line num="104" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="106" count="45" type="stmt"/>
+        <line num="107" count="45" type="cond" truecount="2" falsecount="0"/>
         <line num="114" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="115" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="117" count="8" type="stmt"/>

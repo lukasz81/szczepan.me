@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "szczepan.me",
   "short_name": "szczepan.me",
   "version": "0.0.1",
