@@ -1,0 +1,39 @@
+name: Generate Git Log Markdown
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is 'master'
+
+jobs:
+  generate-log:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grants the action permission to push back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # CRITICAL: Fetches all history for all branches and tags
+
+      - name: Generate git log to Markdown
+        run: |
+          git log --pretty=format:"* **%h** - %s *(%an, %ad)*" --date=short > CHANGELOG.md
+
+      - name: Commit and Push changes
+        run: |
+          # Configure git to act as the GitHub Actions bot
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Stage the file
+          git add CHANGELOG.md
+          
+          # Check if there are any changes to commit to avoid workflow failure
+          if git diff --staged --quiet; then
+            echo "No changes in git log to commit."
+          else
+            git commit -m "docs: auto-update CHANGELOG.md [skip ci]"
+            git push
+          fi
