@@ -130,9 +130,14 @@ export class InitScripts {
     }
 
     static applyNavHoverForClassName(classListName) {
-
+        const label =
+            classListName === 'email'
+                ? 'Email me !'
+                : `Follow me on ${classListName.replace(/^\w/, (chr) => {
+                      return chr.toUpperCase();
+                  })} !`;
         const tooltip = document.getElementById('tooltip-text');
-        tooltip.textContent = 'Email me !';
+        tooltip.textContent = label;
         InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
     }
 
