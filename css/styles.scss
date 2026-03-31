@@ -154,7 +154,7 @@ svg:not(#panel) {
 .more:hover figure {
     @include svgGlitch("example-four", 30, var(--safe-color), transparent, var(--gradient-one), var(--gradient-two), 40, 40, 0, 0);
 }
-.github, .behance, .twitter {
+.github, .behance, .email {
   display: inline-block;
   width: 40px;
   height: 40px;

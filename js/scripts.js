@@ -72,8 +72,8 @@ export class InitScripts {
 
     modifyTooltipOnClick() {
         if (this.isAlreadyClicked) {
-            document.getElementById('tooltip-text').innerText = 'Follow me on Twitter !';
-            InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('twitter'));
+            document.getElementById('tooltip-text').innerText = 'Email me !';
+            InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates('email'));
         }
     }
 
@@ -108,7 +108,7 @@ export class InitScripts {
                 shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 137.5,12.6 150,0.6 161.8,12.6 300,12.6 z"
             };
             const dataSet2 = {
-                name: 'twitter',
+                name: 'email',
                 lineUp: "M0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 ",
                 lineDown: "M0,83.4 137.5,83.4 150,83.4 161.8,83.4 300,83.4 ",
                 shape: "M300,83.4 161.8,83.4 150,83.4 137.5,83.4 0,83.4 0,12.6 192.5,12.6 205,0.6 216.8,12.6 300,12.6 z"
@@ -129,17 +129,20 @@ export class InitScripts {
 
     }
 
+    static applyNavHoverForClassName(classListName) {
+
+        const tooltip = document.getElementById('tooltip-text');
+        tooltip.textContent = 'Email me !';
+        InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
+    }
+
     toggleTooltipClassNamesOnHover() {
         const hoveredElements = document.querySelectorAll('.more');
         const navigation = document.getElementsByClassName('navigation')[0];
-        hoveredElements.forEach( element => {
-            let classListName = element.querySelector('figure').className;
+        hoveredElements.forEach((element) => {
+            const classListName = element.querySelector('figure').className;
             element.addEventListener('mouseenter', () => {
-                InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
-                document.getElementById('tooltip-text').innerText =
-                    `Follow me on ${classListName.replace(/^\w/, (chr) => {
-                        return chr.toUpperCase();
-                    })} !`
+                InitScripts.applyNavHoverForClassName(classListName);
             });
         });
         navigation.addEventListener('mouseleave', this.eventForMouseLeave);

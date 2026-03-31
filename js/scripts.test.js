@@ -182,17 +182,17 @@ describe('InitScripts Class ', () => {
             expect(getData.name).toEqual('behance');
         });
 
-        it('should return dataset relevant to "twitter" className',() => {
-            const getData = InitScripts.getRelevantCoordinates('twitter');
-            expect(getData.name).toEqual('twitter');
+        it('should return dataset relevant to "email" className',() => {
+            const getData = InitScripts.getRelevantCoordinates('email');
+            expect(getData.name).toEqual('email');
         });
 
-        it('should return dataset relevant to "twitter" className',() => {
+        it('should return dataset relevant to "github" className',() => {
             const getData = InitScripts.getRelevantCoordinates('github');
             expect(getData.name).toEqual('github');
         });
 
-        it('should return dataset relevant to "twitter" className',() => {
+        it('should return dataset relevant to "heart" className',() => {
             const getData = InitScripts.getRelevantCoordinates('heart');
             expect(getData.name).toEqual('heart');
         })
@@ -216,6 +216,73 @@ describe('InitScripts Class ', () => {
             expect($('#tooltip-text')[0].innerText.split(' ')[0]).toBe('Click');
         });
 
+    });
+
+    describe('checks static applyNavHoverForClassName method', () => {
+
+        it('should set github tooltip and panel paths', () => {
+            InitScripts.applyNavHoverForClassName('github');
+            expect(document.getElementById('tooltip-text').textContent.trim()).toBe(
+                'Follow me on Github !'
+            );
+            expect(document.getElementsByClassName('line-up')[0].getAttribute('d')).toContain('83.5');
+        });
+
+        it('should set email tooltip', () => {
+            InitScripts.applyNavHoverForClassName('email');
+            expect(document.getElementById('tooltip-text').textContent.trim()).toBe('Email me !');
+        });
+    });
+
+    describe('checks toggleTooltipClassNamesOnHover method', () => {
+
+        it('should register mouseleave on navigation', () => {
+            const Gradient = new GradientGenerator();
+            const InitScript = new InitScripts(Gradient);
+            const nav = document.querySelector('.navigation');
+            const spy = jest.spyOn(nav, 'addEventListener');
+            InitScript.toggleTooltipClassNamesOnHover();
+            expect(spy).toHaveBeenCalledWith('mouseleave', expect.any(Function));
+            spy.mockRestore();
+        });
+
+        it('should register mouseenter handlers that call applyNavHoverForClassName', () => {
+            const Gradient = new GradientGenerator();
+            const InitScript = new InitScripts(Gradient);
+            const applySpy = jest.spyOn(InitScripts, 'applyNavHoverForClassName');
+            const addSpy = jest.spyOn(HTMLElement.prototype, 'addEventListener');
+            InitScript.toggleTooltipClassNamesOnHover();
+            const mouseenterListeners = addSpy.mock.calls.filter((call) => call[0] === 'mouseenter');
+            expect(mouseenterListeners.length).toBe(3);
+            mouseenterListeners.forEach(([, handler]) => handler());
+            expect(applySpy).toHaveBeenCalledTimes(3);
+            addSpy.mockRestore();
+            applySpy.mockRestore();
+        });
+
+        it('should reset tooltip on navigation mouseleave', () => {
+            const Gradient = new GradientGenerator();
+            const InitScript = new InitScripts(Gradient);
+            InitScript.toggleTooltipClassNamesOnHover();
+            const nav = document.querySelector('.navigation');
+            const win = nav.ownerDocument.defaultView;
+            nav.dispatchEvent(new win.MouseEvent('mouseleave', { bubbles: false, cancelable: true }));
+            expect(document.getElementById('tooltip-text').textContent.trim()).toMatch(
+                /^Click to change the mood !$/
+            );
+        });
+    });
+
+    describe('checks modifyTooltipOnClick method', () => {
+
+        it('should not change tooltip when heart was not clicked yet', () => {
+            const Gradient = new GradientGenerator();
+            const InitScript = new InitScripts(Gradient);
+            InitScript.isAlreadyClicked = false;
+            const before = document.getElementById('tooltip-text').innerText;
+            InitScript.modifyTooltipOnClick();
+            expect(document.getElementById('tooltip-text').innerText).toBe(before);
+        });
     });
 
 });

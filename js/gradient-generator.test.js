@@ -152,6 +152,16 @@ describe('Gradient Generator Class ', () => {
             expect(currentColor[0]).toBe(prevVal - gradientGenerator.increment[0]);
         });
 
+        it('should zero increment when current reaches target while decreasing', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.isFirstLoad = false;
+            const currentColor = [6, 10, 10];
+            const targetColor = [5, 5, 5];
+            gradientGenerator.checkAndUpdateColor(currentColor, targetColor);
+            expect(currentColor[0]).toBe(5);
+            expect(gradientGenerator.increment[0]).toBe(0);
+        });
+
         it('should set increment value to 0 when current is smaller then current', () => {
             const gradientGenerator = new GradientGenerator();
             gradientGenerator.isFirstLoad = false;
@@ -216,6 +226,15 @@ describe('Gradient Generator Class ', () => {
             expect($('#tags').length).toBe(1);
         });
 
+        it('should remove existing #tags before adding a new style tag', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.reloadStyleTags('rgb(1,2,3)', 'rgb(4,5,6)');
+            expect($('#tags').length).toBe(1);
+            gradientGenerator.reloadStyleTags('rgb(7,8,9)', 'rgb(10,11,12)');
+            expect($('#tags').length).toBe(1);
+            expect($('#tags').html()).toContain('rgb(7,8,9)');
+        });
+
     });
 
     describe('checks "applyCanvasGradient" method', () => {
@@ -240,11 +259,42 @@ describe('Gradient Generator Class ', () => {
 
     });
 
+    describe('checks static defineColorBrightness branches', () => {
+
+        it('should use theme-medium when perceived brightness sum is >= 100', () => {
+            GradientGenerator.midRGB = [255, 255, 255];
+            GradientGenerator.defineColorBrightness();
+            expect(document.documentElement.classList.contains('theme-medium')).toBe(true);
+        });
+
+        it('should use theme-dark when sum is between 45 and 99', () => {
+            GradientGenerator.midRGB = [50, 50, 50];
+            GradientGenerator.defineColorBrightness();
+            expect(document.documentElement.classList.contains('theme-dark')).toBe(true);
+        });
+
+        it('should use theme-bright when sum is <= 45', () => {
+            GradientGenerator.midRGB = [0, 0, 0];
+            GradientGenerator.defineColorBrightness();
+            expect(document.documentElement.classList.contains('theme-bright')).toBe(true);
+        });
+    });
+
     describe('checks "applyChange" method', () => {
 
         let gradientGenerator = {prevColors:{targetColorOne:[0,0,0],targetColorTwo:[0,0,0]}};
         const stopOne = `rgb(${gradientGenerator.prevColors.targetColorOne[0]} , ${gradientGenerator.prevColors.targetColorOne[1]} , ${gradientGenerator.prevColors.targetColorOne[2]})`;
         const stopTwo = `rgb(${gradientGenerator.prevColors.targetColorTwo[0]} , ${gradientGenerator.prevColors.targetColorTwo[1]} , ${gradientGenerator.prevColors.targetColorTwo[2]})`;
+
+        it('should set --gradient-one and --gradient-two when supportsCssVars is true', () => {
+            const gradientGenerator = new GradientGenerator();
+            gradientGenerator.supportsCssVars = true;
+            const spy = jest.spyOn(document.documentElement.style, 'setProperty');
+            gradientGenerator.applyChange('rgb(10, 20, 30)', 'rgb(40, 50, 60)');
+            expect(spy).toHaveBeenCalledWith('--gradient-one', 'rgb(10, 20, 30)');
+            expect(spy).toHaveBeenCalledWith('--gradient-two', 'rgb(40, 50, 60)');
+            spy.mockRestore();
+        });
 
         it('should add a className "active" to a HTML element ', () => {
             const gradientGenerator = new GradientGenerator();

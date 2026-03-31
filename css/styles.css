@@ -608,11 +608,11 @@ svg:not(#panel) {
   left: 2px;
   animation: example-four-anim-2 3s infinite linear alternate-reverse; }
 
-.github, .behance, .twitter {
+.github, .behance, .email {
   display: inline-block;
   width: 40px;
   height: 40px; }
-  .github svg, .behance svg, .twitter svg {
+  .github svg, .behance svg, .email svg {
     height: 100%;
     display: block;
     position: absolute; }
