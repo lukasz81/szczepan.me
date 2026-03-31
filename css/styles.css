@@ -808,6 +808,10 @@ svg:not(#panel) {
     stroke-width: 1px;
     stroke-miterlimit: 10; }
 
+html.touch-device .tooltip-container {
+  pointer-events: auto;
+  cursor: pointer; }
+
 .item {
   background: rgba(255, 255, 255, 0.1); }
 

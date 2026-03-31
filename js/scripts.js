@@ -22,6 +22,8 @@ export class InitScripts {
         this.isTouchDevice = "ontouchstart" in document.documentElement;
         this.isAlreadyClicked = false;
         this.eventForMouseLeave = this.eventForMouseLeave.bind(this);
+        /** @type {HTMLAnchorElement | null} */
+        this._mobileNavPendingAnchor = null;
     }
 
     static toggleElementsClassNames() {
@@ -88,6 +90,9 @@ export class InitScripts {
             HTMLElem.classList.add('css-variables');
             this.Gradient.supportsCssVars = true;
         }
+        if (this.isTouchDevice) {
+            HTMLElem.classList.add('touch-device');
+        }
     };
 
     startInitialTransition(isOnLoad) {
@@ -141,6 +146,69 @@ export class InitScripts {
         InitScripts.updateSVGDataSet(InitScripts.getRelevantCoordinates(classListName));
     }
 
+    static navigateUsingAnchor(anchor) {
+        const href = anchor.getAttribute('href');
+        if (!href) {
+            return;
+        }
+        const target = anchor.getAttribute('target');
+        if (target === '_blank') {
+            window.open(href, '_blank', 'noopener,noreferrer');
+        } else {
+            window.location.assign(href);
+        }
+    }
+
+    bindMobileNavLinkBehavior() {
+        const navLinks = document.querySelectorAll('nav.navigation a.more');
+        const tooltipContainer = document.querySelector('.tooltip-container');
+        if (!tooltipContainer || navLinks.length === 0) {
+            return;
+        }
+        this._mobileNavPendingAnchor = null;
+
+        const onNavLinkClick = (e) => {
+            const anchor = e.currentTarget;
+            if (this._mobileNavPendingAnchor === anchor) {
+                this._mobileNavPendingAnchor = null;
+                return;
+            }
+            e.preventDefault();
+            this._mobileNavPendingAnchor = anchor;
+            const classListName = anchor.querySelector('figure').className;
+            InitScripts.applyNavHoverForClassName(classListName);
+        };
+        navLinks.forEach((anchor) => {
+            anchor.addEventListener('click', onNavLinkClick);
+        });
+
+        const onTooltipClick = (e) => {
+            if (!this._mobileNavPendingAnchor) {
+                return;
+            }
+            e.preventDefault();
+            const anchor = this._mobileNavPendingAnchor;
+            this._mobileNavPendingAnchor = null;
+            InitScripts.navigateUsingAnchor(anchor);
+        };
+        tooltipContainer.addEventListener('click', onTooltipClick);
+
+        const onDocumentTouchStart = (e) => {
+            if (!this._mobileNavPendingAnchor) {
+                return;
+            }
+            const nav = document.querySelector('.navigation');
+            const tooltip = document.querySelector('.tooltip-container');
+            const t = e.target;
+            if ((nav && nav.contains(t)) || (tooltip && tooltip.contains(t))) {
+                return;
+            }
+            this._mobileNavPendingAnchor = null;
+            this.eventForMouseLeave();
+        };
+        document.addEventListener('touchstart', onDocumentTouchStart, true);
+    }
+
     toggleTooltipClassNamesOnHover() {
         const hoveredElements = document.querySelectorAll('.more');
         const navigation = document.getElementsByClassName('navigation')[0];
@@ -151,6 +219,9 @@ export class InitScripts {
             });
         });
         navigation.addEventListener('mouseleave', this.eventForMouseLeave);
+        if (this.isTouchDevice) {
+            this.bindMobileNavLinkBehavior();
+        }
     }
 
     eventForMouseLeave() {
